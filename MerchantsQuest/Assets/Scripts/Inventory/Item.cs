@@ -12,5 +12,6 @@ public struct Item
     public float realStat;
     public bool appraised;
     public ItemType type;
+    public Texture2D icon;
 
 }
