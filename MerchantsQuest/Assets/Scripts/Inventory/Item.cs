@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ItemType { Spell, Weapon, Armor, Consumable }
+public enum ItemType { Spell, Weapon, Armor, Consumable, Size }
 
 //If the item is a spell type then you auto learn and consume
 public struct Item

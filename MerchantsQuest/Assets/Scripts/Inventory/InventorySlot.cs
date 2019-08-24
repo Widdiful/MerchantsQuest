@@ -30,6 +30,7 @@ public class InventorySlot : MonoBehaviour
     {
         icon.sprite = null;
         icon.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+
     }
 }
 

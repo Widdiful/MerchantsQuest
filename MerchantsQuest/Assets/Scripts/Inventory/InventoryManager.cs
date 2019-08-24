@@ -13,7 +13,20 @@ public class InventoryManager : MonoBehaviour
 
     private void Awake()
     {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
+        DontDestroyOnLoad(this.gameObject);
+
         inventorySlots = new InventorySlot[Constants.maxInventorySize];
+
+
     }
 
     private void Update()
@@ -31,7 +44,13 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItem(int id)
     {
+        for(int i = 0; i < Constants.maxInventorySize; i++)
+        {
+            if(inventorySlots[i].empty)
+            {
 
+            }
+        }
     }
 
 }
