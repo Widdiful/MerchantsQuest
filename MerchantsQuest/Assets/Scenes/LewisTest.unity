@@ -150,33 +150,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTeam:
-  - characterName: Alan
+  - characterName: Player
     level: 0
     hitPoints: 10
     magicPoints: 0
     attack: 10
-    defence: 5
-    agility: 0
-    critChance: 0.2
-    isDead: 0
-    isEnemy: 0
-  enemyTeam:
-  - characterName: Dave
-    level: 0
-    hitPoints: 100
-    magicPoints: 0
-    attack: 10
-    defence: 5
+    defence: 7
     agility: 0
     critChance: 0
     isDead: 0
-    isEnemy: 1
-  - characterName: Niel
+    isEnemy: 0
+  enemyTeam:
+  - characterName: Enemy1
     level: 0
-    hitPoints: 100
+    hitPoints: 5
     magicPoints: 0
-    attack: 10
-    defence: 5
+    attack: 5
+    defence: 2
+    agility: 0
+    critChance: 0
+    isDead: 1
+    isEnemy: 1
+  - characterName: Enemy2
+    level: 0
+    hitPoints: 5
+    magicPoints: 0
+    attack: 5
+    defence: 2
     agility: 0
     critChance: 0
     isDead: 0

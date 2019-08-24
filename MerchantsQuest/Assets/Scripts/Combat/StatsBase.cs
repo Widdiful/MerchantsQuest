@@ -33,18 +33,10 @@ public class StatsBase
         return 0;
     }
 
-    public void Kill() {
+    public virtual void Kill() {
         isDead = true;
 
-        Debug.Log(characterName + " died!");
-
         CombatManager.instance.turnOrder.Remove(this);
-        if (isEnemy) {
-            CombatManager.instance.enemyTeam.Remove(this);
-        }
-        else {
-            CombatManager.instance.playerTeam.Remove(this);
-        }
     }
 
     public virtual void GetCommand() {

@@ -6,19 +6,24 @@ public class CombatManager : MonoBehaviour
 {
 
     public static CombatManager instance;
-    public List<StatsBase> playerTeam, enemyTeam, turnOrder = new List<StatsBase>();
+    public List<PlayerStats> playerTeam = new List<PlayerStats>();
+    public List<EnemyStats> enemyTeam = new List<EnemyStats>();
+    public List<StatsBase> turnOrder = new List<StatsBase>();
     private int turnIndex;
     private bool battleEnded;
 
     private void Awake() {
         instance = this;
 
-        // add all from players and enemies
-        // sort by agility stat
+        foreach(StatsBase player in playerTeam) {
+            turnOrder.Add(player);
+        }
 
-        turnOrder.Add(playerTeam[0]);
-        turnOrder.Add(enemyTeam[0]);
-        turnOrder.Add(enemyTeam[1]);
+        foreach (StatsBase enemy in enemyTeam) {
+            turnOrder.Add(enemy);
+        }
+
+        // sort by agility stat
 
         NextTurn();
     }
@@ -49,6 +54,10 @@ public class CombatManager : MonoBehaviour
         int damageTaken = target.TakeDamage(damage, ignoreDefence);
 
         print(attacker.characterName + " attacked " + target.characterName + " for " + damageTaken);
+
+        if (target.isDead) {
+            print(target.characterName + " died!");
+        }
 
         NextTurn();
     }
