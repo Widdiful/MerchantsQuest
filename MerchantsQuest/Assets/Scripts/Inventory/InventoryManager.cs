@@ -8,11 +8,12 @@ public class InventoryManager : MonoBehaviour
     private bool inventoryEnabled;
     public GameObject inventory;
     private int availableSlots;
-    private int totalSlots;
+
+    private InventorySlot[] inventorySlots;
 
     private void Awake()
     {
-        totalSlots = Constants.maxInventorySize;
+        inventorySlots = new InventorySlot[Constants.maxInventorySize];
     }
 
     private void Update()
@@ -26,6 +27,11 @@ public class InventoryManager : MonoBehaviour
             inventory.SetActive(true);
         else
             inventory.SetActive(false);
+    }
+
+    public void AddItem(int id)
+    {
+
     }
 
 }
