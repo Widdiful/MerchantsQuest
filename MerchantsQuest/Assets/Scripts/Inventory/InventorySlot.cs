@@ -11,4 +11,25 @@ public class InventorySlot : MonoBehaviour
     public Image icon;
 
 
+    private void Awake()
+    {
+        if(icon.sprite == null)
+        {
+            icon.color = new Color(0.0f,0.0f,0.0f,0.0f);
+        }
+    }
+
+
+    public void SetItem(Item newItem)
+    {
+        itemInSlot = newItem;
+        icon.sprite = itemInSlot.icon;
+    }
+
+    public void RemoveItem()
+    {
+        icon.sprite = null;
+        icon.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+    }
 }
+
