@@ -15,7 +15,15 @@ public class StatShower : MonoBehaviour
     public void SetStats(Item item, Vector2 pos)
     {
         rectTransform.position = pos;
-        rectTransform.position += new Vector3(rectTransform.rect.size.x, 0, 0);
+        //Stop the panel going off the screen
+        if (pos.x > (Screen.width * .5f))
+        {
+            rectTransform.position -= new Vector3(rectTransform.rect.size.x * 0.75f, 0, 0);
+        }
+        else
+        {
+            rectTransform.position += new Vector3(rectTransform.rect.size.x * 0.75f, 0, 0);
+        }
         nameText.text = item.name;
         if (item.appraised)
             descriptionText.text = item.realStat.ToString();
