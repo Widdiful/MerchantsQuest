@@ -7,7 +7,8 @@ public class StatsBase : ScriptableObject
 {
     public string characterName;
     public int level, maxHP, maxMP, baseATK, baseDEF, baseAGI;
-    protected int currentHP, currentMP, currentATK, currentDEF, currentAGI;
+    [HideInInspector]
+    public int currentHP, currentMP, currentATK, currentDEF, currentAGI;
     [Range(0, 1)]
     public float critChance;
     public bool isDead, isEnemy;
