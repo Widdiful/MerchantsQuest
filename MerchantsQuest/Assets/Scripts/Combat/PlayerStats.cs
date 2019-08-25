@@ -10,4 +10,10 @@ public class PlayerStats : StatsBase
 
         CombatManager.instance.playerTeam.Remove(this);
     }
+
+    public override void GetCommand() {
+        base.GetCommand();
+
+        CombatManager.instance.EnableCommandCanvas();
+    }
 }

@@ -9,6 +9,8 @@ public class CombatManager : MonoBehaviour
     public List<PlayerStats> playerTeam = new List<PlayerStats>();
     public List<EnemyStats> enemyTeam = new List<EnemyStats>();
     public List<StatsBase> turnOrder = new List<StatsBase>();
+    public Canvas commandCanvas;
+    public StatsBase currentActor;
     private int turnIndex;
     private bool battleEnded;
 
@@ -29,13 +31,15 @@ public class CombatManager : MonoBehaviour
     }
 
     public void NextTurn() {
+        DisableCommandCanvas();
         if (!battleEnded) {
             if (enemyTeam.Count > 0 && playerTeam.Count > 0) {
 
                 turnIndex = (turnIndex + 1) % (playerTeam.Count + enemyTeam.Count);
 
                 if (!turnOrder[turnIndex].isDead) {
-                    turnOrder[turnIndex].GetCommand();
+                    currentActor = turnOrder[turnIndex];
+                    currentActor.GetCommand();
                 }
 
             }
@@ -62,4 +66,11 @@ public class CombatManager : MonoBehaviour
         NextTurn();
     }
 
+    public void EnableCommandCanvas() {
+        commandCanvas.enabled = true;
+    }
+
+    public void DisableCommandCanvas() {
+        commandCanvas.enabled = false;
+    }
 }

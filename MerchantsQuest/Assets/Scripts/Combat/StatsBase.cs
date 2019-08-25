@@ -40,10 +40,11 @@ public class StatsBase
     }
 
     public virtual void GetCommand() {
-        if (isEnemy)
-            Attack(CombatManager.instance.playerTeam[0], attack);
-        else
-            Attack(CombatManager.instance.enemyTeam[0], attack);
+
+    }
+
+    public void Attack(StatsBase target) {
+        Attack(target, attack);
     }
 
     public void Attack(StatsBase target, int damage) {
