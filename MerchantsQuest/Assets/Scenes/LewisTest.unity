@@ -760,6 +760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partyMembers:
   - {fileID: 11400000, guid: 52816e921f668db4d87ab0cf96f67b51, type: 2}
+  - {fileID: 11400000, guid: 9b0b0d99d5d2fe8479752dafebd41f1f, type: 2}
 --- !u!1 &542463290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1593,7 +1594,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -21900, y: 129434.93}
+  m_AnchoredPosition: {x: -30000, y: 166183.66}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1293370665

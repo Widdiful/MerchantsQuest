@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,47 +20,9 @@ public class CombatManager : MonoBehaviour
     public Text messageText;
     private int turnIndex = 0;
     private bool battleEnded;
-    private Dictionary<string, int> enemyDict = new Dictionary<string, int>();
 
     private void Awake() {
         instance = this;
-
-        playerTeam = PartyManager.instance.partyMembers;
-
-        int enemyCount = Random.Range(1, maxEnemies + 1);
-        for(int i = 0; i < enemyCount; i++) {
-            EnemyStats temp = Instantiate(possibleEnemies[Random.Range(0, possibleEnemies.Count)]);
-            enemyTeam.Add(temp);
-            if (enemyDict.ContainsKey(temp.characterName)) {
-                enemyDict[temp.characterName]++;
-            }
-            else {
-                enemyDict[temp.characterName] = 1;
-            }
-        }
-
-        Dictionary<string, int> counterDict = new Dictionary<string, int>();
-        foreach(EnemyStats enemy in enemyTeam) {
-            if (enemyDict[enemy.characterName] > 1) {
-                if (counterDict.ContainsKey(enemy.characterName)) {
-                    counterDict[enemy.characterName]++;
-                }
-                else {
-                    counterDict[enemy.characterName] = 1;
-                }
-                enemy.characterName += " " + System.Convert.ToChar(counterDict[enemy.characterName] + 64);
-            }
-        }
-
-        foreach (StatsBase player in playerTeam) {
-            turnOrder.Add(player);
-        }
-
-        foreach (StatsBase enemy in enemyTeam) {
-            turnOrder.Add(enemy);
-        }
-
-        // sort by agility stat
 
         StartCoroutine(StartBattle());
     }
@@ -70,22 +33,29 @@ public class CombatManager : MonoBehaviour
         if (!battleEnded) {
             if (enemyTeam.Count > 0 && playerTeam.Count > 0) {
 
+                turnIndex = (turnIndex + 1) % (playerTeam.Count + enemyTeam.Count);
+
                 if (!turnOrder[turnIndex].isDead) {
                     currentActor = turnOrder[turnIndex];
                     currentActor.GetCommand();
                 }
-
-                turnIndex = (turnIndex + 1) % (playerTeam.Count + enemyTeam.Count);
+                else {
+                    NextTurn();
+                }
 
             }
             else if (enemyTeam.Count <= 0) {
                 messageText.text += ("Victory!");
                 battleEnded = true;
+                StartCoroutine(NextTurnWait());
             }
             else if (playerTeam.Count <= 0) {
                 messageText.text += ("You lose!");
                 battleEnded = true;
             }
+        }
+        else {
+            StartCoroutine(StartBattle());
         }
     }
 
@@ -127,6 +97,59 @@ public class CombatManager : MonoBehaviour
 
     IEnumerator StartBattle() {
         DisableCommandCanvas();
+
+        // Reset values
+        battleEnded = false;
+        playerTeam.Clear();
+        enemyTeam.Clear();
+        turnOrder.Clear();
+        turnIndex = -1;
+
+        // Initialise party members
+        foreach(PlayerStats player in PartyManager.instance.partyMembers) {
+            if (!player.isDead) {
+                playerTeam.Add(player);
+            }
+        }
+        foreach (StatsBase player in playerTeam) {
+            turnOrder.Add(player);
+        }
+
+        // Initialise enemies
+        int enemyCount = Random.Range(1, maxEnemies + 1);
+        Dictionary<string, int> enemyDict = new Dictionary<string, int>();
+        for (int i = 0; i < enemyCount; i++) {
+            EnemyStats temp = Instantiate(possibleEnemies[Random.Range(0, possibleEnemies.Count)]);
+            enemyTeam.Add(temp);
+            if (enemyDict.ContainsKey(temp.characterName)) {
+                enemyDict[temp.characterName]++;
+            }
+            else {
+                enemyDict[temp.characterName] = 1;
+            }
+        }
+
+        // Name enemies properly
+        Dictionary<string, int> counterDict = new Dictionary<string, int>();
+        foreach (EnemyStats enemy in enemyTeam) {
+            if (enemyDict[enemy.characterName] > 1) {
+                if (counterDict.ContainsKey(enemy.characterName)) {
+                    counterDict[enemy.characterName]++;
+                }
+                else {
+                    counterDict[enemy.characterName] = 1;
+                }
+                enemy.characterName += " " + System.Convert.ToChar(counterDict[enemy.characterName] + 64);
+            }
+        }
+
+        foreach (StatsBase enemy in enemyTeam) {
+            turnOrder.Add(enemy);
+        }
+
+        // TODO: sort turnOrder by agility stat
+
+        // Generate first message
         messageText.text = "";
 
         for (int i = 0; i < enemyTeam.Count; i++) {
