@@ -9,28 +9,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fd584c7bfb724b449d88fd4a7f6de1c, type: 3}
-  m_Name: Player
+  m_Script: {fileID: 11500000, guid: ceaed19ceccfba34da46569010ae0e73, type: 3}
+  m_Name: Zombie3
   m_EditorClassIdentifier: 
-  characterName: Player
-  sprite: {fileID: 0}
+  characterName: Zomboss
+  sprite: {fileID: -2658868259114192933, guid: cd35159901334ae438a8aca24d89f96c, type: 3}
   level: 1
-  maxHP: 20
-  maxMP: 6
-  baseATK: 10
-  baseDEF: 5
-  baseAGI: 5
+  maxHP: 48
+  maxMP: 16
+  baseATK: 24
+  baseDEF: 6
+  baseAGI: 2
   expValue: 0
   currentHP: 0
   currentMP: 0
   currentATK: 0
   currentDEF: 0
   currentAGI: 0
-  hpPerLevel: 4
+  hpPerLevel: 6
   mpPerLevel: 2
-  atkPerLevel: 3
-  defPerLevel: 2
-  agiPerLevel: 2
-  critChance: 0.2
+  atkPerLevel: 4
+  defPerLevel: 1
+  agiPerLevel: 1
+  critChance: 0.1
   isDead: 0
   isEnemy: 0

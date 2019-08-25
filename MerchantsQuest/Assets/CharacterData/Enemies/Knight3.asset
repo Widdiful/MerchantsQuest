@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fd584c7bfb724b449d88fd4a7f6de1c, type: 3}
-  m_Name: Player
+  m_Script: {fileID: 11500000, guid: ceaed19ceccfba34da46569010ae0e73, type: 3}
+  m_Name: Knight3
   m_EditorClassIdentifier: 
-  characterName: Player
-  sprite: {fileID: 0}
+  characterName: Dragon's Bane
+  sprite: {fileID: 1904355317838143106, guid: cd35159901334ae438a8aca24d89f96c, type: 3}
   level: 1
-  maxHP: 20
-  maxMP: 6
-  baseATK: 10
-  baseDEF: 5
+  maxHP: 64
+  maxMP: 32
+  baseATK: 56
+  baseDEF: 48
   baseAGI: 5
   expValue: 0
   currentHP: 0
@@ -26,11 +26,11 @@ MonoBehaviour:
   currentATK: 0
   currentDEF: 0
   currentAGI: 0
-  hpPerLevel: 4
-  mpPerLevel: 2
-  atkPerLevel: 3
-  defPerLevel: 2
-  agiPerLevel: 2
-  critChance: 0.2
+  hpPerLevel: 6
+  mpPerLevel: 4
+  atkPerLevel: 7
+  defPerLevel: 6
+  agiPerLevel: 3
+  critChance: 0.01
   isDead: 0
   isEnemy: 0

@@ -15,8 +15,6 @@ public class PlayerStats : StatsBase
     public override void GetCommand() {
         base.GetCommand();
 
-        Debug.Log(currentHP + "/" + maxHP);
-
         CombatManager.instance.EnableCommandCanvas();
     }
 }

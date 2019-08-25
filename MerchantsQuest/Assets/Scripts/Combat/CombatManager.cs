@@ -10,7 +10,7 @@ public class CombatManager : MonoBehaviour
 
     public static CombatManager instance;
     public List<PlayerStats> playerTeam = new List<PlayerStats>();
-    public List<EnemyStats> enemyTeam = new List<EnemyStats>();
+    public List<EnemyStats> enemyTeam, allEnemies = new List<EnemyStats>();
     public List<StatsBase> turnOrder = new List<StatsBase>();
     public List<EnemyStats> possibleEnemies = new List<EnemyStats>();
     public int maxEnemies;
@@ -20,6 +20,7 @@ public class CombatManager : MonoBehaviour
     public StatsBase currentActor;
     public float timeToWait;
     public Text messageText;
+    public EnemySpriteManager spriteManager;
     private int turnIndex = 0;
     private bool battleEnded;
     private Dictionary<StatsBase, CharacterPanel> statsPanels = new Dictionary<StatsBase, CharacterPanel>();
@@ -108,6 +109,12 @@ public class CombatManager : MonoBehaviour
         messageCanvas.enabled = true;
     }
 
+    public void UpdateAllStats() {
+        foreach(KeyValuePair<StatsBase, CharacterPanel> pair in statsPanels) {
+            pair.Value.UpdateStats();
+        }
+    }
+
     IEnumerator StartBattle() {
         DisableCommandCanvas();
 
@@ -115,6 +122,7 @@ public class CombatManager : MonoBehaviour
         battleEnded = false;
         playerTeam.Clear();
         enemyTeam.Clear();
+        allEnemies.Clear();
         turnOrder.Clear();
         statsPanels.Clear();
         turnIndex = -1;
@@ -146,6 +154,7 @@ public class CombatManager : MonoBehaviour
             EnemyStats temp = Instantiate(possibleEnemies[Random.Range(0, possibleEnemies.Count)]);
             temp.InitialiseCharacter();
             enemyTeam.Add(temp);
+            allEnemies.Add(temp);
             if (enemyDict.ContainsKey(temp.characterName)) {
                 enemyDict[temp.characterName]++;
             }
@@ -196,6 +205,9 @@ public class CombatManager : MonoBehaviour
             messageText.text += " appears!";
         }
 
+        UpdateAllStats();
+        spriteManager.SetSprites(enemyTeam);
+
         yield return new WaitForSeconds(timeToWait);
         NextTurn();
     }
@@ -206,6 +218,8 @@ public class CombatManager : MonoBehaviour
 
     IEnumerator NextTurnWait() {
         DisableCommandCanvas();
+        UpdateAllStats();
+        spriteManager.UpdateSprites(allEnemies);
         int waitMultiplier = Regex.Matches(messageText.text, "\n").Count + 1;
         yield return new WaitForSeconds(timeToWait * waitMultiplier);
         NextTurn();

@@ -10,9 +10,14 @@ public class CharacterPanel : MonoBehaviour
     public Text name, hp, mp;
 
     public void UpdateStats(PlayerStats player) {
+        stats = player;
         name.text = player.characterName;
-        hp.text = player.currentHP + "/" + player.maxHP;
-        mp.text = player.currentMP + "/" + player.maxMP;
+        UpdateStats();
+    }
+
+    public void UpdateStats() {
+        hp.text = stats.currentHP + "/" + stats.maxHP;
+        mp.text = stats.currentMP + "/" + stats.maxMP;
     }
 
     public void ToggleIndicator() {
