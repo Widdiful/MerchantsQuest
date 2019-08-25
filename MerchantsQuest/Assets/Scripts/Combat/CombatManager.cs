@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CombatManager : MonoBehaviour
 {
@@ -9,29 +12,24 @@ public class CombatManager : MonoBehaviour
     public List<PlayerStats> playerTeam = new List<PlayerStats>();
     public List<EnemyStats> enemyTeam = new List<EnemyStats>();
     public List<StatsBase> turnOrder = new List<StatsBase>();
-    public Canvas commandCanvas;
+    public List<EnemyStats> possibleEnemies = new List<EnemyStats>();
+    public int maxEnemies;
+    public Canvas commandCanvas, targetingCanvas, messageCanvas;
     public StatsBase currentActor;
-    private int turnIndex;
+    public float timeToWait;
+    public Text messageText;
+    private int turnIndex = 0;
     private bool battleEnded;
 
     private void Awake() {
         instance = this;
 
-        foreach(StatsBase player in playerTeam) {
-            turnOrder.Add(player);
-        }
-
-        foreach (StatsBase enemy in enemyTeam) {
-            turnOrder.Add(enemy);
-        }
-
-        // sort by agility stat
-
-        NextTurn();
+        StartCoroutine(StartBattle());
     }
 
     public void NextTurn() {
         DisableCommandCanvas();
+        messageText.text = "";
         if (!battleEnded) {
             if (enemyTeam.Count > 0 && playerTeam.Count > 0) {
 
@@ -41,36 +39,146 @@ public class CombatManager : MonoBehaviour
                     currentActor = turnOrder[turnIndex];
                     currentActor.GetCommand();
                 }
+                else {
+                    NextTurn();
+                }
 
             }
             else if (enemyTeam.Count <= 0) {
-                print("victory!");
+                messageText.text += ("Victory!");
                 battleEnded = true;
+                StartCoroutine(NextTurnWait());
             }
             else if (playerTeam.Count <= 0) {
-                print("failure!");
+                messageText.text += ("You lose!");
                 battleEnded = true;
             }
+        }
+        else {
+            StartCoroutine(StartBattle());
         }
     }
 
     public void Attack(StatsBase attacker, StatsBase target, int damage, bool ignoreDefence) {
         int damageTaken = target.TakeDamage(damage, ignoreDefence);
 
-        print(attacker.characterName + " attacked " + target.characterName + " for " + damageTaken);
-
-        if (target.isDead) {
-            print(target.characterName + " died!");
+        if (damageTaken > 0) {
+            if (ignoreDefence) messageText.text += "Critical hit! \n";
+            messageText.text += (attacker.characterName + " attacked " + target.characterName + " for " + damageTaken + " damage.");
+        }
+        else {
+            messageText.text += attacker.characterName + " missed!";
         }
 
-        NextTurn();
+        if (target.isDead) {
+            messageText.text += ("\n" + target.characterName + " died!");
+        }
+
+        StartCoroutine(NextTurnWait());
+    }
+
+    public void Defend(StatsBase defender) {
+        messageText.text += defender.characterName + " defends.";
+
+        StartCoroutine(NextTurnWait());
     }
 
     public void EnableCommandCanvas() {
         commandCanvas.enabled = true;
+        targetingCanvas.enabled = false;
+        messageCanvas.enabled = false;
     }
 
     public void DisableCommandCanvas() {
         commandCanvas.enabled = false;
+        targetingCanvas.enabled = false;
+        messageCanvas.enabled = true;
+    }
+
+    IEnumerator StartBattle() {
+        DisableCommandCanvas();
+
+        // Reset values
+        battleEnded = false;
+        playerTeam.Clear();
+        enemyTeam.Clear();
+        turnOrder.Clear();
+        turnIndex = -1;
+
+        // Initialise party members
+        foreach(PlayerStats player in PartyManager.instance.partyMembers) {
+            if (!player.isDead) {
+                playerTeam.Add(player);
+            }
+        }
+        foreach (StatsBase player in playerTeam) {
+            turnOrder.Add(player);
+        }
+
+        // Initialise enemies
+        int enemyCount = Random.Range(1, maxEnemies + 1);
+        Dictionary<string, int> enemyDict = new Dictionary<string, int>();
+        for (int i = 0; i < enemyCount; i++) {
+            EnemyStats temp = Instantiate(possibleEnemies[Random.Range(0, possibleEnemies.Count)]);
+            enemyTeam.Add(temp);
+            if (enemyDict.ContainsKey(temp.characterName)) {
+                enemyDict[temp.characterName]++;
+            }
+            else {
+                enemyDict[temp.characterName] = 1;
+            }
+        }
+
+        // Name enemies properly
+        Dictionary<string, int> counterDict = new Dictionary<string, int>();
+        foreach (EnemyStats enemy in enemyTeam) {
+            if (enemyDict[enemy.characterName] > 1) {
+                if (counterDict.ContainsKey(enemy.characterName)) {
+                    counterDict[enemy.characterName]++;
+                }
+                else {
+                    counterDict[enemy.characterName] = 1;
+                }
+                enemy.characterName += " " + System.Convert.ToChar(counterDict[enemy.characterName] + 64);
+            }
+        }
+
+        foreach (StatsBase enemy in enemyTeam) {
+            turnOrder.Add(enemy);
+        }
+
+        // TODO: sort turnOrder by agility stat
+
+        // Generate first message
+        messageText.text = "";
+
+        for (int i = 0; i < enemyTeam.Count; i++) {
+            if (enemyTeam.Count == 1) {
+                messageText.text += "A ";
+            }
+            messageText.text += enemyTeam[i].characterName;
+            if (i < enemyTeam.Count - 2) {
+                messageText.text += ", ";
+            }
+            else if (i == enemyTeam.Count - 2) {
+                messageText.text += " and ";
+            }
+        }
+        if (enemyTeam.Count > 1) {
+            messageText.text += " appear!";
+        }
+        else {
+            messageText.text += " appears!";
+        }
+
+        yield return new WaitForSeconds(timeToWait);
+        NextTurn();
+    }
+
+    IEnumerator NextTurnWait() {
+        DisableCommandCanvas();
+        int waitMultiplier = Regex.Matches(messageText.text, "\n").Count + 1;
+        yield return new WaitForSeconds(timeToWait * waitMultiplier);
+        NextTurn();
     }
 }

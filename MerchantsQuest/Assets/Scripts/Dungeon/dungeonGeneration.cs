@@ -7,41 +7,67 @@ public class dungeonGeneration : MonoBehaviour
 {
     enum tileType
     {
-        wall, floor,
+        wall, floor, stairs, chest,
     }
 
 
     public Tilemap tilemap;
     public TileBase tile;
     public List<TileBase> tileList;
+    public GameObject stairsPrefab;
+    public GameObject chestPrefab;
     int xSize;
     int ySize;
 
     int nRooms;
 
     public int maxRoomSize, minRoomSize;
+
+    public Transform playerLocation;
+    int currentFloorNumber;
+    int[,] map;
+    const float gridOffset = 0.5f;
+    const float chestChance = 80;
     // Start is called before the first frame update
     void Start()
     {
         //localMap = GetComponent<Tilemap>();
+        currentFloorNumber = 1;
+
         xSize = 100;
         ySize = 100;
 
         nRooms = 10;
-        int[,] map = new int[xSize,ySize];
+        map = new int[xSize,ySize];
         
+        generateMap(map);
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void incrementFloorCount()
+    {
+        // do floor number increase and start floor transition steps
+        currentFloorNumber++;
+        foreach (Transform child in transform) {
+             GameObject.Destroy(child.gameObject);
+         }
+
+        generateMap(map);
+    }
+
+
+    void generateMap(int[,] map)
+    {
         for (int x = 0; x < map.GetUpperBound(0) ; x++) //Loop through the width of the map
         {
             for (int y = 0; y < map.GetUpperBound(1); y++) //Loop through the height of the map
             {
-                //if(Random.Range(1,10)>6)
-                //{
-                //    map[x,y] = 1;
-                //}
-                //else
-                //{
-                //    map[x,y]=0;
-                //}
                 // fill map with 0's so it's all dirt 
                 map[x,y] = (int)tileType.wall;
             }
@@ -70,12 +96,12 @@ public class dungeonGeneration : MonoBehaviour
                 }
             }
 
-            createRoom(newRoom, map);
+            map = createRoom(newRoom, map);
             Vector2Int newCenter = newRoom.center();
-
+            
             if(numRooms == 0)
             {
-
+                playerLocation.position = new Vector3(newCenter.x + gridOffset, newCenter.y + gridOffset, 0);
             }
             else
             {
@@ -92,22 +118,14 @@ public class dungeonGeneration : MonoBehaviour
                     createHTunnel(lastCenter.x, newCenter.x, newCenter.y, map);
                 }
             }
-
+            map = spawnChest(newCenter, map);
             roomList.Add(newRoom);
             numRooms++;
         }
-
+        Vector2Int stairPos = roomList[numRooms-1].center();
+        map[stairPos.x, stairPos.y] = (int)tileType.stairs;
         setTileMap(map);
-        
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     void setTileMap(int[,] map)
     {
         // set tilemap based on map.
@@ -115,16 +133,42 @@ public class dungeonGeneration : MonoBehaviour
         {
             for (int y = 0; y < map.GetUpperBound(1); y++) //Loop through the height of the map
             {
-                if (map[x, y] == (int)tileType.wall) // 1 = tile, 0 = no tile
+
+                switch (map[x,y])
                 {
-                    tilemap.SetTile(new Vector3Int(x, y, 0), tileList[0]); 
-                }
-                else
-                {
-                    tilemap.SetTile(new Vector3Int(x, y, 0), tileList[1]);
+                    case (int)tileType.wall:
+                        tilemap.SetTile(new Vector3Int(x, y, 0), tileList[0]); 
+                        break;
+                    case (int)tileType.floor:
+                        tilemap.SetTile(new Vector3Int(x, y, 0), tileList[1]);
+                        break;
+                    case (int)tileType.stairs:                        
+                        GameObject stair = Instantiate(stairsPrefab, new Vector3(x + gridOffset, y + gridOffset, 0), Quaternion.identity);
+                        stair.transform.parent = gameObject.transform;
+                        stair.GetComponent<stairs>().source = this;
+                        break;
+                    case (int)tileType.chest:
+                        GameObject chest = Instantiate(chestPrefab, new Vector3(x + gridOffset, y + gridOffset, 0), Quaternion.identity);
+                        chest.transform.parent = gameObject.transform;
+
+                        tilemap.SetTile(new Vector3Int(x, y, 0), tileList[1]);
+                        
+                        break;
+                    default:
+                        break;
                 }
             }
         }
+    }
+
+
+    int[,] spawnChest(Vector2Int chestPos, int[,] map)
+    {
+        if(Random.Range(0,100)>chestChance)
+        {
+            map[chestPos.x, chestPos.y] = (int)tileType.chest;
+        }
+        return map;
     }
 
     int[,] createRoom(rect room, int[,] map)
@@ -143,11 +187,10 @@ public class dungeonGeneration : MonoBehaviour
 
     int[,] createHTunnel(int x1, int x2, int y, int[,] map)
     {
-        // 
-        
         for (int x = min(x1, x2); x < max(x1, x2)+1; x++)
         {
-            map[x,y] = (int)tileType.floor;
+            if(map[x,y] != (int)tileType.chest)
+                map[x,y] = (int)tileType.floor;
         }
 
         return map;
@@ -155,11 +198,10 @@ public class dungeonGeneration : MonoBehaviour
 
     int[,] createVTunnel(int y1, int y2, int x, int[,] map)
     {
-        // 
-        
         for (int y = min(y1, y2); y < max(y1, y2)+1; y++)
-        {
-            map[x,y] = (int)tileType.floor;
+        {   
+            if(map[x,y] != (int)tileType.chest)
+                map[x,y] = (int)tileType.floor;
         }
 
         return map;
