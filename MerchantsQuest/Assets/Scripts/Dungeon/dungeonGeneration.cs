@@ -7,41 +7,63 @@ public class dungeonGeneration : MonoBehaviour
 {
     enum tileType
     {
-        wall, floor,
+        wall, floor, stairs
     }
 
 
     public Tilemap tilemap;
     public TileBase tile;
     public List<TileBase> tileList;
+    public GameObject stairsPrefab;
     int xSize;
     int ySize;
 
     int nRooms;
 
     public int maxRoomSize, minRoomSize;
+
+    int currentFloorNumber;
+    int[,] map;
     // Start is called before the first frame update
     void Start()
     {
         //localMap = GetComponent<Tilemap>();
+        currentFloorNumber = 1;
+
         xSize = 100;
         ySize = 100;
 
         nRooms = 10;
-        int[,] map = new int[xSize,ySize];
+        map = new int[xSize,ySize];
         
+        generateMap(map);
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void incrementFloorCount()
+    {
+        // do floor number increase and start floor transition steps
+        currentFloorNumber++;
+        foreach (Transform child in transform) {
+             GameObject.Destroy(child.gameObject);
+         }
+
+        generateMap(map);
+    }
+
+
+    void generateMap(int[,] map)
+    {
         for (int x = 0; x < map.GetUpperBound(0) ; x++) //Loop through the width of the map
         {
             for (int y = 0; y < map.GetUpperBound(1); y++) //Loop through the height of the map
             {
-                //if(Random.Range(1,10)>6)
-                //{
-                //    map[x,y] = 1;
-                //}
-                //else
-                //{
-                //    map[x,y]=0;
-                //}
                 // fill map with 0's so it's all dirt 
                 map[x,y] = (int)tileType.wall;
             }
@@ -96,18 +118,10 @@ public class dungeonGeneration : MonoBehaviour
             roomList.Add(newRoom);
             numRooms++;
         }
-
+        Vector2Int stairPos = roomList[numRooms-1].center();
+        map[stairPos.x, stairPos.y] = (int)tileType.stairs;
         setTileMap(map);
-        
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     void setTileMap(int[,] map)
     {
         // set tilemap based on map.
@@ -117,11 +131,29 @@ public class dungeonGeneration : MonoBehaviour
             {
                 if (map[x, y] == (int)tileType.wall) // 1 = tile, 0 = no tile
                 {
-                    tilemap.SetTile(new Vector3Int(x, y, 0), tileList[0]); 
+                    
                 }
                 else
                 {
-                    tilemap.SetTile(new Vector3Int(x, y, 0), tileList[1]);
+                    
+                }
+
+                switch (map[x,y])
+                {
+                    case (int)tileType.wall:
+                        tilemap.SetTile(new Vector3Int(x, y, 0), tileList[0]); 
+                        break;
+                    case (int)tileType.floor:
+                        tilemap.SetTile(new Vector3Int(x, y, 0), tileList[1]);
+                        break;
+                    case (int)tileType.stairs:
+                        float gridOffset = 0.5f;
+                        GameObject stair = Instantiate(stairsPrefab, new Vector3(x + gridOffset, y + gridOffset, 0), Quaternion.identity);
+                        stair.transform.parent = gameObject.transform;
+                        stair.GetComponent<stairs>().source = this;
+                        break;
+                    default:
+                        break;
                 }
             }
         }
