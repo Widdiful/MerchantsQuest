@@ -84,12 +84,12 @@ public class dungeonGeneration : MonoBehaviour
                 if(Random.Range(0,2)>1)
                 {
                     createHTunnel(lastCenter.x, newCenter.x, lastCenter.y, map);
-                    createVTunnel(lastCenter.y, newCenter.y, lastCenter.x, map);
+                    createVTunnel(lastCenter.y, newCenter.y, newCenter.x, map);
                 }
                 else
                 {
                     createVTunnel(lastCenter.y, newCenter.y, lastCenter.x, map);
-                    createHTunnel(lastCenter.x, newCenter.x, lastCenter.y, map);
+                    createHTunnel(lastCenter.x, newCenter.x, newCenter.y, map);
                 }
             }
 
@@ -145,7 +145,7 @@ public class dungeonGeneration : MonoBehaviour
     {
         // 
         
-        for (int x = min(x1, x2); x < max(x1, x2); x++)
+        for (int x = min(x1, x2); x < max(x1, x2)+1; x++)
         {
             map[x,y] = (int)tileType.floor;
         }
@@ -157,7 +157,7 @@ public class dungeonGeneration : MonoBehaviour
     {
         // 
         
-        for (int y = min(y1, y2); y < max(y1, y2); y++)
+        for (int y = min(y1, y2); y < max(y1, y2)+1; y++)
         {
             map[x,y] = (int)tileType.floor;
         }
