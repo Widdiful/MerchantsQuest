@@ -7,6 +7,8 @@ using UnityEngine;
 public class ItemRefs : ScriptableObject
 {
     public Sprite[] sprites;
-    public TextAsset fakeDescriptions;
+    public TextAsset fakeDescriptionsAsset;
     public string[] descriptions;
+    public TextAsset nameAsset;
+    public string[] names;
 }

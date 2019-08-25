@@ -14,4 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprites:
   - {fileID: 21300000, guid: 4f1239ef5deb833468aba1b0c1d9adca, type: 3}
-  fakeDescriptions: {fileID: 4900000, guid: bd32c5578501f2a4d84ce97334cd43b9, type: 3}
+  fakeDescriptionsAsset: {fileID: 4900000, guid: f66c5fb48bf6ae4459b28b1769d948f1,
+    type: 3}
+  descriptions: []
+  nameAsset: {fileID: 4900000, guid: 7a25b3c2a23cf7244856e53baea48089, type: 3}
+  names: []

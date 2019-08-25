@@ -48,9 +48,26 @@ public class InventoryManager : MonoBehaviour
         {
             if(inventorySlots[i].empty)
             {
-
+                inventorySlots[i].SetItem(id);
+                return;
             }
         }
+
+        Debug.Log("All slots full");
     }
 
+
+    [ContextMenu("Item Add Test")]
+    public void AddRandomItem()
+    {
+        for (int i = 0; i < Constants.maxInventorySize; i++)
+        {
+            if (inventorySlots[i].empty)
+            {
+                inventorySlots[i].SetItem(Random.Range(0, 100));
+                return;
+            }
+        }
+        Debug.Log("All slots full");
+    }
 }

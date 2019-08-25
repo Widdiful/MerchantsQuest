@@ -17,12 +17,14 @@ public class InventorySlot : MonoBehaviour
         {
             icon.color = new Color(0.0f,0.0f,0.0f,0.0f);
         }
+        empty = true;
     }
 
 
-    public void SetItem(Item newItem)
+    public void SetItem(int id)
     {
-        itemInSlot = newItem;
+        itemInSlot = ItemManager.Instance.GetItemFromID(id);
+        empty = false;
         icon.sprite = itemInSlot.icon;
     }
 
@@ -30,7 +32,7 @@ public class InventorySlot : MonoBehaviour
     {
         icon.sprite = null;
         icon.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
-
+        empty = true;
     }
 }
 

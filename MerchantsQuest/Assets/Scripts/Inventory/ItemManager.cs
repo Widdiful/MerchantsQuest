@@ -16,6 +16,7 @@ public class ItemManager : MonoBehaviour
     //Data to be used for generating items
     public ItemRefs armorRefs;
     public ItemRefs consumeableRefs;
+    public ItemRefs spellRefs;
     public ItemRefs weaponRefs;
 
     public int itemAmount;
@@ -33,13 +34,34 @@ public class ItemManager : MonoBehaviour
 
         DontDestroyOnLoad(this);
 
-        if(armorRefs != null)
-            armorRefs.descriptions = ReadFile(armorRefs.fakeDescriptions);
-        if (consumeableRefs != null)
-            consumeableRefs.descriptions = ReadFile(consumeableRefs.fakeDescriptions);
-        if (weaponRefs != null)
-            weaponRefs.descriptions = ReadFile(weaponRefs.fakeDescriptions);
 
+    }
+
+    private void SetUpRefs()
+    {
+        if (armorRefs != null)
+        {
+            armorRefs.descriptions = ReadFile(armorRefs.fakeDescriptionsAsset);
+            armorRefs.names = ReadFile(armorRefs.nameAsset);
+        }
+
+        if (consumeableRefs != null)
+        {
+            consumeableRefs.descriptions = ReadFile(consumeableRefs.fakeDescriptionsAsset);
+            consumeableRefs.names = ReadFile(consumeableRefs.nameAsset);
+        }
+
+        if(spellRefs != null)
+        {
+            spellRefs.descriptions = ReadFile(spellRefs.fakeDescriptionsAsset);
+            spellRefs.names = ReadFile(spellRefs.nameAsset);
+        }
+
+        if (weaponRefs != null)
+        {
+            weaponRefs.descriptions = ReadFile(weaponRefs.fakeDescriptionsAsset);
+            weaponRefs.names = ReadFile(weaponRefs.nameAsset);
+        }
     }
 
     [ContextMenu("Test Generation")]
@@ -76,6 +98,9 @@ public class ItemManager : MonoBehaviour
         switch (currItem.type)
         {
             case ItemType.Spell:
+                currItem.fakeDescription = spellRefs.descriptions[Random.Range(0, spellRefs.descriptions.Length)];
+                currItem.icon = spellRefs.sprites[Random.Range(0, spellRefs.sprites.Length)];
+
                 break;
             case ItemType.Weapon:
                 currItem.fakeDescription = weaponRefs.descriptions[Random.Range(0, weaponRefs.descriptions.Length)];
