@@ -5,6 +5,12 @@ using UnityEngine.Tilemaps;
 //using UnityEngine.TilemapModule;
 public class dungeonGeneration : MonoBehaviour
 {
+    enum tileType
+    {
+        wall, floor,
+    }
+
+
     public Tilemap tilemap;
     public TileBase tile;
     public List<TileBase> tileList;
@@ -37,7 +43,7 @@ public class dungeonGeneration : MonoBehaviour
                 //    map[x,y]=0;
                 //}
                 // fill map with 0's so it's all dirt 
-                map[x,y] = 1;
+                map[x,y] = (int)tileType.wall;
             }
         }
 
@@ -75,7 +81,7 @@ public class dungeonGeneration : MonoBehaviour
             {
                 Vector2Int lastCenter = roomList[numRooms-1].center();
 
-                if(Random.Range(0,1)>0)
+                if(Random.Range(0,2)>1)
                 {
                     createHTunnel(lastCenter.x, newCenter.x, lastCenter.y, map);
                     createVTunnel(lastCenter.y, newCenter.y, lastCenter.x, map);
@@ -91,31 +97,8 @@ public class dungeonGeneration : MonoBehaviour
             numRooms++;
         }
 
-
-
-        for (int x = 0; x < map.GetUpperBound(0) ; x++) //Loop through the width of the map
-        {
-            for (int y = 0; y < map.GetUpperBound(1); y++) //Loop through the height of the map
-            {
-                if (map[x, y] == 1) // 1 = tile, 0 = no tile
-                {
-                    tilemap.SetTile(new Vector3Int(x, y, 0), tileList[0]); 
-                }
-                else
-                {
-                    tilemap.SetTile(new Vector3Int(x, y, 0), tileList[1]);
-                }
-            }
-        }
-        for (int x = 0; x < xSize; x++)
-        {
-            for (int y = 0; y  < ySize; y ++)
-            {
-                //TileBase tile; // Assign a tile asset to this.
-                //tile.sprite = wallTile;
-               // tilemap.SetTile(new Vector3Int(x,y,0), tile); // Or use SetTiles() for multiple tiles.
-            }
-        }
+        setTileMap(map);
+        
     }
 
     // Update is called once per frame
@@ -125,13 +108,32 @@ public class dungeonGeneration : MonoBehaviour
     }
 
 
+    void setTileMap(int[,] map)
+    {
+        // set tilemap based on map.
+        for (int x = 0; x < map.GetUpperBound(0) ; x++) //Loop through the width of the map
+        {
+            for (int y = 0; y < map.GetUpperBound(1); y++) //Loop through the height of the map
+            {
+                if (map[x, y] == (int)tileType.wall) // 1 = tile, 0 = no tile
+                {
+                    tilemap.SetTile(new Vector3Int(x, y, 0), tileList[0]); 
+                }
+                else
+                {
+                    tilemap.SetTile(new Vector3Int(x, y, 0), tileList[1]);
+                }
+            }
+        }
+    }
+
     int[,] createRoom(rect room, int[,] map)
     {
         for (int x = room.getX1(); x < room.getX2(); x++)
         {
             for (int y = room.getY1(); y < room.getY2(); y++)
             {
-                map[x,y] = 0;
+                map[x,y] = (int)tileType.floor;
             }
         }
 
@@ -143,9 +145,9 @@ public class dungeonGeneration : MonoBehaviour
     {
         // 
         
-        for (int x = min(x1, x2); x < min(x1, x2); x++)
+        for (int x = min(x1, x2); x < max(x1, x2); x++)
         {
-            map[x,y] = 0;
+            map[x,y] = (int)tileType.floor;
         }
 
         return map;
@@ -155,9 +157,9 @@ public class dungeonGeneration : MonoBehaviour
     {
         // 
         
-        for (int y = min(y1, y2); y < min(y1, y2); y++)
+        for (int y = min(y1, y2); y < max(y1, y2); y++)
         {
-            map[x,y] = 0;
+            map[x,y] = (int)tileType.floor;
         }
 
         return map;
@@ -166,6 +168,13 @@ public class dungeonGeneration : MonoBehaviour
     int min(int x1,int x2)
     {
 	    if(x1 > x2)
+		    return x2;
+	    else
+		    return x1;
+    }
+    int max(int x1,int x2)
+    {
+	    if(x1 < x2)
 		    return x2;
 	    else
 		    return x1;
