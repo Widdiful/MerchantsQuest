@@ -26,6 +26,7 @@ public class InventorySlot : MonoBehaviour
         itemInSlot = ItemManager.Instance.GetItemFromID(id);
         empty = false;
         icon.sprite = itemInSlot.icon;
+        icon.color = Color.white;
     }
 
     public void RemoveItem()
@@ -33,6 +34,18 @@ public class InventorySlot : MonoBehaviour
         icon.sprite = null;
         icon.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
         empty = true;
+    }
+
+    public void DisplayStats()
+    {
+        if(!empty)
+            InventoryManager.Instance.DisplayStats(itemInSlot, transform.position);
+    }
+
+    public void HideStats()
+    {
+        if(!empty)
+            InventoryManager.Instance.HideStats();
     }
 }
 

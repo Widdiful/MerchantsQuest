@@ -9,7 +9,9 @@ public class InventoryManager : MonoBehaviour
     public GameObject inventory;
     private int availableSlots;
 
-    private InventorySlot[] inventorySlots;
+    public InventorySlot[] inventorySlots;
+
+    public StatShower statShower;
 
     private void Awake()
     {
@@ -23,10 +25,6 @@ public class InventoryManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
-
-        inventorySlots = new InventorySlot[Constants.maxInventorySize];
-
-
     }
 
     private void Update()
@@ -44,7 +42,7 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItem(int id)
     {
-        for(int i = 0; i < Constants.maxInventorySize; i++)
+        for(int i = 0; i < inventorySlots.Length; i++)
         {
             if(inventorySlots[i].empty)
             {
@@ -60,7 +58,7 @@ public class InventoryManager : MonoBehaviour
     [ContextMenu("Item Add Test")]
     public void AddRandomItem()
     {
-        for (int i = 0; i < Constants.maxInventorySize; i++)
+        for (int i = 0; i < inventorySlots.Length; i++)
         {
             if (inventorySlots[i].empty)
             {
@@ -69,5 +67,16 @@ public class InventoryManager : MonoBehaviour
             }
         }
         Debug.Log("All slots full");
+    }
+
+    public void DisplayStats(Item item, Vector2 pos)
+    {
+        statShower.gameObject.SetActive(true);
+        statShower.SetStats(item, pos);
+    }
+
+    public void HideStats()
+    {
+        statShower.gameObject.SetActive(false);
     }
 }

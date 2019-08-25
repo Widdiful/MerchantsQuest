@@ -34,6 +34,7 @@ public class ItemManager : MonoBehaviour
 
         DontDestroyOnLoad(this);
 
+        SetUpRefs();
 
     }
 
@@ -98,19 +99,22 @@ public class ItemManager : MonoBehaviour
         switch (currItem.type)
         {
             case ItemType.Spell:
+                currItem.name = spellRefs.names[Random.Range(0, spellRefs.names.Length)];
                 currItem.fakeDescription = spellRefs.descriptions[Random.Range(0, spellRefs.descriptions.Length)];
                 currItem.icon = spellRefs.sprites[Random.Range(0, spellRefs.sprites.Length)];
-
                 break;
             case ItemType.Weapon:
+                currItem.name = weaponRefs.names[Random.Range(0, weaponRefs.names.Length)];
                 currItem.fakeDescription = weaponRefs.descriptions[Random.Range(0, weaponRefs.descriptions.Length)];
                 currItem.icon = weaponRefs.sprites[Random.Range(0, weaponRefs.sprites.Length)];
                 break;
             case ItemType.Armor:
+                currItem.name = armorRefs.names[Random.Range(0, armorRefs.names.Length)];
                 currItem.fakeDescription = armorRefs.descriptions[Random.Range(0, armorRefs.descriptions.Length)];
                 currItem.icon = armorRefs.sprites[Random.Range(0, armorRefs.sprites.Length)];
                 break;
             case ItemType.Consumable:
+                currItem.name = consumeableRefs.names[Random.Range(0, consumeableRefs.names.Length)];
                 currItem.fakeDescription = consumeableRefs.descriptions[Random.Range(0, consumeableRefs.descriptions.Length)];
                 currItem.icon = consumeableRefs.sprites[Random.Range(0, consumeableRefs.sprites.Length)];
                 break;
@@ -137,11 +141,6 @@ public class ItemManager : MonoBehaviour
     //Returns the item to the user.
     public Item GetItemFromID(int id)
     {
-        Item item;
-        if(items.TryGetValue(id, out item))
-        {
-            return item;
-        }
-        return item;
+        return items[id];
     }
 }
