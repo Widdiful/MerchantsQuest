@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Player
   level: 1
-  hitPoints: 10
-  magicPoints: 0
-  attack: 10
-  defence: 5
-  agility: 0
+  maxHP: 10
+  maxMP: 5
+  baseATK: 10
+  baseDEF: 5
+  baseAGI: 5
   critChance: 0.2
   isDead: 0
   isEnemy: 0

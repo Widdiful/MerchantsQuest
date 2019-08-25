@@ -6,20 +6,31 @@ using UnityEngine;
 public class StatsBase : ScriptableObject
 {
     public string characterName;
-    public int level, hitPoints, magicPoints, attack, defence, agility;
+    public int level, maxHP, maxMP, baseATK, baseDEF, baseAGI;
+    protected int currentHP, currentMP, currentATK, currentDEF, currentAGI;
     [Range(0, 1)]
     public float critChance;
     public bool isDead, isEnemy;
-    private bool isDefending;
+    protected bool isDefending;
+
+    public void InitialiseCharacter() {
+        currentATK = baseATK;
+        currentDEF = baseDEF;
+        currentAGI = baseAGI;
+        if (!isDead && currentHP == 0) {
+            currentHP = maxHP;
+            currentMP = maxMP;
+        }
+    }
 
     public int TakeDamage(int damage, bool ignoreDefence) {
         if (!isDead) {
             // Adjust damage based on defence stat
-            int defenceAdjusted = defence;
+            int defenceAdjusted = currentDEF;
             if (isDefending) {
                 defenceAdjusted *= 2;
             }
-            if (defence <= 0 || ignoreDefence) {
+            if (currentDEF <= 0 || ignoreDefence) {
                 defenceAdjusted = 1;
             }
             int damageToTake = damage / defenceAdjusted;
@@ -27,17 +38,32 @@ public class StatsBase : ScriptableObject
                 damageToTake = 1;
             }
 
-            // Deal damage, maybe die
-            hitPoints -= damageToTake;
-            if (hitPoints <= 0) {
-                hitPoints = 0;
-                Kill();
-            }
+            ChangeHealth(damageToTake);
 
             return damageToTake;
         }
 
         return 0;
+    }
+
+    private void ChangeHealth(int amount) {
+        // Deal damage, maybe die
+        currentHP -= amount;
+        if (currentHP <= 0) {
+            Kill();
+        }
+
+        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+    }
+
+    private void SetHealth(int amount) {
+        // Deal damage, maybe die
+        currentHP = amount;
+        if (currentHP <= 0) {
+            Kill();
+        }
+
+        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
     }
 
     public virtual void Kill() {
@@ -51,7 +77,7 @@ public class StatsBase : ScriptableObject
     }
 
     public void Attack(StatsBase target) {
-        Attack(target, attack);
+        Attack(target, currentATK);
     }
 
     public void Attack(StatsBase target, int damage) {
