@@ -37,7 +37,7 @@ public class dungeonGeneration : MonoBehaviour
         xSize = 100;
         ySize = 100;
 
-        nRooms = 10;
+        nRooms = 20;
         map = new int[xSize,ySize];
         
         generateMap(map);
@@ -189,8 +189,11 @@ public class dungeonGeneration : MonoBehaviour
     {
         for (int x = min(x1, x2); x < max(x1, x2)+1; x++)
         {
-            if(map[x,y] != (int)tileType.chest)
-                map[x,y] = (int)tileType.floor;
+            for(int yAlter= max(1, y-1); yAlter < min(y+2, ySize-1); yAlter++)
+            {
+                if(map[x, yAlter] != (int)tileType.chest)
+                    map[x, yAlter] = (int)tileType.floor;
+            }
         }
 
         return map;
@@ -200,8 +203,11 @@ public class dungeonGeneration : MonoBehaviour
     {
         for (int y = min(y1, y2); y < max(y1, y2)+1; y++)
         {   
-            if(map[x,y] != (int)tileType.chest)
-                map[x,y] = (int)tileType.floor;
+            for(int xAlter= max(1, x-1); xAlter < min(x+2, xSize-1); xAlter++)
+            {
+                if(map[xAlter, y] != (int)tileType.chest)
+                    map[xAlter, y] = (int)tileType.floor;
+            }
         }
 
         return map;
