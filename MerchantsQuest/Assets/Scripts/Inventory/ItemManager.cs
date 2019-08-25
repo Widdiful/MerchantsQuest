@@ -76,8 +76,9 @@ public class ItemManager : MonoBehaviour
             item.appraised = false;
             item.type = (ItemType)Random.Range(0, (int)ItemType.Size);
             item = GetData(item);
-            item.realStat = Random.Range(0, 100);
+            //item.primaryStat = Random.Range(0, 100);
             item.id = i;
+            item.secondaryStat = (StatType)Random.Range(0, (int)StatType.Size);
 
             items.Add(i, item);
 
@@ -90,7 +91,7 @@ public class ItemManager : MonoBehaviour
         for(int i = 0; i < itemAmount; i++)
         {
             Debug.Log("ID = " + items[i].id + ", fake description = " + items[i].fakeDescription +
-                ", Type = " + items[i].type.ToString() + ", Real stat = " + items[i].realStat);
+                ", Type = " + items[i].type.ToString() + ", Real stat = " + items[i].primaryStat);
         }
     }
 

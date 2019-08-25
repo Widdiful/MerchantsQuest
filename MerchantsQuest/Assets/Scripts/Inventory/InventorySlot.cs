@@ -29,6 +29,11 @@ public class InventorySlot : MonoBehaviour
         icon.color = Color.white;
     }
 
+    public Item GetItem()
+    {
+        return itemInSlot;
+    }
+
     public void RemoveItem()
     {
         icon.sprite = null;
@@ -46,6 +51,23 @@ public class InventorySlot : MonoBehaviour
     {
         if(!empty)
             InventoryManager.Instance.HideStats();
+    }
+
+    public void EquipItem()
+    {
+        if(itemInSlot.type == ItemType.Spell)
+        {
+            Spell newSpell = new Spell();
+            newSpell.id = itemInSlot.id;
+            newSpell.manaCost = itemInSlot.manaCost;
+            newSpell.spellType = itemInSlot.spellType;
+            newSpell.primaryStatValue = itemInSlot.primaryStatValue;
+            newSpell.icon = itemInSlot.icon;
+            SpellInventory.Instance.AddSpell(newSpell);
+            return;
+        }
+
+        InventoryManager.Instance.equipment.AddToSlot(itemInSlot, itemInSlot.type);
     }
 }
 

@@ -13,6 +13,8 @@ public class InventoryManager : MonoBehaviour
 
     public StatShower statShower;
 
+    public EquipmentManager equipment;
+
     private void Awake()
     {
         if(Instance == null)
@@ -52,6 +54,18 @@ public class InventoryManager : MonoBehaviour
         }
 
         Debug.Log("All slots full");
+    }
+
+    public void RemoveItem(int id)
+    {
+        for(int i = 0; i < inventorySlots.Length; i++)
+        {
+            if(inventorySlots[i].itemInSlot.id == id)
+            {
+                inventorySlots[i].RemoveItem();
+                return;
+            }
+        }
     }
 
 
