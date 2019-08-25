@@ -36,6 +36,7 @@ public class ItemManager : MonoBehaviour
 
         SetUpRefs();
 
+        items = new Dictionary<int, Item>();
     }
 
     private void SetUpRefs()
@@ -68,7 +69,6 @@ public class ItemManager : MonoBehaviour
     [ContextMenu("Test Generation")]
     public void GenerateItems()
     {
-        items = new Dictionary<int, Item>();
         //This is a big to do
         for(int i = 0; i < itemAmount; i++)
         {
@@ -76,13 +76,24 @@ public class ItemManager : MonoBehaviour
             item.appraised = false;
             item.type = (ItemType)Random.Range(0, (int)ItemType.Size);
             item = GetData(item);
-            //item.primaryStat = Random.Range(0, 100);
             item.id = i;
-            item.secondaryStat = (StatType)Random.Range(0, (int)StatType.Size);
 
             items.Add(i, item);
 
         }
+    }
+
+    public int GenerateSpecificItem(ItemType type)
+    {
+        Item item = new Item();
+        item.appraised = false;
+        item.type = type;
+        item = GetData(item);
+        item.id = items.Count;
+
+
+        return item.id;
+
     }
 
     [ContextMenu("Show Items")]
@@ -103,21 +114,30 @@ public class ItemManager : MonoBehaviour
                 currItem.name = spellRefs.names[Random.Range(0, spellRefs.names.Length)];
                 currItem.fakeDescription = spellRefs.descriptions[Random.Range(0, spellRefs.descriptions.Length)];
                 currItem.icon = spellRefs.sprites[Random.Range(0, spellRefs.sprites.Length)];
+                currItem.spellType = (SpellType)Random.Range(0, (int)SpellType.Size);
+                currItem.manaCost = Random.Range(0, 10);
                 break;
             case ItemType.Weapon:
                 currItem.name = weaponRefs.names[Random.Range(0, weaponRefs.names.Length)];
                 currItem.fakeDescription = weaponRefs.descriptions[Random.Range(0, weaponRefs.descriptions.Length)];
                 currItem.icon = weaponRefs.sprites[Random.Range(0, weaponRefs.sprites.Length)];
+                currItem.primaryStat = StatType.Attack;
+                currItem.secondaryStat = (StatType)Random.Range(0, (int)StatType.Size);
+                currItem.primaryStatValue = Random.Range(0, 10);
                 break;
             case ItemType.Armor:
                 currItem.name = armorRefs.names[Random.Range(0, armorRefs.names.Length)];
                 currItem.fakeDescription = armorRefs.descriptions[Random.Range(0, armorRefs.descriptions.Length)];
                 currItem.icon = armorRefs.sprites[Random.Range(0, armorRefs.sprites.Length)];
+                currItem.primaryStat = StatType.Defence;
+                currItem.secondaryStat = (StatType)Random.Range(0, (int)StatType.Size);
+                currItem.primaryStatValue = Random.Range(0, 10);
                 break;
             case ItemType.Consumable:
                 currItem.name = consumeableRefs.names[Random.Range(0, consumeableRefs.names.Length)];
                 currItem.fakeDescription = consumeableRefs.descriptions[Random.Range(0, consumeableRefs.descriptions.Length)];
                 currItem.icon = consumeableRefs.sprites[Random.Range(0, consumeableRefs.sprites.Length)];
+                currItem.spellType = (SpellType)Random.Range(0, (int)SpellType.Size);
                 break;
         }
 
