@@ -423,6 +423,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 1621233837}
   tile: {fileID: 11400000, guid: 2ab45fb779e881645980bf497b3954f0, type: 2}
+  tileList:
+  - {fileID: 11400000, guid: 2ab45fb779e881645980bf497b3954f0, type: 2}
+  - {fileID: 11400000, guid: 55b9f9d339724ad488f67161d82248c1, type: 2}
 --- !u!1 &1985957263
 GameObject:
   m_ObjectHideFlags: 0
