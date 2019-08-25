@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Zombie
   level: 1
-  hitPoints: 10
-  magicPoints: 0
-  attack: 2
-  defence: 2
-  agility: 0
+  maxHP: 10
+  maxMP: 0
+  baseATK: 5
+  baseDEF: 2
+  baseAGI: 0
   critChance: 0
   isDead: 0
   isEnemy: 0

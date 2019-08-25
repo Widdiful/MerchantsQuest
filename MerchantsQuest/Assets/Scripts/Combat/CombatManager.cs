@@ -15,11 +15,14 @@ public class CombatManager : MonoBehaviour
     public List<EnemyStats> possibleEnemies = new List<EnemyStats>();
     public int maxEnemies;
     public Canvas commandCanvas, targetingCanvas, messageCanvas;
+    public Transform statsPanel;
+    public GameObject statsPrefab;
     public StatsBase currentActor;
     public float timeToWait;
     public Text messageText;
     private int turnIndex = 0;
     private bool battleEnded;
+    private Dictionary<StatsBase, CharacterPanel> statsPanels = new Dictionary<StatsBase, CharacterPanel>();
 
     private void Awake() {
         instance = this;
@@ -30,6 +33,11 @@ public class CombatManager : MonoBehaviour
     public void NextTurn() {
         DisableCommandCanvas();
         messageText.text = "";
+
+        if (currentActor && statsPanels.Keys.Contains<StatsBase>(currentActor)) {
+            statsPanels[currentActor].ToggleIndicator();
+        }
+
         if (!battleEnded) {
             if (enemyTeam.Count > 0 && playerTeam.Count > 0) {
 
@@ -37,6 +45,11 @@ public class CombatManager : MonoBehaviour
 
                 if (!turnOrder[turnIndex].isDead) {
                     currentActor = turnOrder[turnIndex];
+
+                    if (statsPanels.Keys.Contains<StatsBase>(currentActor)) {
+                        statsPanels[currentActor].ToggleIndicator();
+                    }
+
                     currentActor.GetCommand();
                 }
                 else {
@@ -55,7 +68,7 @@ public class CombatManager : MonoBehaviour
             }
         }
         else {
-            StartCoroutine(StartBattle());
+            StartCoroutine(EndBattle());
         }
     }
 
@@ -103,12 +116,23 @@ public class CombatManager : MonoBehaviour
         playerTeam.Clear();
         enemyTeam.Clear();
         turnOrder.Clear();
+        statsPanels.Clear();
         turnIndex = -1;
+        foreach(Transform child in statsPanel) {
+            Destroy(child.gameObject);
+        }
 
         // Initialise party members
         foreach(PlayerStats player in PartyManager.instance.partyMembers) {
+            PlayerStats temp = Instantiate(player);
+            temp.InitialiseCharacter();
+
+            CharacterPanel panel = Instantiate(statsPrefab, statsPanel).GetComponent<CharacterPanel>();
+            panel.UpdateStats(temp);
+            statsPanels[temp] = panel;
+
             if (!player.isDead) {
-                playerTeam.Add(player);
+                playerTeam.Add(temp);
             }
         }
         foreach (StatsBase player in playerTeam) {
@@ -120,6 +144,7 @@ public class CombatManager : MonoBehaviour
         Dictionary<string, int> enemyDict = new Dictionary<string, int>();
         for (int i = 0; i < enemyCount; i++) {
             EnemyStats temp = Instantiate(possibleEnemies[Random.Range(0, possibleEnemies.Count)]);
+            temp.InitialiseCharacter();
             enemyTeam.Add(temp);
             if (enemyDict.ContainsKey(temp.characterName)) {
                 enemyDict[temp.characterName]++;
@@ -173,6 +198,10 @@ public class CombatManager : MonoBehaviour
 
         yield return new WaitForSeconds(timeToWait);
         NextTurn();
+    }
+
+    IEnumerator EndBattle() {
+        yield return new WaitForSeconds(timeToWait);
     }
 
     IEnumerator NextTurnWait() {

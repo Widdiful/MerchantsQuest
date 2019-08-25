@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Slime
   level: 1
-  hitPoints: 4
-  magicPoints: 0
-  attack: 5
-  defence: 2
-  agility: 2
+  maxHP: 5
+  maxMP: 0
+  baseATK: 5
+  baseDEF: 2
+  baseAGI: 2
   critChance: 0
   isDead: 0
   isEnemy: 0
