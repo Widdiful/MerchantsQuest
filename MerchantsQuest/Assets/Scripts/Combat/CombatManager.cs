@@ -9,7 +9,7 @@ public class CombatManager : MonoBehaviour
     public List<PlayerStats> playerTeam = new List<PlayerStats>();
     public List<EnemyStats> enemyTeam = new List<EnemyStats>();
     public List<StatsBase> turnOrder = new List<StatsBase>();
-    public Canvas commandCanvas;
+    public Canvas commandCanvas, targetingCanvas;
     public StatsBase currentActor;
     private int turnIndex;
     private bool battleEnded;
@@ -68,9 +68,11 @@ public class CombatManager : MonoBehaviour
 
     public void EnableCommandCanvas() {
         commandCanvas.enabled = true;
+        targetingCanvas.enabled = false;
     }
 
     public void DisableCommandCanvas() {
         commandCanvas.enabled = false;
+        targetingCanvas.enabled = false;
     }
 }

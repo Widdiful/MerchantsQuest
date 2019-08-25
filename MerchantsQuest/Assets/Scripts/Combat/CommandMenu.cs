@@ -7,6 +7,8 @@ public class CommandMenu : MonoBehaviour
     public enum CommandType { Attack, Spell, Item };
     public StatsBase target;
     public CommandType commandType;
+    public Canvas commandCanvas, targetingCanvas;
+    public TargetingMenu targetingMenu;
 
     public void ExecuteCommand() {
         switch (commandType) {
@@ -16,9 +18,19 @@ public class CommandMenu : MonoBehaviour
         }
     }
 
-    public void AttackTest() {
-        commandType = CommandType.Attack;
-        target = CombatManager.instance.enemyTeam[0];
+    private void SwitchToTargeting() {
+        commandCanvas.enabled = false;
+        targetingCanvas.enabled = true;
+        targetingMenu.InitialiseTargetList();
+    }
+
+    public void SetTarget(int index) {
+        target = CombatManager.instance.enemyTeam[index];
         ExecuteCommand();
+    }
+
+    public void AttackButton() {
+        commandType = CommandType.Attack;
+        SwitchToTargeting();
     }
 }
