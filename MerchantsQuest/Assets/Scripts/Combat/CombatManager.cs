@@ -79,6 +79,12 @@ public class CombatManager : MonoBehaviour
         StartCoroutine(NextTurnWait());
     }
 
+    public void Defend(StatsBase defender) {
+        messageText.text += defender.characterName + " defends.";
+
+        StartCoroutine(NextTurnWait());
+    }
+
     public void EnableCommandCanvas() {
         commandCanvas.enabled = true;
         targetingCanvas.enabled = false;

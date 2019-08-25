@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CommandMenu : MonoBehaviour
 {
-    public enum CommandType { Attack, Spell, Item };
+    public enum CommandType { Attack, Defend, Spell, Item };
     public StatsBase target;
     public CommandType commandType;
     public Canvas commandCanvas, targetingCanvas;
@@ -14,6 +14,9 @@ public class CommandMenu : MonoBehaviour
         switch (commandType) {
             case CommandType.Attack:
                 CombatManager.instance.currentActor.Attack(target);
+                break;
+            case CommandType.Defend:
+                CombatManager.instance.currentActor.Defend();
                 break;
         }
     }
@@ -32,5 +35,10 @@ public class CommandMenu : MonoBehaviour
     public void AttackButton() {
         commandType = CommandType.Attack;
         SwitchToTargeting();
+    }
+
+    public void DefendButton() {
+        commandType = CommandType.Defend;
+        ExecuteCommand();
     }
 }

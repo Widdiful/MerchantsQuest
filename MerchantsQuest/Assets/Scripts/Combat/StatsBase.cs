@@ -10,11 +10,15 @@ public class StatsBase
     [Range(0, 1)]
     public float critChance;
     public bool isDead, isEnemy;
+    private bool isDefending;
 
     public int TakeDamage(int damage, bool ignoreDefence) {
         if (!isDead) {
             // Adjust damage based on defence stat
             int defenceAdjusted = defence;
+            if (isDefending) {
+                defenceAdjusted *= 2;
+            }
             if (defence <= 0 || ignoreDefence) {
                 defenceAdjusted = 1;
             }
@@ -43,7 +47,7 @@ public class StatsBase
     }
 
     public virtual void GetCommand() {
-
+        isDefending = false;
     }
 
     public void Attack(StatsBase target) {
@@ -57,5 +61,10 @@ public class StatsBase
         }
 
         CombatManager.instance.Attack(this, target, damage, isCrit);
+    }
+
+    public void Defend() {
+        isDefending = true;
+        CombatManager.instance.Defend(this);
     }
 }
