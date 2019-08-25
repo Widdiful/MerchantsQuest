@@ -11,19 +11,47 @@ public class CombatManager : MonoBehaviour
     public List<PlayerStats> playerTeam = new List<PlayerStats>();
     public List<EnemyStats> enemyTeam = new List<EnemyStats>();
     public List<StatsBase> turnOrder = new List<StatsBase>();
+    public List<EnemyStats> possibleEnemies = new List<EnemyStats>();
+    public int maxEnemies;
     public Canvas commandCanvas, targetingCanvas, messageCanvas;
     public StatsBase currentActor;
     public float timeToWait;
     public Text messageText;
-    private int turnIndex;
+    private int turnIndex = 0;
     private bool battleEnded;
+    private Dictionary<string, int> enemyDict = new Dictionary<string, int>();
 
     private void Awake() {
         instance = this;
 
         playerTeam = PartyManager.instance.partyMembers;
 
-        foreach(StatsBase player in playerTeam) {
+        int enemyCount = Random.Range(1, maxEnemies + 1);
+        for(int i = 0; i < enemyCount; i++) {
+            EnemyStats temp = Instantiate(possibleEnemies[Random.Range(0, possibleEnemies.Count)]);
+            enemyTeam.Add(temp);
+            if (enemyDict.ContainsKey(temp.characterName)) {
+                enemyDict[temp.characterName]++;
+            }
+            else {
+                enemyDict[temp.characterName] = 1;
+            }
+        }
+
+        Dictionary<string, int> counterDict = new Dictionary<string, int>();
+        foreach(EnemyStats enemy in enemyTeam) {
+            if (enemyDict[enemy.characterName] > 1) {
+                if (counterDict.ContainsKey(enemy.characterName)) {
+                    counterDict[enemy.characterName]++;
+                }
+                else {
+                    counterDict[enemy.characterName] = 1;
+                }
+                enemy.characterName += " " + System.Convert.ToChar(counterDict[enemy.characterName] + 64);
+            }
+        }
+
+        foreach (StatsBase player in playerTeam) {
             turnOrder.Add(player);
         }
 
@@ -102,6 +130,9 @@ public class CombatManager : MonoBehaviour
         messageText.text = "";
 
         for (int i = 0; i < enemyTeam.Count; i++) {
+            if (enemyTeam.Count == 1) {
+                messageText.text += "A ";
+            }
             messageText.text += enemyTeam[i].characterName;
             if (i < enemyTeam.Count - 2) {
                 messageText.text += ", ";
@@ -110,7 +141,12 @@ public class CombatManager : MonoBehaviour
                 messageText.text += " and ";
             }
         }
-        messageText.text += " appear!";
+        if (enemyTeam.Count > 1) {
+            messageText.text += " appear!";
+        }
+        else {
+            messageText.text += " appears!";
+        }
 
         yield return new WaitForSeconds(timeToWait);
         NextTurn();

@@ -715,73 +715,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7197720cc6fbca488b09236fd676aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTeam:
-  - characterName: Player
-    level: 0
-    hitPoints: 10
-    magicPoints: 0
-    attack: 10
-    defence: 7
-    agility: 0
-    critChance: 0
-    isDead: 0
-    isEnemy: 0
-  - characterName: Player2
-    level: 0
-    hitPoints: 10
-    magicPoints: 0
-    attack: 10
-    defence: 7
-    agility: 0
-    critChance: 0
-    isDead: 0
-    isEnemy: 0
-  enemyTeam:
-  - characterName: Enemy1
-    level: 0
-    hitPoints: 10
-    magicPoints: 0
-    attack: 10
-    defence: 2
-    agility: 0
-    critChance: 0
-    isDead: 0
-    isEnemy: 1
-  - characterName: Enemy2
-    level: 0
-    hitPoints: 10
-    magicPoints: 0
-    attack: 10
-    defence: 2
-    agility: 0
-    critChance: 0
-    isDead: 0
-    isEnemy: 1
-  - characterName: Enemy3
-    level: 0
-    hitPoints: 10
-    magicPoints: 0
-    attack: 10
-    defence: 2
-    agility: 0
-    critChance: 0
-    isDead: 0
-    isEnemy: 1
+  playerTeam: []
+  enemyTeam: []
   turnOrder: []
+  possibleEnemies:
+  - {fileID: 11400000, guid: 8af0420faf1a16c47aa69ffc9b44508a, type: 2}
+  - {fileID: 11400000, guid: 8b5c3da9aa0b8ec43abb7856484f6e06, type: 2}
+  maxEnemies: 5
   commandCanvas: {fileID: 1461989918}
   targetingCanvas: {fileID: 542463294}
   messageCanvas: {fileID: 96554835}
-  currentActor:
-    characterName: 
-    level: 0
-    hitPoints: 0
-    magicPoints: 0
-    attack: 0
-    defence: 0
-    agility: 0
-    critChance: 0
-    isDead: 0
-    isEnemy: 0
+  currentActor: {fileID: 0}
   timeToWait: 1
   messageText: {fileID: 658873057}
 --- !u!4 &535245850
@@ -815,26 +759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partyMembers:
-  - characterName: Dave
-    level: 1
-    hitPoints: 10
-    magicPoints: 0
-    attack: 10
-    defence: 5
-    agility: 0
-    critChance: 0
-    isDead: 0
-    isEnemy: 0
-  - characterName: John
-    level: 1
-    hitPoints: 10
-    magicPoints: 0
-    attack: 10
-    defence: 5
-    agility: 0
-    critChance: 0
-    isDead: 0
-    isEnemy: 0
+  - {fileID: 11400000, guid: 52816e921f668db4d87ab0cf96f67b51, type: 2}
 --- !u!1 &542463290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1668,7 +1593,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -14000, y: 92229.94}
+  m_AnchoredPosition: {x: -21900, y: 129434.93}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1293370665
@@ -1858,17 +1783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31da1213d7c4d234ab5f683d29060a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target:
-    characterName: 
-    level: 0
-    hitPoints: 0
-    magicPoints: 0
-    attack: 0
-    defence: 0
-    agility: 0
-    critChance: 0
-    isDead: 0
-    isEnemy: 0
+  target: {fileID: 0}
   commandType: 0
   commandCanvas: {fileID: 1461989918}
   targetingCanvas: {fileID: 542463294}

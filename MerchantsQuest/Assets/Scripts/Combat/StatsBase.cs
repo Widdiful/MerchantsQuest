@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class StatsBase
+public class StatsBase : ScriptableObject
 {
     public string characterName;
     public int level, hitPoints, magicPoints, attack, defence, agility;
