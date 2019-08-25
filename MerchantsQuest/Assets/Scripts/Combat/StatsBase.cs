@@ -19,6 +19,9 @@ public class StatsBase
                 defenceAdjusted = 1;
             }
             int damageToTake = damage / defenceAdjusted;
+            if (damageToTake == 0 && Random.Range(0, 2) == 1) {
+                damageToTake = 1;
+            }
 
             // Deal damage, maybe die
             hitPoints -= damageToTake;

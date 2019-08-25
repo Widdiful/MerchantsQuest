@@ -6,10 +6,14 @@ using UnityEngine;
 [System.Serializable]
 public class EnemyStats : StatsBase
 {
+    private PlayerStats target;
+
     public override void GetCommand() {
         base.GetCommand();
 
-        Attack(CombatManager.instance.playerTeam[0]);
+        target = CombatManager.instance.playerTeam[Random.Range(0, CombatManager.instance.playerTeam.Count)];
+
+        Attack(target);
     }
 
     public override void Kill() {
