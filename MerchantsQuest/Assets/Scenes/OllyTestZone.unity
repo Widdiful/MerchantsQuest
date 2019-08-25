@@ -428,8 +428,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 55b9f9d339724ad488f67161d82248c1, type: 2}
   stairsPrefab: {fileID: 8491507525260089088, guid: c967dacbdd7bb994d8c374bd11811861,
     type: 3}
+  chestPrefab: {fileID: 1065511187435314430, guid: 9c8da9cc98daa0c4da720b3f514f194d,
+    type: 3}
   maxRoomSize: 20
   minRoomSize: 3
+  playerLocation: {fileID: 1764992395}
 --- !u!1 &1764992394
 GameObject:
   m_ObjectHideFlags: 0
