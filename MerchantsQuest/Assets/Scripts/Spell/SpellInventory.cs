@@ -32,6 +32,7 @@ public class SpellInventory : MonoBehaviour
             if(spellSlots[i].empty)
             {
                 spellSlots[i].SetSpell(spell);
+                return;
             }
         }
         Debug.Log("Spell inventory is full");

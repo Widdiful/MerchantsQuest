@@ -31,15 +31,15 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.I))
-        {
-            inventoryEnabled = !inventoryEnabled;
-        }
+        //if(Input.GetKeyDown(KeyCode.I))
+        //{
+        //    inventoryEnabled = !inventoryEnabled;
+        //}
 
-        if (inventoryEnabled)
-            inventory.SetActive(true);
-        else
-            inventory.SetActive(false);
+        //if (inventoryEnabled)
+        //    inventory.SetActive(true);
+        //else
+        //    inventory.SetActive(false);
     }
 
     public void AddItem(int id)
@@ -81,6 +81,15 @@ public class InventoryManager : MonoBehaviour
             }
         }
         Debug.Log("All slots full");
+    }
+
+    [ContextMenu("Fill Inventory")]
+    public void FillInventory()
+    {
+        for(int i = 0; i < inventorySlots.Length; i++)
+        {
+            inventorySlots[i].SetItem(i);
+        }
     }
 
     public void DisplayStats(Item item, Vector2 pos)

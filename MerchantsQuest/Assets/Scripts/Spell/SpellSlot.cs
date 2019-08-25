@@ -36,10 +36,26 @@ public class SpellSlot : MonoBehaviour
         icon.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
         spellInSlot = new Spell();
         empty = true;
+        HideStats();
     }
 
     public void EquipSpell()
     {
+        SpellInventory.Instance.equipedSpells.AddToSlot(spellInSlot);
+        RemoveSpell();
+    }
 
+    public void DisplayStats()
+    {
+        if(!empty)
+            InventoryManager.Instance.statShower.SetSpellStats(spellInSlot, transform.position);
+    }
+
+    public void HideStats()
+    {
+        if(!empty)
+        {
+            InventoryManager.Instance.HideStats();
+        }
     }
 }

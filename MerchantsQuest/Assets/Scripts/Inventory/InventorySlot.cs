@@ -39,6 +39,7 @@ public class InventorySlot : MonoBehaviour
         icon.sprite = null;
         icon.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
         empty = true;
+        HideStats();
     }
 
     public void DisplayStats()
@@ -64,10 +65,12 @@ public class InventorySlot : MonoBehaviour
             newSpell.primaryStatValue = itemInSlot.primaryStatValue;
             newSpell.icon = itemInSlot.icon;
             SpellInventory.Instance.AddSpell(newSpell);
-            return;
         }
+        else
+            InventoryManager.Instance.equipment.AddToSlot(itemInSlot, itemInSlot.type);
 
-        InventoryManager.Instance.equipment.AddToSlot(itemInSlot, itemInSlot.type);
+
+        RemoveItem();
     }
 }
 

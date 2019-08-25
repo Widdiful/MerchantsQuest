@@ -49,6 +49,8 @@ public class StatShower : MonoBehaviour
             rectTransform.position += new Vector3(rectTransform.rect.size.x * 0.75f, 0, 0);
         }
         nameText.text = spell.name;
+        descriptionText.text = spell.manaCost.ToString();
+        typeText.text = spell.primaryStatValue.ToString();
     }
 
 }

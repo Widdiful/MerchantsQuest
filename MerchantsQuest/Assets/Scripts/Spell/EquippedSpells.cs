@@ -14,17 +14,20 @@ public class EquippedSpells : MonoBehaviour
             if(spells[i].empty)
             {
                 spells[i].SetSpell(spell);
+                return;
             }
         }
     }
 
-    public void RemoveFromSlot(int id)
+    public void RemoveFromSlot(SpellSlot slot)
     {
         for(int i = 0; i < spells.Length; i++)
         {
-            if(spells[i].spellInSlot.id == id)
+            if(spells[i] == slot)
             {
+                SpellInventory.Instance.AddSpell(spells[i].spellInSlot);
                 spells[i].RemoveSpell();
+                return;
             }
         }
     }
