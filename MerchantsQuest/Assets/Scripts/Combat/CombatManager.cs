@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -111,7 +112,8 @@ public class CombatManager : MonoBehaviour
 
     IEnumerator NextTurnWait() {
         DisableCommandCanvas();
-        yield return new WaitForSeconds(timeToWait);
+        int waitMultiplier = Regex.Matches(messageText.text, "\n").Count + 1;
+        yield return new WaitForSeconds(timeToWait * waitMultiplier);
         NextTurn();
     }
 }
