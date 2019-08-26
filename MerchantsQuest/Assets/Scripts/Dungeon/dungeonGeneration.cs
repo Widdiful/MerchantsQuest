@@ -237,4 +237,14 @@ public class dungeonGeneration : MonoBehaviour
 		    return x1;
     }
 
+    public int getFloorNumber()
+    {
+        return currentFloorNumber;
+    }
+
+    public void setFloorNumber(int floorNumber)
+    {
+        currentFloorNumber = floorNumber;
+    }
+
 }

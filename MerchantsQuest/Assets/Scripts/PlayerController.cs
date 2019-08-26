@@ -59,7 +59,10 @@ public class PlayerController : MonoBehaviour
                 Debug.Log(hit.collider.name);
                 takenInput = false;
 
-
+                if(hit.collider.GetComponent<chest>())
+                {
+                    hit.collider.GetComponent<chest>().openChest();
+                }
                 // something here about interactable interactions?? 
             }
         }
