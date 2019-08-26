@@ -20,17 +20,20 @@ MonoBehaviour:
   baseATK: 36
   baseDEF: 32
   baseAGI: 10
+  baseINT: 0
   expValue: 0
   currentHP: 0
   currentMP: 0
   currentATK: 0
   currentDEF: 0
   currentAGI: 0
+  currentINT: 0
   hpPerLevel: 5
   mpPerLevel: 0
   atkPerLevel: 4
   defPerLevel: 3
   agiPerLevel: 4
+  intPerLevel: 0
   critChance: 0.01
   isDead: 0
   isEnemy: 0

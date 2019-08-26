@@ -19,6 +19,7 @@ public class CommandMenu : MonoBehaviour
                 CombatManager.instance.currentActor.Defend();
                 break;
         }
+        CombatManager.instance.ToggleIndicator();
     }
 
     private void SwitchToTargeting() {

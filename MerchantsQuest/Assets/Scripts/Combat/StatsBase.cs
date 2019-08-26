@@ -7,10 +7,10 @@ public class StatsBase : ScriptableObject
 {
     public string characterName;
     public Sprite sprite;
-    public int level, maxHP, maxMP, baseATK, baseDEF, baseAGI, expValue;
+    public int level, maxHP, maxMP, baseATK, baseDEF, baseAGI, baseINT, expValue;
     [HideInInspector]
-    public int currentHP, currentMP, currentATK, currentDEF, currentAGI;
-    public int hpPerLevel, mpPerLevel, atkPerLevel, defPerLevel, agiPerLevel;
+    public int currentHP, currentMP, currentATK, currentDEF, currentAGI, currentINT;
+    public int hpPerLevel, mpPerLevel, atkPerLevel, defPerLevel, agiPerLevel, intPerLevel;
     [Range(0, 1)]
     public float critChance;
     public bool isDead, isEnemy;
@@ -20,6 +20,7 @@ public class StatsBase : ScriptableObject
         currentATK = baseATK + (atkPerLevel * (level - 1));
         currentDEF = baseDEF + (defPerLevel * (level - 1));
         currentAGI = baseAGI + (agiPerLevel * (level - 1));
+        currentINT = baseINT + (intPerLevel * (level - 1));
         if (!isDead && currentHP == 0) {
             maxHP = maxHP + (hpPerLevel * (level - 1));
             maxMP = maxMP + (mpPerLevel * (level - 1));
@@ -39,7 +40,14 @@ public class StatsBase : ScriptableObject
             if (currentDEF <= 0 || ignoreDefence) {
                 defenceAdjusted = 1;
             }
-            int damageToTake = damage / defenceAdjusted;
+            int damageToTake = damage;
+            if (defenceAdjusted > damageToTake) {
+                damageToTake -= (defenceAdjusted - damageToTake);
+            }
+            if (damageToTake < 0) {
+                damageToTake = 0;
+            }
+
             if (damageToTake == 0 && Random.Range(0, 2) == 1) {
                 damageToTake = 1;
             }

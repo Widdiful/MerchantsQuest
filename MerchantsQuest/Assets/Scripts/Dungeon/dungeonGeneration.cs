@@ -14,6 +14,7 @@ public class dungeonGeneration : MonoBehaviour
     public Tilemap tilemap;
     public TileBase tile;
     public List<TileBase> tileList;
+    public List<Sprite> floorSprites;
     public GameObject stairsPrefab;
     public GameObject chestPrefab;
     int xSize;
@@ -140,7 +141,9 @@ public class dungeonGeneration : MonoBehaviour
                         tilemap.SetTile(new Vector3Int(x, y, 0), tileList[0]); 
                         break;
                     case (int)tileType.floor:
-                        tilemap.SetTile(new Vector3Int(x, y, 0), tileList[1]);
+                        Tile tempTile = ScriptableObject.CreateInstance<Tile>();
+                        tempTile.sprite = floorSprites[Random.Range(0,floorSprites.Count)];  
+                        tilemap.SetTile(new Vector3Int(x, y, 0), tempTile);
                         break;
                     case (int)tileType.stairs:                        
                         GameObject stair = Instantiate(stairsPrefab, new Vector3(x + gridOffset, y + gridOffset, 0), Quaternion.identity);
@@ -151,7 +154,9 @@ public class dungeonGeneration : MonoBehaviour
                         GameObject chest = Instantiate(chestPrefab, new Vector3(x + gridOffset, y + gridOffset, 0), Quaternion.identity);
                         chest.transform.parent = gameObject.transform;
 
-                        tilemap.SetTile(new Vector3Int(x, y, 0), tileList[1]);
+                        Tile tempTile2 = ScriptableObject.CreateInstance<Tile>();
+                        tempTile2.sprite = floorSprites[Random.Range(0,floorSprites.Count)];  
+                        tilemap.SetTile(new Vector3Int(x, y, 0), tempTile2);
                         
                         break;
                     default:
