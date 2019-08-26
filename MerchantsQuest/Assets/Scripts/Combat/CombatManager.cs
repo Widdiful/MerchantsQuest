@@ -13,7 +13,7 @@ public class CombatManager : MonoBehaviour
     public List<EnemyStats> enemyTeam, allEnemies = new List<EnemyStats>();
     public List<StatsBase> turnOrder = new List<StatsBase>();
     public List<EnemyStats> possibleEnemies = new List<EnemyStats>();
-    public int maxEnemies;
+    public AnimationCurve numberOfEnemies;
     public Canvas commandCanvas, targetingCanvas, messageCanvas;
     public Transform statsPanel;
     public GameObject statsPrefab;
@@ -34,10 +34,6 @@ public class CombatManager : MonoBehaviour
     public void NextTurn() {
         DisableCommandCanvas();
         messageText.text = "";
-
-        if (currentActor && statsPanels.Keys.Contains<StatsBase>(currentActor)) {
-            statsPanels[currentActor].ToggleIndicator();
-        }
 
         if (!battleEnded) {
             if (enemyTeam.Count > 0 && playerTeam.Count > 0) {
@@ -148,7 +144,7 @@ public class CombatManager : MonoBehaviour
         }
 
         // Initialise enemies
-        int enemyCount = Random.Range(1, maxEnemies + 1);
+        int enemyCount = (int)numberOfEnemies.Evaluate(Random.Range(0f, 1f));
         Dictionary<string, int> enemyDict = new Dictionary<string, int>();
         for (int i = 0; i < enemyCount; i++) {
             EnemyStats temp = Instantiate(possibleEnemies[Random.Range(0, possibleEnemies.Count)]);
@@ -223,5 +219,11 @@ public class CombatManager : MonoBehaviour
         int waitMultiplier = Regex.Matches(messageText.text, "\n").Count + 1;
         yield return new WaitForSeconds(timeToWait * waitMultiplier);
         NextTurn();
+    }
+
+    public void ToggleIndicator() {
+        if (currentActor) {
+            statsPanels[currentActor].ToggleIndicator();
+        }
     }
 }
