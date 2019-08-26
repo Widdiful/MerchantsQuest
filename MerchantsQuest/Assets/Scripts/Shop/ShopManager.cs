@@ -19,8 +19,15 @@ public class ShopManager : MonoBehaviour
 
     public void ShowShop(bool active)
     {
+        shopEnabled = active;
         shopUI.SetActive(active);
     }
+
+    public bool ShopActive()
+    {
+        return shopEnabled;
+    }
+
 
     void FillShopWithItems()
     {
