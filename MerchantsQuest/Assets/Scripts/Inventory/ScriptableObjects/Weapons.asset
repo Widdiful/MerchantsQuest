@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Weapons
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: fb22b4ca31a89df418b4fbafffb263d6, type: 3}
-  - {fileID: 21300000, guid: a7ca08e457c8ef34a8495edf000e44b9, type: 3}
+  - {fileID: -4029819251187114856, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: -2505125261248690692, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: -1022324140503699289, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: 946132551445127754, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: -4924065256469680006, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: -4107469028111699786, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
   fakeDescriptionsAsset: {fileID: 4900000, guid: 3185fa08628019540adebd356002024d,
     type: 3}
   descriptions: []

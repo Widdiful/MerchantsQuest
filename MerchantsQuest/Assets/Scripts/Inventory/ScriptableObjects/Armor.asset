@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: Armor
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 4f1239ef5deb833468aba1b0c1d9adca, type: 3}
+  - {fileID: -1128947775675819744, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: -5367567284864621945, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: -504574306490611350, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: 7973886625310189405, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: 3072967742494045084, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: -9053114588808880918, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
   fakeDescriptionsAsset: {fileID: 4900000, guid: f66c5fb48bf6ae4459b28b1769d948f1,
     type: 3}
   descriptions: []

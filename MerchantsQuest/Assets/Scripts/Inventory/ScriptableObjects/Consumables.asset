@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: Consumables
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: a3f56eb434cd8604c85406de6028b475, type: 3}
+  - {fileID: 731806605160617493, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: 8840016672301374354, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: -8805645451618135844, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: 6239067095133181186, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: -4924265470664458407, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: -2466789373252015564, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
   fakeDescriptionsAsset: {fileID: 4900000, guid: 88bce8bee9327f941ae765c136cd4161,
     type: 3}
   descriptions: []

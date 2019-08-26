@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: Spells
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 8ac714b37c4e6ee4e80a1a321059eb50, type: 3}
+  - {fileID: 5012091224111249662, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: 7911235102323647998, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: -4058434812019303673, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: -9098891631924085042, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: 1784186740104572286, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: 8391431092616798930, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
   fakeDescriptionsAsset: {fileID: 4900000, guid: e40fc4c5e616c534bbaffdfd7a489d1b,
     type: 3}
   descriptions: []
