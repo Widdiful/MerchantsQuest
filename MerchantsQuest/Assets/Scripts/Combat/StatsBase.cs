@@ -13,6 +13,7 @@ public class StatsBase : ScriptableObject
     [Range(0, 1)]
     public float critChance;
     public bool isDead, isEnemy;
+    public List<Spell> spellList = new List<Spell>();
     protected bool isDefending;
 
     public void InitialiseCharacter() {
@@ -111,11 +112,15 @@ public class StatsBase : ScriptableObject
             isCrit = true;
         }
 
-        CombatManager.instance.Attack(this, target, damage, isCrit);
+        CombatManager.instance.StartAttack(this, target, damage, isCrit);
     }
 
     public void Defend() {
         isDefending = true;
         CombatManager.instance.Defend(this);
+    }
+
+    public void CastSpell(StatsBase target, Spell spell) {
+        CombatManager.instance.SpellAttack(this, target, spell);
     }
 }

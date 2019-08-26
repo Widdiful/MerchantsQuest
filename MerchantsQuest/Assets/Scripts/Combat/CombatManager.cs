@@ -41,9 +41,10 @@ public class CombatManager : MonoBehaviour
 
     public void NextTurn() {
         DisableCommandCanvas();
-        messageText.text = "";
 
         if (!battleEnded) {
+            messageText.text = "";
+
             if (enemyTeam.Count > 0 && playerTeam.Count > 0) {
 
                 turnIndex = (turnIndex + 1) % (playerTeam.Count + enemyTeam.Count);
@@ -63,12 +64,12 @@ public class CombatManager : MonoBehaviour
 
             }
             else if (enemyTeam.Count <= 0) {
-                messageText.text += ("Victory!");
+                messageText.text += ("Victory!\n");
                 battleEnded = true;
                 StartCoroutine(NextTurnWait());
             }
             else if (playerTeam.Count <= 0) {
-                messageText.text += ("You lose!");
+                messageText.text += ("You lose!\n");
                 battleEnded = true;
                 StartCoroutine(NextTurnWait());
             }
@@ -82,18 +83,47 @@ public class CombatManager : MonoBehaviour
         int damageTaken = target.TakeDamage(damage, ignoreDefence);
 
         if (damageTaken > 0) {
-            if (ignoreDefence) messageText.text += "Critical hit! \n";
-            messageText.text += string.Format("{0} attacked {1} for {2} damage.", attacker.characterName, target.characterName, damageTaken);
+            if (ignoreDefence) messageText.text += "Critical hit!\n";
+            messageText.text += string.Format("{0} takes {1} damage.", target.characterName, damageTaken);
         }
         else {
-            messageText.text += string.Format("{0} missed!", attacker.characterName);
+            messageText.text += string.Format("{0} dodges the attack.", target.characterName);
         }
 
         if (target.isDead) {
-            messageText.text += string.Format("\n {0} died!", target.characterName);
+            messageText.text += string.Format("\n{0} dies!", target.characterName);
         }
 
         StartCoroutine(NextTurnWait());
+    }
+
+    public void StartAttack(StatsBase attacker, StatsBase target, int damage, bool ignoreDefence) {
+        DisableCommandCanvas();
+        StartCoroutine(AttackDelay(attacker, target, damage, ignoreDefence));
+    }
+
+    IEnumerator AttackDelay(StatsBase attacker, StatsBase target, int damage, bool ignoreDefence) {
+        messageText.text += string.Format("{0} attacks!\n", attacker.characterName);
+        yield return new WaitForSeconds(timeToWait);
+        Attack(attacker, target, damage, ignoreDefence);
+    }
+
+    public void SpellAttack(StatsBase attacker, StatsBase target, Spell spell) {
+        DisableCommandCanvas();
+        StartCoroutine(SpellDelay(attacker, target, spell));
+    }
+
+    IEnumerator SpellDelay(StatsBase attacker, StatsBase target, Spell spell) {
+        messageText.text += string.Format("{0} casts {1}!\n", attacker.characterName, spell.name);
+        yield return new WaitForSeconds(timeToWait);
+        if (attacker.currentMP >= spell.manaCost) {
+            attacker.currentMP -= spell.manaCost;
+            Attack(attacker, target, spell.primaryStatValue, false);
+        }
+        else {
+            messageText.text += "Not enough MP!";
+            StartCoroutine(NextTurnWait());
+        }
     }
 
     public void Defend(StatsBase defender) {
@@ -219,7 +249,7 @@ public class CombatManager : MonoBehaviour
 
     IEnumerator EndBattle() {
         PartyManager.instance.gold += goldEarned;
-        messageText.text = string.Format("The party has earned {0} experience points and {1} gold.", expEarned, goldEarned);
+        messageText.text += string.Format("The party has earned {0} experience points and {1} gold.", expEarned, goldEarned);
         yield return new WaitForSeconds(timeToWait);
 
         for (int i = 0; i < PartyManager.instance.partyMembers.Count; i++) {
@@ -228,10 +258,13 @@ public class CombatManager : MonoBehaviour
             if (!player.isDead) {
                 player.totalXP += expEarned;
                 while (player.totalXP >= player.targetXP) {
+                    yield return new WaitForSeconds(timeToWait);
                     player.level++;
                     player.targetXP += (player.level * 100);
                     messageText.text = string.Format("{0}'s level has increased to {1}!", player.characterName, player.level);
-                    yield return new WaitForSeconds(timeToWait);
+                    yield return new WaitForSeconds(timeToWait * 2);
+                    messageText.text = string.Format("{0}'s stats have increased.\n HP + {1}, MP + {2}, ATK + {3},\nDEF + {4}, AGI + {5}, INT + {6}.",
+                        player.characterName, player.hpPerLevel, player.mpPerLevel, player.atkPerLevel, player.defPerLevel, player.agiPerLevel, player.intPerLevel);
                 }
             }
 
