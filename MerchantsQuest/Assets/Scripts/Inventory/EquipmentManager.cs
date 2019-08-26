@@ -15,35 +15,26 @@ public class EquipmentManager : MonoBehaviour
                 if(!armorSlot.empty)
                 {
                     Item currItem = armorSlot.GetItem();
-                    InventoryManager.Instance.AddItem(currItem.id);
+                    InventoryManager.Instance.AddItem(currItem);
                     armorSlot.RemoveItem();
                 }
-                armorSlot.SetItem(item.id);
+                armorSlot.SetSlot(item);
                 break;
             case ItemType.Weapon:
                 if(!weaponSlot.empty)
                 {
                     Item currItem = weaponSlot.GetItem();
-                    InventoryManager.Instance.AddItem(currItem.id);
+                    InventoryManager.Instance.AddItem(currItem);
                     weaponSlot.RemoveItem();
                 }
-                weaponSlot.SetItem(item.id);
+                weaponSlot.SetSlot(item);
                 break;
         }
     }
 
-    public void RemoveFromSlot(int id)
+    public void RemoveFromSlot(InventorySlot slot)
     {
-        if(id == 0)
-        {
-            InventoryManager.Instance.AddItem(armorSlot.itemInSlot.id);
-            armorSlot.RemoveItem();
-
-        }
-        else
-        {
-            InventoryManager.Instance.AddItem(weaponSlot.itemInSlot.id);
-            weaponSlot.RemoveItem();
-        }
+        InventoryManager.Instance.AddItem(slot.item);
+        slot.RemoveItem();
     }
 }

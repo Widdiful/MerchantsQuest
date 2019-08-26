@@ -31,24 +31,24 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.I))
-        //{
-        //    inventoryEnabled = !inventoryEnabled;
-        //}
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            inventoryEnabled = !inventoryEnabled;
+        }
 
-        //if (inventoryEnabled)
-        //    inventory.SetActive(true);
-        //else
-        //    inventory.SetActive(false);
+        if (inventoryEnabled)
+            inventory.SetActive(true);
+        else
+            inventory.SetActive(false);
     }
 
-    public void AddItem(int id)
+    public void AddItem(Item item)
     {
         for(int i = 0; i < inventorySlots.Length; i++)
         {
             if(inventorySlots[i].empty)
             {
-                inventorySlots[i].SetItem(id);
+                inventorySlots[i].SetSlot(item);
                 return;
             }
         }
@@ -60,7 +60,7 @@ public class InventoryManager : MonoBehaviour
     {
         for(int i = 0; i < inventorySlots.Length; i++)
         {
-            if(inventorySlots[i].itemInSlot.id == id)
+            if(inventorySlots[i].item.id == id)
             {
                 inventorySlots[i].RemoveItem();
                 return;
@@ -69,26 +69,13 @@ public class InventoryManager : MonoBehaviour
     }
 
 
-    [ContextMenu("Item Add Test")]
-    public void AddRandomItem()
-    {
-        for (int i = 0; i < inventorySlots.Length; i++)
-        {
-            if (inventorySlots[i].empty)
-            {
-                inventorySlots[i].SetItem(Random.Range(0, 100));
-                return;
-            }
-        }
-        Debug.Log("All slots full");
-    }
 
     [ContextMenu("Fill Inventory")]
     public void FillInventory()
     {
         for(int i = 0; i < inventorySlots.Length; i++)
         {
-            inventorySlots[i].SetItem(i);
+            inventorySlots[i].SetSlot(ItemManager.Instance.GetItemFromID(i));
         }
     }
 

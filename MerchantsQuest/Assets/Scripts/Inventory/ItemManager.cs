@@ -83,7 +83,7 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    public int GenerateSpecificItem(ItemType type)
+    public Item GenerateSpecificItem(ItemType type)
     {
         Item item = new Item();
         item.appraised = false;
@@ -91,8 +91,9 @@ public class ItemManager : MonoBehaviour
         item = GetData(item);
         item.id = items.Count;
 
+        items.Add(item.id, item);
 
-        return item.id;
+        return item;
 
     }
 
@@ -114,7 +115,7 @@ public class ItemManager : MonoBehaviour
                 currItem.name = spellRefs.names[Random.Range(0, spellRefs.names.Length)];
                 currItem.fakeDescription = spellRefs.descriptions[Random.Range(0, spellRefs.descriptions.Length)];
                 currItem.icon = spellRefs.sprites[Random.Range(0, spellRefs.sprites.Length)];
-                currItem.spellType = (SpellType)Random.Range(0, (int)SpellType.Size);
+                currItem.spellType = (SpellType)Random.Range(1, (int)SpellType.Size);
                 currItem.manaCost = Random.Range(0, 10);
                 break;
             case ItemType.Weapon:
@@ -137,7 +138,7 @@ public class ItemManager : MonoBehaviour
                 currItem.name = consumeableRefs.names[Random.Range(0, consumeableRefs.names.Length)];
                 currItem.fakeDescription = consumeableRefs.descriptions[Random.Range(0, consumeableRefs.descriptions.Length)];
                 currItem.icon = consumeableRefs.sprites[Random.Range(0, consumeableRefs.sprites.Length)];
-                currItem.spellType = (SpellType)Random.Range(0, (int)SpellType.Size);
+                currItem.spellType = (SpellType)Random.Range(1, (int)SpellType.Size);
                 break;
         }
 

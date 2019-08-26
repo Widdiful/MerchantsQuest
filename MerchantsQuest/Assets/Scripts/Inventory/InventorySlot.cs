@@ -3,71 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour
+public class InventorySlot : Slot<Item>
 {
-    public Item itemInSlot;
-    public bool empty;
 
-    public Image icon;
-
-
-    private void Awake()
+    public new void SetSlot(Item newItem)
     {
-        if(icon.sprite == null)
-        {
-            icon.color = new Color(0.0f,0.0f,0.0f,0.0f);
-        }
-        empty = true;
+        base.SetSlot(newItem);
+        icon.sprite = item.icon;
     }
 
-
-    public void SetItem(int id)
-    {
-        itemInSlot = ItemManager.Instance.GetItemFromID(id);
-        empty = false;
-        icon.sprite = itemInSlot.icon;
-        icon.color = Color.white;
-    }
-
-    public Item GetItem()
-    {
-        return itemInSlot;
-    }
-
-    public void RemoveItem()
-    {
-        icon.sprite = null;
-        icon.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
-        empty = true;
-        HideStats();
-    }
-
-    public void DisplayStats()
+    public override void DisplayStats()
     {
         if(!empty)
-            InventoryManager.Instance.DisplayStats(itemInSlot, transform.position);
+            InventoryManager.Instance.DisplayStats(item, transform.position);
     }
 
-    public void HideStats()
-    {
-        if(!empty)
-            InventoryManager.Instance.HideStats();
-    }
 
     public void EquipItem()
     {
-        if(itemInSlot.type == ItemType.Spell)
+        if(item.type == ItemType.Spell)
         {
             Spell newSpell = new Spell();
-            newSpell.id = itemInSlot.id;
-            newSpell.manaCost = itemInSlot.manaCost;
-            newSpell.spellType = itemInSlot.spellType;
-            newSpell.primaryStatValue = itemInSlot.primaryStatValue;
-            newSpell.icon = itemInSlot.icon;
+            newSpell.id = item.id;
+            newSpell.manaCost = item.manaCost;
+            newSpell.spellType = item.spellType;
+            newSpell.primaryStatValue = item.primaryStatValue;
+            newSpell.icon = item.icon;
             SpellInventory.Instance.AddSpell(newSpell);
         }
         else
-            InventoryManager.Instance.equipment.AddToSlot(itemInSlot, itemInSlot.type);
+            InventoryManager.Instance.equipment.AddToSlot(item, item.type);
 
 
         RemoveItem();

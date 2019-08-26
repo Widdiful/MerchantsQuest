@@ -31,7 +31,7 @@ public class SpellInventory : MonoBehaviour
         {
             if(spellSlots[i].empty)
             {
-                spellSlots[i].SetSpell(spell);
+                spellSlots[i].SetSlot(spell);
                 return;
             }
         }
@@ -42,9 +42,9 @@ public class SpellInventory : MonoBehaviour
     {
         for(int i = 0; i < spellSlots.Length; i++)
         {
-            if(spellSlots[i].spellInSlot.id == id)
+            if(spellSlots[i].item.id == id)
             {
-                spellSlots[i].RemoveSpell();
+                spellSlots[i].RemoveItem();
                 return;
             }
         }

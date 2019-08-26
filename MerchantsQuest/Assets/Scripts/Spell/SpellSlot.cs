@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpellSlot : MonoBehaviour
+public class SpellSlot : Slot<Spell>
 {
-    public Spell spellInSlot;
-    public bool empty;
-    public Image icon;
 
     private void Awake()
     {
@@ -17,45 +14,23 @@ public class SpellSlot : MonoBehaviour
         empty = true;
     }
 
-    public void SetSpell(Spell spell)
+    public new void SetSlot(Spell newItem)
     {
-        spellInSlot = spell;
-        empty = false;
-        icon.color = Color.white;
-        icon.sprite = spellInSlot.icon;
+        base.SetSlot(newItem);
+        icon.sprite = item.icon;
     }
 
-    public Spell GetSpell()
-    {
-        return spellInSlot;
-    }
-
-    public void RemoveSpell()
-    {
-        icon.sprite = null;
-        icon.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
-        spellInSlot = new Spell();
-        empty = true;
-        HideStats();
-    }
 
     public void EquipSpell()
     {
-        SpellInventory.Instance.equipedSpells.AddToSlot(spellInSlot);
-        RemoveSpell();
+        SpellInventory.Instance.equipedSpells.AddToSlot(item);
+        RemoveItem();
     }
 
-    public void DisplayStats()
+    public override void DisplayStats()
     {
         if(!empty)
-            InventoryManager.Instance.statShower.SetSpellStats(spellInSlot, transform.position);
+            InventoryManager.Instance.statShower.SetSpellStats(item, transform.position);
     }
 
-    public void HideStats()
-    {
-        if(!empty)
-        {
-            InventoryManager.Instance.HideStats();
-        }
-    }
 }
