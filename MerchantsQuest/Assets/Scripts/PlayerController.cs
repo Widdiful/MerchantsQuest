@@ -9,12 +9,14 @@ public class PlayerController : MonoBehaviour
     Transform playerTransform;
 
     public LayerMask onlyCollideWith;
-
+    SpriteRenderer spriteController;
     public float timeTllNextInput;
     private float maxTime;
     void Start()
     {
         playerTransform = GetComponent<Transform>();
+        spriteController = GetComponent<SpriteRenderer>();
+
         maxTime = timeTllNextInput;
         timeTllNextInput = 0;
     }
@@ -64,6 +66,15 @@ public class PlayerController : MonoBehaviour
 
         if(takenInput)
         {
+            if(alterPos.x >0)
+            {
+                spriteController.flipX = false;
+            }
+            if(alterPos.x <0)
+            {
+                spriteController.flipX = true;
+            }
+
             playerTransform.Translate(alterPos);
             timeTllNextInput = maxTime;
         }
