@@ -12,11 +12,14 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer spriteController;
     public float timeTllNextInput;
     private float maxTime;
+
+
+    public bool canMove;
     void Start()
     {
         playerTransform = GetComponent<Transform>();
         spriteController = GetComponent<SpriteRenderer>();
-
+        canMove = true;
         maxTime = timeTllNextInput;
         timeTllNextInput = 0;
     }
@@ -24,11 +27,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timeTllNextInput<=0)
+        if(canMove)
         {
-            movePlayer();
+            if(timeTllNextInput<=0)
+            {
+                movePlayer();
+            }
+            timeTllNextInput-=Time.deltaTime;
         }
-        timeTllNextInput-=Time.deltaTime;
     }
 
 
@@ -59,11 +65,6 @@ public class PlayerController : MonoBehaviour
                 Debug.Log(hit.collider.name);
                 takenInput = false;
 
-                if(hit.collider.GetComponent<chest>())
-                {
-                    hit.collider.GetComponent<chest>().openChest();
-                }
-                // something here about interactable interactions?? 
             }
         }
 
