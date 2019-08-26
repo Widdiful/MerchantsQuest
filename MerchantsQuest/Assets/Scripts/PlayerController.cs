@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     
     Transform playerTransform;
 
+    public LayerMask onlyCollideWith;
 
     public float timeTllNextInput;
     private float maxTime;
@@ -45,6 +46,16 @@ public class PlayerController : MonoBehaviour
             // -1 = down  +1 = up
             alterPos.y = Input.GetAxisRaw("Vertical");
             takenInput = true;
+        }
+
+        if(takenInput)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, alterPos, onlyCollideWith, 1);
+
+            if(hit.collider != null)
+            {
+                Debug.Log("Collision is happening?");
+            }
         }
 
         if(takenInput)
