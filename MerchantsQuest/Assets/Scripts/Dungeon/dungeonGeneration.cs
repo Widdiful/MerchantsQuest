@@ -29,7 +29,7 @@ public class dungeonGeneration : MonoBehaviour
     int currentFloorNumber;
     int[,] map;
     const float gridOffset = 0.5f;
-    const float chestChance = 80;
+    const float chestChance = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -74,6 +74,7 @@ public class dungeonGeneration : MonoBehaviour
                 map[x,y] = (int)tileType.wall;
             }
         }
+        tilemap.ClearAllTiles();
 
         List<rect> roomList = new List<rect>();
         int numRooms = 0;
@@ -128,6 +129,8 @@ public class dungeonGeneration : MonoBehaviour
         map[stairPos.x, stairPos.y] = (int)tileType.stairs;
         setTileMap(map);
     }
+
+
     void setTileMap(int[,] map)
     {
         // set tilemap based on map.

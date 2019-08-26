@@ -50,11 +50,15 @@ public class PlayerController : MonoBehaviour
 
         if(takenInput)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, alterPos, onlyCollideWith, 1);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, alterPos,1, onlyCollideWith);
 
             if(hit.collider != null)
             {
-                Debug.Log("Collision is happening?");
+                Debug.Log(hit.collider.name);
+                takenInput = false;
+
+
+                // something here about interactable interactions?? 
             }
         }
 
