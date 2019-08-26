@@ -25,6 +25,7 @@ public class CombatManager : MonoBehaviour
     private bool battleEnded;
     private Dictionary<StatsBase, CharacterPanel> statsPanels = new Dictionary<StatsBase, CharacterPanel>();
     public AnimatedBackground background;
+    public int expEarned, goldEarned;
 
     private void Awake() {
         if (!instance)
@@ -82,14 +83,14 @@ public class CombatManager : MonoBehaviour
 
         if (damageTaken > 0) {
             if (ignoreDefence) messageText.text += "Critical hit! \n";
-            messageText.text += (attacker.characterName + " attacked " + target.characterName + " for " + damageTaken + " damage.");
+            messageText.text += string.Format("{0} attacked {1} for {2} damage.", attacker.characterName, target.characterName, damageTaken);
         }
         else {
-            messageText.text += attacker.characterName + " missed!";
+            messageText.text += string.Format("{0} missed!", attacker.characterName);
         }
 
         if (target.isDead) {
-            messageText.text += ("\n" + target.characterName + " died!");
+            messageText.text += string.Format("\n {0} died!", target.characterName);
         }
 
         StartCoroutine(NextTurnWait());
@@ -217,6 +218,10 @@ public class CombatManager : MonoBehaviour
     }
 
     IEnumerator EndBattle() {
+        messageText.text = string.Format("The party has earned {0} experience points and {1} gold.", expEarned, goldEarned);
+        expEarned = 0;
+        goldEarned = 0;
+
         for (int i = 0; i < PartyManager.instance.partyMembers.Count; i++) {
             PartyManager.instance.partyMembers[i].currentHP = statsPanels.Keys.ElementAt<StatsBase>(i).currentHP;
             PartyManager.instance.partyMembers[i].currentMP = statsPanels.Keys.ElementAt<StatsBase>(i).currentMP;

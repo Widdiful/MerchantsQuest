@@ -21,7 +21,8 @@ MonoBehaviour:
   baseDEF: 12
   baseAGI: 5
   baseINT: 0
-  expValue: 0
+  expValue: 10
+  goldValue: 5
   currentHP: 0
   currentMP: 0
   currentATK: 0
