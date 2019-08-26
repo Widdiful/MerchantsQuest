@@ -97,7 +97,7 @@ public class CombatManager : MonoBehaviour
     }
 
     public void Defend(StatsBase defender) {
-        messageText.text += defender.characterName + " defends.";
+        messageText.text += string.Format("{0} defends.", defender.characterName);
 
         StartCoroutine(NextTurnWait());
     }
@@ -218,18 +218,36 @@ public class CombatManager : MonoBehaviour
     }
 
     IEnumerator EndBattle() {
+        PartyManager.instance.gold += goldEarned;
         messageText.text = string.Format("The party has earned {0} experience points and {1} gold.", expEarned, goldEarned);
+        yield return new WaitForSeconds(timeToWait);
+
+        for (int i = 0; i < PartyManager.instance.partyMembers.Count; i++) {
+            StatsBase player = statsPanels.Keys.ElementAt<StatsBase>(i);
+
+            if (!player.isDead) {
+                player.totalXP += expEarned;
+                while (player.totalXP >= player.targetXP) {
+                    player.level++;
+                    player.targetXP += (player.level * 100);
+                    messageText.text = string.Format("{0}'s level has increased to {1}!", player.characterName, player.level);
+                    yield return new WaitForSeconds(timeToWait);
+                }
+            }
+
+
+            PartyManager.instance.partyMembers[i].currentHP = player.currentHP;
+            PartyManager.instance.partyMembers[i].currentMP = player.currentMP;
+            PartyManager.instance.partyMembers[i].level = player.level;
+            PartyManager.instance.partyMembers[i].totalXP = player.totalXP;
+            PartyManager.instance.partyMembers[i].targetXP = player.targetXP;
+            PartyManager.instance.partyMembers[i].isDead = player.isDead;
+        }
+
         expEarned = 0;
         goldEarned = 0;
 
-        for (int i = 0; i < PartyManager.instance.partyMembers.Count; i++) {
-            PartyManager.instance.partyMembers[i].currentHP = statsPanels.Keys.ElementAt<StatsBase>(i).currentHP;
-            PartyManager.instance.partyMembers[i].currentMP = statsPanels.Keys.ElementAt<StatsBase>(i).currentMP;
-            PartyManager.instance.partyMembers[i].level = statsPanels.Keys.ElementAt<StatsBase>(i).level;
-            PartyManager.instance.partyMembers[i].isDead = statsPanels.Keys.ElementAt<StatsBase>(i).isDead;
-        }
-
-        yield return new WaitForSeconds(timeToWait);
+        yield return new WaitForSeconds(timeToWait * 2);
         GameManager.instance.EndCombat();
     }
 

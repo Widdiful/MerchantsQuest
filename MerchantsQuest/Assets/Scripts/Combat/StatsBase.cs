@@ -7,7 +7,7 @@ public class StatsBase : ScriptableObject
 {
     public string characterName;
     public Sprite sprite;
-    public int level, maxHP, maxMP, baseATK, baseDEF, baseAGI, baseINT, expValue, goldValue;
+    public int level, maxHP, maxMP, baseATK, baseDEF, baseAGI, baseINT, expValue, goldValue, totalXP, targetXP;
     public int currentHP, currentMP, currentATK, currentDEF, currentAGI, currentINT;
     public int hpPerLevel, mpPerLevel, atkPerLevel, defPerLevel, agiPerLevel, intPerLevel;
     [Range(0, 1)]
@@ -25,6 +25,16 @@ public class StatsBase : ScriptableObject
         if (!isDead && currentHP == 0) {
             currentHP = maxHP;
             currentMP = maxMP;
+        }
+
+        targetXP = 0;
+        int tempTotal = 0;
+        for(int i = 0; i < level; i++) {
+            tempTotal = targetXP;
+            targetXP += (i * 100);
+        }
+        if (level > 1 && totalXP == 0) {
+            totalXP = tempTotal;
         }
     }
 
@@ -82,7 +92,7 @@ public class StatsBase : ScriptableObject
     public virtual void Kill() {
         isDead = true;
 
-        CombatManager.instance.expEarned += expValue;
+        CombatManager.instance.expEarned += expValue * Mathf.CeilToInt(level * 0.75f);
         CombatManager.instance.goldEarned += goldValue;
         CombatManager.instance.turnOrder.Remove(this);
     }

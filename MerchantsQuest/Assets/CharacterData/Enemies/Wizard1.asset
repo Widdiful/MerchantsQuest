@@ -23,6 +23,8 @@ MonoBehaviour:
   baseINT: 8
   expValue: 10
   goldValue: 5
+  totalXP: 0
+  targetXP: 0
   currentHP: 0
   currentMP: 0
   currentATK: 0
