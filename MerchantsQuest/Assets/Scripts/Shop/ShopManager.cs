@@ -17,19 +17,11 @@ public class ShopManager : MonoBehaviour
         FillShopWithItems();
     }
 
-
-    private void Update()
+    public void ShowShop(bool active)
     {
-        if (Input.GetKeyDown(shopInterfaceKey))
-        {
-            shopEnabled = !shopEnabled;
-        }
-
-        if (shopEnabled)
-            shopUI.SetActive(true);
-        else
-            shopUI.SetActive(false);
+        shopUI.SetActive(active);
     }
+
     void FillShopWithItems()
     {
         for(int i = 0; i < shopSlots.Length; i++)
