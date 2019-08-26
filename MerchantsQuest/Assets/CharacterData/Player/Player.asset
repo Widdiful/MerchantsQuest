@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Player
   sprite: {fileID: 0}
-  level: 1
+  level: 20
   maxHP: 20
   maxMP: 6
   baseATK: 10
@@ -24,9 +24,9 @@ MonoBehaviour:
   expValue: 0
   currentHP: 0
   currentMP: 0
-  currentATK: 0
-  currentDEF: 0
-  currentAGI: 0
+  currentATK: 10
+  currentDEF: 5
+  currentAGI: 5
   currentINT: 0
   hpPerLevel: 4
   mpPerLevel: 2

@@ -217,6 +217,13 @@ public class CombatManager : MonoBehaviour
     }
 
     IEnumerator EndBattle() {
+        for (int i = 0; i < PartyManager.instance.partyMembers.Count; i++) {
+            PartyManager.instance.partyMembers[i].currentHP = statsPanels.Keys.ElementAt<StatsBase>(i).currentHP;
+            PartyManager.instance.partyMembers[i].currentMP = statsPanels.Keys.ElementAt<StatsBase>(i).currentMP;
+            PartyManager.instance.partyMembers[i].level = statsPanels.Keys.ElementAt<StatsBase>(i).level;
+            PartyManager.instance.partyMembers[i].isDead = statsPanels.Keys.ElementAt<StatsBase>(i).isDead;
+        }
+
         yield return new WaitForSeconds(timeToWait);
         GameManager.instance.EndCombat();
     }

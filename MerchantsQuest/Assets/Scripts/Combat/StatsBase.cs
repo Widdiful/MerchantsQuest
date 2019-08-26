@@ -8,7 +8,6 @@ public class StatsBase : ScriptableObject
     public string characterName;
     public Sprite sprite;
     public int level, maxHP, maxMP, baseATK, baseDEF, baseAGI, baseINT, expValue;
-    [HideInInspector]
     public int currentHP, currentMP, currentATK, currentDEF, currentAGI, currentINT;
     public int hpPerLevel, mpPerLevel, atkPerLevel, defPerLevel, agiPerLevel, intPerLevel;
     [Range(0, 1)]
@@ -17,13 +16,13 @@ public class StatsBase : ScriptableObject
     protected bool isDefending;
 
     public void InitialiseCharacter() {
+        maxHP = maxHP + (hpPerLevel * (level - 1));
+        maxMP = maxMP + (mpPerLevel * (level - 1));
         currentATK = baseATK + (atkPerLevel * (level - 1));
         currentDEF = baseDEF + (defPerLevel * (level - 1));
         currentAGI = baseAGI + (agiPerLevel * (level - 1));
         currentINT = baseINT + (intPerLevel * (level - 1));
         if (!isDead && currentHP == 0) {
-            maxHP = maxHP + (hpPerLevel * (level - 1));
-            maxMP = maxMP + (mpPerLevel * (level - 1));
             currentHP = maxHP;
             currentMP = maxMP;
         }
