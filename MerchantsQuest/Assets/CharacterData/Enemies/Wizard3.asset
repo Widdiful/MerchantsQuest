@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wizard3
   m_EditorClassIdentifier: 
   characterName: Magenificent
-  sprite: {fileID: -8074204374978827116, guid: cd35159901334ae438a8aca24d89f96c, type: 3}
+  sprite: {fileID: 6180499219984056543, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
   maxHP: 6
   maxMP: 32

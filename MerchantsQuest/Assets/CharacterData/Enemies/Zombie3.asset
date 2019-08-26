@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Zombie3
   m_EditorClassIdentifier: 
   characterName: Zomboss
-  sprite: {fileID: -2658868259114192933, guid: cd35159901334ae438a8aca24d89f96c, type: 3}
+  sprite: {fileID: 7893704401813933489, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
   maxHP: 48
   maxMP: 16

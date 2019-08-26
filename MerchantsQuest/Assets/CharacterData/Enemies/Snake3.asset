@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Snake3
   m_EditorClassIdentifier: 
   characterName: Hissery
-  sprite: {fileID: 3671900364904746485, guid: cd35159901334ae438a8aca24d89f96c, type: 3}
+  sprite: {fileID: -4349637837855793913, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
   maxHP: 42
   maxMP: 0

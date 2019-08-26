@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Arm2
   m_EditorClassIdentifier: 
   characterName: Handyman
-  sprite: {fileID: 4166378789452598263, guid: cd35159901334ae438a8aca24d89f96c, type: 3}
+  sprite: {fileID: -7868115853684327939, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
   maxHP: 10
   maxMP: 0

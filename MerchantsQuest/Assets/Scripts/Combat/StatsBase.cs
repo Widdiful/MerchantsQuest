@@ -93,7 +93,7 @@ public class StatsBase : ScriptableObject
         isDead = true;
 
         CombatManager.instance.expEarned += expValue * Mathf.CeilToInt(level * 0.75f);
-        CombatManager.instance.goldEarned += goldValue;
+        CombatManager.instance.goldEarned += goldValue * Mathf.CeilToInt(level * 0.75f);
         CombatManager.instance.turnOrder.Remove(this);
     }
 
