@@ -14,7 +14,7 @@ public class CombatManager : MonoBehaviour
     public List<StatsBase> turnOrder = new List<StatsBase>();
     public List<EnemyStats> possibleEnemies = new List<EnemyStats>();
     public AnimationCurve numberOfEnemies;
-    public Canvas commandCanvas, targetingCanvas, messageCanvas;
+    public Canvas commandCanvas, targetingCanvas, messageCanvas, spellCanvas;
     public Transform statsPanel;
     public GameObject statsPrefab;
     public StatsBase currentActor;
@@ -136,12 +136,14 @@ public class CombatManager : MonoBehaviour
         commandCanvas.enabled = true;
         targetingCanvas.enabled = false;
         messageCanvas.enabled = false;
+        spellCanvas.enabled = false;
     }
 
     public void DisableCommandCanvas() {
         commandCanvas.enabled = false;
         targetingCanvas.enabled = false;
         messageCanvas.enabled = true;
+        spellCanvas.enabled = false;
     }
 
     public void UpdateAllStats() {
@@ -265,6 +267,9 @@ public class CombatManager : MonoBehaviour
                     yield return new WaitForSeconds(timeToWait * 2);
                     messageText.text = string.Format("{0}'s stats have increased.\n HP + {1}, MP + {2}, ATK + {3},\nDEF + {4}, AGI + {5}, INT + {6}.",
                         player.characterName, player.hpPerLevel, player.mpPerLevel, player.atkPerLevel, player.defPerLevel, player.agiPerLevel, player.intPerLevel);
+                    player.InitialiseCharacter();
+                    player.currentHP = player.maxHP;
+                    player.currentMP = player.maxMP;
                 }
             }
 
