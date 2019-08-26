@@ -27,11 +27,11 @@ public class CommandMenu : MonoBehaviour
         CombatManager.instance.ToggleIndicator();
     }
 
-    private void SwitchToTargeting() {
+    private void SwitchToTargeting(bool targetAllies) {
         commandCanvas.enabled = false;
         targetingCanvas.enabled = true;
         spellCanvas.enabled = false;
-        targetingMenu.InitialiseTargetList();
+        targetingMenu.InitialiseTargetList(targetAllies);
     }
 
     private void SwitchToSpell() {
@@ -43,17 +43,22 @@ public class CommandMenu : MonoBehaviour
 
     public void SetSpell(Spell spell) {
         currentSpell = spell;
-        SwitchToTargeting();
+        SwitchToTargeting(spell.spellType == SpellType.Heal);
     }
 
-    public void SetTarget(int index) {
-        target = CombatManager.instance.enemyTeam[index];
+    public void SetTarget(int index, bool targetAllies) {
+        if (!targetAllies) {
+            target = CombatManager.instance.enemyTeam[index];
+        }
+        else {
+            target = CombatManager.instance.allAllies[index];
+        }
         ExecuteCommand();
     }
 
     public void AttackButton() {
         commandType = CommandType.Attack;
-        SwitchToTargeting();
+        SwitchToTargeting(false);
     }
 
     public void SpellButton() {

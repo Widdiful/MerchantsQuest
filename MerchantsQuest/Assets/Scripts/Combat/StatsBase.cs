@@ -62,7 +62,7 @@ public class StatsBase : ScriptableObject
                 damageToTake = 1;
             }
 
-            ChangeHealth(damageToTake);
+            ChangeHealth(-damageToTake);
 
             return damageToTake;
         }
@@ -70,14 +70,23 @@ public class StatsBase : ScriptableObject
         return 0;
     }
 
+    public int Heal(int amount) {
+        Debug.Log("healing!");
+        ChangeHealth(amount);
+        return amount;
+    }
+
     private void ChangeHealth(int amount) {
         // Deal damage, maybe die
-        currentHP -= amount;
+        Debug.Log(currentHP);
+        currentHP += amount;
+        Debug.Log(currentHP);
         if (currentHP <= 0) {
             Kill();
         }
 
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+        Debug.Log(currentHP);
     }
 
     private void SetHealth(int amount) {

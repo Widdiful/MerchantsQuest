@@ -9,15 +9,17 @@ public class TargetingButton : MonoBehaviour
     public string characterName;
     public Text text;
     private CommandMenu commandMenu;
+    private bool targetAllies;
 
-    public void Initialise(int newIndex, string newName, CommandMenu menu) {
+    public void Initialise(int newIndex, string newName, CommandMenu menu, bool newTargetAllies) {
         index = newIndex;
         characterName = newName;
         text.text = characterName;
         commandMenu = menu;
+        targetAllies = newTargetAllies;
     }
 
     public void Click() {
-        commandMenu.SetTarget(index);
+        commandMenu.SetTarget(index, targetAllies);
     }
 }
