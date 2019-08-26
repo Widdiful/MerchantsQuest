@@ -24,11 +24,18 @@ public class CombatManager : MonoBehaviour
     private int turnIndex = 0;
     private bool battleEnded;
     private Dictionary<StatsBase, CharacterPanel> statsPanels = new Dictionary<StatsBase, CharacterPanel>();
+    public AnimatedBackground background;
 
     private void Awake() {
-        instance = this;
+        if (!instance)
+            instance = this;
+        else
+            Destroy(gameObject);
+    }
 
+    public void StartCombat() {
         StartCoroutine(StartBattle());
+        background.Randomise();
     }
 
     public void NextTurn() {
@@ -62,6 +69,7 @@ public class CombatManager : MonoBehaviour
             else if (playerTeam.Count <= 0) {
                 messageText.text += ("You lose!");
                 battleEnded = true;
+                StartCoroutine(NextTurnWait());
             }
         }
         else {
@@ -210,6 +218,7 @@ public class CombatManager : MonoBehaviour
 
     IEnumerator EndBattle() {
         yield return new WaitForSeconds(timeToWait);
+        GameManager.instance.EndCombat();
     }
 
     IEnumerator NextTurnWait() {

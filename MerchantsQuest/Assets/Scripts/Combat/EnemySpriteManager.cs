@@ -11,6 +11,7 @@ public class EnemySpriteManager : MonoBehaviour
         for (int i = 0; i < sprites.Count; i++) {
             if (i < list.Count) {
                 sprites[i].gameObject.SetActive(true);
+                sprites[i].enabled = true;
                 sprites[i].sprite = list[i].sprite;
             }
             else {

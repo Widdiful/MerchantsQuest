@@ -9,6 +9,10 @@ public class AnimatedBackground : MonoBehaviour
     private float timer;
 
     private void Awake() {
+        Randomise();
+    }
+
+    public void Randomise() {
         anim.SetInteger("anim", Random.Range(0, 4));
     }
 
