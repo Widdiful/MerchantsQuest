@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceaed19ceccfba34da46569010ae0e73, type: 3}
   m_Name: Wizard2
   m_EditorClassIdentifier: 
-  characterName: Wet-ears
-  sprite: {fileID: -3426723405978703523, guid: cd35159901334ae438a8aca24d89f96c, type: 3}
+  characterName: Caster
+  sprite: {fileID: -7975975662582009692, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
   maxHP: 6
   maxMP: 24
@@ -23,6 +23,8 @@ MonoBehaviour:
   baseINT: 12
   expValue: 10
   goldValue: 5
+  totalXP: 0
+  targetXP: 0
   currentHP: 0
   currentMP: 0
   currentATK: 0
@@ -38,3 +40,12 @@ MonoBehaviour:
   critChance: 0.01
   isDead: 0
   isEnemy: 0
+  spellList:
+  - id: 0
+    name: Fireball
+    spellType: 2
+    primaryStatValue: 10
+    manaCost: 2
+    icon: {fileID: 0}
+  chanceToUseSpell: 0.9
+  blockChance: 0

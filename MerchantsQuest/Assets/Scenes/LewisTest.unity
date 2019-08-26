@@ -427,6 +427,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9b0b0d99d5d2fe8479752dafebd41f1f, type: 2}
   partyMembers:
   - {fileID: 11400000, guid: 52816e921f668db4d87ab0cf96f67b51, type: 2}
+  gold: 0
 --- !u!1001 &6854410487227695403
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -499,6 +500,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6854410486827218226, guid: 14682c8fca6e9c34bb37cd9f84dbc25c,
+        type: 3}
+      propertyPath: possibleEnemies.Array.size
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6854410486827218226, guid: 14682c8fca6e9c34bb37cd9f84dbc25c,
+        type: 3}
+      propertyPath: possibleEnemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1090ad5fb618c554a9d58ac35ed0a139,
+        type: 2}
     - target: {fileID: 6854410488373878439, guid: 14682c8fca6e9c34bb37cd9f84dbc25c,
         type: 3}
       propertyPath: m_AnchorMin.y
