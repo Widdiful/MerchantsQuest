@@ -124,13 +124,13 @@ TextureImporter:
     second: tilesetethan_43
   - first:
       213: -5942563066125847735
-    second: tilesetethan_44
+    second: crab0
   - first:
       213: -4699885619036068487
-    second: tilesetethan_45
+    second: crab1
   - first:
       213: 1995590004144372300
-    second: tilesetethan_46
+    second: crab2
   - first:
       213: -4083287944851169456
     second: snake0
@@ -1130,7 +1130,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tilesetethan_44
+      name: crab0
       rect:
         serializedVersion: 2
         x: 0
@@ -1151,7 +1151,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tilesetethan_45
+      name: crab1
       rect:
         serializedVersion: 2
         x: 16
@@ -1172,7 +1172,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tilesetethan_46
+      name: crab2
       rect:
         serializedVersion: 2
         x: 32
