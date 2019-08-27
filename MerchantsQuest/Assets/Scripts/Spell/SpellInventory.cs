@@ -14,12 +14,6 @@ public class SpellInventory : MonoBehaviour
         {
             Instance = this;
         }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-
-        DontDestroyOnLoad(this.gameObject);
     }
 
 
