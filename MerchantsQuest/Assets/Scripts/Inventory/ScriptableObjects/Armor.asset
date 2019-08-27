@@ -19,8 +19,22 @@ MonoBehaviour:
   - {fileID: 7973886625310189405, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
   - {fileID: 3072967742494045084, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
   - {fileID: -9053114588808880918, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: 2389193319765324094, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: 5085415284296604745, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: 1691966074973790518, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: -4135836072091612975, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: -7604838462600041511, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: -2326387718176073400, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
   fakeDescriptionsAsset: {fileID: 4900000, guid: f66c5fb48bf6ae4459b28b1769d948f1,
     type: 3}
-  descriptions: []
+  descriptions:
+  - "can block a mountain\r"
+  - "can't block a twig\r"
+  - "not worth your time\r"
+  - "able to deflect fire\r"
+  - 
   nameAsset: {fileID: 4900000, guid: 7a25b3c2a23cf7244856e53baea48089, type: 3}
-  names: []
+  names:
+  - "Ivans Blocker\r"
+  - Giants Skull
+  activeIcon: []
