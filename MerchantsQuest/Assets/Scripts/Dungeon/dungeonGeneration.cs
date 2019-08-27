@@ -31,6 +31,9 @@ public class dungeonGeneration : MonoBehaviour
     int[,] map;
     const float gridOffset = 0.5f;
     const float chestChance = 0;
+
+
+    public GameObject buttonReference;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +47,8 @@ public class dungeonGeneration : MonoBehaviour
         map = new int[xSize,ySize];
         
         //generateMap(map);
+        buttonReference = GameObject.Find("dungeonCanvas");
+        buttonReference.SetActive(false);
         
     }
 
@@ -80,11 +85,13 @@ public class dungeonGeneration : MonoBehaviour
 
     public void startDungeon()
     {
-        generateMap();
+        buttonReference.SetActive(true);
+        //generateMap();
     }
 
     public void generateMap()
     {
+        buttonReference.SetActive(false);
         for (int x = 0; x < map.GetUpperBound(0) ; x++) //Loop through the width of the map
         {
             for (int y = 0; y < map.GetUpperBound(1); y++) //Loop through the height of the map
@@ -120,10 +127,9 @@ public class dungeonGeneration : MonoBehaviour
 
             map = createRoom(newRoom, map);
             Vector2Int newCenter = newRoom.center();
-            
             if(numRooms == 0)
             {
-                playerLocation.position = new Vector3(newCenter.x + gridOffset, newCenter.y + gridOffset, 0);
+                playerLocation.position = new Vector3(newCenter.x + 1 + gridOffset, newCenter.y + 1 + gridOffset, 0);
             }
             else
             {

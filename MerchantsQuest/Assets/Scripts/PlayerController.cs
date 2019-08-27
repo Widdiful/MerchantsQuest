@@ -62,7 +62,6 @@ public class PlayerController : MonoBehaviour
 
             if(hit.collider != null)
             {
-                Debug.Log(hit.collider.name);
                 takenInput = false;
 
             }
@@ -73,13 +72,23 @@ public class PlayerController : MonoBehaviour
             if(alterPos.x >0)
             {
                 spriteController.flipX = false;
+                Debug.Log(alterPos.x);
             }
             if(alterPos.x <0)
             {
                 spriteController.flipX = true;
+                Debug.Log(alterPos.x);
             }
 
             playerTransform.Translate(alterPos);
+
+            Vector3 checkPos = new Vector3(playerTransform.position.x, playerTransform.position.y, playerTransform.position.z);
+            
+            checkPos.x = Mathf.FloorToInt(checkPos.x) + 0.5f;
+            checkPos.y = Mathf.FloorToInt(checkPos.y) + 0.5f;
+
+            playerTransform.position = checkPos;
+
             timeTllNextInput = maxTime;
             GameManager.instance?.Step(this);
         }
