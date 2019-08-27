@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
 
             playerTransform.Translate(alterPos);
             timeTllNextInput = maxTime;
+            GameManager.instance?.Step(this);
         }
 
         
