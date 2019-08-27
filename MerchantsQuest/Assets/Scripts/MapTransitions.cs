@@ -13,7 +13,7 @@ public class MapTransitions : MonoBehaviour
         player.gameObject.GetComponent<PlayerController>().combatCamera.enabled = !disableCamera;
         GameManager.instance.encountersAllowed = encountersAllowed;
         if (leadsToDungeon) {
-            dungeon.generateMap();
+            dungeon.startDungeon();
         }
         else {
             nextMap.SetActive(true);

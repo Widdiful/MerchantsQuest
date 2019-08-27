@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,7 +20,7 @@ public class CombatManager : MonoBehaviour
     public GameObject statsPrefab;
     public StatsBase currentActor;
     public float timeToWait;
-    public Text messageText;
+    public TextMeshProUGUI messageText;
     public EnemySpriteManager spriteManager;
     private int turnIndex = 0;
     private bool battleEnded;

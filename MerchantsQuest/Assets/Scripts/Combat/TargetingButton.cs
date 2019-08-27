@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ public class TargetingButton : MonoBehaviour
 {
     public int index;
     public string characterName;
-    public Text text;
+    public TextMeshProUGUI text;
     private CommandMenu commandMenu;
     private bool targetAllies;
 

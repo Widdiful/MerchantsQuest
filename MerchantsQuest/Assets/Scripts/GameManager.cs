@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject combatRoot, overworldRoot;
+    public GameObject combatRoot, overworldRoot, worldMapRoot;
     public CombatManager combatManager;
     public Vector2Int minMaxEncounterRate;
+    public Vector2 dungeonExitPoint;
+    public dungeonGeneration dungeon;
+    public PlayerController player;
     public float transitionTime;
     public bool encountersAllowed;
     private int stepsUntilEncounter;
@@ -43,10 +46,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update() {
+        if (Input.GetKeyDown("i")) {
+            ExitDungeon();
+        }
+    }
+
     IEnumerator CombatTransition(PlayerController player) {
         player.canMove = false;
         yield return new WaitForSeconds(transitionTime);
         StartCombat();
         player.canMove = true;
+    }
+
+    public void ExitDungeon() {
+        worldMapRoot.SetActive(true);
+        dungeon.shutDungeonDown();
+        player.transform.position = dungeonExitPoint;
     }
 }
