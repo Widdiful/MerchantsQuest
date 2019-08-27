@@ -35,8 +35,8 @@ public class ItemManager : MonoBehaviour
         DontDestroyOnLoad(this);
 
         SetUpRefs();
-
         items = new Dictionary<int, Item>();
+
     }
 
     private void SetUpRefs()
@@ -70,7 +70,7 @@ public class ItemManager : MonoBehaviour
     public void GenerateItems()
     {
         //This is a big to do
-        for(int i = 0; i < itemAmount; i++)
+        for (int i = 0; i < itemAmount; i++)
         {
             Item item = new Item();
             item.appraised = false;
@@ -79,7 +79,7 @@ public class ItemManager : MonoBehaviour
             item.id = i;
 
             items.Add(i, item);
-
+            Debug.Log(i);
         }
     }
 

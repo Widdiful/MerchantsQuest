@@ -6,8 +6,11 @@ public class ShopTrigger : MonoBehaviour
 {
     public ShopManager myShop;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public GameObject shopKeeperSpeech;
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
+        Debug.Log("colliding with " + collision.tag);
         if(collision.gameObject.tag == "Player")
         {
             if (Input.GetKeyDown(KeyCode.E))
@@ -19,8 +22,27 @@ public class ShopTrigger : MonoBehaviour
             {
                 myShop.ShowShop(false);
             }
+
+            if(!myShop.ShopActive())
+            {
+                shopKeeperSpeech.SetActive(true);
+            }
+            else
+            {
+                shopKeeperSpeech.SetActive(false);
+            }
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            shopKeeperSpeech.SetActive(false);
+        }
+    }
+
+
 
 
 }

@@ -9,8 +9,6 @@ public class ShopManager : MonoBehaviour
     public GameObject shopUI;
     public ShopSlot[] shopSlots;
 
-    public KeyCode shopInterfaceKey;
-
     bool shopEnabled = false;
     private void Start()
     {
@@ -21,6 +19,9 @@ public class ShopManager : MonoBehaviour
     {
         shopEnabled = active;
         shopUI.SetActive(active);
+
+        if (!shopEnabled)
+            InventoryManager.Instance.HideStats();
     }
 
     public bool ShopActive()

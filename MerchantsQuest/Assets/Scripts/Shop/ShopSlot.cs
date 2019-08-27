@@ -35,5 +35,10 @@ public class ShopSlot : Slot<Item>
             price = 250;
         }
     }
-    
+
+    public override void DisplayStats()
+    {
+        InventoryManager.Instance.DisplayStats(item, transform.position);
+    }
+
 }
