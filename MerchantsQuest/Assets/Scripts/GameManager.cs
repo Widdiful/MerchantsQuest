@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public GameObject combatRoot, overworldRoot;
     public CombatManager combatManager;
+    public Vector2Int minMaxEncounterRate;
+    public float transitionTime;
+    private int stepsUntilEncounter;
 
     public static GameManager instance;
 
@@ -14,6 +17,8 @@ public class GameManager : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
+
+        stepsUntilEncounter = Random.Range(minMaxEncounterRate.x, minMaxEncounterRate.y);
     }
 
     public void StartCombat() {
@@ -27,9 +32,18 @@ public class GameManager : MonoBehaviour
         overworldRoot.SetActive(true);
     }
 
-    private void Update() {
-        if (Input.GetKeyDown("i")) {
-            StartCombat();
+    public void Step(PlayerController player) {
+        stepsUntilEncounter--;
+        if (stepsUntilEncounter <= 0) {
+            stepsUntilEncounter = Random.Range(minMaxEncounterRate.x, minMaxEncounterRate.y);
+            StartCoroutine(CombatTransition(player));
         }
+    }
+
+    IEnumerator CombatTransition(PlayerController player) {
+        player.canMove = false;
+        yield return new WaitForSeconds(transitionTime);
+        StartCombat();
+        player.canMove = true;
     }
 }

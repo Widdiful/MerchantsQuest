@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public float timeTllNextInput;
     private float maxTime;
 
-
+    public Camera combatCamera;
     public bool canMove;
     void Start()
     {
@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
 
             playerTransform.Translate(alterPos);
             timeTllNextInput = maxTime;
+            GameManager.instance?.Step(this);
         }
 
         

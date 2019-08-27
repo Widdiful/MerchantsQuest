@@ -147,6 +147,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   timeTllNextInput: 0.3
+  combatCamera: {fileID: 1525004343719435536}
   canMove: 0
 --- !u!1 &1525004343719435534
 GameObject:
