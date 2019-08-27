@@ -5005,6 +5005,7 @@ MonoBehaviour:
   dungeon: {fileID: 1704535406}
   encountersAllowed: 1
   leadsToDungeon: 1
+  disableCamera: 0
 --- !u!1 &870643917
 GameObject:
   m_ObjectHideFlags: 0
@@ -10531,6 +10532,11 @@ PrefabInstance:
       propertyPath: shopKeeperSpeech
       value: 
       objectReference: {fileID: 520342420}
+    - target: {fileID: 6188159908389301428, guid: 9e29b76c9612070448871ed333d86de2,
+        type: 3}
+      propertyPath: disableCamera
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e29b76c9612070448871ed333d86de2, type: 3}
 --- !u!1001 &6854410487227695403

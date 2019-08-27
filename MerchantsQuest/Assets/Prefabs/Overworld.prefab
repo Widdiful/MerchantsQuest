@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!61 &847186571
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104808272405339386}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5}
+  m_EdgeRadius: 0
+--- !u!114 &847186572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104808272405339386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02abc9320c3cca94db9775857cede8da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextMap: {fileID: 0}
+  thisMap: {fileID: 5144843010698919874}
+  entrancePoint: {fileID: 0}
+  dungeon: {fileID: 1007250847792145355}
+  encountersAllowed: 1
+  leadsToDungeon: 1
+  disableCamera: 0
 --- !u!1 &6188159908386659755
 GameObject:
   m_ObjectHideFlags: 0
@@ -4403,7 +4448,10 @@ MonoBehaviour:
   nextMap: {fileID: 5144843010698919874}
   thisMap: {fileID: 6188159909493739093}
   entrancePoint: {fileID: 6188159908773949882}
+  dungeon: {fileID: 0}
   encountersAllowed: 1
+  leadsToDungeon: 0
+  disableCamera: 0
 --- !u!1 &6188159909634291385
 GameObject:
   m_ObjectHideFlags: 0
@@ -5099,11 +5147,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6348593238281664182, guid: 471f7350e8dcbec41badec4fd6b217ed,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6348593238406333331, guid: 471f7350e8dcbec41badec4fd6b217ed,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5114,11 +5157,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 6348593238406333332, guid: 471f7350e8dcbec41badec4fd6b217ed,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6348593238406333335, guid: 471f7350e8dcbec41badec4fd6b217ed,
         type: 3}
       propertyPath: m_SortingOrder
@@ -5126,6 +5164,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471f7350e8dcbec41badec4fd6b217ed, type: 3}
+--- !u!114 &1007250847792145355 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6348593238281664182, guid: 471f7350e8dcbec41badec4fd6b217ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 6188159909472048509}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16172bbdf4c41214b9c52341f9ef0233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1007250847427591924 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6348593237921688457, guid: 471f7350e8dcbec41badec4fd6b217ed,
@@ -5207,6 +5257,10 @@ PrefabInstance:
       propertyPath: entrancePoint
       value: 
       objectReference: {fileID: 6188159909634291384}
+    - target: {fileID: 1530282926, guid: f4c98b508a5dd4346b3a9852859b8daa, type: 3}
+      propertyPath: disableCamera
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4c98b508a5dd4346b3a9852859b8daa, type: 3}
 --- !u!4 &8502970409620561720 stripped
@@ -5224,6 +5278,12 @@ GameObject:
 --- !u!4 &6188159908773949882 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1277501088, guid: f4c98b508a5dd4346b3a9852859b8daa,
+    type: 3}
+  m_PrefabInstance: {fileID: 6188159909917224730}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2104808272405339386 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5248106842305590240, guid: f4c98b508a5dd4346b3a9852859b8daa,
     type: 3}
   m_PrefabInstance: {fileID: 6188159909917224730}
   m_PrefabAsset: {fileID: 0}
