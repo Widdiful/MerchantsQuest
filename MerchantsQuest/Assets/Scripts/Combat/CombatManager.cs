@@ -83,6 +83,8 @@ public class CombatManager : MonoBehaviour
     public void Attack(StatsBase attacker, StatsBase target, int damage, bool ignoreDefence) {
         int damageTaken = target.TakeDamage(damage, ignoreDefence);
 
+        messageText.text = "";
+
         if (damageTaken > 0) {
             if (ignoreDefence) messageText.text += "Critical hit!\n";
             messageText.text += string.Format("{0} takes {1} damage.", target.characterName, damageTaken);
