@@ -78,15 +78,12 @@ public class StatsBase : ScriptableObject
 
     private void ChangeHealth(int amount) {
         // Deal damage, maybe die
-        Debug.Log(currentHP);
         currentHP += amount;
-        Debug.Log(currentHP);
         if (currentHP <= 0) {
             Kill();
         }
 
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
-        Debug.Log(currentHP);
     }
 
     private void SetHealth(int amount) {
