@@ -47,9 +47,9 @@ public class CombatManager : MonoBehaviour
 
             if (enemyTeam.Count > 0 && playerTeam.Count > 0) {
 
-                turnIndex = (turnIndex + 1) % (playerTeam.Count + enemyTeam.Count);
+                turnIndex = (turnIndex + 1) % (allAllies.Count + allEnemies.Count);
 
-                if (!turnOrder[turnIndex].isDead) {
+                if (turnIndex < turnOrder.Count && !turnOrder[turnIndex].isDead) {
                     currentActor = turnOrder[turnIndex];
 
                     if (statsPanels.Keys.Contains<StatsBase>(currentActor)) {
@@ -235,6 +235,7 @@ public class CombatManager : MonoBehaviour
         }
 
         // TODO: sort turnOrder by agility stat
+        turnOrder = turnOrder.OrderByDescending(stat => stat.currentAGI).ToList();
 
         // Generate first message
         messageText.text = "";

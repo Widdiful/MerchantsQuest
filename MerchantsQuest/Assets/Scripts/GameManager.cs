@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public CombatManager combatManager;
     public Vector2Int minMaxEncounterRate;
     public float transitionTime;
+    public bool encountersAllowed;
     private int stepsUntilEncounter;
 
     public static GameManager instance;
@@ -33,10 +34,12 @@ public class GameManager : MonoBehaviour
     }
 
     public void Step(PlayerController player) {
-        stepsUntilEncounter--;
-        if (stepsUntilEncounter <= 0) {
-            stepsUntilEncounter = Random.Range(minMaxEncounterRate.x, minMaxEncounterRate.y);
-            StartCoroutine(CombatTransition(player));
+        if (encountersAllowed) {
+            stepsUntilEncounter--;
+            if (stepsUntilEncounter <= 0) {
+                stepsUntilEncounter = Random.Range(minMaxEncounterRate.x, minMaxEncounterRate.y);
+                StartCoroutine(CombatTransition(player));
+            }
         }
     }
 

@@ -101,7 +101,6 @@ public class StatsBase : ScriptableObject
 
         CombatManager.instance.expEarned += expValue * Mathf.CeilToInt(level * 0.75f);
         CombatManager.instance.goldEarned += goldValue * Mathf.CeilToInt(level * 0.75f);
-        CombatManager.instance.turnOrder.Remove(this);
     }
 
     public virtual void GetCommand() {
