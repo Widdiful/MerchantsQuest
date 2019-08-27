@@ -42,7 +42,7 @@ public class dungeonGeneration : MonoBehaviour
         nRooms = 20;
         map = new int[xSize,ySize];
         
-        generateMap(map);
+        //generateMap(map);
         
     }
 
@@ -60,11 +60,11 @@ public class dungeonGeneration : MonoBehaviour
              GameObject.Destroy(child.gameObject);
          }
 
-        generateMap(map);
+        generateMap();
     }
 
 
-    void generateMap(int[,] map)
+    public void generateMap()
     {
         for (int x = 0; x < map.GetUpperBound(0) ; x++) //Loop through the width of the map
         {
