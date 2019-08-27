@@ -30,7 +30,7 @@ public class StatsBase : ScriptableObject
 
         targetXP = 0;
         int tempTotal = 0;
-        for(int i = 0; i < level; i++) {
+        for(int i = 0; i <= level; i++) {
             tempTotal = targetXP;
             targetXP += (i * 100);
         }

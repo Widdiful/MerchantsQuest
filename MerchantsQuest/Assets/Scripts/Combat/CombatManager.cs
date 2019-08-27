@@ -75,7 +75,7 @@ public class CombatManager : MonoBehaviour
             }
         }
         else {
-            StartCoroutine(EndBattle());
+            StartCoroutine(EndBattle(true));
         }
     }
 
@@ -145,6 +145,23 @@ public class CombatManager : MonoBehaviour
         messageText.text += string.Format("{0} defends.", defender.characterName);
 
         StartCoroutine(NextTurnWait());
+    }
+
+    public void Flee() {
+        DisableCommandCanvas();
+        messageText.text = string.Format("{0} flees...\n", currentActor.characterName);
+        StartCoroutine(FleeDelay());
+    }
+
+    IEnumerator FleeDelay() {
+        yield return new WaitForSeconds(timeToWait);
+        if (Random.Range(0, 2) == 0) {
+            StartCoroutine(EndBattle(false));
+        }
+        else {
+            messageText.text += "But fails to escape!";
+            StartCoroutine(NextTurnWait());
+        }
     }
 
     public void EnableCommandCanvas() {
@@ -266,9 +283,14 @@ public class CombatManager : MonoBehaviour
         NextTurn();
     }
 
-    IEnumerator EndBattle() {
-        PartyManager.instance.gold += goldEarned;
-        messageText.text += string.Format("The party has earned {0} experience points and {1} gold.", expEarned, goldEarned);
+    IEnumerator EndBattle(bool keepGold) {
+        if (keepGold) {
+            PartyManager.instance.gold += goldEarned;
+            messageText.text += string.Format("The party has earned {0} experience points and {1} gold.", expEarned, goldEarned);
+        }
+        else {
+            messageText.text += string.Format("The party has earned {0} experience points.", expEarned);
+        }
         yield return new WaitForSeconds(timeToWait);
 
         for (int i = 0; i < PartyManager.instance.partyMembers.Count; i++) {

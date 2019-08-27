@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CommandMenu : MonoBehaviour
 {
-    public enum CommandType { Attack, Defend, Spell, Item };
+    public enum CommandType { Attack, Defend, Spell, Item, Flee};
     public StatsBase target;
     public CommandType commandType;
     public Spell currentSpell;
@@ -22,6 +22,9 @@ public class CommandMenu : MonoBehaviour
                 break;
             case CommandType.Defend:
                 CombatManager.instance.currentActor.Defend();
+                break;
+            case CommandType.Flee:
+                CombatManager.instance.Flee();
                 break;
         }
         CombatManager.instance.ToggleIndicator();
@@ -68,6 +71,11 @@ public class CommandMenu : MonoBehaviour
 
     public void DefendButton() {
         commandType = CommandType.Defend;
+        ExecuteCommand();
+    }
+
+    public void FleeButton() {
+        commandType = CommandType.Flee;
         ExecuteCommand();
     }
 }
