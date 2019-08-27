@@ -21,7 +21,7 @@ public class TransitionBoi : MonoBehaviour
         float transitionTick = 0.01f;
 
         if(GameManager.instance)
-            transitionTick = amountToTransition / GameManager.instance.transitionTime;
+            transitionTick = (amountToTransition / GameManager.instance.transitionTime) *0.01f;
 
         while(dissolveVal <= amountToTransition)
         {
@@ -44,7 +44,7 @@ public class TransitionBoi : MonoBehaviour
         float transitionTick = 0.01f;
         if (GameManager.instance)
         {
-            transitionTick = amountToTransition / GameManager.instance.transitionTime;
+            transitionTick = (amountToTransition / GameManager.instance.transitionTime) * 0.01f;
         }
 
         while (dissolveVal > 0)
