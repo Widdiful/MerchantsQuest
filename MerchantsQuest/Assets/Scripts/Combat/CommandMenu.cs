@@ -7,13 +7,18 @@ public class CommandMenu : MonoBehaviour
     public enum CommandType { Attack, Defend, Spell, Item };
     public StatsBase target;
     public CommandType commandType;
-    public Canvas commandCanvas, targetingCanvas;
+    public Spell currentSpell;
+    public Canvas commandCanvas, targetingCanvas, spellCanvas;
     public TargetingMenu targetingMenu;
+    public SpellMenu spellMenu;
 
     public void ExecuteCommand() {
         switch (commandType) {
             case CommandType.Attack:
                 CombatManager.instance.currentActor.Attack(target);
+                break;
+            case CommandType.Spell:
+                CombatManager.instance.currentActor.CastSpell(target, currentSpell);
                 break;
             case CommandType.Defend:
                 CombatManager.instance.currentActor.Defend();
@@ -22,20 +27,43 @@ public class CommandMenu : MonoBehaviour
         CombatManager.instance.ToggleIndicator();
     }
 
-    private void SwitchToTargeting() {
+    private void SwitchToTargeting(bool targetAllies) {
         commandCanvas.enabled = false;
         targetingCanvas.enabled = true;
-        targetingMenu.InitialiseTargetList();
+        spellCanvas.enabled = false;
+        targetingMenu.InitialiseTargetList(targetAllies);
     }
 
-    public void SetTarget(int index) {
-        target = CombatManager.instance.enemyTeam[index];
+    private void SwitchToSpell() {
+        commandCanvas.enabled = false;
+        targetingCanvas.enabled = false;
+        spellCanvas.enabled = true;
+        spellMenu.InitialiseTargetList();
+    }
+
+    public void SetSpell(Spell spell) {
+        currentSpell = spell;
+        SwitchToTargeting(spell.spellType == SpellType.Heal);
+    }
+
+    public void SetTarget(int index, bool targetAllies) {
+        if (!targetAllies) {
+            target = CombatManager.instance.enemyTeam[index];
+        }
+        else {
+            target = CombatManager.instance.allAllies[index];
+        }
         ExecuteCommand();
     }
 
     public void AttackButton() {
         commandType = CommandType.Attack;
-        SwitchToTargeting();
+        SwitchToTargeting(false);
+    }
+
+    public void SpellButton() {
+        commandType = CommandType.Spell;
+        SwitchToSpell();
     }
 
     public void DefendButton() {

@@ -14,14 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Player
   sprite: {fileID: 0}
-  level: 20
-  maxHP: 20
+  level: 1
+  maxHP: 200
   maxMP: 6
-  baseATK: 10
+  baseATK: 100
   baseDEF: 5
   baseAGI: 5
   baseINT: 0
   expValue: 0
+  goldValue: 0
+  totalXP: 0
+  targetXP: 0
   currentHP: 0
   currentMP: 0
   currentATK: 10
@@ -37,3 +40,22 @@ MonoBehaviour:
   critChance: 0.2
   isDead: 0
   isEnemy: 0
+  spellList:
+  - id: 0
+    name: Fireball
+    spellType: 2
+    primaryStatValue: 100
+    manaCost: 2
+    icon: {fileID: 0}
+  - id: 0
+    name: Expensive Fireball
+    spellType: 2
+    primaryStatValue: 1000
+    manaCost: 100
+    icon: {fileID: 0}
+  - id: 0
+    name: Heal
+    spellType: 1
+    primaryStatValue: 100
+    manaCost: 0
+    icon: {fileID: 0}

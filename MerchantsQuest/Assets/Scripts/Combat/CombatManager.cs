@@ -9,12 +9,12 @@ public class CombatManager : MonoBehaviour
 {
 
     public static CombatManager instance;
-    public List<PlayerStats> playerTeam = new List<PlayerStats>();
+    public List<PlayerStats> playerTeam, allAllies = new List<PlayerStats>();
     public List<EnemyStats> enemyTeam, allEnemies = new List<EnemyStats>();
     public List<StatsBase> turnOrder = new List<StatsBase>();
     public List<EnemyStats> possibleEnemies = new List<EnemyStats>();
     public AnimationCurve numberOfEnemies;
-    public Canvas commandCanvas, targetingCanvas, messageCanvas;
+    public Canvas commandCanvas, targetingCanvas, messageCanvas, spellCanvas;
     public Transform statsPanel;
     public GameObject statsPrefab;
     public StatsBase currentActor;
@@ -97,6 +97,14 @@ public class CombatManager : MonoBehaviour
         StartCoroutine(NextTurnWait());
     }
 
+    public void Heal(StatsBase healer, StatsBase target, int amount) {
+        target.Heal(amount);
+
+        messageText.text += string.Format("{0} heals {1} health.", target.characterName, amount);
+
+        StartCoroutine(NextTurnWait());
+    }
+
     public void StartAttack(StatsBase attacker, StatsBase target, int damage, bool ignoreDefence) {
         DisableCommandCanvas();
         StartCoroutine(AttackDelay(attacker, target, damage, ignoreDefence));
@@ -118,7 +126,14 @@ public class CombatManager : MonoBehaviour
         yield return new WaitForSeconds(timeToWait);
         if (attacker.currentMP >= spell.manaCost) {
             attacker.currentMP -= spell.manaCost;
-            Attack(attacker, target, spell.primaryStatValue, false);
+            switch (spell.spellType) {
+                case SpellType.Damage:
+                    Attack(attacker, target, spell.primaryStatValue, false);
+                    break;
+                case SpellType.Heal:
+                    Heal(attacker, target, spell.primaryStatValue);
+                    break;
+            }
         }
         else {
             messageText.text += "Not enough MP!";
@@ -136,12 +151,14 @@ public class CombatManager : MonoBehaviour
         commandCanvas.enabled = true;
         targetingCanvas.enabled = false;
         messageCanvas.enabled = false;
+        spellCanvas.enabled = false;
     }
 
     public void DisableCommandCanvas() {
         commandCanvas.enabled = false;
         targetingCanvas.enabled = false;
         messageCanvas.enabled = true;
+        spellCanvas.enabled = false;
     }
 
     public void UpdateAllStats() {
@@ -173,6 +190,7 @@ public class CombatManager : MonoBehaviour
             CharacterPanel panel = Instantiate(statsPrefab, statsPanel).GetComponent<CharacterPanel>();
             panel.UpdateStats(temp);
             statsPanels[temp] = panel;
+            allAllies.Add(temp);
 
             if (!player.isDead) {
                 playerTeam.Add(temp);
@@ -265,6 +283,9 @@ public class CombatManager : MonoBehaviour
                     yield return new WaitForSeconds(timeToWait * 2);
                     messageText.text = string.Format("{0}'s stats have increased.\n HP + {1}, MP + {2}, ATK + {3},\nDEF + {4}, AGI + {5}, INT + {6}.",
                         player.characterName, player.hpPerLevel, player.mpPerLevel, player.atkPerLevel, player.defPerLevel, player.agiPerLevel, player.intPerLevel);
+                    player.InitialiseCharacter();
+                    player.currentHP = player.maxHP;
+                    player.currentMP = player.maxMP;
                 }
             }
 

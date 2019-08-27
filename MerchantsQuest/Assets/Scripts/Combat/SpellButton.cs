@@ -3,23 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TargetingButton : MonoBehaviour
+public class SpellButton : MonoBehaviour
 {
     public int index;
     public string characterName;
     public Text text;
+    public Spell spell;
+    public Button button;
     private CommandMenu commandMenu;
-    private bool targetAllies;
 
-    public void Initialise(int newIndex, string newName, CommandMenu menu, bool newTargetAllies) {
+    public void Initialise(int newIndex, CommandMenu menu, Spell newSpell, bool canAfford) {
         index = newIndex;
-        characterName = newName;
+        characterName = newSpell.name;
         text.text = characterName;
         commandMenu = menu;
-        targetAllies = newTargetAllies;
+        spell = newSpell;
+        button.interactable = canAfford;
     }
 
     public void Click() {
-        commandMenu.SetTarget(index, targetAllies);
+        commandMenu.SetSpell(spell);
     }
 }
