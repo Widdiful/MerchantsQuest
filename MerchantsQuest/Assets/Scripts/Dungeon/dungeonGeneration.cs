@@ -27,6 +27,7 @@ public class dungeonGeneration : MonoBehaviour
 
     public Transform playerLocation;
     int currentFloorNumber;
+    public int highestFloorAchieved;
     int[,] map;
     const float gridOffset = 0.5f;
     const float chestChance = 0;
@@ -56,13 +57,31 @@ public class dungeonGeneration : MonoBehaviour
     {
         // do floor number increase and start floor transition steps
         currentFloorNumber++;
+        
+        if(currentFloorNumber > highestFloorAchieved)
+        {
+            highestFloorAchieved = currentFloorNumber;
+        }
         foreach (Transform child in transform) {
              GameObject.Destroy(child.gameObject);
-         }
+        }
 
         generateMap();
     }
 
+    public void shutDungeonDown()
+    {
+        foreach (Transform child in transform) {
+             GameObject.Destroy(child.gameObject);
+        }
+        tilemap.ClearAllTiles();
+        backgroundTiles.ClearAllTiles();
+    }
+
+    public void startDungeon()
+    {
+        generateMap();
+    }
 
     public void generateMap()
     {
