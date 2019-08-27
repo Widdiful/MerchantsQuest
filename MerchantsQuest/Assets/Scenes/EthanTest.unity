@@ -11672,6 +11672,54 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7972589242902617153, guid: 1a61e74a7be0bb541b0fc6f8dfad8e05,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e1db1eb6aa74e24ab38fdc33046428d,
+        type: 3}
+    - target: {fileID: 775165709345987207, guid: 1a61e74a7be0bb541b0fc6f8dfad8e05,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e1db1eb6aa74e24ab38fdc33046428d,
+        type: 3}
+    - target: {fileID: 775165710267624070, guid: 1a61e74a7be0bb541b0fc6f8dfad8e05,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e1db1eb6aa74e24ab38fdc33046428d,
+        type: 3}
+    - target: {fileID: 775165709602037580, guid: 1a61e74a7be0bb541b0fc6f8dfad8e05,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e1db1eb6aa74e24ab38fdc33046428d,
+        type: 3}
+    - target: {fileID: 775165711271547209, guid: 1a61e74a7be0bb541b0fc6f8dfad8e05,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e1db1eb6aa74e24ab38fdc33046428d,
+        type: 3}
+    - target: {fileID: 775165709218273310, guid: 1a61e74a7be0bb541b0fc6f8dfad8e05,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e1db1eb6aa74e24ab38fdc33046428d,
+        type: 3}
+    - target: {fileID: 8002512230419619830, guid: 1a61e74a7be0bb541b0fc6f8dfad8e05,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5200602414747782809, guid: d3f34630c9b63ab479bf914fa217ae3e,
+        type: 3}
+    - target: {fileID: 6440834343660848718, guid: 1a61e74a7be0bb541b0fc6f8dfad8e05,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1391a94974a06044b979e6084d78bb80,
+        type: 3}
     - target: {fileID: 1335971137142795168, guid: 1a61e74a7be0bb541b0fc6f8dfad8e05,
         type: 3}
       propertyPath: m_textInfo.characterCount
