@@ -910,12 +910,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f750f12af82b444b8eaa3a80ca487e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &240537295 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8147380428004152710, guid: 9e29b76c9612070448871ed333d86de2,
-    type: 3}
-  m_PrefabInstance: {fileID: 6188159908389301427}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &243238888
 GameObject:
   m_ObjectHideFlags: 0
@@ -10621,7 +10615,7 @@ PrefabInstance:
         type: 3}
       propertyPath: buttonReference
       value: 
-      objectReference: {fileID: 240537295}
+      objectReference: {fileID: 0}
     - target: {fileID: 6188159910000673621, guid: 9e29b76c9612070448871ed333d86de2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10951,6 +10945,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6854410486827218226, guid: 14682c8fca6e9c34bb37cd9f84dbc25c,
+        type: 3}
+      propertyPath: dungeon
+      value: 
+      objectReference: {fileID: 1704535406}
     - target: {fileID: 1637865385, guid: 14682c8fca6e9c34bb37cd9f84dbc25c, type: 3}
       propertyPath: m_RootOrder
       value: 3

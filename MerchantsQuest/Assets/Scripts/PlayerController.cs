@@ -27,6 +27,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    private void FixedUpdate() 
+    {
         if(canMove)
         {
             if(timeTllNextInput<=0)
@@ -36,7 +41,6 @@ public class PlayerController : MonoBehaviour
             timeTllNextInput-=Time.deltaTime;
         }
     }
-
 
     void movePlayer()
     {
@@ -81,7 +85,6 @@ public class PlayerController : MonoBehaviour
             }
 
             playerTransform.Translate(alterPos);
-
             Vector3 checkPos = new Vector3(playerTransform.position.x, playerTransform.position.y, playerTransform.position.z);
             
             checkPos.x = Mathf.FloorToInt(checkPos.x) + 0.5f;
@@ -91,6 +94,7 @@ public class PlayerController : MonoBehaviour
 
             timeTllNextInput = maxTime;
             GameManager.instance?.Step(this);
+
         }
 
         
