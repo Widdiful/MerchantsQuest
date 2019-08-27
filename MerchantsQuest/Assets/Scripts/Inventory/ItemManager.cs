@@ -43,26 +43,26 @@ public class ItemManager : MonoBehaviour
     {
         if (armorRefs != null)
         {
-            armorRefs.descriptions = ReadFile(armorRefs.fakeDescriptionsAsset);
-            armorRefs.names = ReadFile(armorRefs.nameAsset);
+            armorRefs.descriptions = Helpers.ReadFile(armorRefs.fakeDescriptionsAsset);
+            armorRefs.names = Helpers.ReadFile(armorRefs.nameAsset);
         }
 
         if (consumeableRefs != null)
         {
-            consumeableRefs.descriptions = ReadFile(consumeableRefs.fakeDescriptionsAsset);
-            consumeableRefs.names = ReadFile(consumeableRefs.nameAsset);
+            consumeableRefs.descriptions = Helpers.ReadFile(consumeableRefs.fakeDescriptionsAsset);
+            consumeableRefs.names = Helpers.ReadFile(consumeableRefs.nameAsset);
         }
 
         if(spellRefs != null)
         {
-            spellRefs.descriptions = ReadFile(spellRefs.fakeDescriptionsAsset);
-            spellRefs.names = ReadFile(spellRefs.nameAsset);
+            spellRefs.descriptions = Helpers.ReadFile(spellRefs.fakeDescriptionsAsset);
+            spellRefs.names = Helpers.ReadFile(spellRefs.nameAsset);
         }
 
         if (weaponRefs != null)
         {
-            weaponRefs.descriptions = ReadFile(weaponRefs.fakeDescriptionsAsset);
-            weaponRefs.names = ReadFile(weaponRefs.nameAsset);
+            weaponRefs.descriptions = Helpers.ReadFile(weaponRefs.fakeDescriptionsAsset);
+            weaponRefs.names = Helpers.ReadFile(weaponRefs.nameAsset);
         }
     }
 
@@ -144,22 +144,7 @@ public class ItemManager : MonoBehaviour
 
         return currItem;
     }
-
-    private string[] ReadFile(TextAsset file)
-    {
-        if(file != null)
-        {
-            string text = file.text;
-            string[] textList = Regex.Split(text, "\n");
-            return textList;
-        }
-        else
-        {
-            Debug.Log("Failed to read file, " + file.name);
-            return null;
-        }
-    }
-
+    
     //Returns the item to the user.
     public Item GetItemFromID(int id)
     {

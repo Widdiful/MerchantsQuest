@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ShopManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class ShopManager : MonoBehaviour
 
     public GameObject shopUI;
     public ShopSlot[] shopSlots;
+
+    public TMP_Text shopText;
 
     bool shopEnabled = false;
     private void Start()
@@ -20,7 +23,10 @@ public class ShopManager : MonoBehaviour
         shopEnabled = active;
         shopUI.SetActive(active);
 
-        if (!shopEnabled)
+
+        if (shopEnabled)
+            shopText.text = "Text Here";
+        else
             InventoryManager.Instance.HideStats();
     }
 
