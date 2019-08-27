@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 4606733147929230807}
   - component: {fileID: 4606733147929230805}
   - component: {fileID: 4606733147929230806}
+  - component: {fileID: 7277357897682865570}
   m_Layer: 5
   m_Name: ShopKeeperUI
   m_TagString: Untagged
@@ -233,3 +234,18 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &7277357897682865570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4606733147929230808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f16b1873851e3a4baeb73d39ec6e7f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  greetingsText: {fileID: 4606733147852371388}
+  greetingsFile: {fileID: 4900000, guid: b393c20e1d6f234479e3406d6b2044fb, type: 3}
+  greetings: []

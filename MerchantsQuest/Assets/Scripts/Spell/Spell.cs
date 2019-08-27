@@ -13,4 +13,5 @@ public struct Spell
     public int manaCost;
 
     public Sprite icon;
+    public Sprite activeIcon;
 }

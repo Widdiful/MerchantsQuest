@@ -17,15 +17,9 @@ public class SpellSlot : Slot<Spell>
     public new void SetSlot(Spell newItem)
     {
         base.SetSlot(newItem);
-        icon.sprite = item.icon;
+        icon.sprite = item.activeIcon;
     }
 
-
-    public void EquipSpell()
-    {
-        SpellInventory.Instance.equipedSpells.AddToSlot(item);
-        RemoveItem();
-    }
 
     public override void DisplayStats()
     {

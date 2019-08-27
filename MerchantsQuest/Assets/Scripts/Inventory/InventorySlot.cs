@@ -29,6 +29,7 @@ public class InventorySlot : Slot<Item>
             newSpell.spellType = item.spellType;
             newSpell.primaryStatValue = item.primaryStatValue;
             newSpell.icon = item.icon;
+            newSpell.activeIcon = ItemManager.Instance.spellRefs.activeIcon[Random.Range(0, ItemManager.Instance.spellRefs.activeIcon.Length)];
             SpellInventory.Instance.AddSpell(newSpell);
         }
         else

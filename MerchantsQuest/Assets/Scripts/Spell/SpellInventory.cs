@@ -8,8 +8,6 @@ public class SpellInventory : MonoBehaviour
 
     public SpellSlot[] spellSlots;
 
-    public EquippedSpells equipedSpells;
-
     private void Awake()
     {
         if(Instance == null)

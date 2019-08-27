@@ -116,7 +116,7 @@ public class ItemManager : MonoBehaviour
                 currItem.fakeDescription = spellRefs.descriptions[Random.Range(0, spellRefs.descriptions.Length)];
                 currItem.icon = spellRefs.sprites[Random.Range(0, spellRefs.sprites.Length)];
                 currItem.spellType = (SpellType)Random.Range(1, (int)SpellType.Size);
-                currItem.manaCost = Random.Range(0, 10);
+                currItem.manaCost = Random.Range(1, 10);
                 break;
             case ItemType.Weapon:
                 currItem.name = weaponRefs.names[Random.Range(0, weaponRefs.names.Length)];

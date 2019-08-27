@@ -11,4 +11,6 @@ public class ItemRefs : ScriptableObject
     public string[] descriptions;
     public TextAsset nameAsset;
     public string[] names;
+
+    public Sprite[] activeIcon;
 }
