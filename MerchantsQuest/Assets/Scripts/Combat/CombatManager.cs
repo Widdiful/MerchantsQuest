@@ -27,6 +27,7 @@ public class CombatManager : MonoBehaviour
     private Dictionary<StatsBase, CharacterPanel> statsPanels = new Dictionary<StatsBase, CharacterPanel>();
     public AnimatedBackground background;
     public int expEarned, goldEarned;
+    public dungeonGeneration dungeon;
 
     private void Awake() {
         if (!instance)
@@ -82,8 +83,6 @@ public class CombatManager : MonoBehaviour
 
     public void Attack(StatsBase attacker, StatsBase target, int damage, bool ignoreDefence) {
         int damageTaken = target.TakeDamage(damage, ignoreDefence);
-
-        messageText.text = "";
 
         if (damageTaken > 0) {
             if (ignoreDefence) messageText.text += "Critical hit!\n";
@@ -193,6 +192,7 @@ public class CombatManager : MonoBehaviour
         // Reset values
         battleEnded = false;
         playerTeam.Clear();
+        allAllies.Clear();
         enemyTeam.Clear();
         allEnemies.Clear();
         turnOrder.Clear();
@@ -225,6 +225,7 @@ public class CombatManager : MonoBehaviour
         Dictionary<string, int> enemyDict = new Dictionary<string, int>();
         for (int i = 0; i < enemyCount; i++) {
             EnemyStats temp = Instantiate(possibleEnemies[Random.Range(0, possibleEnemies.Count)]);
+            temp.level = dungeon.getFloorNumber();
             temp.InitialiseCharacter();
             enemyTeam.Add(temp);
             allEnemies.Add(temp);
@@ -254,7 +255,7 @@ public class CombatManager : MonoBehaviour
             turnOrder.Add(enemy);
         }
 
-        // TODO: sort turnOrder by agility stat
+        // Sort by agility
         turnOrder = turnOrder.OrderByDescending(stat => stat.currentAGI).ToList();
 
         // Generate first message

@@ -99,8 +99,8 @@ public class StatsBase : ScriptableObject
     public virtual void Kill() {
         isDead = true;
 
-        CombatManager.instance.expEarned += expValue * Mathf.CeilToInt(level * 0.75f);
-        CombatManager.instance.goldEarned += goldValue * Mathf.CeilToInt(level * 0.75f);
+        CombatManager.instance.expEarned += expValue * (1 + Mathf.CeilToInt(level * 0.75f));
+        CombatManager.instance.goldEarned += goldValue * (1 + Mathf.CeilToInt(level * 0.75f));
     }
 
     public virtual void GetCommand() {
