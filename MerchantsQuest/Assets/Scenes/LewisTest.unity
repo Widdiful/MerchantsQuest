@@ -15820,6 +15820,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1007250848677314740, guid: 9e29b76c9612070448871ed333d86de2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e29b76c9612070448871ed333d86de2, type: 3}
 --- !u!1 &6188159908389301428 stripped
@@ -16131,6 +16136,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6854410486827218226, guid: 14682c8fca6e9c34bb37cd9f84dbc25c,
+        type: 3}
+      propertyPath: dungeon
+      value: 
+      objectReference: {fileID: 1704535406}
     - target: {fileID: 6854410486827218225, guid: 14682c8fca6e9c34bb37cd9f84dbc25c,
         type: 3}
       propertyPath: m_LocalPosition.x

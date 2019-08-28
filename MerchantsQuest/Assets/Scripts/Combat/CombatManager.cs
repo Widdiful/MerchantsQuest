@@ -36,6 +36,11 @@ public class CombatManager : MonoBehaviour
             Destroy(gameObject);
     }
 
+    private void Start() {
+        if (!dungeon)
+            dungeon = GameObject.FindObjectOfType<dungeonGeneration>();
+    }
+
     public void StartCombat() {
         StartCoroutine(StartBattle());
         background.Randomise();
@@ -138,7 +143,7 @@ public class CombatManager : MonoBehaviour
 
     public void UseItem(StatsBase attacker, StatsBase target, Item item) {
         DisableCommandCanvas();
-        StartCoroutine(SpellDelay(attacker, target, item));
+        StartCoroutine(ItemDelay(attacker, target, item));
     }
 
     IEnumerator ItemDelay(StatsBase attacker, StatsBase target, Item item) {
