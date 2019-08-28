@@ -15,27 +15,36 @@ public class StatsBase : ScriptableObject
     public bool isDead, isEnemy;
     public List<Spell> spellList = new List<Spell>();
     protected bool isDefending;
+    public int initialisedLevel;
 
     public void InitialiseCharacter() {
-        maxHP = maxHP + (hpPerLevel * (level - 1));
-        maxMP = maxMP + (mpPerLevel * (level - 1));
-        currentATK = baseATK + (atkPerLevel * (level - 1)) + InventoryManager.Instance.equipment.weaponSlot.item.primaryStatValue;
-        currentDEF = baseDEF + (defPerLevel * (level - 1)) + InventoryManager.Instance.equipment.armorSlot.item.primaryStatValue;
-        currentAGI = baseAGI + (agiPerLevel * (level - 1));
-        currentINT = baseINT + (intPerLevel * (level - 1));
+        if (initialisedLevel < level) {
+            initialisedLevel = level;
+            maxHP = maxHP + (hpPerLevel * (level - 1));
+            maxMP = maxMP + (mpPerLevel * (level - 1));
+            currentATK = baseATK + (atkPerLevel * (level - 1)) + InventoryManager.Instance.equipment.weaponSlot.item.primaryStatValue;
+            currentDEF = baseDEF + (defPerLevel * (level - 1)) + InventoryManager.Instance.equipment.armorSlot.item.primaryStatValue;
+            currentAGI = baseAGI + (agiPerLevel * (level - 1));
+            currentINT = baseINT + (intPerLevel * (level - 1));
+
+            SetCurrentHPMP();
+
+            targetXP = 0;
+            int tempTotal = 0;
+            for (int i = 0; i <= level; i++) {
+                tempTotal = targetXP;
+                targetXP += (i * 50);
+            }
+            if (level > 1 && totalXP == 0) {
+                totalXP = tempTotal;
+            }
+        }
+    }
+
+    public void SetCurrentHPMP() {
         if (!isDead && currentHP == 0) {
             currentHP = maxHP;
             currentMP = maxMP;
-        }
-
-        targetXP = 0;
-        int tempTotal = 0;
-        for(int i = 0; i <= level; i++) {
-            tempTotal = targetXP;
-            targetXP += (i * 50);
-        }
-        if (level > 1 && totalXP == 0) {
-            totalXP = tempTotal;
         }
     }
 

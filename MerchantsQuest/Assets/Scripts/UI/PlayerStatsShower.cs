@@ -12,6 +12,7 @@ public class PlayerStatsShower : MonoBehaviour
     public void UpdateStats()
     {
         stats = PartyManager.instance.partyMembers[0];
+        stats.SetCurrentHPMP();
         levelText.text = stats.level.ToString();
         hpText.text = stats.currentHP.ToString() + "/" + stats.maxHP;
         attackText.text = stats.currentATK.ToString();

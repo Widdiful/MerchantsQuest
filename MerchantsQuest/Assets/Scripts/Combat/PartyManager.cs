@@ -18,7 +18,9 @@ public class PartyManager : MonoBehaviour
         partyMembers.Clear();
 
         foreach(PlayerStats player in partyMemberPrefabs) {
-            partyMembers.Add(Instantiate(player));
+            PlayerStats temp = Instantiate(player);
+            partyMembers.Add(temp);
+            temp.InitialiseCharacter();
         }
     }
 }
