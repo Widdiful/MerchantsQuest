@@ -36,6 +36,8 @@ public class ShopSlot : Slot<Item>
             //Work out how to price up consumables
             price = 250;
         }
+
+        item.price = price;
     }
 
     public override void DisplayStats()
