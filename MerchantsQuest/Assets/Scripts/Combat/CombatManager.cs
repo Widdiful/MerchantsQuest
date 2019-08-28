@@ -130,10 +130,10 @@ public class CombatManager : MonoBehaviour
             attacker.currentMP -= spell.manaCost;
             switch (spell.spellType) {
                 case SpellType.Damage:
-                    Attack(attacker, target, spell.primaryStatValue, false);
+                    Attack(attacker, target, spell.primaryStatValue + attacker.currentINT, false);
                     break;
                 case SpellType.Heal:
-                    Heal(attacker, target, spell.primaryStatValue);
+                    Heal(attacker, target, spell.primaryStatValue + attacker.currentINT);
                     break;
             }
         }

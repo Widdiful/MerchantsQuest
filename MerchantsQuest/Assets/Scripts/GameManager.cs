@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public PlayerController player;
     public float transitionTime;
     public bool encountersAllowed;
+    public bool inCombat;
     private int stepsUntilEncounter;
 
     public static GameManager instance;
@@ -29,11 +30,13 @@ public class GameManager : MonoBehaviour
         combatRoot.SetActive(true);
         overworldRoot.SetActive(false);
         combatManager.StartCombat();
+        inCombat = true;
     }
 
     public void EndCombat() {
         combatRoot.SetActive(false);
         overworldRoot.SetActive(true);
+        inCombat = false;
     }
 
     public void Step(PlayerController player) {
