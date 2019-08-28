@@ -24,7 +24,14 @@ public class ShopManager : MonoBehaviour
 
 
         if (!shopEnabled)
+        {
             InventoryManager.Instance.HideStats();
+            GameManager.instance.player.canMove = true;
+        }
+        else
+        {
+            GameManager.instance.player.canMove = false;
+        }
     }
 
     public bool ShopActive()

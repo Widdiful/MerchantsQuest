@@ -7,16 +7,17 @@ public class TransitionBoi : MonoBehaviour
     public MeshRenderer mesh;
     float amountToTransition = 1.1f;
     float dissolveVal = 0.0f;
+    public Texture2D[] dissolveTextures;
 
 
     [ContextMenu("Fade Out")]
-    public void BeginFadeOut()
+    public void BeginHide()
     {
         dissolveVal = 0.0f;
-        StartCoroutine(FadeOut());
+        StartCoroutine(HideTexture());
     }
 
-    IEnumerator FadeOut()
+    IEnumerator HideTexture()
     {
         float transitionTick = 0.01f;
 
@@ -33,13 +34,14 @@ public class TransitionBoi : MonoBehaviour
     }
 
     [ContextMenu("Fade In")]
-    public void BeginFadeIn()
+    public void BeginShow()
     {
         dissolveVal = 1.1f;
-        StartCoroutine(FadeIn());
+        mesh.material.SetTexture("_NoiseTex", dissolveTextures[Random.Range(0, dissolveTextures.Length)]);
+        StartCoroutine(ShowTexture());
     }
 
-    IEnumerator FadeIn()
+    IEnumerator ShowTexture()
     {
         float transitionTick = 0.01f;
         if (GameManager.instance)
