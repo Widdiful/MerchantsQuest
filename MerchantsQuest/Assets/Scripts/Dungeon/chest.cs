@@ -11,10 +11,13 @@ public class chest : MonoBehaviour
 
     public Sprite openSprite;
     SpriteRenderer renderer;
+
+    bool isClosed;
     // Start is called before the first frame update
     void Start()
     {
         wasBoobyTrapped = false;
+        isClosed = true;
         goldInside = Random.Range(minimumGoldInside,maximumGoldInside);
         renderer = GetComponent<SpriteRenderer>();
         if(Random.Range(0,100) > chanceForMonsterInside)
@@ -37,21 +40,27 @@ public class chest : MonoBehaviour
 // I know this isn't a great way to handle this but it functions
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.gameObject.CompareTag("Player"))
+        if(isClosed)
         {
-            if(Input.GetKeyDown("e"))
+            if(other.gameObject.CompareTag("Player"))
             {
-                openChest();
+                if(Input.GetKeyDown("e"))
+                {
+                    openChest();
+                }
             }
         }
     }
     private void OnTriggerStay2D(Collider2D other) 
     {
-        if(other.gameObject.CompareTag("Player"))
+        if(isClosed)
         {
-            if(Input.GetKeyDown("e"))
+            if(other.gameObject.CompareTag("Player"))
             {
-                openChest();
+                if(Input.GetKeyDown("e"))
+                {
+                    openChest();
+                }
             }
         }
     }
@@ -67,6 +76,7 @@ public class chest : MonoBehaviour
             PartyManager.instance.gold += goldInside;
 
         renderer.sprite = openSprite;
+        isClosed = false;
         //Destroy(this.gameObject);
 
     }
