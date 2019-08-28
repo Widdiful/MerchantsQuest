@@ -15,6 +15,8 @@ public class InventoryManager : MonoBehaviour
 
     public EquipmentManager equipment;
 
+    public PlayerStatsShower pStatShower;
+
     private void Awake()
     {
         if(Instance == null)
@@ -29,15 +31,22 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.I))
+        if(Input.GetKeyDown(KeyCode.Tab))
         {
             inventoryEnabled = !inventoryEnabled;
         }
 
         if (inventoryEnabled)
+        {
             inventory.SetActive(true);
+            GameManager.instance.player.canMove = false;
+            pStatShower.UpdateStats();
+        }
         else
+        {
             inventory.SetActive(false);
+            GameManager.instance.player.canMove = true;
+        }
     }
 
     public void AddItem(Item item)
@@ -75,6 +84,23 @@ public class InventoryManager : MonoBehaviour
         {
             inventorySlots[i].SetSlot(ItemManager.Instance.GetItemFromID(i));
         }
+    }
+
+    public List<Item> GetAllOfType(ItemType type)
+    {
+        List<Item> items = new List<Item>();
+
+        for(int i = 0; i < inventorySlots.Length; i++)
+        {
+            if(!inventorySlots[i].empty)
+            {
+                if(inventorySlots[i].item.type == type)
+                {
+                    items.Add(inventorySlots[i].item);
+                }
+            }
+        }
+        return items;
     }
 
     public void DisplayStats(Item item, Vector2 pos)

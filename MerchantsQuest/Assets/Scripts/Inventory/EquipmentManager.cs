@@ -7,6 +7,8 @@ public class EquipmentManager : MonoBehaviour
     public InventorySlot armorSlot;
     public InventorySlot weaponSlot;
 
+    public List<Item> items;
+
     public void AddToSlot(Item item, ItemType type)
     {
         switch(type)
@@ -30,11 +32,13 @@ public class EquipmentManager : MonoBehaviour
                 weaponSlot.SetSlot(item);
                 break;
         }
+        items.Add(item);
     }
 
     public void RemoveFromSlot(InventorySlot slot)
     {
         InventoryManager.Instance.AddItem(slot.item);
+        items.Remove(slot.item);
         slot.RemoveItem();
     }
 }

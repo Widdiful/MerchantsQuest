@@ -9,10 +9,9 @@ public class ShopManager : MonoBehaviour
 
     public GameObject shopUI;
     public ShopSlot[] shopSlots;
-
-    public TMP_Text shopText;
-
+    
     bool shopEnabled = false;
+
     private void Start()
     {
         FillShopWithItems();
@@ -24,9 +23,7 @@ public class ShopManager : MonoBehaviour
         shopUI.SetActive(active);
 
 
-        if (shopEnabled)
-            shopText.text = "Text Here";
-        else
+        if (!shopEnabled)
             InventoryManager.Instance.HideStats();
     }
 

@@ -10,26 +10,24 @@ public class ShopTrigger : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("colliding with " + collision.tag);
         if(collision.gameObject.tag == "Player")
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 myShop.ShowShop(true);
+                shopKeeperSpeech.SetActive(false);
+                GameManager.instance.player.canMove = false;
             }
 
             if(Input.GetKeyDown(KeyCode.Escape) && myShop.ShopActive())
             {
                 myShop.ShowShop(false);
+                GameManager.instance.player.canMove = true;
             }
 
-            if(!myShop.ShopActive())
+            if(!myShop.ShopActive() && !shopKeeperSpeech.activeSelf)
             {
                 shopKeeperSpeech.SetActive(true);
-            }
-            else
-            {
-                shopKeeperSpeech.SetActive(false);
             }
         }
     }

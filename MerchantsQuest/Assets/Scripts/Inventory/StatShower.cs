@@ -18,11 +18,11 @@ public class StatShower : MonoBehaviour
         //Stop the panel going off the screen
         if (pos.x > (Screen.width * .5f))
         {
-            rectTransform.position -= new Vector3(rectTransform.rect.size.x * 0.75f, 0, 0);
+            rectTransform.position -= new Vector3(rectTransform.rect.size.x, 0, 0);
         }
         else
         {
-            rectTransform.position += new Vector3(rectTransform.rect.size.x * 0.75f, 0, 0);
+            rectTransform.position += new Vector3(rectTransform.rect.size.x, 0, 0);
         }
         nameText.text = item.name;
         if (item.appraised)
@@ -42,11 +42,11 @@ public class StatShower : MonoBehaviour
         rectTransform.position = pos;
         if(pos.x > (Screen.width * .5f))
         {
-            rectTransform.position -= new Vector3(rectTransform.rect.size.x * 0.75f, 0, 0);
+            rectTransform.position -= new Vector3(rectTransform.rect.size.x, 0, 0);
         }
         else
         {
-            rectTransform.position += new Vector3(rectTransform.rect.size.x * 0.75f, 0, 0);
+            rectTransform.position += new Vector3(rectTransform.rect.size.x, 0, 0);
         }
         nameText.text = spell.name;
         descriptionText.text = spell.manaCost.ToString();
