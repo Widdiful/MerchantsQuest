@@ -5,7 +5,7 @@ using TMPro;
 
 public class PlayerStatsShower : MonoBehaviour
 {
-    public TMP_Text levelText, hpText, attackText, defText, agiText, intText;
+    public TMP_Text levelText, hpText, attackText, defText, agiText, intText, goldText;
 
     PlayerStats stats;
 
@@ -18,5 +18,6 @@ public class PlayerStatsShower : MonoBehaviour
         defText.text = stats.currentDEF.ToString();
         agiText.text = stats.currentAGI.ToString();
         intText.text = stats.currentINT.ToString();
+        goldText.text = PartyManager.instance.gold.ToString();
     }
 }

@@ -31,7 +31,7 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab))
+        if(Input.GetKeyDown(KeyCode.Tab) && !GameManager.instance.inCombat)
         {
             inventoryEnabled = !inventoryEnabled;
         }
