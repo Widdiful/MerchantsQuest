@@ -7,7 +7,9 @@ using UnityEngine;
 public class EnemyStats : StatsBase
 {
     private PlayerStats target;
+    [Range(0,1)]
     public float chanceToUseSpell;
+    [Range(0, 1)]
     public float blockChance;
 
     public override void GetCommand() {

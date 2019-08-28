@@ -86,12 +86,18 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    public void Attack(StatsBase attacker, StatsBase target, int damage, bool ignoreDefence) {
+    public void Attack(StatsBase attacker, StatsBase target, int damage, bool ignoreDefence, bool lifesteal) {
         int damageTaken = target.TakeDamage(damage, ignoreDefence);
 
         if (damageTaken > 0) {
             if (ignoreDefence) messageText.text += "Critical hit!\n";
-            messageText.text += string.Format("{0} takes {1} damage.", target.characterName, damageTaken);
+            if (!lifesteal) {
+                messageText.text += string.Format("{0} takes {1} damage.", target.characterName, damageTaken);
+            }
+            else {
+                attacker.Heal(damageTaken);
+                messageText.text += string.Format("{0} absorbs {1} HP!", target.characterName, damageTaken);
+            }
         }
         else {
             messageText.text += string.Format("{0} dodges the attack.", target.characterName);
@@ -120,7 +126,7 @@ public class CombatManager : MonoBehaviour
     IEnumerator AttackDelay(StatsBase attacker, StatsBase target, int damage, bool ignoreDefence) {
         messageText.text += string.Format("{0} attacks!\n", attacker.characterName);
         yield return new WaitForSeconds(timeToWait);
-        Attack(attacker, target, damage, ignoreDefence);
+        Attack(attacker, target, damage, ignoreDefence, false);
     }
 
     public void SpellAttack(StatsBase attacker, StatsBase target, Spell spell) {
@@ -155,7 +161,7 @@ public class CombatManager : MonoBehaviour
                 StartCoroutine(NextTurnWait());
                 break;
             case SpellType.Damage:
-                Attack(attacker, target, item.primaryStatValue, false);
+                Attack(attacker, target, item.primaryStatValue, false, false);
                 break;
             case SpellType.Heal:
                 Heal(attacker, target, item.primaryStatValue);
@@ -170,7 +176,10 @@ public class CombatManager : MonoBehaviour
                 StartCoroutine(NextTurnWait());
                 break;
             case SpellType.Damage:
-                Attack(attacker, target, spell.primaryStatValue + attacker.currentINT, false);
+                Attack(attacker, target, spell.primaryStatValue + attacker.currentINT, false, spell.lifesteal);
+                break;
+            case SpellType.Physical:
+                Attack(attacker, target, spell.primaryStatValue + attacker.currentATK, false, spell.lifesteal);
                 break;
             case SpellType.Heal:
                 Heal(attacker, target, spell.primaryStatValue + attacker.currentINT);
@@ -241,6 +250,7 @@ public class CombatManager : MonoBehaviour
         foreach(PlayerStats player in PartyManager.instance.partyMembers) {
             PlayerStats temp = Instantiate(player);
             temp.InitialiseCharacter();
+            print(temp.currentDEF);
 
             CharacterPanel panel = Instantiate(statsPrefab, statsPanel).GetComponent<CharacterPanel>();
             panel.UpdateStats(temp);
@@ -259,8 +269,8 @@ public class CombatManager : MonoBehaviour
         int enemyCount = (int)numberOfEnemies.Evaluate(Random.Range(0f, 1f));
         Dictionary<string, int> enemyDict = new Dictionary<string, int>();
         for (int i = 0; i < enemyCount; i++) {
-            EnemyStats temp = Instantiate(possibleEnemies[Random.Range(0, possibleEnemies.Count)]);
-            temp.level = dungeon.getFloorNumber();
+            EnemyStats temp = Instantiate(possibleEnemies[Random.Range(0, Mathf.Clamp(Mathf.CeilToInt((dungeon.getFloorNumber() + 1) / 5f) * 5, 0, possibleEnemies.Count))]);
+            temp.level = dungeon.getFloorNumber() + 1;
             temp.InitialiseCharacter();
             enemyTeam.Add(temp);
             allEnemies.Add(temp);

@@ -21,8 +21,8 @@ MonoBehaviour:
   baseDEF: 2
   baseAGI: 2
   baseINT: 0
-  expValue: 10
-  goldValue: 5
+  expValue: 5
+  goldValue: 2
   totalXP: 0
   targetXP: 0
   currentHP: 0
@@ -40,3 +40,7 @@ MonoBehaviour:
   critChance: 0.01
   isDead: 0
   isEnemy: 0
+  spellList: []
+  initialisedLevel: 0
+  chanceToUseSpell: 0
+  blockChance: 0

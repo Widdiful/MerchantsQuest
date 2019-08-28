@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Player
   sprite: {fileID: 0}
-  level: 10
+  level: 1
   maxHP: 20
   maxMP: 6
   baseATK: 10
-  baseDEF: 5
+  baseDEF: 10
   baseAGI: 5
   baseINT: 0
   expValue: 0
@@ -46,6 +46,7 @@ MonoBehaviour:
     spellType: 2
     primaryStatValue: 100
     manaCost: 2
+    lifesteal: 0
     icon: {fileID: 0}
     activeIcon: {fileID: 0}
   - id: 0
@@ -53,6 +54,7 @@ MonoBehaviour:
     spellType: 2
     primaryStatValue: 1000
     manaCost: 100
+    lifesteal: 0
     icon: {fileID: 0}
     activeIcon: {fileID: 0}
   - id: 0
@@ -60,5 +62,7 @@ MonoBehaviour:
     spellType: 1
     primaryStatValue: 100
     manaCost: 2
+    lifesteal: 0
     icon: {fileID: 0}
     activeIcon: {fileID: 0}
+  initialisedLevel: 0

@@ -40,3 +40,15 @@ MonoBehaviour:
   critChance: 0.01
   isDead: 0
   isEnemy: 0
+  spellList:
+  - id: 0
+    name: High Dive
+    spellType: 3
+    primaryStatValue: 20
+    manaCost: 0
+    lifesteal: 0
+    icon: {fileID: 0}
+    activeIcon: {fileID: 0}
+  initialisedLevel: 0
+  chanceToUseSpell: 0.2
+  blockChance: 0

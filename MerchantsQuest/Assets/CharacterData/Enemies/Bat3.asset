@@ -40,3 +40,15 @@ MonoBehaviour:
   critChance: 0.05
   isDead: 0
   isEnemy: 0
+  spellList:
+  - id: 0
+    name: Suck Blood
+    spellType: 3
+    primaryStatValue: -5
+    manaCost: 2
+    lifesteal: 1
+    icon: {fileID: 0}
+    activeIcon: {fileID: 0}
+  initialisedLevel: 0
+  chanceToUseSpell: 0.2
+  blockChance: 0

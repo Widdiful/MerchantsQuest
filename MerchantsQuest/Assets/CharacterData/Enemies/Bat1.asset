@@ -16,10 +16,10 @@ MonoBehaviour:
   sprite: {fileID: 2536378387995833250, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
   maxHP: 12
-  maxMP: 0
+  maxMP: 4
   baseATK: 8
   baseDEF: 4
-  baseAGI: 14
+  baseAGI: 8
   baseINT: 0
   expValue: 10
   goldValue: 5
@@ -32,11 +32,23 @@ MonoBehaviour:
   currentAGI: 0
   currentINT: 0
   hpPerLevel: 3
-  mpPerLevel: 0
+  mpPerLevel: 2
   atkPerLevel: 2
   defPerLevel: 1
-  agiPerLevel: 4
+  agiPerLevel: 2
   intPerLevel: 0
   critChance: 0.01
   isDead: 0
   isEnemy: 0
+  spellList:
+  - id: 0
+    name: Suck Blood
+    spellType: 3
+    primaryStatValue: -5
+    manaCost: 2
+    lifesteal: 1
+    icon: {fileID: 0}
+    activeIcon: {fileID: 0}
+  initialisedLevel: 0
+  chanceToUseSpell: 0.2
+  blockChance: 0

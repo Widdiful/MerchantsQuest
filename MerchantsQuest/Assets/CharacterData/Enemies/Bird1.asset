@@ -15,11 +15,11 @@ MonoBehaviour:
   characterName: Cave Canary
   sprite: {fileID: -4943854427503644303, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
-  maxHP: 8
+  maxHP: 12
   maxMP: 0
-  baseATK: 12
-  baseDEF: 4
-  baseAGI: 8
+  baseATK: 10
+  baseDEF: 2
+  baseAGI: 10
   baseINT: 0
   expValue: 10
   goldValue: 5
@@ -40,3 +40,15 @@ MonoBehaviour:
   critChance: 0.01
   isDead: 0
   isEnemy: 0
+  spellList:
+  - id: 0
+    name: High Dive
+    spellType: 3
+    primaryStatValue: 5
+    manaCost: 0
+    lifesteal: 0
+    icon: {fileID: 0}
+    activeIcon: {fileID: 0}
+  initialisedLevel: 0
+  chanceToUseSpell: 0.2
+  blockChance: 0

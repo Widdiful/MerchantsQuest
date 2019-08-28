@@ -15,11 +15,11 @@ MonoBehaviour:
   characterName: Creepy Crab
   sprite: {fileID: -5942563066125847735, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
-  maxHP: 16
+  maxHP: 5
   maxMP: 0
-  baseATK: 12
+  baseATK: 6
   baseDEF: 8
-  baseAGI: 10
+  baseAGI: 4
   baseINT: 0
   expValue: 10
   goldValue: 5
@@ -31,12 +31,16 @@ MonoBehaviour:
   currentDEF: 0
   currentAGI: 0
   currentINT: 0
-  hpPerLevel: 3
+  hpPerLevel: 1
   mpPerLevel: 0
   atkPerLevel: 2
-  defPerLevel: 1
-  agiPerLevel: 2
+  defPerLevel: 3
+  agiPerLevel: 1
   intPerLevel: 0
   critChance: 0.01
   isDead: 0
   isEnemy: 0
+  spellList: []
+  initialisedLevel: 0
+  chanceToUseSpell: 0
+  blockChance: 0.2
