@@ -15,11 +15,11 @@ MonoBehaviour:
   characterName: Cave Canary
   sprite: {fileID: -4943854427503644303, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
-  maxHP: 12
+  maxHP: 8
   maxMP: 0
-  baseATK: 10
-  baseDEF: 2
-  baseAGI: 10
+  baseATK: 8
+  baseDEF: 4
+  baseAGI: 8
   baseINT: 0
   expValue: 10
   goldValue: 5

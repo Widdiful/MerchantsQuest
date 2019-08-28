@@ -15,10 +15,10 @@ MonoBehaviour:
   characterName: Bitsy Batsy
   sprite: {fileID: 2536378387995833250, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
-  maxHP: 12
+  maxHP: 8
   maxMP: 4
   baseATK: 8
-  baseDEF: 4
+  baseDEF: 2
   baseAGI: 8
   baseINT: 0
   expValue: 10

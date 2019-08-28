@@ -17,13 +17,13 @@ public class StatsBase : ScriptableObject
     protected bool isDefending;
     public int initialisedLevel;
 
-    public void InitialiseCharacter() {
+    public virtual void InitialiseCharacter() {
         if (initialisedLevel < level) {
             initialisedLevel = level;
             maxHP = maxHP + (hpPerLevel * (level - 1));
             maxMP = maxMP + (mpPerLevel * (level - 1));
-            currentATK = baseATK + (atkPerLevel * (level - 1)) + InventoryManager.Instance.equipment.weaponSlot.item.primaryStatValue;
-            currentDEF = baseDEF + (defPerLevel * (level - 1)) + InventoryManager.Instance.equipment.armorSlot.item.primaryStatValue;
+            currentATK = baseATK + (atkPerLevel * (level - 1));
+            currentDEF = baseDEF + (defPerLevel * (level - 1));
             currentAGI = baseAGI + (agiPerLevel * (level - 1));
             currentINT = baseINT + (intPerLevel * (level - 1));
 
@@ -51,18 +51,15 @@ public class StatsBase : ScriptableObject
     public int TakeDamage(int damage, bool ignoreDefence) {
         if (!isDead) {
             // Adjust damage based on defence stat
-            damage += (int)Random.Range(-(damage * 0.11f), damage * 0.21f);
+            damage += Mathf.RoundToInt(Random.Range(-(damage * 0.11f), damage * 0.21f));
             int defenceAdjusted = currentDEF;
             if (isDefending) {
                 defenceAdjusted *= 2;
             }
-            if (currentDEF <= 0 || ignoreDefence) {
+            if (defenceAdjusted <= 0 || ignoreDefence) {
                 defenceAdjusted = 1;
             }
-            int damageToTake = damage;
-            if (defenceAdjusted > damageToTake) {
-                damageToTake -= (defenceAdjusted - damageToTake);
-            }
+            int damageToTake = damage * damage / (damage + defenceAdjusted);
             if (damageToTake < 0) {
                 damageToTake = 0;
             }
@@ -70,8 +67,8 @@ public class StatsBase : ScriptableObject
             if (damageToTake == 0 && Random.Range(0, 2) == 1) {
                 damageToTake = 1;
             }
-            else if (damageToTake > 999) {
-                damageToTake = 999;
+            else if (damageToTake > Mathf.Min(damage, 999)) {
+                damageToTake = Mathf.Min(damage, 999);
             }
 
             ChangeHealth(-damageToTake);
@@ -111,8 +108,8 @@ public class StatsBase : ScriptableObject
     public virtual void Kill() {
         isDead = true;
 
-        CombatManager.instance.expEarned += expValue * (1 + Mathf.CeilToInt(level * 0.75f));
-        CombatManager.instance.goldEarned += goldValue * (1 + Mathf.CeilToInt(level * 0.75f));
+        CombatManager.instance.expEarned += expValue * (Mathf.CeilToInt(level * 0.75f));
+        CombatManager.instance.goldEarned += goldValue * (Mathf.CeilToInt(level * 0.75f));
     }
 
     public virtual void GetCommand() {

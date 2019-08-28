@@ -250,7 +250,6 @@ public class CombatManager : MonoBehaviour
         foreach(PlayerStats player in PartyManager.instance.partyMembers) {
             PlayerStats temp = Instantiate(player);
             temp.InitialiseCharacter();
-            print(temp.currentDEF);
 
             CharacterPanel panel = Instantiate(statsPrefab, statsPanel).GetComponent<CharacterPanel>();
             panel.UpdateStats(temp);
@@ -355,6 +354,7 @@ public class CombatManager : MonoBehaviour
                     yield return new WaitForSeconds(timeToWait * 2);
                     messageText.text = string.Format("{0}'s stats have increased.\n HP + {1}, MP + {2}, ATK + {3},\nDEF + {4}, AGI + {5}, INT + {6}.",
                         player.characterName, player.hpPerLevel, player.mpPerLevel, player.atkPerLevel, player.defPerLevel, player.agiPerLevel, player.intPerLevel);
+                    yield return new WaitForSeconds(timeToWait);
                     player.InitialiseCharacter();
                     player.currentHP = player.maxHP;
                     player.currentMP = player.maxMP;
