@@ -11471,7 +11471,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9b0b0d99d5d2fe8479752dafebd41f1f, type: 2}
   partyMembers:
   - {fileID: 11400000, guid: 52816e921f668db4d87ab0cf96f67b51, type: 2}
-  gold: 0
+  gold: 1000
 --- !u!114 &1968922987 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8181865654492336986, guid: a7abe62d9c301ba4db5f267c6740178a,
@@ -15809,6 +15809,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6188159909493739092, guid: 9e29b76c9612070448871ed333d86de2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6188159909493739092, guid: 9e29b76c9612070448871ed333d86de2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e29b76c9612070448871ed333d86de2, type: 3}

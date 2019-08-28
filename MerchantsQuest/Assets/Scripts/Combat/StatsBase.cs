@@ -19,8 +19,8 @@ public class StatsBase : ScriptableObject
     public void InitialiseCharacter() {
         maxHP = maxHP + (hpPerLevel * (level - 1));
         maxMP = maxMP + (mpPerLevel * (level - 1));
-        currentATK = baseATK + (atkPerLevel * (level - 1));
-        currentDEF = baseDEF + (defPerLevel * (level - 1));
+        currentATK = baseATK + (atkPerLevel * (level - 1)) + InventoryManager.Instance.equipment.weaponSlot.item.primaryStatValue;
+        currentDEF = baseDEF + (defPerLevel * (level - 1)) + InventoryManager.Instance.equipment.armorSlot.item.primaryStatValue;
         currentAGI = baseAGI + (agiPerLevel * (level - 1));
         currentINT = baseINT + (intPerLevel * (level - 1));
         if (!isDead && currentHP == 0) {
@@ -60,6 +60,9 @@ public class StatsBase : ScriptableObject
 
             if (damageToTake == 0 && Random.Range(0, 2) == 1) {
                 damageToTake = 1;
+            }
+            else if (damageToTake > 999) {
+                damageToTake = 999;
             }
 
             ChangeHealth(-damageToTake);
