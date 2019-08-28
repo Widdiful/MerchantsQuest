@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public float transitionTime;
     public bool encountersAllowed;
     public bool inCombat;
+    public GameObject pauseMenu;
+    public GameObject evacButton;
     private int stepsUntilEncounter;
 
     public static GameManager instance;
@@ -50,8 +52,8 @@ public class GameManager : MonoBehaviour
     }
 
     private void Update() {
-        if (Input.GetKeyDown("i")) {
-            ExitDungeon();
+        if (Input.GetKeyDown("escape")) {
+            TogglePause();
         }
     }
 
@@ -63,8 +65,16 @@ public class GameManager : MonoBehaviour
     }
 
     public void ExitDungeon() {
-        worldMapRoot.SetActive(true);
-        dungeon.shutDungeonDown();
-        player.transform.position = dungeonExitPoint;
+        if (dungeon.isInDungeon) {
+            worldMapRoot.SetActive(true);
+            TogglePause();
+            dungeon.shutDungeonDown();
+            player.transform.position = dungeonExitPoint;
+        }
+    }
+
+    public void TogglePause() {
+        evacButton.SetActive(dungeon.isInDungeon);
+        pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
     }
 }

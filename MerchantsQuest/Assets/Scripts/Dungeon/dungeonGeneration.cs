@@ -31,6 +31,7 @@ public class dungeonGeneration : MonoBehaviour
     int[,] map;
     const float gridOffset = 0.5f;
     const float chestChance = 0;
+    public bool isInDungeon;
 
 
     public GameObject buttonReference;
@@ -81,6 +82,7 @@ public class dungeonGeneration : MonoBehaviour
         }
         tilemap.ClearAllTiles();
         backgroundTiles.ClearAllTiles();
+        isInDungeon = false;
     }
 
     public void startDungeon()
@@ -91,6 +93,7 @@ public class dungeonGeneration : MonoBehaviour
 
     public void generateMap()
     {
+        isInDungeon = true;
         buttonReference.SetActive(false);
         for (int x = 0; x < map.GetUpperBound(0) ; x++) //Loop through the width of the map
         {
