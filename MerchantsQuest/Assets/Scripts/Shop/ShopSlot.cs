@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class ShopSlot : Slot<Item>
 {
     public int price;
-
     public new void SetSlot(Item newItem)
     {
-        base.SetSlot(newItem);
+
+        icon.color = Color.white;
+        item = newItem;
         icon.sprite = item.icon;
+        empty = false;
         CalculatePrice();
     }
 
@@ -38,7 +40,8 @@ public class ShopSlot : Slot<Item>
 
     public override void DisplayStats()
     {
-        InventoryManager.Instance.DisplayStats(item, transform.position);
+        if(!empty)
+            InventoryManager.Instance.DisplayStats(item, pos, price);
     }
 
 }

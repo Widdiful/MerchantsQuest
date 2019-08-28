@@ -15,7 +15,7 @@ public class InventorySlot : Slot<Item>
     public override void DisplayStats()
     {
         if(!empty)
-            InventoryManager.Instance.DisplayStats(item, transform.position);
+            InventoryManager.Instance.DisplayStats(item, pos);
     }
 
 
@@ -35,7 +35,7 @@ public class InventorySlot : Slot<Item>
         else
             InventoryManager.Instance.equipment.AddToSlot(item, item.type);
 
-
+        HideStats();
         RemoveItem();
     }
 }

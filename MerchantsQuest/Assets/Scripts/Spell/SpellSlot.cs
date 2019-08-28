@@ -24,7 +24,7 @@ public class SpellSlot : Slot<Spell>
     public override void DisplayStats()
     {
         if(!empty)
-            InventoryManager.Instance.statShower.SetSpellStats(item, transform.position);
+            InventoryManager.Instance.statShower.SetSpellStats(item, pos);
     }
 
 }

@@ -9,13 +9,15 @@ public class Slot<T> : MonoBehaviour
     public bool empty;
     public Image icon;
 
+    protected RectTransform pos;
+
     private void Awake()
     {
         if (icon.sprite == null)
         {
             icon.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
         }
-        empty = true;
+        pos = GetComponent<RectTransform>();
     }
 
     public void SetSlot(T newItem)

@@ -41,14 +41,36 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    public void RefillShop(bool completeRefill)
+    {
+        if (!completeRefill)
+        {
+            for (int i = 0; i < shopSlots.Length; i++)
+            {
+                if (shopSlots[i].empty)
+                {
+                    shopSlots[i].SetSlot(ItemManager.Instance.GenerateSpecificItem(itemForSale));
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < shopSlots.Length; i++)
+            {
+                shopSlots[i].SetSlot(ItemManager.Instance.GenerateSpecificItem(itemForSale));
+            }
+        }
+    }
+
     public void PurchaseItem(ShopSlot slot)
     {
         //Take this away from the  players gold 
         //slot.price 
 
-        if (PartyManager.instance.gold >= slot.price)
+        if (!slot.empty && PartyManager.instance.gold >= slot.price )
         {
             PartyManager.instance.gold -= slot.price;
+            slot.HideStats();
             InventoryManager.Instance.AddItem(slot.item);
             slot.RemoveItem();
         }

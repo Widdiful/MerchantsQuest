@@ -103,10 +103,10 @@ public class InventoryManager : MonoBehaviour
         return items;
     }
 
-    public void DisplayStats(Item item, Vector2 pos)
+    public void DisplayStats(Item item, RectTransform pos, int cost = 0)
     {
         statShower.gameObject.SetActive(true);
-        statShower.SetStats(item, pos);
+        statShower.SetStats(item, pos, cost);
     }
 
     public void HideStats()

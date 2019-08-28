@@ -8384,8 +8384,8 @@ MonoBehaviour:
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 10
+  m_fontSizeMax: 24
   m_fontStyle: 0
   m_textAlignment: 257
   m_characterSpacing: 0
@@ -13315,6 +13315,7 @@ GameObject:
   - component: {fileID: 1961483059}
   - component: {fileID: 1961483060}
   - component: {fileID: 1961483061}
+  - component: {fileID: 1961483062}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -13379,6 +13380,19 @@ MonoBehaviour:
   partyMembers:
   - {fileID: 11400000, guid: 52816e921f668db4d87ab0cf96f67b51, type: 2}
   gold: 1000
+--- !u!114 &1961483062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961483058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf2ef17129f55b41b8cef8a0f9f7a1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shops: []
 --- !u!114 &1968922987 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8181865654492336986, guid: a7abe62d9c301ba4db5f267c6740178a,
@@ -15045,9 +15059,9 @@ MonoBehaviour:
   m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 10
+  m_fontSizeMax: 24
   m_fontStyle: 0
   m_textAlignment: 257
   m_characterSpacing: 0
@@ -15443,9 +15457,9 @@ MonoBehaviour:
   m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 10
+  m_fontSizeMax: 24
   m_fontStyle: 0
   m_textAlignment: 257
   m_characterSpacing: 0
