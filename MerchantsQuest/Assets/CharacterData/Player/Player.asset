@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Player
   sprite: {fileID: 0}
-  level: 100
+  level: 10
   maxHP: 20
   maxMP: 6
   baseATK: 10
@@ -59,6 +59,6 @@ MonoBehaviour:
     name: Heal
     spellType: 1
     primaryStatValue: 100
-    manaCost: 0
+    manaCost: 2
     icon: {fileID: 0}
     activeIcon: {fileID: 0}

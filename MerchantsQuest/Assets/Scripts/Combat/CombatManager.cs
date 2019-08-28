@@ -340,7 +340,7 @@ public class CombatManager : MonoBehaviour
                 while (player.totalXP >= player.targetXP) {
                     yield return new WaitForSeconds(timeToWait);
                     player.level++;
-                    player.targetXP += (player.level * 100);
+                    player.targetXP += (player.level * 50);
                     messageText.text = string.Format("{0}'s level has increased to {1}!", player.characterName, player.level);
                     yield return new WaitForSeconds(timeToWait * 2);
                     messageText.text = string.Format("{0}'s stats have increased.\n HP + {1}, MP + {2}, ATK + {3},\nDEF + {4}, AGI + {5}, INT + {6}.",
