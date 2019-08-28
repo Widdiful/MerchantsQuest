@@ -46,7 +46,11 @@ public class ShopManager : MonoBehaviour
         //Take this away from the  players gold 
         //slot.price 
 
-        InventoryManager.Instance.AddItem(slot.item);
-        slot.RemoveItem();
+        if (PartyManager.instance.gold >= slot.price)
+        {
+            PartyManager.instance.gold -= slot.price;
+            InventoryManager.Instance.AddItem(slot.item);
+            slot.RemoveItem();
+        }
     }
 }
