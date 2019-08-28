@@ -128,18 +128,48 @@ public class CombatManager : MonoBehaviour
         yield return new WaitForSeconds(timeToWait);
         if (attacker.currentMP >= spell.manaCost) {
             attacker.currentMP -= spell.manaCost;
-            switch (spell.spellType) {
-                case SpellType.Damage:
-                    Attack(attacker, target, spell.primaryStatValue + attacker.currentINT, false);
-                    break;
-                case SpellType.Heal:
-                    Heal(attacker, target, spell.primaryStatValue + attacker.currentINT);
-                    break;
-            }
+            UseSpell(attacker, target, spell);
         }
         else {
             messageText.text += "Not enough MP!";
             StartCoroutine(NextTurnWait());
+        }
+    }
+
+    public void UseItem(StatsBase attacker, StatsBase target, Item item) {
+        DisableCommandCanvas();
+        StartCoroutine(SpellDelay(attacker, target, item));
+    }
+
+    IEnumerator ItemDelay(StatsBase attacker, StatsBase target, Item item) {
+        messageText.text += string.Format("{0} uses {1}!\n", attacker.characterName, item.name);
+        yield return new WaitForSeconds(timeToWait);
+        switch (item.spellType) {
+            case SpellType.None:
+                messageText.text += "You can't use this!";
+                StartCoroutine(NextTurnWait());
+                break;
+            case SpellType.Damage:
+                Attack(attacker, target, item.primaryStatValue, false);
+                break;
+            case SpellType.Heal:
+                Heal(attacker, target, item.primaryStatValue);
+                break;
+        }
+    }
+
+    private void UseSpell(StatsBase attacker, StatsBase target, Spell spell) {
+        switch (spell.spellType) {
+            case SpellType.None:
+                messageText.text += "The spell does nothing!";
+                StartCoroutine(NextTurnWait());
+                break;
+            case SpellType.Damage:
+                Attack(attacker, target, spell.primaryStatValue + attacker.currentINT, false);
+                break;
+            case SpellType.Heal:
+                Heal(attacker, target, spell.primaryStatValue + attacker.currentINT);
+                break;
         }
     }
 
