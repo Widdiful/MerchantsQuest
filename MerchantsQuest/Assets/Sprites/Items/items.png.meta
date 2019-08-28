@@ -101,6 +101,9 @@ TextureImporter:
   - first:
       213: -2466789373252015564
     second: potion_5
+  - first:
+      213: 6761164967045977113
+    second: items_0
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -882,6 +885,27 @@ TextureImporter:
       bones: []
       spriteID: 815b70e97c560a146bd808cd254b1080
       internalID: -2466789373252015564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: items_0
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4f1b9ff21c55f74f9bc10a051eb1edc
+      internalID: 6761164967045977113
       vertices: []
       indices: 
       edges: []
