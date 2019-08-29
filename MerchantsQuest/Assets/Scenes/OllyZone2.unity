@@ -5107,6 +5107,7 @@ MonoBehaviour:
   spellRefs: {fileID: 11400000, guid: 2454fa73e1d5b76409eba3e4723ce26a, type: 2}
   weaponRefs: {fileID: 11400000, guid: 9faf45e142f0242408daea7c158fc65b, type: 2}
   itemAmount: 150
+  currentDungeonBestFloor: 0
 --- !u!4 &870643919
 Transform:
   m_ObjectHideFlags: 0
@@ -5277,6 +5278,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f750f12af82b444b8eaa3a80ca487e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &929825259 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1007250847950509813, guid: 9e29b76c9612070448871ed333d86de2,
+    type: 3}
+  m_PrefabInstance: {fileID: 6188159908389301427}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a7c350b189e7fd4b82a382a2696e1f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &935688232
@@ -9886,8 +9899,8 @@ MonoBehaviour:
   combatManager: {fileID: 355822765}
   minMaxEncounterRate: {x: 10, y: 20}
   dungeonExitPoint: {x: 0, y: 0}
-  dungeon: {fileID: 0}
-  player: {fileID: 0}
+  dungeon: {fileID: 1704535406}
+  player: {fileID: 929825259}
   transitionTime: 1
   encountersAllowed: 0
   inCombat: 0
@@ -10611,6 +10624,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CastleGrid
       objectReference: {fileID: 0}
+    - target: {fileID: 3079520771867645194, guid: 2de98cdeccabdfa49935e42ded37733f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3079520771867645192, guid: 2de98cdeccabdfa49935e42ded37733f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10803,7 +10821,7 @@ PrefabInstance:
     - target: {fileID: 3408264057460080211, guid: 9e29b76c9612070448871ed333d86de2,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1007250847792145354, guid: 9e29b76c9612070448871ed333d86de2,
         type: 3}
@@ -10859,6 +10877,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007250847950509813, guid: 9e29b76c9612070448871ed333d86de2,
+        type: 3}
+      propertyPath: stepSpeed
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e29b76c9612070448871ed333d86de2, type: 3}

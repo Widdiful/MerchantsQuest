@@ -33,6 +33,7 @@ public class dungeonGeneration : MonoBehaviour
     const float chestChance = 0;
     public bool isInDungeon;
 
+    bool reachedNewHighestFloor;
 
     public GameObject buttonReference;
     // Start is called before the first frame update
@@ -67,6 +68,7 @@ public class dungeonGeneration : MonoBehaviour
         if(currentFloorNumber > highestFloorAchieved)
         {
             highestFloorAchieved = currentFloorNumber;
+            reachedNewHighestFloor = true;
         }
         foreach (Transform child in transform) {
              GameObject.Destroy(child.gameObject);
@@ -83,6 +85,16 @@ public class dungeonGeneration : MonoBehaviour
         tilemap.ClearAllTiles();
         backgroundTiles.ClearAllTiles();
         isInDungeon = false;
+
+        if(reachedNewHighestFloor)
+        {
+            TownManager.instance.CompleteRefillStock();
+            ItemManager.Instance.currentDungeonBestFloor = highestFloorAchieved+1;
+        }
+        else
+        {
+            TownManager.instance.RestockEmptySlots();
+        }
     }
 
     public void startDungeon()
@@ -94,6 +106,7 @@ public class dungeonGeneration : MonoBehaviour
     public void generateMap()
     {
         isInDungeon = true;
+        reachedNewHighestFloor = false;
         buttonReference.SetActive(false);
         for (int x = 0; x < map.GetUpperBound(0) ; x++) //Loop through the width of the map
         {

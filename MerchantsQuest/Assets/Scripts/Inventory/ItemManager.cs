@@ -20,7 +20,7 @@ public class ItemManager : MonoBehaviour
     public ItemRefs weaponRefs;
 
     public int itemAmount;
-
+    public int currentDungeonBestFloor;
     private void Awake()
     {
         if(Instance == null)
@@ -36,7 +36,7 @@ public class ItemManager : MonoBehaviour
 
         SetUpRefs();
         items = new Dictionary<int, Item>();
-
+        currentDungeonBestFloor = 1;
     }
 
     private void SetUpRefs()
@@ -116,23 +116,26 @@ public class ItemManager : MonoBehaviour
                 currItem.fakeDescription = spellRefs.descriptions[Random.Range(0, spellRefs.descriptions.Length)];
                 currItem.icon = spellRefs.sprites[Random.Range(0, spellRefs.sprites.Length)];
                 currItem.spellType = (SpellType)Random.Range(1, (int)SpellType.Size);
-                currItem.manaCost = Random.Range(1, 10);
+                currItem.manaCost = Random.Range(1, 5) * currentDungeonBestFloor;
+                
                 break;
             case ItemType.Weapon:
                 currItem.name = weaponRefs.names[Random.Range(0, weaponRefs.names.Length)];
                 currItem.fakeDescription = weaponRefs.descriptions[Random.Range(0, weaponRefs.descriptions.Length)];
                 currItem.icon = weaponRefs.sprites[Random.Range(0, weaponRefs.sprites.Length)];
                 currItem.primaryStat = StatType.Attack;
+                currItem.primaryStatValue = Random.Range(0, 10) * currentDungeonBestFloor;
                 currItem.secondaryStat = (StatType)Random.Range(0, (int)StatType.Size);
-                currItem.primaryStatValue = Random.Range(0, 10);
+                currItem.secondaryStatValue = Random.Range(0, 5) * currentDungeonBestFloor;
                 break;
             case ItemType.Armor:
                 currItem.name = armorRefs.names[Random.Range(0, armorRefs.names.Length)];
                 currItem.fakeDescription = armorRefs.descriptions[Random.Range(0, armorRefs.descriptions.Length)];
                 currItem.icon = armorRefs.sprites[Random.Range(0, armorRefs.sprites.Length)];
                 currItem.primaryStat = StatType.Defence;
+                currItem.primaryStatValue = Random.Range(0, 10) * currentDungeonBestFloor;
                 currItem.secondaryStat = (StatType)Random.Range(0, (int)StatType.Size);
-                currItem.primaryStatValue = Random.Range(0, 10);
+                currItem.secondaryStatValue = Random.Range(0, 5) * currentDungeonBestFloor;
                 break;
             case ItemType.Consumable:
                 currItem.name = consumeableRefs.names[Random.Range(0, consumeableRefs.names.Length)];
