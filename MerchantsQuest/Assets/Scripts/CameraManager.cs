@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class CameraManager : MonoBehaviour
 {
-    public CinemachineVirtualCamera townCamera, playerCam;
+    public CinemachineVirtualCamera townCamera, playerCam, transCam;
     public Camera cinemachineBrain, transitionCam;
 
     public static CameraManager instance;
@@ -17,13 +17,20 @@ public class CameraManager : MonoBehaviour
 
     public void ShowTransitionCam()
     {
-        transitionCam.gameObject.SetActive(true);
-        cinemachineBrain.gameObject.SetActive(false);
+        if(townCamera.Priority == 11)
+        {
+            transCam.Follow = townCamera.gameObject.transform;
+        }
+        else if (playerCam.Priority == 11)
+        {
+            transCam.Follow = playerCam.gameObject.transform;
+        }
+        transCam.Priority = 12;
+
     }
     public void HideTransitionCam()
     {
-        transitionCam.gameObject.SetActive(false);
-        cinemachineBrain.gameObject.SetActive(true);
+        transCam.Priority = 9;
     }
 
     public void SetPlayerCamActive()

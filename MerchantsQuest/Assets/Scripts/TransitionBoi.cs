@@ -15,7 +15,6 @@ public class TransitionBoi : MonoBehaviour
     public void BeginHide()
     {
         dissolveVal = 0.0f;
-        CameraManager.instance.ShowTransitionCam();
         StartCoroutine(HideTexture());
     }
 
@@ -27,19 +26,21 @@ public class TransitionBoi : MonoBehaviour
         if(GameManager.instance)
             transitionTick = (amountToTransition / GameManager.instance.transitionTime) *0.01f;
 
-        while(dissolveVal <= amountToTransition)
+        while (dissolveVal <= amountToTransition)
         {
             dissolveVal += transitionTick;
             mesh.material.SetFloat("_DissolveAmount", dissolveVal);
             yield return null;
         }
 
+        CameraManager.instance.HideTransitionCam();
         textureHidden = true;
 
     }
 
     public void CombatShowTexture()
     {
+        CameraManager.instance.ShowTransitionCam();
         textureHidden = false;
         textureShown = false;
         dissolveVal = 1.1f;
@@ -50,6 +51,7 @@ public class TransitionBoi : MonoBehaviour
     [ContextMenu("Fade In")]
     public void BeginShow()
     {
+        CameraManager.instance.ShowTransitionCam();
         textureHidden = false;
         textureShown = false;
         dissolveVal = 1.1f;
@@ -73,6 +75,5 @@ public class TransitionBoi : MonoBehaviour
         }
 
         textureShown = true;
-        CameraManager.instance.HideTransitionCam();
     }
 }

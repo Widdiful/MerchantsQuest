@@ -21,7 +21,11 @@ public class StartScript : MonoBehaviour
     IEnumerator WaitThenDisable()
     {
 
-        yield return new WaitForSeconds(2.0f);
-        titleScreen.gameObject.SetActive(false);
+        yield return new WaitForSeconds(1.0f);
+        CameraManager.instance.ShowTransitionCam();
+        yield return new WaitForSeconds(1.0f);
+        titleScreen.transform.parent.gameObject.SetActive(false);
+
+        GameManager.instance.transition.BeginHide();
     }
 }
