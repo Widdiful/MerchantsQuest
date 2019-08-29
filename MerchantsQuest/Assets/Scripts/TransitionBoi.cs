@@ -15,6 +15,7 @@ public class TransitionBoi : MonoBehaviour
     public void BeginHide()
     {
         dissolveVal = 0.0f;
+        CameraManager.instance.ShowTransitionCam();
         StartCoroutine(HideTexture());
     }
 
@@ -72,5 +73,6 @@ public class TransitionBoi : MonoBehaviour
         }
 
         textureShown = true;
+        CameraManager.instance.HideTransitionCam();
     }
 }
