@@ -10,12 +10,14 @@ public class MapTransitions : MonoBehaviour
     public bool encountersAllowed, leadsToDungeon, disableCamera;
 
     public void Transition(Transform player) {
-        player.gameObject.GetComponent<PlayerController>().combatCamera.enabled = !disableCamera;
+        
         GameManager.instance.encountersAllowed = encountersAllowed;
         if (leadsToDungeon) {
+            CameraManager.instance.SetPlayerCamActive();
             dungeon.startDungeon();
         }
         else {
+            CameraManager.instance.SetTownCamActive();
             nextMap.SetActive(true);
             player.position = entrancePoint.position;
             thisMap.SetActive(false);

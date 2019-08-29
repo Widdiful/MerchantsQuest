@@ -2,29 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopTrigger : MonoBehaviour
+public class RecycleTrigger : MonoBehaviour
 {
-    public ShopManager myShop;
+    public RecycleManager myRecycler;
 
     public GameObject shopKeeperSpeech;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                myShop.ShowShop(true);
+                myRecycler.ShowUI(true);
                 shopKeeperSpeech.SetActive(false);
                 GameManager.instance.player.canMove = false;
             }
-            else if(Input.GetKeyDown(KeyCode.E) && myShop.ShopActive())
+            else if (Input.GetKeyDown(KeyCode.E) && myRecycler.Active())
             {
-                myShop.ShowShop(false);
+                myRecycler.ShowUI(false);
                 GameManager.instance.player.canMove = true;
             }
 
-            if(!myShop.ShopActive() && !shopKeeperSpeech.activeSelf)
+            if (!myRecycler.Active() && !shopKeeperSpeech.activeSelf)
             {
                 shopKeeperSpeech.SetActive(true);
             }
@@ -33,13 +33,9 @@ public class ShopTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             shopKeeperSpeech.SetActive(false);
         }
     }
-
-
-
-
 }
