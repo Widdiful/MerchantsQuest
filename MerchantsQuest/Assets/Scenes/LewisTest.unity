@@ -14440,7 +14440,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cf2ef17129f55b41b8cef8a0f9f7a1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shops: []
+  shops:
+  - {fileID: 8448776883460675989}
+  - {fileID: 8883951068977827421}
+  - {fileID: 7170531050310850585}
+  - {fileID: 3728014329393992433}
 --- !u!114 &1961483063
 MonoBehaviour:
   m_ObjectHideFlags: 0
