@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     public Camera combatCamera;
     public bool canMove;
 
-    bool lerping;
+    public bool lerping;
     float stepSpeed;
     const float steptime = 0.015625f;
     Vector2 targetPosition;

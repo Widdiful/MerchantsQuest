@@ -27,6 +27,7 @@ public class MapTransitions : MonoBehaviour
             }
             nextMap.SetActive(true);
             player.position = entrancePoint.position;
+            GameManager.instance.player.lerping = false;
             thisMap.SetActive(false);
         }
     }

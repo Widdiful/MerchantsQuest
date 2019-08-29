@@ -5,11 +5,11 @@ using UnityEngine;
 public class RecycleManager : MonoBehaviour
 {
     public GameObject shopUI;
-    public InventorySlot[] shopSlots;
+    public RecycleSlot[] shopSlots;
 
     public List<Item> itemsSold;
 
-    InventorySlot slotThatIsSelling;
+    RecycleSlot slotThatIsSelling;
 
     public GameObject confirm;
 
@@ -30,6 +30,7 @@ public class RecycleManager : MonoBehaviour
         else
         {
             GameManager.instance.player.canMove = true;
+            InventoryManager.Instance.HideStats();
         }
         ClearAllSlots();
         FillSlots();
@@ -52,7 +53,7 @@ public class RecycleManager : MonoBehaviour
         }
     }
 
-    public void SellItem(InventorySlot slot)
+    public void SellItem(RecycleSlot slot)
     {
         slotThatIsSelling = slot;
         confirm.SetActive(true);
