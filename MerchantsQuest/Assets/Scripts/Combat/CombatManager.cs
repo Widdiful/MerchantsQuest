@@ -310,6 +310,10 @@ public class CombatManager : MonoBehaviour
         UpdateAllStats();
         spriteManager.SetSprites(enemyTeam);
 
+        while (!GameManager.instance.transition.textureHidden) {
+            yield return null;
+        }
+
         yield return new WaitForSeconds(timeToWait);
         NextTurn();
     }

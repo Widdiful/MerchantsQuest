@@ -10,6 +10,10 @@ public class MapTransitions : MonoBehaviour
     public bool encountersAllowed, leadsToDungeon, leadsToWorldMap, fullyHealParty;
 
     public void Transition(Transform player) {
+        StartCoroutine(StartTransition(player));
+    }
+
+    IEnumerator StartTransition(Transform player) {
         
         GameManager.instance.encountersAllowed = encountersAllowed;
         if (fullyHealParty) {
@@ -18,6 +22,17 @@ public class MapTransitions : MonoBehaviour
                 stats.currentMP = stats.maxMP;
             }
         }
+
+        while (!GameManager.instance.transition.textureHidden) {
+            yield return null;
+        }
+        GameManager.instance.transition.BeginShow();
+        GameManager.instance.player.canMove = false;
+        while (!GameManager.instance.transition.textureShown) {
+            yield return null;
+        }
+        GameManager.instance.transition.BeginHide();
+        GameManager.instance.player.canMove = true;
 
         if (leadsToDungeon) {
             CameraManager.instance.SetPlayerCamActive();

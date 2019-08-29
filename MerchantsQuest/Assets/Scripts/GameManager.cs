@@ -69,7 +69,14 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CombatTransition(PlayerController player) {
         player.canMove = false;
-        yield return new WaitForSeconds(transitionTime);
+        while (!transition.textureHidden) {
+            yield return null;
+        }
+        transition.BeginShow();
+        while (!transition.textureShown) {
+            yield return null;
+        }
+        transition.BeginHide();
         StartCombat();
         player.canMove = true;
     }
