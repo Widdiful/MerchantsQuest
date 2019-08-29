@@ -29,9 +29,13 @@ public class GameManager : MonoBehaviour
     }
 
     public void StartCombat() {
+        StartCombat(null);
+    }
+
+    public void StartCombat(List<EnemyStats> enemies) {
         combatRoot.SetActive(true);
         overworldRoot.SetActive(false);
-        combatManager.StartCombat();
+        combatManager.StartCombat(enemies);
         inCombat = true;
     }
 
