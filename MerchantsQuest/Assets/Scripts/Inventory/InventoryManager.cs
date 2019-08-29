@@ -34,6 +34,12 @@ public class InventoryManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Tab) && !GameManager.instance.inCombat)
         {
             inventoryEnabled = !inventoryEnabled;
+
+            if (!inventoryEnabled)
+            {
+                inventory.SetActive(false);
+                GameManager.instance.player.canMove = true;
+            }
         }
 
         if (inventoryEnabled)
@@ -41,11 +47,6 @@ public class InventoryManager : MonoBehaviour
             inventory.SetActive(true);
             GameManager.instance.player.canMove = false;
             pStatShower.UpdateStats();
-        }
-        else
-        {
-            inventory.SetActive(false);
-            GameManager.instance.player.canMove = true;
         }
     }
 

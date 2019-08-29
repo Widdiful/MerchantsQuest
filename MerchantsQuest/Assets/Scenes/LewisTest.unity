@@ -25602,6 +25602,16 @@ PrefabInstance:
       propertyPath: leadsToWorldMap
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 253233584046655020, guid: 9e29b76c9612070448871ed333d86de2,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1530584846}
+    - target: {fileID: 253233584046655020, guid: 9e29b76c9612070448871ed333d86de2,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e29b76c9612070448871ed333d86de2, type: 3}
 --- !u!1 &6188159908389301428 stripped

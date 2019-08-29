@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
                 {
                     lerping = false;
                     playerTransform.position = targetPosition;
+                    GameManager.instance?.Step(this);
                 }
             }
         }
@@ -91,12 +92,10 @@ public class PlayerController : MonoBehaviour
             if(alterPos.x >0)
             {
                 spriteController.flipX = false;
-                Debug.Log(alterPos.x);
             }
             if(alterPos.x <0)
             {
                 spriteController.flipX = true;
-                Debug.Log(alterPos.x);
             }
 
             //playerTransform.Translate(alterPos);
@@ -110,7 +109,6 @@ public class PlayerController : MonoBehaviour
             //playerTransform.position = Vector2.MoveTowards(transform.position, checkPos, maxTime);
 
             timeTllNextInput = maxTime;
-            GameManager.instance?.Step(this);
 
         }
 
