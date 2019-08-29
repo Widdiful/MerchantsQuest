@@ -18,6 +18,7 @@ public class dungeonGeneration : MonoBehaviour
     public List<Sprite> floorSprites;
     public GameObject stairsPrefab;
     public GameObject chestPrefab;
+    public Vector2 dungeonExitPoint;
 
     // map size stuff
     int xSize;
@@ -107,22 +108,37 @@ public class dungeonGeneration : MonoBehaviour
 
     public void shutDungeonDown()
     {
+        StartCoroutine(ShutDungeonDownDelay());
+    }
+
+    IEnumerator ShutDungeonDownDelay() {
+        while (!GameManager.instance.transition.textureHidden) {
+            yield return null;
+        }
+        GameManager.instance.transition.BeginShow();
+        GameManager.instance.player.canMove = false;
+        while (!GameManager.instance.transition.textureShown) {
+            yield return null;
+        }
+        GameManager.instance.transition.BeginHide();
+        GameManager.instance.player.canMove = true;
+
         foreach (Transform child in transform) {
-             GameObject.Destroy(child.gameObject);
+            GameObject.Destroy(child.gameObject);
         }
         tilemap.ClearAllTiles();
         backgroundTiles.ClearAllTiles();
         isInDungeon = false;
 
-        if(reachedNewHighestFloor)
-        {
+        if (reachedNewHighestFloor) {
             TownManager.instance.CompleteRefillStock();
-            ItemManager.Instance.currentDungeonBestFloor = highestFloorAchieved+1;
+            ItemManager.Instance.currentDungeonBestFloor = highestFloorAchieved + 1;
         }
-        else
-        {
+        else {
             TownManager.instance.RestockEmptySlots();
         }
+
+        playerLocation.position = dungeonExitPoint;
     }
 
     public void startDungeon()
@@ -131,8 +147,23 @@ public class dungeonGeneration : MonoBehaviour
         //generateMap();
     }
 
-    public void generateMap()
+    public void generateMap() {
+        StartCoroutine(generateMapDelay());
+    }
+
+    IEnumerator generateMapDelay()
     {
+        while (!GameManager.instance.transition.textureHidden) {
+            yield return null;
+        }
+        GameManager.instance.transition.BeginShow();
+        GameManager.instance.player.canMove = false;
+        while (!GameManager.instance.transition.textureShown) {
+            yield return null;
+        }
+        GameManager.instance.transition.BeginHide();
+        GameManager.instance.player.canMove = true;
+
         isInDungeon = true;
         reachedNewHighestFloor = false;
         playerLocation.GetComponent<PlayerController>().lerping = false;

@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         else
             Destroy(gameObject);
 
+        transition.BeginHide();
         stepsUntilEncounter = Random.Range(minMaxEncounterRate.x, minMaxEncounterRate.y);
     }
 
@@ -86,7 +87,6 @@ public class GameManager : MonoBehaviour
             worldMapRoot.SetActive(true);
             TogglePause();
             dungeon.shutDungeonDown();
-            player.transform.position = dungeonExitPoint;
         }
     }
 

@@ -23,23 +23,23 @@ public class MapTransitions : MonoBehaviour
             }
         }
 
-        while (!GameManager.instance.transition.textureHidden) {
-            yield return null;
-        }
-        GameManager.instance.transition.BeginShow();
-        GameManager.instance.player.canMove = false;
-        while (!GameManager.instance.transition.textureShown) {
-            yield return null;
-        }
-        GameManager.instance.transition.BeginHide();
-        GameManager.instance.player.canMove = true;
-
         if (leadsToDungeon) {
             CameraManager.instance.SetPlayerCamActive();
             dungeon.startDungeon();
         }
         else {
-            if(leadsToWorldMap)
+            while (!GameManager.instance.transition.textureHidden) {
+                yield return null;
+            }
+            GameManager.instance.transition.BeginShow();
+            GameManager.instance.player.canMove = false;
+            while (!GameManager.instance.transition.textureShown) {
+                yield return null;
+            }
+            GameManager.instance.transition.BeginHide();
+            GameManager.instance.player.canMove = true;
+
+            if (leadsToWorldMap)
             {
                 CameraManager.instance.SetPlayerCamActive();
             }
