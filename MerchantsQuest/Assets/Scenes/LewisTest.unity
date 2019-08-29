@@ -13070,6 +13070,7 @@ MonoBehaviour:
   encountersAllowed: 1
   leadsToDungeon: 0
   leadsToWorldMap: 1
+  fullyHealParty: 0
 --- !u!61 &1482877104
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24679,6 +24680,11 @@ PrefabInstance:
       propertyPath: disableCamera
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6188159908389301428, guid: 9e29b76c9612070448871ed333d86de2,
+        type: 3}
+      propertyPath: fullyHealParty
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1007250847950509800, guid: 9e29b76c9612070448871ed333d86de2,
         type: 3}
       propertyPath: m_CollisionDetection
@@ -25719,6 +25725,7 @@ MonoBehaviour:
   encountersAllowed: 0
   leadsToDungeon: 0
   leadsToWorldMap: 0
+  fullyHealParty: 0
 --- !u!61 &6188159908389301436
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -7,11 +7,18 @@ public class MapTransitions : MonoBehaviour
     public GameObject nextMap, thisMap;
     public Transform entrancePoint;
     public dungeonGeneration dungeon;
-    public bool encountersAllowed, leadsToDungeon, leadsToWorldMap;
+    public bool encountersAllowed, leadsToDungeon, leadsToWorldMap, fullyHealParty;
 
     public void Transition(Transform player) {
         
         GameManager.instance.encountersAllowed = encountersAllowed;
+        if (fullyHealParty) {
+            foreach(PlayerStats stats in PartyManager.instance.partyMembers) {
+                stats.currentHP = stats.maxHP;
+                stats.currentMP = stats.maxMP;
+            }
+        }
+
         if (leadsToDungeon) {
             CameraManager.instance.SetPlayerCamActive();
             dungeon.startDungeon();
