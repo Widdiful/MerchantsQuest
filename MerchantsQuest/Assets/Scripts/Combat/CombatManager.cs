@@ -42,7 +42,12 @@ public class CombatManager : MonoBehaviour
     }
 
     public void StartCombat() {
-        StartCoroutine(StartBattle());
+        StartCoroutine(StartBattle(null));
+        background.Randomise();
+    }
+
+    public void StartCombat(List<EnemyStats> enemies) {
+        StartCoroutine(StartBattle(enemies));
         background.Randomise();
     }
 
@@ -230,7 +235,7 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    IEnumerator StartBattle() {
+    IEnumerator StartBattle(List<EnemyStats> enemies) {
         DisableCommandCanvas();
 
         // Reset values
@@ -264,6 +269,46 @@ public class CombatManager : MonoBehaviour
             turnOrder.Add(player);
         }
 
+        if (enemies != null) {
+            AddSetEnemies(enemies);
+        }
+        else {
+            AddRandomEnemies();
+        }
+
+        // Sort by agility
+        turnOrder = turnOrder.OrderByDescending(stat => stat.currentAGI).ToList();
+
+        // Generate first message
+        messageText.text = "";
+
+        for (int i = 0; i < enemyTeam.Count; i++) {
+            if (enemyTeam.Count == 1) {
+                messageText.text += "A ";
+            }
+            messageText.text += enemyTeam[i].characterName;
+            if (i < enemyTeam.Count - 2) {
+                messageText.text += ", ";
+            }
+            else if (i == enemyTeam.Count - 2) {
+                messageText.text += " and ";
+            }
+        }
+        if (enemyTeam.Count > 1) {
+            messageText.text += " appear!";
+        }
+        else {
+            messageText.text += " appears!";
+        }
+
+        UpdateAllStats();
+        spriteManager.SetSprites(enemyTeam);
+
+        yield return new WaitForSeconds(timeToWait);
+        NextTurn();
+    }
+
+    void AddRandomEnemies() {
         // Initialise enemies
         int enemyCount = (int)numberOfEnemies.Evaluate(Random.Range(0f, 1f));
         Dictionary<string, int> enemyDict = new Dictionary<string, int>();
@@ -298,37 +343,19 @@ public class CombatManager : MonoBehaviour
         foreach (StatsBase enemy in enemyTeam) {
             turnOrder.Add(enemy);
         }
+    }
 
-        // Sort by agility
-        turnOrder = turnOrder.OrderByDescending(stat => stat.currentAGI).ToList();
-
-        // Generate first message
-        messageText.text = "";
-
-        for (int i = 0; i < enemyTeam.Count; i++) {
-            if (enemyTeam.Count == 1) {
-                messageText.text += "A ";
-            }
-            messageText.text += enemyTeam[i].characterName;
-            if (i < enemyTeam.Count - 2) {
-                messageText.text += ", ";
-            }
-            else if (i == enemyTeam.Count - 2) {
-                messageText.text += " and ";
-            }
-        }
-        if (enemyTeam.Count > 1) {
-            messageText.text += " appear!";
-        }
-        else {
-            messageText.text += " appears!";
+    void AddSetEnemies(List<EnemyStats> enemies) {
+        foreach (EnemyStats enemy in enemies) { 
+            EnemyStats temp = Instantiate(enemy);
+            temp.InitialiseCharacter();
+            enemyTeam.Add(temp);
+            allEnemies.Add(temp);
         }
 
-        UpdateAllStats();
-        spriteManager.SetSprites(enemyTeam);
-
-        yield return new WaitForSeconds(timeToWait);
-        NextTurn();
+        foreach (StatsBase enemy in enemyTeam) {
+            turnOrder.Add(enemy);
+        }
     }
 
     IEnumerator EndBattle(bool keepGold) {

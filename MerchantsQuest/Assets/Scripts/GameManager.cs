@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
     IEnumerator CombatTransition(PlayerController player) {
         player.canMove = false;
         yield return new WaitForSeconds(transitionTime);
