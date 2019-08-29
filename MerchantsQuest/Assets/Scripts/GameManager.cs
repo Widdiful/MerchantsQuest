@@ -17,7 +17,11 @@ public class GameManager : MonoBehaviour
     public GameObject evacButton;
     private int stepsUntilEncounter;
 
+    public TransitionBoi transition;
+
     public static GameManager instance;
+
+
 
     private void Awake() {
         if (!instance)
@@ -25,6 +29,7 @@ public class GameManager : MonoBehaviour
         else
             Destroy(gameObject);
 
+        transition.BeginHide();
         stepsUntilEncounter = Random.Range(minMaxEncounterRate.x, minMaxEncounterRate.y);
     }
 

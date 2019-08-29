@@ -8,7 +8,8 @@ public class TransitionBoi : MonoBehaviour
     float amountToTransition = 1.1f;
     float dissolveVal = 0.0f;
     public Texture2D[] dissolveTextures;
-
+    public Texture2D[] combatTextures;
+    public bool textureShown, textureHidden;
 
     [ContextMenu("Fade Out")]
     public void BeginHide()
@@ -16,6 +17,7 @@ public class TransitionBoi : MonoBehaviour
         dissolveVal = 0.0f;
         StartCoroutine(HideTexture());
     }
+
 
     IEnumerator HideTexture()
     {
@@ -31,11 +33,24 @@ public class TransitionBoi : MonoBehaviour
             yield return null;
         }
 
+        textureHidden = true;
+
+    }
+
+    public void CombatShowTexture()
+    {
+        textureHidden = false;
+        textureShown = false;
+        dissolveVal = 1.1f;
+        mesh.material.SetTexture("_NoiseTex", combatTextures[Random.Range(0, dissolveTextures.Length)]);
+        StartCoroutine(ShowTexture());
     }
 
     [ContextMenu("Fade In")]
     public void BeginShow()
     {
+        textureHidden = false;
+        textureShown = false;
         dissolveVal = 1.1f;
         mesh.material.SetTexture("_NoiseTex", dissolveTextures[Random.Range(0, dissolveTextures.Length)]);
         StartCoroutine(ShowTexture());
@@ -55,5 +70,7 @@ public class TransitionBoi : MonoBehaviour
             mesh.material.SetFloat("_DissolveAmount", dissolveVal);
             yield return null;
         }
+
+        textureShown = true;
     }
 }
