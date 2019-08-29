@@ -15,8 +15,8 @@ MonoBehaviour:
   characterName: Corpse
   sprite: {fileID: 0}
   level: 1
-  maxHP: 100
-  maxMP: 0
+  baseHP: 100
+  baseMP: 0
   baseATK: 0
   baseDEF: 0
   baseAGI: 0
@@ -25,6 +25,8 @@ MonoBehaviour:
   goldValue: 0
   totalXP: 0
   targetXP: 0
+  maxHP: 100
+  maxMP: 0
   currentHP: 0
   currentMP: 0
   currentATK: 0
@@ -41,3 +43,32 @@ MonoBehaviour:
   isDead: 0
   isEnemy: 0
   spellList: []
+  initialisedLevel: 0
+  weapon:
+    id: 0
+    name: 
+    fakeDescription: 
+    appraised: 0
+    type: 0
+    primaryStat: 0
+    primaryStatValue: 0
+    secondaryStat: 0
+    secondaryStatValue: 0
+    icon: {fileID: 0}
+    spellType: 0
+    manaCost: 0
+    price: 0
+  armour:
+    id: 0
+    name: 
+    fakeDescription: 
+    appraised: 0
+    type: 0
+    primaryStat: 0
+    primaryStatValue: 0
+    secondaryStat: 0
+    secondaryStatValue: 0
+    icon: {fileID: 0}
+    spellType: 0
+    manaCost: 0
+    price: 0

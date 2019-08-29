@@ -17,6 +17,8 @@ MonoBehaviour:
   level: 1
   maxHP: 5
   maxMP: 0
+  baseHP: 5
+  baseMP: 0
   baseATK: 5
   baseDEF: 8
   baseAGI: 4

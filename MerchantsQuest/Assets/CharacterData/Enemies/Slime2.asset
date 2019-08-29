@@ -17,6 +17,8 @@ MonoBehaviour:
   level: 1
   maxHP: 16
   maxMP: 0
+  baseHP: 16
+  baseMP: 0
   baseATK: 10
   baseDEF: 2
   baseAGI: 2
@@ -40,3 +42,7 @@ MonoBehaviour:
   critChance: 0.01
   isDead: 0
   isEnemy: 0
+  spellList: []
+  initialisedLevel: 0
+  chanceToUseSpell: 0
+  blockChance: 0

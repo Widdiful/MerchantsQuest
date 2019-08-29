@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Player
   sprite: {fileID: 0}
-  level: 1
-  maxHP: 20
-  maxMP: 6
+  level: 10
+  baseHP: 20
+  baseMP: 6
   baseATK: 10
   baseDEF: 10
   baseAGI: 5
@@ -25,6 +25,8 @@ MonoBehaviour:
   goldValue: 0
   totalXP: 0
   targetXP: 0
+  maxHP: 20
+  maxMP: 6
   currentHP: 0
   currentMP: 0
   currentATK: 10
@@ -66,3 +68,31 @@ MonoBehaviour:
     icon: {fileID: 0}
     activeIcon: {fileID: 0}
   initialisedLevel: 0
+  weapon:
+    id: 0
+    name: Sword
+    fakeDescription: 
+    appraised: 0
+    type: 1
+    primaryStat: 3
+    primaryStatValue: 1000
+    secondaryStat: 2
+    secondaryStatValue: 10
+    icon: {fileID: 0}
+    spellType: 0
+    manaCost: 0
+    price: 0
+  armour:
+    id: 0
+    name: 
+    fakeDescription: 
+    appraised: 0
+    type: 2
+    primaryStat: 4
+    primaryStatValue: 1000
+    secondaryStat: 1
+    secondaryStatValue: 5000
+    icon: {fileID: 0}
+    spellType: 0
+    manaCost: 0
+    price: 0

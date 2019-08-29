@@ -17,6 +17,8 @@ MonoBehaviour:
   level: 1
   maxHP: 6
   maxMP: 32
+  baseHP: 6
+  baseMP: 32
   baseATK: 4
   baseDEF: 2
   baseAGI: 2
@@ -46,6 +48,9 @@ MonoBehaviour:
     spellType: 2
     primaryStatValue: 10
     manaCost: 2
+    lifesteal: 0
     icon: {fileID: 0}
+    activeIcon: {fileID: 0}
+  initialisedLevel: 0
   chanceToUseSpell: 0.9
   blockChance: 0

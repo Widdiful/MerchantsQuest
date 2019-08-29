@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum ItemType { Spell, Weapon, Armor, Consumable, Size }
-public enum StatType { None, Health, Magic, Attack, Defence, Agility, Size}
+public enum StatType { None, Health, Magic, Attack, Defence, Agility, Intelligence, Size}
 public enum SpellType { None, Heal, Damage, Physical, Size }
 //If the item is a spell type then you auto learn and consume
 [System.Serializable]

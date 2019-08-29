@@ -7,8 +7,9 @@ public class StatsBase : ScriptableObject
 {
     public string characterName;
     public Sprite sprite;
-    public int level, maxHP, maxMP, baseATK, baseDEF, baseAGI, baseINT, expValue, goldValue, totalXP, targetXP;
-    public int currentHP, currentMP, currentATK, currentDEF, currentAGI, currentINT;
+    public int level, baseHP, baseMP, baseATK, baseDEF, baseAGI, baseINT, expValue, goldValue, totalXP, targetXP;
+    [HideInInspector]
+    public int maxHP, maxMP, currentHP, currentMP, currentATK, currentDEF, currentAGI, currentINT;
     public int hpPerLevel, mpPerLevel, atkPerLevel, defPerLevel, agiPerLevel, intPerLevel;
     [Range(0, 1)]
     public float critChance;
@@ -17,11 +18,11 @@ public class StatsBase : ScriptableObject
     protected bool isDefending;
     public int initialisedLevel;
 
-    public virtual void InitialiseCharacter() {
+    public virtual bool InitialiseCharacter() {
         if (initialisedLevel < level) {
             initialisedLevel = level;
-            maxHP = maxHP + (hpPerLevel * (level - 1));
-            maxMP = maxMP + (mpPerLevel * (level - 1));
+            maxHP = baseHP + (hpPerLevel * (level - 1));
+            maxMP = baseMP + (mpPerLevel * (level - 1));
             currentATK = baseATK + (atkPerLevel * (level - 1));
             currentDEF = baseDEF + (defPerLevel * (level - 1));
             currentAGI = baseAGI + (agiPerLevel * (level - 1));
@@ -38,7 +39,9 @@ public class StatsBase : ScriptableObject
             if (level > 1 && totalXP == 0) {
                 totalXP = tempTotal;
             }
+            return true;
         }
+        return false;
     }
 
     public void SetCurrentHPMP() {
