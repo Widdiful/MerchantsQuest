@@ -12,13 +12,13 @@ public class RecycleTrigger : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E)&& !myRecycler.Active())
             {
                 myRecycler.ShowUI(true);
                 shopKeeperSpeech.SetActive(false);
                 GameManager.instance.player.canMove = false;
             }
-            else if (Input.GetKeyDown(KeyCode.E) && myRecycler.Active())
+            else if (Input.GetKeyDown(KeyCode.E) )
             {
                 myRecycler.ShowUI(false);
                 GameManager.instance.player.canMove = true;

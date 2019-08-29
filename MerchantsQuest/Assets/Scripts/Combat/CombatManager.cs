@@ -174,6 +174,7 @@ public class CombatManager : MonoBehaviour
         }
         if (item.type == ItemType.Consumable) {
             // Decrease quantity
+            InventoryManager.Instance.RemoveItem(item.id);
         }
     }
 

@@ -12,13 +12,13 @@ public class ShopTrigger : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && !myShop.ShopActive())
             {
                 myShop.ShowShop(true);
                 shopKeeperSpeech.SetActive(false);
                 GameManager.instance.player.canMove = false;
             }
-            else if(Input.GetKeyDown(KeyCode.E) && myShop.ShopActive())
+            else if(Input.GetKeyDown(KeyCode.E))
             {
                 myShop.ShowShop(false);
                 GameManager.instance.player.canMove = true;
