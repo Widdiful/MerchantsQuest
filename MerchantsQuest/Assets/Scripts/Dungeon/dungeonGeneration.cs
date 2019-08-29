@@ -18,10 +18,19 @@ public class dungeonGeneration : MonoBehaviour
     public List<Sprite> floorSprites;
     public GameObject stairsPrefab;
     public GameObject chestPrefab;
+
+    // map size stuff
     int xSize;
     int ySize;
+    int scaledXSize;
+    int startingMinXSize;
+    int scaledYSize;
+    int startingMinYSize;
 
+    float currentNRoomScalingFactor; 
     int nRooms;
+    int startingNRooms;
+    int maxRooms;
 
     public int maxRoomSize, minRoomSize;
 
@@ -30,7 +39,7 @@ public class dungeonGeneration : MonoBehaviour
     public int highestFloorAchieved;
     int[,] map;
     const float gridOffset = 0.5f;
-    const float chestChance = 0;
+    const float chestChance = 60;
     public bool isInDungeon;
 
     bool reachedNewHighestFloor;
@@ -40,24 +49,42 @@ public class dungeonGeneration : MonoBehaviour
     void Start()
     {
         //localMap = GetComponent<Tilemap>();
-        currentFloorNumber = 1;
+        currentFloorNumber = 0;
 
         xSize = 100;
         ySize = 100;
+        scaledXSize = 50;
+        scaledYSize = 50;
 
-        nRooms = 20;
+        startingMinXSize = scaledXSize;
+        startingMinYSize = scaledYSize;
+
+        nRooms = 6;
+        startingNRooms = nRooms;
+        maxRooms = 20;
+
+        maxRoomSize = 8;
+        minRoomSize = 4;
+
         map = new int[xSize,ySize];
         
-        //generateMap(map);
+        //generateMap();
         buttonReference = GameObject.Find("dungeonCanvas");
         buttonReference.SetActive(false);
         
     }
 
-    // Update is called once per frame
-    void Update()
+    void scaleMap()
     {
-        
+        currentNRoomScalingFactor = currentFloorNumber /10f;
+        nRooms = startingNRooms + Mathf.FloorToInt(currentNRoomScalingFactor);
+        nRooms = min(nRooms, maxRooms);
+
+        scaledXSize = startingMinXSize + currentFloorNumber;
+        scaledYSize = startingMinYSize + currentFloorNumber;
+        scaledXSize = min(xSize, scaledXSize);
+        scaledYSize = min(ySize, scaledYSize);
+
     }
 
     public void incrementFloorCount()
@@ -74,6 +101,7 @@ public class dungeonGeneration : MonoBehaviour
              GameObject.Destroy(child.gameObject);
         }
 
+        scaleMap();
         generateMap();
     }
 
@@ -126,8 +154,8 @@ public class dungeonGeneration : MonoBehaviour
             int w = Random.Range(minRoomSize, maxRoomSize);
             int h = Random.Range(minRoomSize, maxRoomSize);
 
-            int x = Random.Range(1, xSize - w - 1);
-            int y = Random.Range(1, ySize - h - 1);
+            int x = Random.Range(1, scaledXSize - w - 1);
+            int y = Random.Range(1, scaledYSize - h - 1);
 
             rect newRoom = new rect(x,y,h,w);
 
@@ -240,7 +268,7 @@ public class dungeonGeneration : MonoBehaviour
     {
         for (int x = min(x1, x2); x < max(x1, x2)+1; x++)
         {
-            for(int yAlter= max(1, y-1); yAlter < min(y+2, ySize-1); yAlter++)
+            for(int yAlter= max(1, y-1); yAlter < min(y+2, scaledYSize-1); yAlter++)
             {
                 if(map[x, yAlter] != (int)tileType.chest)
                     map[x, yAlter] = (int)tileType.floor;
@@ -254,7 +282,7 @@ public class dungeonGeneration : MonoBehaviour
     {
         for (int y = min(y1, y2); y < max(y1, y2)+1; y++)
         {   
-            for(int xAlter= max(1, x-1); xAlter < min(x+2, xSize-1); xAlter++)
+            for(int xAlter= max(1, x-1); xAlter < min(x+2, scaledXSize-1); xAlter++)
             {
                 if(map[xAlter, y] != (int)tileType.chest)
                     map[xAlter, y] = (int)tileType.floor;
