@@ -107,6 +107,7 @@ public class dungeonGeneration : MonoBehaviour
     {
         isInDungeon = true;
         reachedNewHighestFloor = false;
+        playerLocation.GetComponent<PlayerController>().lerping = false;
         buttonReference.SetActive(false);
         for (int x = 0; x < map.GetUpperBound(0) ; x++) //Loop through the width of the map
         {
