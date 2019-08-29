@@ -77,7 +77,7 @@ MonoBehaviour:
     primaryStat: 3
     primaryStatValue: 1000
     secondaryStat: 2
-    secondaryStatValue: 10
+    secondaryStatValue: 1000
     icon: {fileID: 0}
     spellType: 0
     manaCost: 0

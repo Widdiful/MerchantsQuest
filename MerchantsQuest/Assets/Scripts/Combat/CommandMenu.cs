@@ -8,9 +8,11 @@ public class CommandMenu : MonoBehaviour
     public StatsBase target;
     public CommandType commandType;
     public Spell currentSpell;
-    public Canvas commandCanvas, targetingCanvas, spellCanvas;
+    public Item currentItem;
+    public Canvas commandCanvas, targetingCanvas, spellCanvas, itemCanvas;
     public TargetingMenu targetingMenu;
     public SpellMenu spellMenu;
+    public ItemMenu itemMenu;
 
     public void ExecuteCommand() {
         switch (commandType) {
@@ -19,6 +21,9 @@ public class CommandMenu : MonoBehaviour
                 break;
             case CommandType.Spell:
                 CombatManager.instance.currentActor.CastSpell(target, currentSpell);
+                break;
+            case CommandType.Item:
+                CombatManager.instance.currentActor.UseItem(target, currentItem);
                 break;
             case CommandType.Defend:
                 CombatManager.instance.currentActor.Defend();
@@ -34,6 +39,7 @@ public class CommandMenu : MonoBehaviour
         commandCanvas.enabled = false;
         targetingCanvas.enabled = true;
         spellCanvas.enabled = false;
+        itemCanvas.enabled = false;
         targetingMenu.InitialiseTargetList(targetAllies);
     }
 
@@ -41,12 +47,26 @@ public class CommandMenu : MonoBehaviour
         commandCanvas.enabled = false;
         targetingCanvas.enabled = false;
         spellCanvas.enabled = true;
+        itemCanvas.enabled = false;
         spellMenu.InitialiseTargetList();
     }
 
     public void SetSpell(Spell spell) {
         currentSpell = spell;
         SwitchToTargeting(spell.spellType == SpellType.Heal);
+    }
+
+    private void SwitchToItem() {
+        commandCanvas.enabled = false;
+        targetingCanvas.enabled = false;
+        spellCanvas.enabled = false;
+        itemCanvas.enabled = true;
+        itemMenu.InitialiseTargetList();
+    }
+
+    public void SetItem(Item item) {
+        currentItem = item;
+        SwitchToTargeting(item.spellType == SpellType.Heal);
     }
 
     public void SetTarget(int index, bool targetAllies) {
@@ -67,6 +87,11 @@ public class CommandMenu : MonoBehaviour
     public void SpellButton() {
         commandType = CommandType.Spell;
         SwitchToSpell();
+    }
+
+    public void ItemButton() {
+        commandType = CommandType.Item;
+        SwitchToItem();
     }
 
     public void DefendButton() {

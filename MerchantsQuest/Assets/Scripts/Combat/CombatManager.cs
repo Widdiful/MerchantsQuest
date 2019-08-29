@@ -15,7 +15,7 @@ public class CombatManager : MonoBehaviour
     public List<StatsBase> turnOrder = new List<StatsBase>();
     public List<EnemyStats> possibleEnemies = new List<EnemyStats>();
     public AnimationCurve numberOfEnemies;
-    public Canvas commandCanvas, targetingCanvas, messageCanvas, spellCanvas;
+    public Canvas commandCanvas, targetingCanvas, messageCanvas, spellCanvas, itemCanvas;
     public Transform statsPanel;
     public GameObject statsPrefab;
     public StatsBase currentActor;
@@ -172,6 +172,9 @@ public class CombatManager : MonoBehaviour
                 Heal(attacker, target, item.primaryStatValue);
                 break;
         }
+        if (item.type == ItemType.Consumable) {
+            // Decrease quantity
+        }
     }
 
     private void UseSpell(StatsBase attacker, StatsBase target, Spell spell) {
@@ -220,6 +223,7 @@ public class CombatManager : MonoBehaviour
         targetingCanvas.enabled = false;
         messageCanvas.enabled = false;
         spellCanvas.enabled = false;
+        itemCanvas.enabled = false;
     }
 
     public void DisableCommandCanvas() {
@@ -227,6 +231,7 @@ public class CombatManager : MonoBehaviour
         targetingCanvas.enabled = false;
         messageCanvas.enabled = true;
         spellCanvas.enabled = false;
+        itemCanvas.enabled = false;
     }
 
     public void UpdateAllStats() {
