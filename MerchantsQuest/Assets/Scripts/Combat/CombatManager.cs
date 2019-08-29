@@ -28,6 +28,7 @@ public class CombatManager : MonoBehaviour
     public AnimatedBackground background;
     public int expEarned, goldEarned;
     public dungeonGeneration dungeon;
+    private bool gameOver;
 
     private void Awake() {
         if (!instance)
@@ -81,8 +82,9 @@ public class CombatManager : MonoBehaviour
                 StartCoroutine(NextTurnWait());
             }
             else if (playerTeam.Count <= 0) {
-                messageText.text += ("You lose!\n");
+                messageText.text += ("The party are wiped out!\n");
                 battleEnded = true;
+                gameOver = true;
                 StartCoroutine(NextTurnWait());
             }
         }
@@ -369,49 +371,56 @@ public class CombatManager : MonoBehaviour
     }
 
     IEnumerator EndBattle(bool keepGold) {
-        if (keepGold) {
-            PartyManager.instance.gold += goldEarned;
-            messageText.text += string.Format("The party has earned {0} experience points and {1} gold.", expEarned, goldEarned);
-        }
-        else {
-            messageText.text += string.Format("The party has earned {0} experience points.", expEarned);
-        }
-        yield return new WaitForSeconds(timeToWait);
+        if (!gameOver) { 
+            if (keepGold) {
+                PartyManager.instance.gold += goldEarned;
+                messageText.text += string.Format("The party has earned {0} experience points and {1} gold.", expEarned, goldEarned);
+            }
+            else {
+                messageText.text += string.Format("The party has earned {0} experience points.", expEarned);
+            }
+            yield return new WaitForSeconds(timeToWait);
 
-        for (int i = 0; i < PartyManager.instance.partyMembers.Count; i++) {
-            StatsBase player = statsPanels.Keys.ElementAt<StatsBase>(i);
+            for (int i = 0; i < PartyManager.instance.partyMembers.Count; i++) {
+                StatsBase player = statsPanels.Keys.ElementAt<StatsBase>(i);
 
-            if (!player.isDead) {
-                player.totalXP += expEarned;
-                while (player.totalXP >= player.targetXP) {
-                    yield return new WaitForSeconds(timeToWait);
-                    player.level++;
-                    player.targetXP += (player.level * 50);
-                    messageText.text = string.Format("{0}'s level has increased to {1}!", player.characterName, player.level);
-                    yield return new WaitForSeconds(timeToWait * 2);
-                    messageText.text = string.Format("{0}'s stats have increased.\n HP + {1}, MP + {2}, ATK + {3},\nDEF + {4}, AGI + {5}, INT + {6}.",
-                        player.characterName, player.hpPerLevel, player.mpPerLevel, player.atkPerLevel, player.defPerLevel, player.agiPerLevel, player.intPerLevel);
-                    yield return new WaitForSeconds(timeToWait);
-                    player.InitialiseCharacter();
-                    player.currentHP = player.maxHP;
-                    player.currentMP = player.maxMP;
+                if (!player.isDead) {
+                    player.totalXP += expEarned;
+                    while (player.totalXP >= player.targetXP) {
+                        yield return new WaitForSeconds(timeToWait);
+                        player.level++;
+                        player.targetXP += (player.level * 50);
+                        messageText.text = string.Format("{0}'s level has increased to {1}!", player.characterName, player.level);
+                        yield return new WaitForSeconds(timeToWait * 2);
+                        messageText.text = string.Format("{0}'s stats have increased.\n HP + {1}, MP + {2}, ATK + {3},\nDEF + {4}, AGI + {5}, INT + {6}.",
+                            player.characterName, player.hpPerLevel, player.mpPerLevel, player.atkPerLevel, player.defPerLevel, player.agiPerLevel, player.intPerLevel);
+                        yield return new WaitForSeconds(timeToWait);
+                        player.InitialiseCharacter();
+                        player.currentHP = player.maxHP;
+                        player.currentMP = player.maxMP;
+                    }
                 }
+
+
+                PartyManager.instance.partyMembers[i].currentHP = player.currentHP;
+                PartyManager.instance.partyMembers[i].currentMP = player.currentMP;
+                PartyManager.instance.partyMembers[i].level = player.level;
+                PartyManager.instance.partyMembers[i].totalXP = player.totalXP;
+                PartyManager.instance.partyMembers[i].targetXP = player.targetXP;
+                PartyManager.instance.partyMembers[i].isDead = player.isDead;
             }
 
+            expEarned = 0;
+            goldEarned = 0;
 
-            PartyManager.instance.partyMembers[i].currentHP = player.currentHP;
-            PartyManager.instance.partyMembers[i].currentMP = player.currentMP;
-            PartyManager.instance.partyMembers[i].level = player.level;
-            PartyManager.instance.partyMembers[i].totalXP = player.totalXP;
-            PartyManager.instance.partyMembers[i].targetXP = player.targetXP;
-            PartyManager.instance.partyMembers[i].isDead = player.isDead;
+            yield return new WaitForSeconds(timeToWait * 2);
+            GameManager.instance.EndCombat();
+
         }
 
-        expEarned = 0;
-        goldEarned = 0;
-
-        yield return new WaitForSeconds(timeToWait * 2);
-        GameManager.instance.EndCombat();
+        else {
+            GameManager.instance.GameOver();
+        }
     }
 
     IEnumerator NextTurnWait() {

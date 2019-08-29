@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public bool inCombat;
     public GameObject pauseMenu;
     public GameObject evacButton;
+    public Canvas victoryCanvas, gameOverCanvas;
     private int stepsUntilEncounter;
 
     public TransitionBoi transition;
@@ -93,5 +94,15 @@ public class GameManager : MonoBehaviour
     public void TogglePause() {
         evacButton.SetActive(dungeon.isInDungeon);
         pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
+    }
+
+    public void GameOver() {
+        player.canMove = false;
+        gameOverCanvas.enabled = true;
+    }
+
+    public void CompleteGame() {
+        player.canMove = false;
+        victoryCanvas.enabled = true;
     }
 }
