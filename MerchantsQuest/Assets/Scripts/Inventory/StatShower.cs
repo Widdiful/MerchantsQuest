@@ -55,4 +55,5 @@ public class StatShower : MonoBehaviour
         typeText.text = spell.primaryStatValue.ToString();
     }
 
+
 }

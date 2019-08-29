@@ -7,7 +7,7 @@ public class MapTransitions : MonoBehaviour
     public GameObject nextMap, thisMap;
     public Transform entrancePoint;
     public dungeonGeneration dungeon;
-    public bool encountersAllowed, leadsToDungeon, disableCamera;
+    public bool encountersAllowed, leadsToDungeon, leadsToWorldMap;
 
     public void Transition(Transform player) {
         
@@ -17,7 +17,14 @@ public class MapTransitions : MonoBehaviour
             dungeon.startDungeon();
         }
         else {
-            CameraManager.instance.SetTownCamActive();
+            if(leadsToWorldMap)
+            {
+                CameraManager.instance.SetPlayerCamActive();
+            }
+            else
+            {
+                CameraManager.instance.SetTownCamActive();
+            }
             nextMap.SetActive(true);
             player.position = entrancePoint.position;
             thisMap.SetActive(false);
