@@ -51,6 +51,8 @@ public class CastleManager : MonoBehaviour
             if(i< lootPileRenderers.Count)
             { 
                 lootPileRenderers[i].GetComponent<SpriteRenderer>().sprite = lootPile[i].icon;
+                // do some z rotation
+                lootPileRenderers[i].transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 360)));
             }
             else
             {
