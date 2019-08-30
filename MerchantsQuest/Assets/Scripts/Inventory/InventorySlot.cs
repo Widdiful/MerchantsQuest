@@ -12,10 +12,18 @@ public class InventorySlot : Slot<Item>
         icon.sprite = item.icon;
     }
 
+    public new void RemoveItem()
+    {
+        icon.sprite = null;
+        icon.color = new Color(.0f, .0f, .0f, .0f);
+        empty = true;
+        HideStats();
+    }
+
     public override void DisplayStats()
     {
         if(!empty)
-            InventoryManager.Instance.DisplayStats(item, pos);
+            InventoryManager.Instance.DisplayStats(item, pos, item.price);
     }
 
 

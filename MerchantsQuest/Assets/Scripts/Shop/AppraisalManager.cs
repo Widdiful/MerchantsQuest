@@ -53,6 +53,7 @@ public class AppraisalManager : MonoBehaviour
             //Play anim here?
             PartyManager.instance.gold -= slot.apraisalCost;
             slot.item.appraised = true;
+            slot.SetSlot(slot.item);
             InventoryManager.Instance.AppraiseItem(slot.item.id);
 
         }

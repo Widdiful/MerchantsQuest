@@ -23,6 +23,8 @@ public class SpellSlot : Slot<Spell>
 
     public override void DisplayStats()
     {
+        if (pos == null)
+            pos = GetComponent<RectTransform>();
         if(!empty)
             InventoryManager.Instance.statShower.SetSpellStats(item, pos);
     }

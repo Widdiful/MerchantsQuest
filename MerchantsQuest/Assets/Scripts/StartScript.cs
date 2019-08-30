@@ -8,6 +8,11 @@ public class StartScript : MonoBehaviour
 
     bool transitionStarted = false;
 
+    private void Start()
+    {
+        GameManager.instance.player.canMove = false;
+    }
+
     private void FixedUpdate()
     {
         if(!transitionStarted && Input.anyKey)
@@ -25,5 +30,6 @@ public class StartScript : MonoBehaviour
         titleScreen.transform.parent.gameObject.SetActive(false);
 
         GameManager.instance.transition.BeginHide();
+        GameManager.instance.player.canMove = true;
     }
 }
