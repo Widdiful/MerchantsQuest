@@ -54,6 +54,8 @@ public class PlayerStats : StatsBase
     public BonusStats GetStatData() {
         BonusStats result = new BonusStats();
 
+        result.bonusHP = maxHP;
+        result.bonusMP = maxMP;
         result.bonusATK = currentATK;
         result.bonusDEF = currentDEF;
         result.bonusAGI = currentAGI;
