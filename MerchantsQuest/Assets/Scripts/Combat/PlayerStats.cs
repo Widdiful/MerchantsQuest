@@ -8,14 +8,24 @@ public class PlayerStats : StatsBase
 {
     public Item weapon, armour;
 
-    class BonusStats {
+    public class BonusStats {
         public int bonusHP, bonusMP, bonusATK, bonusDEF, bonusAGI, bonusINT = 0;
+    }
+
+    public override int TakeDamage(int damage, bool ignoreDefence) {
+        armour.appraised = true;
+        return base.TakeDamage(damage, ignoreDefence);
     }
 
     public override void Kill() {
         base.Kill();
 
         CombatManager.instance.playerTeam.Remove(this);
+    }
+
+    public override void Attack(StatsBase target, int damage) {
+        base.Attack(target, damage);
+        weapon.appraised = true;
     }
 
     public override void GetCommand() {
@@ -39,6 +49,23 @@ public class PlayerStats : StatsBase
         currentINT = baseINT + (intPerLevel * (level - 1)) + bonus.bonusINT;
 
         return true;
+    }
+
+    public BonusStats GetStatData() {
+        BonusStats result = new BonusStats();
+
+        result.bonusATK = currentATK;
+        result.bonusDEF = currentDEF;
+        result.bonusAGI = currentAGI;
+        result.bonusINT = currentINT;
+        if (weapon.appraised) {
+            CalculateBonusStats(weapon, result);
+        }
+        if (armour.appraised) {
+            CalculateBonusStats(armour, result);
+        }
+
+        return result;
     }
 
     private void CalculateBonusStats(Item item, BonusStats bonus) {

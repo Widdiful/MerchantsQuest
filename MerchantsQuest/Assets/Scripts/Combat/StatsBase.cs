@@ -51,7 +51,7 @@ public class StatsBase : ScriptableObject
         }
     }
 
-    public int TakeDamage(int damage, bool ignoreDefence) {
+    public virtual int TakeDamage(int damage, bool ignoreDefence) {
         if (!isDead) {
             // Adjust damage based on defence stat
             damage += Mathf.RoundToInt(Random.Range(-(damage * 0.11f), damage * 0.21f));
@@ -123,7 +123,7 @@ public class StatsBase : ScriptableObject
         Attack(target, currentATK);
     }
 
-    public void Attack(StatsBase target, int damage) {
+    public virtual void Attack(StatsBase target, int damage) {
         bool isCrit = false;
         if (Random.Range(0f, 1f) <= critChance) {
             isCrit = true;
