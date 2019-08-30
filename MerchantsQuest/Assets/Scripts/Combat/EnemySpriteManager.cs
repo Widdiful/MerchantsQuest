@@ -27,6 +27,7 @@ public class EnemySpriteManager : MonoBehaviour
                 if (i < list.Count && !list[i].isDead) {
                     sprites[i].enabled = true;
                     sprites[i].sprite = list[i].sprite;
+                    sprites[i].rectTransform.sizeDelta = new Vector2(list[i].spriteSize.x, list[i].spriteSize.y);
                 }
                 else {
                     sprites[i].enabled = false;

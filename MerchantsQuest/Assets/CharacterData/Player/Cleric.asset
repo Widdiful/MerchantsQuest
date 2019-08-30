@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fd584c7bfb724b449d88fd4a7f6de1c, type: 3}
-  m_Name: Player
+  m_Name: Cleric
   m_EditorClassIdentifier: 
-  characterName: Hero
+  characterName: Mage
   sprite: {fileID: 0}
   level: 1
-  baseHP: 20
-  baseMP: 6
-  baseATK: 10
-  baseDEF: 10
-  baseAGI: 6
-  baseINT: 5
+  baseHP: 15
+  baseMP: 10
+  baseATK: 5
+  baseDEF: 5
+  baseAGI: 4
+  baseINT: 10
   expValue: 0
   goldValue: 0
   totalXP: 0
@@ -33,13 +33,13 @@ MonoBehaviour:
   currentDEF: 5
   currentAGI: 5
   currentINT: 0
-  hpPerLevel: 4
-  mpPerLevel: 2
-  atkPerLevel: 4
-  defPerLevel: 3
+  hpPerLevel: 2
+  mpPerLevel: 4
+  atkPerLevel: 2
+  defPerLevel: 1
   agiPerLevel: 2
-  intPerLevel: 2
-  critChance: 0.2
+  intPerLevel: 5
+  critChance: 0.1
   isDead: 0
   isEnemy: 0
   spellList: []
