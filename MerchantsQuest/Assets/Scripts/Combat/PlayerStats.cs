@@ -8,7 +8,7 @@ public class PlayerStats : StatsBase
 {
     public Item weapon, armour;
 
-    class BonusStats {
+    public class BonusStats {
         public int bonusHP, bonusMP, bonusATK, bonusDEF, bonusAGI, bonusINT = 0;
     }
 
@@ -49,6 +49,23 @@ public class PlayerStats : StatsBase
         currentINT = baseINT + (intPerLevel * (level - 1)) + bonus.bonusINT;
 
         return true;
+    }
+
+    public BonusStats GetStatData() {
+        BonusStats result = new BonusStats();
+
+        result.bonusATK = currentATK;
+        result.bonusDEF = currentDEF;
+        result.bonusAGI = currentAGI;
+        result.bonusINT = currentINT;
+        if (weapon.appraised) {
+            CalculateBonusStats(weapon, result);
+        }
+        if (armour.appraised) {
+            CalculateBonusStats(armour, result);
+        }
+
+        return result;
     }
 
     private void CalculateBonusStats(Item item, BonusStats bonus) {
