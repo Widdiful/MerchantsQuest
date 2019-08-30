@@ -29,7 +29,7 @@ public class InventorySlot : Slot<Item>
 
     public void EquipItem()
     {
-        if(item.type == ItemType.Spell)
+        if (item.type == ItemType.Spell)
         {
             Spell newSpell = new Spell();
             newSpell.id = item.id;
@@ -39,12 +39,14 @@ public class InventorySlot : Slot<Item>
             newSpell.icon = item.icon;
             newSpell.activeIcon = ItemManager.Instance.spellRefs.activeIcon[Random.Range(0, ItemManager.Instance.spellRefs.activeIcon.Length)];
             SpellInventory.Instance.AddSpell(newSpell);
+            HideStats();
+            RemoveItem();
         }
         else
-            InventoryManager.Instance.equipment.AddToSlot(item, item.type);
+        {
+            InventoryManager.Instance.ShowEquipPanel(this);
+        }
 
-        HideStats();
-        RemoveItem();
     }
 }
 

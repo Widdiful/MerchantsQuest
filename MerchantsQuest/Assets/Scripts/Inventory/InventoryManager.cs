@@ -13,7 +13,9 @@ public class InventoryManager : MonoBehaviour
 
     public StatShower statShower;
 
-    public EquipmentManager equipment;
+    public GameObject equipPanel;
+    InventorySlot itemToEquip;
+    public EquipmentManager[] equipment;
 
     public PlayerStatsShower pStatShower;
 
@@ -124,5 +126,23 @@ public class InventoryManager : MonoBehaviour
                 inventorySlots[i].item.appraised = true;
             }
         }
+    }
+
+    public void ShowEquipPanel(InventorySlot item)
+    {
+        itemToEquip = item;
+        equipPanel.SetActive(true);
+    }
+    public void CancelEquipPanel ()
+    {
+        equipPanel.SetActive(false);
+    }
+    public void EquipItem(EquipmentManager character)
+    {
+        if(!PartyManager.instance.partyMembers[character.player].isDead)
+            character.AddToSlot(itemToEquip.item, itemToEquip.item.type);
+        equipPanel.SetActive(false);
+        itemToEquip.RemoveItem();
+        itemToEquip = null;
     }
 }

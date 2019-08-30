@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EquipmentManager : MonoBehaviour
 {
@@ -8,6 +9,17 @@ public class EquipmentManager : MonoBehaviour
     public InventorySlot weaponSlot;
 
     public List<Item> items;
+
+    public string charactersName;
+    public int player;
+    public TMP_Text titleText;
+
+    private void Start()
+    {
+        if(PartyManager.instance.partyMembers.Count > player)
+            charactersName = PartyManager.instance.partyMembers[player].characterName;
+        titleText.text = charactersName + " Items";
+    }
 
     public void AddToSlot(Item item, ItemType type)
     {
