@@ -26,7 +26,7 @@ public class SpellSlot : Slot<Spell>
         if (pos == null)
             pos = GetComponent<RectTransform>();
         if(!empty)
-            InventoryManager.Instance.statShower.SetSpellStats(item, pos);
+            InventoryManager.Instance.DisplaySpellStats(item, pos);
     }
 
 }

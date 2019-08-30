@@ -49,8 +49,12 @@ public class EquipmentManager : MonoBehaviour
 
     public void RemoveFromSlot(InventorySlot slot)
     {
-        InventoryManager.Instance.AddItem(slot.item);
-        items.Remove(slot.item);
-        slot.RemoveItem();
+        if (!slot.empty)
+        {
+            InventoryManager.Instance.AddItem(slot.item);
+            InventoryManager.Instance.HideStats();
+            items.Remove(slot.item);
+            slot.RemoveItem();
+        }
     }
 }

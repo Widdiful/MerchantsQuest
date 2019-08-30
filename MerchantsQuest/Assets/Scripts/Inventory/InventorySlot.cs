@@ -29,6 +29,11 @@ public class InventorySlot : Slot<Item>
 
     public void EquipItem()
     {
+        if (empty)
+        {
+            return;
+        }
+
         if (item.type == ItemType.Spell)
         {
             Spell newSpell = new Spell();
@@ -42,11 +47,10 @@ public class InventorySlot : Slot<Item>
             HideStats();
             RemoveItem();
         }
-        else
+        else if(item.type == ItemType.Armor || item.type == ItemType.Weapon)
         {
             InventoryManager.Instance.ShowEquipPanel(this);
         }
-
     }
 }
 

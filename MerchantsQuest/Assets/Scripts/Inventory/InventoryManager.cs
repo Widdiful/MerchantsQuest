@@ -112,6 +112,12 @@ public class InventoryManager : MonoBehaviour
         statShower.SetStats(item, pos, cost);
     }
 
+    public void DisplaySpellStats(Spell spell, RectTransform pos)
+    {
+        statShower.gameObject.SetActive(true);
+        statShower.SetSpellStats(spell, pos);
+    }
+
     public void HideStats()
     {
         statShower.gameObject.SetActive(false);

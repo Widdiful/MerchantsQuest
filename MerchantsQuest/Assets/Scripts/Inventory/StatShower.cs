@@ -28,7 +28,12 @@ public class StatShower : MonoBehaviour
         nameText.text = item.name;
         if (item.appraised)
         {
-            descriptionText.text = item.primaryStat.ToString() + ": " + item.primaryStatValue;
+            if(item.primaryStat == StatType.None)
+            {
+                descriptionText.text = item.spellType.ToString() + ": " + item.primaryStatValue;
+            }
+            else
+                descriptionText.text = item.primaryStat.ToString() + ": " + item.primaryStatValue;
         }
         else
         {
