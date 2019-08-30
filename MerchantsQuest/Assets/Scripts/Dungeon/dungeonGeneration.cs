@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 //using UnityEngine.TilemapModule;
@@ -19,6 +20,7 @@ public class dungeonGeneration : MonoBehaviour
     public GameObject stairsPrefab;
     public GameObject chestPrefab;
     public Vector2 dungeonExitPoint;
+    public TextMeshProUGUI floorText;
 
     // map size stuff
     int xSize;
@@ -108,6 +110,9 @@ public class dungeonGeneration : MonoBehaviour
 
     public void shutDungeonDown()
     {
+        if (floorText) {
+            floorText.text = "";
+        }
         StartCoroutine(ShutDungeonDownDelay());
     }
 
@@ -229,6 +234,9 @@ public class dungeonGeneration : MonoBehaviour
         Vector2Int stairPos = roomList[numRooms-1].center();
         map[stairPos.x, stairPos.y] = (int)tileType.stairs;
         setTileMap(map);
+        if (floorText) {
+            floorText.text = string.Format("Floor {0}", currentFloorNumber + 1);
+        }
     }
 
 
