@@ -15,8 +15,6 @@ MonoBehaviour:
   characterName: Snakery
   sprite: {fileID: -4083287944851169456, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
-  maxHP: 8
-  maxMP: 0
   baseHP: 8
   baseMP: 0
   baseATK: 8
@@ -27,6 +25,8 @@ MonoBehaviour:
   goldValue: 5
   totalXP: 0
   targetXP: 0
+  maxHP: 8
+  maxMP: 0
   currentHP: 0
   currentMP: 0
   currentATK: 0
@@ -46,3 +46,4 @@ MonoBehaviour:
   initialisedLevel: 0
   chanceToUseSpell: 0
   blockChance: 0
+  spriteSize: {x: 48, y: 48}

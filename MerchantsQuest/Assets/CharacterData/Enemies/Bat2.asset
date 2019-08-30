@@ -15,8 +15,6 @@ MonoBehaviour:
   characterName: Man Bat
   sprite: {fileID: -6790585582576057677, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
-  maxHP: 16
-  maxMP: 8
   baseHP: 16
   baseMP: 8
   baseATK: 12
@@ -27,6 +25,8 @@ MonoBehaviour:
   goldValue: 5
   totalXP: 0
   targetXP: 0
+  maxHP: 16
+  maxMP: 8
   currentHP: 0
   currentMP: 0
   currentATK: 0
@@ -54,3 +54,4 @@ MonoBehaviour:
   initialisedLevel: 0
   chanceToUseSpell: 0.2
   blockChance: 0
+  spriteSize: {x: 48, y: 48}
