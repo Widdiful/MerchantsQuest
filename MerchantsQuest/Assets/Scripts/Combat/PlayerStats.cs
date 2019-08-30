@@ -12,10 +12,20 @@ public class PlayerStats : StatsBase
         public int bonusHP, bonusMP, bonusATK, bonusDEF, bonusAGI, bonusINT = 0;
     }
 
+    public override int TakeDamage(int damage, bool ignoreDefence) {
+        armour.appraised = true;
+        return base.TakeDamage(damage, ignoreDefence);
+    }
+
     public override void Kill() {
         base.Kill();
 
         CombatManager.instance.playerTeam.Remove(this);
+    }
+
+    public override void Attack(StatsBase target, int damage) {
+        base.Attack(target, damage);
+        weapon.appraised = true;
     }
 
     public override void GetCommand() {
