@@ -41,4 +41,15 @@ public class SpellInventory : MonoBehaviour
             }
         }
     }
+
+    public void AppraiseSpell(int id)
+    {
+        for(int i = 0; i < spellSlots.Length; i++)
+        {
+            if(spellSlots[i].item.id == id)
+            {
+                spellSlots[i].item.appraised = true;
+            }
+        }
+    }
 }

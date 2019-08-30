@@ -12,4 +12,6 @@ public class Constants
 
     public const float sellStatPercent = 0.1f;
     public const float consumableTax = 0.5f;
+
+    public const float appraisalCost = .2f;
 }

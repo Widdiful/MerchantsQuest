@@ -114,4 +114,15 @@ public class InventoryManager : MonoBehaviour
     {
         statShower.gameObject.SetActive(false);
     }
+
+    public void AppraiseItem(int id)
+    {
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            if(inventorySlots[i].item.id == id)
+            {
+                inventorySlots[i].item.appraised = true;
+            }
+        }
+    }
 }

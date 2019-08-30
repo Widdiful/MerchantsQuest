@@ -6,8 +6,10 @@ using UnityEngine;
 public struct Spell
 {
     public int id;
-    public string name;
+    public bool appraised;
 
+    public string name;
+    public string fakeDescription;
     public SpellType spellType;
     public int primaryStatValue;
     public int manaCost;

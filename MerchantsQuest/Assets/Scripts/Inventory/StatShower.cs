@@ -28,7 +28,7 @@ public class StatShower : MonoBehaviour
         nameText.text = item.name;
         if (item.appraised)
         {
-            descriptionText.text = item.primaryStat.ToString();
+            descriptionText.text = item.primaryStat.ToString() + ": " + item.primaryStatValue;
         }
         else
         {
@@ -50,9 +50,13 @@ public class StatShower : MonoBehaviour
         {
             rectTransform.position += new Vector3(rectTransform.rect.size.x + pos.rect.size.x, 0, 0);
         }
-        nameText.text = spell.name;
-        descriptionText.text = spell.manaCost.ToString();
-        typeText.text = spell.primaryStatValue.ToString();
+
+        if (spell.appraised)
+        {
+            nameText.text = spell.name;
+            descriptionText.text = "Mana: " + spell.manaCost.ToString();
+            typeText.text = "Damage: " + spell.primaryStatValue.ToString();
+        }
     }
 
 
