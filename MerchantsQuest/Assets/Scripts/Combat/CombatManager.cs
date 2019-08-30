@@ -103,7 +103,7 @@ public class CombatManager : MonoBehaviour
             }
             else {
                 attacker.Heal(damageTaken);
-                messageText.text += string.Format("{0} absorbs {1} HP!", target.characterName, damageTaken);
+                messageText.text += string.Format("Absorbs {0} HP from {1}!", damageTaken, target.characterName);
             }
         }
         else {
@@ -316,7 +316,7 @@ public class CombatManager : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSeconds(timeToWait);
+        yield return new WaitForSeconds(timeToWait * Mathf.CeilToInt(enemyTeam.Count / 2));
         NextTurn();
     }
 
@@ -414,6 +414,15 @@ public class CombatManager : MonoBehaviour
             goldEarned = 0;
 
             yield return new WaitForSeconds(timeToWait * 2);
+
+            GameManager.instance.transition.BeginShow();
+            GameManager.instance.player.canMove = false;
+            while (!GameManager.instance.transition.textureShown) {
+                yield return null;
+            }
+            GameManager.instance.transition.BeginHide();
+            GameManager.instance.player.canMove = true;
+
             GameManager.instance.EndCombat();
 
         }
