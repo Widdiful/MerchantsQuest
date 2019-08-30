@@ -77,6 +77,7 @@ public class chest : MonoBehaviour
 
         renderer.sprite = openSprite;
         isClosed = false;
+        MessageBox.instance.NewMessage(string.Format("Found {0} coins.", goldInside));
         //Destroy(this.gameObject);
 
     }

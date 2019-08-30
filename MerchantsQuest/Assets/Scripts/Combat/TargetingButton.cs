@@ -32,8 +32,14 @@ public class TargetingButton : MonoBehaviour
             commandMenu.SetTarget(index, targetAllies);
         }
         else {
-            PartyManager.instance.partyMembers[index].currentMP -= currentSpell.manaCost;
-            PartyManager.instance.partyMembers[index].Heal(currentSpell.primaryStatValue);
+            if (PartyManager.instance.partyMembers[index].currentMP >= currentSpell.manaCost) {
+                PartyManager.instance.partyMembers[index].currentMP -= currentSpell.manaCost;
+                PartyManager.instance.partyMembers[index].Heal(currentSpell.primaryStatValue);
+                MessageBox.instance.NewMessage(string.Format("{0} healed {1} HP.", PartyManager.instance.partyMembers[index].characterName, currentSpell.primaryStatValue));
+            }
+            else {
+                MessageBox.instance.NewMessage(string.Format("Not enough MP."));
+            }
         }
     }
 }
