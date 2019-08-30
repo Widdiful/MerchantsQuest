@@ -16,15 +16,15 @@ public class AppraisalManager : MonoBehaviour
         if(activeUI)
         {
             GameManager.instance.player.canMove = false;
-            FillSlots();
         }
         else
         {
             GameManager.instance.player.canMove = true;
             InventoryManager.Instance.HideStats();
-            ClearSlots();
         }
-        
+        ClearSlots();
+        FillSlots();
+
     }
 
     void FillSlots()
