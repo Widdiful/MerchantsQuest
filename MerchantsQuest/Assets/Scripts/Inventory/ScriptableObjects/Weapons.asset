@@ -19,8 +19,31 @@ MonoBehaviour:
   - {fileID: 946132551445127754, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
   - {fileID: -4924065256469680006, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
   - {fileID: -4107469028111699786, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: 4140501415075021580, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 7903375484001049222, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: -9157540112730319010, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: -3622815893734832521, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 557108090377411596, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 4851104234591945120, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: -5357964448679271631, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 7298951894589489281, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 2881280454808951123, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 5919033685032468481, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: -1830863327148040792, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 264839745117645518, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: -1775341221778567658, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 3488620022353859732, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
   fakeDescriptionsAsset: {fileID: 4900000, guid: 3185fa08628019540adebd356002024d,
     type: 3}
-  descriptions: []
+  descriptions:
+  - "sharper then an icicle\r"
+  - "can smash a brick in two\r"
+  - "couldn't hurt a fly\r"
+  - "can shatter an anvil with just one tap\r"
+  - "it's already crumbling\r"
+  - its basically rust
   nameAsset: {fileID: 4900000, guid: 4f3199b52d565e4429a73956bb99c149, type: 3}
-  names: []
+  names:
+  - "Doombringer\r"
+  - Ashbringer
+  activeIcon: []

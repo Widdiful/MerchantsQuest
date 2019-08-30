@@ -22,8 +22,9 @@ MonoBehaviour:
   fakeDescriptionsAsset: {fileID: 4900000, guid: e40fc4c5e616c534bbaffdfd7a489d1b,
     type: 3}
   descriptions:
-  - "Test Description\r"
-  - Test Description 2
+  - "Really messes them up\r"
+  - "Your targets will just explode\r"
+  - 'you know this just is kind of rubbish '
   nameAsset: {fileID: 4900000, guid: 0cfeaf8cfcb0da74389642183ada1612, type: 3}
   names:
   - "Get Me Out\r"
@@ -32,6 +33,15 @@ MonoBehaviour:
   - "Rain of Water\r"
   - Rain of Ice
   activeIcon:
-  - {fileID: -2012998670746041192, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
-  - {fileID: 7706502010416066461, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
-  - {fileID: 3788377380414115764, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: 6443607958815769603, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: -8296868661559023588, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 202084526970840241, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: -3459998559663141986, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 8851018056049523982, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: -7524557528189870413, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: -3965837036095059320, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 2972457449123348334, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 1565185926661789895, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: -3725339787423068972, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 2597828177194692040, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: -3613604457873205458, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
