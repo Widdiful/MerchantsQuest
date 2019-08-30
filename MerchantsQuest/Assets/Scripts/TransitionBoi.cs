@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TransitionBoi : MonoBehaviour
 {
-    public MeshRenderer mesh;
+    public Image image;
     float amountToTransition = 1.1f;
     float dissolveVal = 0.0f;
     public Texture2D[] dissolveTextures;
@@ -15,6 +16,7 @@ public class TransitionBoi : MonoBehaviour
     public void BeginHide()
     {
         dissolveVal = 0.0f;
+        
         StartCoroutine(HideTexture());
     }
 
@@ -29,33 +31,30 @@ public class TransitionBoi : MonoBehaviour
         while (dissolveVal <= amountToTransition)
         {
             dissolveVal += transitionTick;
-            mesh.material.SetFloat("_DissolveAmount", dissolveVal);
+            image.material.SetFloat("_DissolveAmount", dissolveVal);
             yield return null;
         }
 
-        CameraManager.instance.HideTransitionCam();
         textureHidden = true;
 
     }
 
     public void CombatShowTexture()
     {
-        CameraManager.instance.ShowTransitionCam();
         textureHidden = false;
         textureShown = false;
         dissolveVal = 1.1f;
-        mesh.material.SetTexture("_NoiseTex", combatTextures[Random.Range(0, dissolveTextures.Length)]);
+        image.material.SetTexture("_NoiseTex", combatTextures[Random.Range(0, dissolveTextures.Length)]);
         StartCoroutine(ShowTexture());
     }
 
     [ContextMenu("Fade In")]
     public void BeginShow()
     {
-        CameraManager.instance.ShowTransitionCam();
         textureHidden = false;
         textureShown = false;
         dissolveVal = 1.1f;
-        mesh.material.SetTexture("_NoiseTex", dissolveTextures[Random.Range(0, dissolveTextures.Length)]);
+        image.material.SetTexture("_NoiseTex", dissolveTextures[Random.Range(0, dissolveTextures.Length)]);
         StartCoroutine(ShowTexture());
     }
 
@@ -67,10 +66,10 @@ public class TransitionBoi : MonoBehaviour
             transitionTick = (amountToTransition / GameManager.instance.transitionTime) * 0.01f;
         }
 
-        while (dissolveVal > 0)
+        while (dissolveVal > -0.1f)
         {
             dissolveVal -= transitionTick;
-            mesh.material.SetFloat("_DissolveAmount", dissolveVal);
+            image.material.SetFloat("_DissolveAmount", dissolveVal);
             yield return null;
         }
 

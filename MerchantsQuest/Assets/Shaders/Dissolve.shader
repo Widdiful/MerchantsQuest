@@ -5,7 +5,7 @@
         _MainTex ("Main Texture", 2D) = "white" {}
 		_NoiseTex("Noise Texture", 2D) = "white" {}
 		[MaterialToggle] PixelSnape("Pixel Snap", float) = 0
-		_DissolveAmount("Dissolve amount", Range(0.0,1.1)) = 0.1
+		_DissolveAmount("Dissolve amount", Range(-0.1,1.1)) = 0.1
 		_EdgeWidth("Edge width", Range(0.0,1.0)) = 0.1
 		_EdgeColor1("Edge color 1", Color) = (1.0,1.0,1.0,1.0)
 		_EdgeColor2("Edge color 2", Color) = (1.0,1.0,1.0,1.0)

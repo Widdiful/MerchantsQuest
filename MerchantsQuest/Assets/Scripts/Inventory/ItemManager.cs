@@ -115,6 +115,7 @@ public class ItemManager : MonoBehaviour
                 currItem.name = spellRefs.names[Random.Range(0, spellRefs.names.Length)];
                 currItem.fakeDescription = spellRefs.descriptions[Random.Range(0, spellRefs.descriptions.Length)];
                 currItem.icon = spellRefs.sprites[Random.Range(0, spellRefs.sprites.Length)];
+                currItem.primaryStatValue = Random.Range(1, 10) * currentDungeonBestFloor;
                 currItem.spellType = (SpellType)Random.Range(1, (int)SpellType.Size);
                 currItem.manaCost = Random.Range(1, 5) * currentDungeonBestFloor;
                 
@@ -124,7 +125,7 @@ public class ItemManager : MonoBehaviour
                 currItem.fakeDescription = weaponRefs.descriptions[Random.Range(0, weaponRefs.descriptions.Length)];
                 currItem.icon = weaponRefs.sprites[Random.Range(0, weaponRefs.sprites.Length)];
                 currItem.primaryStat = StatType.Attack;
-                currItem.primaryStatValue = Random.Range(0, 10) * currentDungeonBestFloor;
+                currItem.primaryStatValue = Random.Range(1, 10) * currentDungeonBestFloor;
                 currItem.secondaryStat = (StatType)Random.Range(0, (int)StatType.Size);
                 currItem.secondaryStatValue = Random.Range(0, 5) * currentDungeonBestFloor;
                 break;
@@ -133,7 +134,7 @@ public class ItemManager : MonoBehaviour
                 currItem.fakeDescription = armorRefs.descriptions[Random.Range(0, armorRefs.descriptions.Length)];
                 currItem.icon = armorRefs.sprites[Random.Range(0, armorRefs.sprites.Length)];
                 currItem.primaryStat = StatType.Defence;
-                currItem.primaryStatValue = Random.Range(0, 10) * currentDungeonBestFloor;
+                currItem.primaryStatValue = Random.Range(1, 10) * currentDungeonBestFloor;
                 currItem.secondaryStat = (StatType)Random.Range(0, (int)StatType.Size);
                 currItem.secondaryStatValue = Random.Range(0, 5) * currentDungeonBestFloor;
                 break;
@@ -141,6 +142,7 @@ public class ItemManager : MonoBehaviour
                 currItem.name = consumeableRefs.names[Random.Range(0, consumeableRefs.names.Length)];
                 currItem.fakeDescription = consumeableRefs.descriptions[Random.Range(0, consumeableRefs.descriptions.Length)];
                 currItem.icon = consumeableRefs.sprites[Random.Range(0, consumeableRefs.sprites.Length)];
+                currItem.primaryStatValue = Random.Range(1, 10) * currentDungeonBestFloor;
                 currItem.spellType = (SpellType)Random.Range(1, (int)SpellType.Size);
                 break;
         }

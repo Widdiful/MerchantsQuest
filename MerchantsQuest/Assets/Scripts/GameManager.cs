@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
         else
             Destroy(gameObject);
 
-        transition.BeginHide();
         stepsUntilEncounter = Random.Range(minMaxEncounterRate.x, minMaxEncounterRate.y);
     }
 

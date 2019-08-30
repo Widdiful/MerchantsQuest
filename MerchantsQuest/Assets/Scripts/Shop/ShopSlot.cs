@@ -24,12 +24,14 @@ public class ShopSlot : Slot<Item>
             price = 0;
             price = item.primaryStatValue * Constants.primaryStatPriceModifier
                 + item.secondaryStatValue * Constants.secondaryStatPriceModifier;
+            price = (int)(price * Random.Range(0.5f, 1.5f));
         }
         else if (item.type == ItemType.Spell)
         {
             price = 0;
             price = item.manaCost * Constants.primaryStatPriceModifier;
             price += (int)(price * Constants.spellTax);
+            price = (int)(price * Random.Range(0.5f, 1.5f));
         }
         else
         {
