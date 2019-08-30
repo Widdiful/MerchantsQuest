@@ -44,7 +44,9 @@ MonoBehaviour:
   isEnemy: 0
   spellList:
   - id: 0
+    appraised: 0
     name: Fireball
+    fakeDescription: 
     spellType: 2
     primaryStatValue: 100
     manaCost: 2
@@ -52,7 +54,9 @@ MonoBehaviour:
     icon: {fileID: 0}
     activeIcon: {fileID: 0}
   - id: 0
+    appraised: 0
     name: Expensive Fireball
+    fakeDescription: 
     spellType: 2
     primaryStatValue: 1000
     manaCost: 100
@@ -60,7 +64,9 @@ MonoBehaviour:
     icon: {fileID: 0}
     activeIcon: {fileID: 0}
   - id: 0
+    appraised: 0
     name: Heal
+    fakeDescription: 
     spellType: 1
     primaryStatValue: 100
     manaCost: 2
@@ -70,13 +76,13 @@ MonoBehaviour:
   initialisedLevel: 0
   weapon:
     id: 0
-    name: Sword
+    name: 
     fakeDescription: 
     appraised: 0
-    type: 1
-    primaryStat: 3
+    type: 0
+    primaryStat: 0
     primaryStatValue: 0
-    secondaryStat: 2
+    secondaryStat: 0
     secondaryStatValue: 0
     icon: {fileID: 0}
     spellType: 0
@@ -87,10 +93,10 @@ MonoBehaviour:
     name: 
     fakeDescription: 
     appraised: 0
-    type: 2
-    primaryStat: 4
+    type: 0
+    primaryStat: 0
     primaryStatValue: 0
-    secondaryStat: 1
+    secondaryStat: 0
     secondaryStatValue: 0
     icon: {fileID: 0}
     spellType: 0

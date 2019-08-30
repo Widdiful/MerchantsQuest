@@ -8,6 +8,7 @@ public class EquipmentManager : MonoBehaviour
     public InventorySlot armorSlot;
     public InventorySlot weaponSlot;
 
+    Item blankItem;
     public List<Item> items;
 
     public string charactersName;
@@ -33,6 +34,7 @@ public class EquipmentManager : MonoBehaviour
                     armorSlot.RemoveItem();
                 }
                 armorSlot.SetSlot(item);
+                PartyManager.instance.partyMemberPrefabs[player].armour = item;
                 break;
             case ItemType.Weapon:
                 if(!weaponSlot.empty)
@@ -42,6 +44,7 @@ public class EquipmentManager : MonoBehaviour
                     weaponSlot.RemoveItem();
                 }
                 weaponSlot.SetSlot(item);
+                PartyManager.instance.partyMemberPrefabs[player].weapon = item;
                 break;
         }
         items.Add(item);
@@ -52,6 +55,14 @@ public class EquipmentManager : MonoBehaviour
         if (!slot.empty)
         {
             InventoryManager.Instance.AddItem(slot.item);
+            if(slot.item.type == ItemType.Armor)
+            {
+                PartyManager.instance.partyMemberPrefabs[player].armour = blankItem;
+            }
+            else
+            {
+                PartyManager.instance.partyMemberPrefabs[player].weapon = blankItem;
+            }
             InventoryManager.Instance.HideStats();
             items.Remove(slot.item);
             slot.RemoveItem();

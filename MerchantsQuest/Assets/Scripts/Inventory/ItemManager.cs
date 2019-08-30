@@ -19,10 +19,13 @@ public class ItemManager : MonoBehaviour
     public ItemRefs spellRefs;
     public ItemRefs weaponRefs;
 
+    public System.Random rand;
+
     public int itemAmount;
     public int currentDungeonBestFloor;
     private void Awake()
     {
+        rand = new System.Random(Random.Range(0, 10000000));
         if(Instance == null)
         {
             Instance = this;
@@ -74,7 +77,7 @@ public class ItemManager : MonoBehaviour
         {
             Item item = new Item();
             item.appraised = false;
-            item.type = (ItemType)Random.Range(0, (int)ItemType.Size);
+            item.type = (ItemType)rand.Next((int)ItemType.Size);
             item = GetData(item);
             item.id = i;
 
@@ -89,7 +92,7 @@ public class ItemManager : MonoBehaviour
         item.appraised = false;
         item.type = type;
         item = GetData(item);
-        item.id = items.Count;
+        item.id = items.Count + 1;
 
         items.Add(item.id, item);
 
@@ -112,36 +115,36 @@ public class ItemManager : MonoBehaviour
         switch (currItem.type)
         {
             case ItemType.Spell:
-                currItem.name = spellRefs.names[Random.Range(0, spellRefs.names.Length)];
-                currItem.fakeDescription = spellRefs.descriptions[Random.Range(0, spellRefs.descriptions.Length)];
-                currItem.icon = spellRefs.sprites[Random.Range(0, spellRefs.sprites.Length)];
+                currItem.name = spellRefs.names[rand.Next(spellRefs.names.Length)];
+                currItem.fakeDescription = spellRefs.descriptions[rand.Next(spellRefs.descriptions.Length)];
+                currItem.icon = spellRefs.sprites[rand.Next(spellRefs.sprites.Length)];
                 currItem.primaryStatValue = Random.Range(1, 10) * currentDungeonBestFloor;
                 currItem.spellType = (SpellType)Random.Range(1, (int)SpellType.Size);
                 currItem.manaCost = Random.Range(1, 5) * currentDungeonBestFloor;
                 
                 break;
             case ItemType.Weapon:
-                currItem.name = weaponRefs.names[Random.Range(0, weaponRefs.names.Length)];
-                currItem.fakeDescription = weaponRefs.descriptions[Random.Range(0, weaponRefs.descriptions.Length)];
-                currItem.icon = weaponRefs.sprites[Random.Range(0, weaponRefs.sprites.Length)];
+                currItem.name = weaponRefs.names[rand.Next(weaponRefs.names.Length)];
+                currItem.fakeDescription = weaponRefs.descriptions[rand.Next(weaponRefs.descriptions.Length)];
+                currItem.icon = weaponRefs.sprites[rand.Next(weaponRefs.sprites.Length)];
                 currItem.primaryStat = StatType.Attack;
                 currItem.primaryStatValue = Random.Range(1, 10) * currentDungeonBestFloor;
                 currItem.secondaryStat = (StatType)Random.Range(0, (int)StatType.Size);
                 currItem.secondaryStatValue = Random.Range(0, 5) * currentDungeonBestFloor;
                 break;
             case ItemType.Armor:
-                currItem.name = armorRefs.names[Random.Range(0, armorRefs.names.Length)];
-                currItem.fakeDescription = armorRefs.descriptions[Random.Range(0, armorRefs.descriptions.Length)];
-                currItem.icon = armorRefs.sprites[Random.Range(0, armorRefs.sprites.Length)];
+                currItem.name = armorRefs.names[rand.Next(armorRefs.names.Length)];
+                currItem.fakeDescription = armorRefs.descriptions[rand.Next(armorRefs.descriptions.Length)];
+                currItem.icon = armorRefs.sprites[rand.Next(armorRefs.sprites.Length)];
                 currItem.primaryStat = StatType.Defence;
                 currItem.primaryStatValue = Random.Range(1, 10) * currentDungeonBestFloor;
                 currItem.secondaryStat = (StatType)Random.Range(0, (int)StatType.Size);
                 currItem.secondaryStatValue = Random.Range(0, 5) * currentDungeonBestFloor;
                 break;
             case ItemType.Consumable:
-                currItem.name = consumeableRefs.names[Random.Range(0, consumeableRefs.names.Length)];
-                currItem.fakeDescription = consumeableRefs.descriptions[Random.Range(0, consumeableRefs.descriptions.Length)];
-                currItem.icon = consumeableRefs.sprites[Random.Range(0, consumeableRefs.sprites.Length)];
+                currItem.name = consumeableRefs.names[rand.Next(consumeableRefs.names.Length)];
+                currItem.fakeDescription = consumeableRefs.descriptions[rand.Next(consumeableRefs.descriptions.Length)];
+                currItem.icon = consumeableRefs.sprites[rand.Next(consumeableRefs.sprites.Length)];
                 currItem.primaryStatValue = Random.Range(1, 10) * currentDungeonBestFloor;
                 currItem.spellType = (SpellType)Random.Range(1, (int)SpellType.Size);
                 break;
