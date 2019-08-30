@@ -193,7 +193,12 @@ public class CombatManager : MonoBehaviour
                 Attack(attacker, target, spell.primaryStatValue + attacker.currentATK, false, spell.lifesteal);
                 break;
             case SpellType.Heal:
-                Heal(attacker, target, spell.primaryStatValue + attacker.currentINT);
+                if (!target.isDead) {
+                    Heal(attacker, target, spell.primaryStatValue + attacker.currentINT);
+                }
+                else {
+                    messageText.text += string.Format("But {0} is dead!", target.characterName);
+                }
                 break;
         }
     }

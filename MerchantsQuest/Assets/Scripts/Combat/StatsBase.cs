@@ -83,8 +83,9 @@ public class StatsBase : ScriptableObject
     }
 
     public int Heal(int amount) {
-        Debug.Log("healing!");
-        ChangeHealth(amount);
+        if (!isDead) {
+            ChangeHealth(amount);
+        }
         return amount;
     }
 

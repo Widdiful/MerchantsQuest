@@ -11,6 +11,8 @@ public class TargetingButton : MonoBehaviour
     public TextMeshProUGUI text;
     private CommandMenu commandMenu;
     private bool targetAllies;
+    private bool overworldTarget;
+    private Spell currentSpell;
 
     public void Initialise(int newIndex, string newName, CommandMenu menu, bool newTargetAllies) {
         index = newIndex;
@@ -20,7 +22,18 @@ public class TargetingButton : MonoBehaviour
         targetAllies = newTargetAllies;
     }
 
+    public void SetSpell(Spell spell) {
+        overworldTarget = true;
+        currentSpell = spell;
+    }
+
     public void Click() {
-        commandMenu.SetTarget(index, targetAllies);
+        if (!overworldTarget) {
+            commandMenu.SetTarget(index, targetAllies);
+        }
+        else {
+            PartyManager.instance.partyMembers[index].currentMP -= currentSpell.manaCost;
+            PartyManager.instance.partyMembers[index].Heal(currentSpell.primaryStatValue);
+        }
     }
 }

@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
     public bool inCombat;
     public GameObject pauseMenu;
     public GameObject evacButton;
-    public Canvas victoryCanvas, gameOverCanvas;
+    public Canvas victoryCanvas, gameOverCanvas, spellCanvas, targetingCanvas;
+    public SpellMenu spellMenu;
     private int stepsUntilEncounter;
 
     public TransitionBoi transition;
@@ -91,7 +92,10 @@ public class GameManager : MonoBehaviour
 
     public void TogglePause() {
         evacButton.SetActive(dungeon.isInDungeon);
-        pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
+        bool val = !pauseMenu.activeInHierarchy;
+        pauseMenu.SetActive(val);
+        spellCanvas.enabled = false;
+        targetingCanvas.enabled = false;
     }
 
     public void GameOver() {
@@ -102,5 +106,11 @@ public class GameManager : MonoBehaviour
     public void CompleteGame() {
         player.canMove = false;
         victoryCanvas.enabled = true;
+    }
+
+    public void OpenOverworldSpellMenu() {
+        targetingCanvas.enabled = false;
+        spellMenu.InitialiseTargetList();
+        spellCanvas.enabled = true;
     }
 }

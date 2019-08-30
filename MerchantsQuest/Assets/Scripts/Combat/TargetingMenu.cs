@@ -7,6 +7,8 @@ public class TargetingMenu : MonoBehaviour
     public GameObject buttonPrefab;
     public Transform listContainer;
     public CommandMenu commandMenu;
+    private bool overworldSpell;
+    private Spell currentSpell;
 
     public void InitialiseTargetList() {
         InitialiseTargetList(false);
@@ -24,10 +26,24 @@ public class TargetingMenu : MonoBehaviour
             }
         }
         else {
-            for (int i = 0; i < CombatManager.instance.allAllies.Count; i++) {
-                TargetingButton button = Instantiate(buttonPrefab, listContainer).GetComponent<TargetingButton>();
-                button.Initialise(i, CombatManager.instance.allAllies[i].characterName, commandMenu, targetTeam);
+            if (!overworldSpell) {
+                for (int i = 0; i < CombatManager.instance.allAllies.Count; i++) {
+                    TargetingButton button = Instantiate(buttonPrefab, listContainer).GetComponent<TargetingButton>();
+                    button.Initialise(i, CombatManager.instance.allAllies[i].characterName, commandMenu, targetTeam);
+                }
+            }
+            else {
+                for (int i = 0; i < PartyManager.instance.partyMembers.Count; i++) {
+                    TargetingButton button = Instantiate(buttonPrefab, listContainer).GetComponent<TargetingButton>();
+                    button.Initialise(i, PartyManager.instance.partyMembers[i].characterName, commandMenu, targetTeam);
+                    button.SetSpell(currentSpell);
+                }
             }
         }
+    }
+
+    public void SetSpell(Spell spell) {
+        currentSpell = spell;
+        overworldSpell = true;
     }
 }
