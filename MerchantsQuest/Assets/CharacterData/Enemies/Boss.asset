@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceaed19ceccfba34da46569010ae0e73, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: 
-  characterName: The Gobbler
+  characterName: Grubabble
   sprite: {fileID: -6916609094230553613, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
   baseHP: 48
@@ -46,3 +46,4 @@ MonoBehaviour:
   initialisedLevel: 0
   chanceToUseSpell: 0
   blockChance: 0
+  spriteSize: {x: 144, y: 96}

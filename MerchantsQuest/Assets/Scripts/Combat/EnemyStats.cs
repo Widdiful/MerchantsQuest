@@ -11,6 +11,7 @@ public class EnemyStats : StatsBase
     public float chanceToUseSpell;
     [Range(0, 1)]
     public float blockChance;
+    public Vector2 spriteSize;
 
     public override void GetCommand() {
         base.GetCommand();

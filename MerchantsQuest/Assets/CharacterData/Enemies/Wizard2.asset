@@ -15,8 +15,6 @@ MonoBehaviour:
   characterName: Caster
   sprite: {fileID: -7975975662582009692, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
-  maxHP: 6
-  maxMP: 24
   baseHP: 6
   baseMP: 24
   baseATK: 4
@@ -27,6 +25,8 @@ MonoBehaviour:
   goldValue: 5
   totalXP: 0
   targetXP: 0
+  maxHP: 6
+  maxMP: 24
   currentHP: 0
   currentMP: 0
   currentATK: 0
@@ -54,3 +54,4 @@ MonoBehaviour:
   initialisedLevel: 0
   chanceToUseSpell: 0.9
   blockChance: 0
+  spriteSize: {x: 48, y: 48}

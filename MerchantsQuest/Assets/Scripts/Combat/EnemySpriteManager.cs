@@ -13,6 +13,7 @@ public class EnemySpriteManager : MonoBehaviour
                 sprites[i].gameObject.SetActive(true);
                 sprites[i].enabled = true;
                 sprites[i].sprite = list[i].sprite;
+                sprites[i].rectTransform.sizeDelta = new Vector2(list[i].spriteSize.x, list[i].spriteSize.y);
             }
             else {
                 sprites[i].gameObject.SetActive(false);

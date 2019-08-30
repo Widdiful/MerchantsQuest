@@ -15,8 +15,6 @@ MonoBehaviour:
   characterName: Bitsy Batsy
   sprite: {fileID: 2536378387995833250, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
-  maxHP: 8
-  maxMP: 4
   baseHP: 8
   baseMP: 4
   baseATK: 8
@@ -27,6 +25,8 @@ MonoBehaviour:
   goldValue: 5
   totalXP: 0
   targetXP: 0
+  maxHP: 8
+  maxMP: 4
   currentHP: 0
   currentMP: 0
   currentATK: 0
@@ -54,3 +54,4 @@ MonoBehaviour:
   initialisedLevel: 0
   chanceToUseSpell: 0.2
   blockChance: 0
+  spriteSize: {x: 48, y: 48}
