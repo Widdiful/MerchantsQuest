@@ -29,14 +29,17 @@ public class ShopSlot : Slot<Item>
         else if (item.type == ItemType.Spell)
         {
             price = 0;
-            price = item.manaCost * Constants.primaryStatPriceModifier;
+            price = item.manaCost * Constants.secondaryStatPriceModifier 
+                + item.primaryStatValue * Constants.primaryStatPriceModifier;
             price += (int)(price * Constants.spellTax);
             price = (int)(price * Random.Range(0.5f, 1.5f));
         }
         else
         {
-            //Work out how to price up consumables
-            price = 250;
+            //Work out how to price up consumablesprice = item.manaCost * Constants.primaryStatPriceModifier;
+            price = (item.primaryStatValue * Constants.primaryStatPriceModifier);
+            price += (int)(price * Constants.consumableTax);
+            price = (int)(price * Random.Range(0.5f, 1.5f));
         }
 
         item.price = price;
