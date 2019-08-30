@@ -322,7 +322,7 @@ public class CombatManager : MonoBehaviour
 
     void AddRandomEnemies() {
         // Initialise enemies
-        int enemyCount = Mathf.Min(dungeon.getFloorNumber() + 1, (int)numberOfEnemies.Evaluate(Random.Range(0f, 1f)));
+        int enemyCount = Mathf.Min(Random.Range(1, dungeon.getFloorNumber() + 3), (int)numberOfEnemies.Evaluate(Random.Range(0f, 1f)));
         Dictionary<string, int> enemyDict = new Dictionary<string, int>();
         for (int i = 0; i < enemyCount; i++) {
             EnemyStats temp = Instantiate(possibleEnemies[Random.Range(0, Mathf.Clamp(Mathf.CeilToInt((dungeon.getFloorNumber() + 1) / 5f) * 5, 0, possibleEnemies.Count))]);

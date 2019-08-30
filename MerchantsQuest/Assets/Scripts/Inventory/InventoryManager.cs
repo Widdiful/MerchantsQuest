@@ -29,21 +29,21 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Tab) && !GameManager.instance.inCombat)
-        {
-            inventoryEnabled = !inventoryEnabled;
+    private void Update() {
+        if (inventoryEnabled && Input.GetKeyDown("escape")) {
+            ToggleMenu();
+        }
+    }
 
-            if (!inventoryEnabled)
-            {
-                inventory.SetActive(false);
-                GameManager.instance.player.canMove = true;
-            }
+    public void ToggleMenu() {
+        inventoryEnabled = !inventoryEnabled;
+
+        if (!inventoryEnabled) {
+            inventory.SetActive(false);
+            GameManager.instance.player.canMove = true;
         }
 
-        if (inventoryEnabled)
-        {
+        if (inventoryEnabled) {
             inventory.SetActive(true);
             GameManager.instance.player.canMove = false;
             pStatShower.UpdateStats();
