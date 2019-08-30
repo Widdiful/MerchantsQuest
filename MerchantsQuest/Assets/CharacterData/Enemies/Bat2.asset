@@ -44,7 +44,9 @@ MonoBehaviour:
   isEnemy: 0
   spellList:
   - id: 0
-    name: Suck Blood
+    appraised: 0
+    name: Lifesteal
+    fakeDescription: 
     spellType: 3
     primaryStatValue: -5
     manaCost: 2

@@ -54,12 +54,13 @@ public class PlayerStats : StatsBase
     public BonusStats GetStatData() {
         BonusStats result = new BonusStats();
 
-        result.bonusHP = maxHP;
-        result.bonusMP = maxMP;
-        result.bonusATK = currentATK;
-        result.bonusDEF = currentDEF;
-        result.bonusAGI = currentAGI;
-        result.bonusINT = currentINT;
+        result.bonusHP = baseHP + (hpPerLevel * (level - 1));
+        result.bonusMP = baseMP + (mpPerLevel * (level - 1));
+        result.bonusATK = baseATK + (atkPerLevel * (level - 1));
+        result.bonusDEF = baseDEF + (defPerLevel * (level - 1));
+        result.bonusAGI = baseAGI + (agiPerLevel * (level - 1));
+        result.bonusINT = baseINT + (intPerLevel * (level - 1));
+
         if (weapon.appraised) {
             CalculateBonusStats(weapon, result);
         }

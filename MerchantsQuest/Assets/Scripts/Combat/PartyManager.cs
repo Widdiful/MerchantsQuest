@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class PartyManager : MonoBehaviour
 {
     public List<PlayerStats> partyMemberPrefabs = new List<PlayerStats>();
-    [HideInInspector]
     public List<PlayerStats> partyMembers = new List<PlayerStats>();
     public int gold;
 

@@ -16,10 +16,10 @@ MonoBehaviour:
   sprite: {fileID: -7868115853684327939, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
   baseHP: 10
-  baseMP: 0
+  baseMP: 2
   baseATK: 24
-  baseDEF: 6
-  baseAGI: 8
+  baseDEF: 4
+  baseAGI: 4
   baseINT: 0
   expValue: 10
   goldValue: 5
@@ -34,7 +34,7 @@ MonoBehaviour:
   currentAGI: 0
   currentINT: 0
   hpPerLevel: 2
-  mpPerLevel: 0
+  mpPerLevel: 1
   atkPerLevel: 5
   defPerLevel: 1
   agiPerLevel: 2
@@ -42,8 +42,18 @@ MonoBehaviour:
   critChance: 0.01
   isDead: 0
   isEnemy: 0
-  spellList: []
+  spellList:
+  - id: 0
+    appraised: 0
+    name: Heavy Hook
+    fakeDescription: 
+    spellType: 3
+    primaryStatValue: 20
+    manaCost: 2
+    lifesteal: 0
+    icon: {fileID: 0}
+    activeIcon: {fileID: 0}
   initialisedLevel: 0
-  chanceToUseSpell: 0
+  chanceToUseSpell: 0.1
   blockChance: 0
   spriteSize: {x: 48, y: 48}

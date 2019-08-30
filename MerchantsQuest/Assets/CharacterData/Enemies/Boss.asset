@@ -15,8 +15,8 @@ MonoBehaviour:
   characterName: Grubabble
   sprite: {fileID: -6916609094230553613, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
-  baseHP: 48
-  baseMP: 16
+  baseHP: 100
+  baseMP: 2
   baseATK: 24
   baseDEF: 6
   baseAGI: 2

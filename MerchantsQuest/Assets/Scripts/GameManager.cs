@@ -15,8 +15,9 @@ public class GameManager : MonoBehaviour
     public bool inCombat;
     public GameObject pauseMenu;
     public GameObject evacButton;
-    public Canvas victoryCanvas, gameOverCanvas, spellCanvas, targetingCanvas;
+    public Canvas victoryCanvas, gameOverCanvas, spellCanvas, targetingCanvas, statsCanvas;
     public SpellMenu spellMenu;
+    public StatsMenu statsMenu;
     private int stepsUntilEncounter;
 
     public TransitionBoi transition;
@@ -96,6 +97,7 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(val);
         spellCanvas.enabled = false;
         targetingCanvas.enabled = false;
+        statsCanvas.enabled = false;
     }
 
     public void GameOver() {
@@ -109,8 +111,16 @@ public class GameManager : MonoBehaviour
     }
 
     public void OpenOverworldSpellMenu() {
+        statsCanvas.enabled = false;
         targetingCanvas.enabled = false;
         spellMenu.InitialiseTargetList();
         spellCanvas.enabled = true;
+    }
+
+    public void OpenStatsMenu() {
+        targetingCanvas.enabled = false;
+        spellCanvas.enabled = false;
+        statsCanvas.enabled = true;
+        statsMenu.InitialiseMenu();
     }
 }
