@@ -11,6 +11,7 @@ public class StartScript : MonoBehaviour
     private void Start()
     {
         GameManager.instance.player.canMove = false;
+        AudioManager.Instance.TransitionToOverworldBGM();
     }
 
     private void FixedUpdate()
@@ -26,11 +27,12 @@ public class StartScript : MonoBehaviour
     IEnumerator WaitThenDisable()
     {
 
+        AudioPlayer.Instance.EnterLocation();
         yield return new WaitForSeconds(2.0f);
         titleScreen.transform.parent.gameObject.SetActive(false);
 
         GameManager.instance.transition.BeginHide();
         GameManager.instance.player.canMove = true;
-        AudioManager.Instance.TransitionToOverworldBGM();
+        
     }
 }

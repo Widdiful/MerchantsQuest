@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public bool canMove;
 
     public bool lerping;
+    bool wasColliding;
     float stepSpeed;
     const float steptime = 0.015625f;
     Vector2 targetPosition;
@@ -78,7 +79,11 @@ public class PlayerController : MonoBehaviour
             if(hit.collider != null)
             {
                 takenInput = false;
-                AudioPlayer.Instance.WallCollision();
+                if (!wasColliding)
+                {
+                    AudioPlayer.Instance.WallCollision();
+                    wasColliding = true;
+                }
 
             }
         }
@@ -103,7 +108,7 @@ public class PlayerController : MonoBehaviour
             targetPosition = checkPos;
             lerping = true;
             //playerTransform.position = Vector2.MoveTowards(transform.position, checkPos, maxTime);
-
+            wasColliding = false;
             timeTllNextInput = maxTime;
 
         }

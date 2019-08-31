@@ -184,15 +184,15 @@ public class AudioManager : MonoBehaviour
     public void SilenceAllBGM()
     {
         if(combatBGM.volume > 0.0f)
-            SilenceAudio(combatBGM);
+            StartCoroutine(SilenceAudio(combatBGM));
         if (townBGM.volume > 0.0f)
-            SilenceAudio(townBGM);
+            StartCoroutine(SilenceAudio(townBGM));
         if (dungeonBGM.volume > 0.0f)
-            SilenceAudio(dungeonBGM);
+            StartCoroutine(SilenceAudio(dungeonBGM));
         if (bossBGM.volume > 0.0f)
-            SilenceAudio(bossBGM);
+            StartCoroutine(SilenceAudio(bossBGM));
         if (overworldBGM.volume > 0.0f)
-            SilenceAudio(overworldBGM);
+            StartCoroutine(SilenceAudio(overworldBGM));
     }
 
     IEnumerator SilenceAudio(AudioSource sourceToSilence)

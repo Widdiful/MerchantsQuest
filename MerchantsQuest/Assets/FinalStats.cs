@@ -9,12 +9,15 @@ public class FinalStats : MonoBehaviour
     public TMP_Text countText;
     public TMP_Text goldSpent;
 
+    public ShowText showText;
+
     private void Awake()
     {
         countText.text = (GameManager.instance.dungeon.highestFloorAchieved + 1).ToString();
         StartCoroutine(Showing(highestLevel, 2.0f, 40.0f));
         StartCoroutine(Showing(countText, 2.0f, 40.0f));
         StartCoroutine(Showing(goldSpent, 2.0f, 40.0f));
+        showText.Show();
     }
 
     IEnumerator Showing(TMP_Text tmpTextObject, float textSpeed, float fadeSpeed)

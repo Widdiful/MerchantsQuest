@@ -97,6 +97,7 @@ public class CombatManager : MonoBehaviour
             }
             else if (playerTeam.Count <= 0) {
                 messageText.text += ("The party are wiped out!\n");
+                AudioManager.Instance.SilenceAllBGM();
                 AudioPlayer.Instance.GameOver();
                 battleEnded = true;
                 gameOver = true;

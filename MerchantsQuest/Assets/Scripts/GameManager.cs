@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
     public void CompleteGame() {
         player.canMove = false;
         victoryCanvas.gameObject.SetActive(true);
-
+        AudioManager.Instance.SilenceAllBGM();
         gameOver = true;
     }
 
