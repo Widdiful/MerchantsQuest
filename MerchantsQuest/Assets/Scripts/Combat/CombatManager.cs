@@ -114,7 +114,7 @@ public class CombatManager : MonoBehaviour
             if (ignoreDefence) messageText.text += "Critical hit!\n";
             if (!lifesteal) {
                 messageText.text += string.Format("{0} takes {1} damage.", target.characterName, damageTaken);
-                if (!showAnimation) {
+                if (showAnimation) {
                     AudioPlayer.Instance.TakeDamage();
                 }
             }
@@ -126,6 +126,9 @@ public class CombatManager : MonoBehaviour
 
             if (target.isEnemy && showAnimation) {
                 spriteManager.PlayMeleeEffect(allEnemies.IndexOf((EnemyStats)target));
+                if (target.currentHP > 0) {
+                    spriteManager.FlickerSprite(allEnemies.IndexOf((EnemyStats)target));
+                }
             }
         }
         else {
@@ -198,6 +201,9 @@ public class CombatManager : MonoBehaviour
 
                 if (target.isEnemy) {
                     spriteManager.PlayMagicEffect(allEnemies.IndexOf((EnemyStats)target));
+                    if (target.currentHP > 0) {
+                        spriteManager.FlickerSprite(allEnemies.IndexOf((EnemyStats)target));
+                    }
                 }
                 break;
             case SpellType.Heal:
@@ -223,6 +229,9 @@ public class CombatManager : MonoBehaviour
 
                 if (target.isEnemy) {
                     spriteManager.PlayMagicEffect(allEnemies.IndexOf((EnemyStats)target));
+                    if (target.currentHP > 0) {
+                        spriteManager.FlickerSprite(allEnemies.IndexOf((EnemyStats)target));
+                    }
                 }
                 break;
             case SpellType.Physical:

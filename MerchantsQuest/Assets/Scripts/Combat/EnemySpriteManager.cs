@@ -8,6 +8,8 @@ public class EnemySpriteManager : MonoBehaviour
     public List<Image> sprites = new List<Image>();
     public List<Animator> attackAnims = new List<Animator>();
     public RuntimeAnimatorController meleeAnim, magicAnim;
+    private int flickerCount = 3;
+    private float flickerDuration = 0.05f;
 
     public void SetSprites(List<EnemyStats> list) {
         for (int i = 0; i < sprites.Count; i++) {
@@ -52,5 +54,18 @@ public class EnemySpriteManager : MonoBehaviour
         attackAnims[id].runtimeAnimatorController = magicAnim;
         attackAnims[id].enabled = false;
         attackAnims[id].enabled = true;
+    }
+
+    public void FlickerSprite(int id) {
+        StartCoroutine(Flicker(id));
+    }
+
+    IEnumerator Flicker(int id) {
+        for (int i = 0; i < flickerCount; i++) {
+            sprites[id].enabled = false;
+            yield return new WaitForSeconds(flickerDuration);
+            sprites[id].enabled = true;
+            yield return new WaitForSeconds(flickerDuration);
+        }
     }
 }
