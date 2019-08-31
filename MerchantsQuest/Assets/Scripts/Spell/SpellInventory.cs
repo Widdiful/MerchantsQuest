@@ -24,6 +24,11 @@ public class SpellInventory : MonoBehaviour
             if(spellSlots[i].empty)
             {
                 spellSlots[i].SetSlot(spell);
+                
+                for(int j =0; j< PartyManager.instance.partyMembers.Count; j++)
+                {
+                    PartyManager.instance.partyMembers[j].spellList.Add(spell);
+                }
                 return;
             }
         }

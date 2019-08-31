@@ -35,7 +35,6 @@ public class ItemManager : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        DontDestroyOnLoad(this);
 
         SetUpRefs();
         items = new Dictionary<int, Item>();

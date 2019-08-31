@@ -15,7 +15,7 @@ public class StartScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!transitionStarted && Input.anyKey)
+        if(titleScreen.GetCurrentAnimatorStateInfo(0).IsName("hold") && !transitionStarted && Input.anyKey)
         {
             titleScreen.SetBool("zoom", true);
             transitionStarted = true;
