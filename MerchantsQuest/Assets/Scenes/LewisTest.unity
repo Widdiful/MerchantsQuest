@@ -17103,7 +17103,13 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 407725b72d44a954d8b71ed8d2217557, type: 3}
   - {fileID: 2800000, guid: aadb5991f20664049930844eed4b8b08, type: 3}
   - {fileID: 2800000, guid: 7b731b785a4e37f4ab3f2e0d3822f188, type: 3}
-  combatTextures: []
+  combatTextures:
+  - {fileID: 2800000, guid: d51a383b3f1120342a97091dd314eec5, type: 3}
+  - {fileID: 2800000, guid: 75fe4b0e2dc9bb14ba8bf31400931eb0, type: 3}
+  - {fileID: 2800000, guid: 44966fb09db6ed042b914c9add97b530, type: 3}
+  - {fileID: 2800000, guid: 6d7bdd16e72f337458cb66764291845d, type: 3}
+  - {fileID: 2800000, guid: 372c0ac27ebc06644a01d2fd615afbe8, type: 3}
+  - {fileID: 2800000, guid: dbc3204eaf7ef1d448520f9b49d1039c, type: 3}
   textureShown: 0
   textureHidden: 0
 --- !u!114 &1702206258
