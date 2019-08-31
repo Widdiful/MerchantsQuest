@@ -6,7 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class EnemyStats : StatsBase
 {
-    private PlayerStats target;
+    private StatsBase target;
     [Range(0,1)]
     public float chanceToUseSpell;
     [Range(0, 1)]
@@ -20,6 +20,9 @@ public class EnemyStats : StatsBase
 
         if (spellList.Count > 0 && Random.Range(0f, 1f) <= chanceToUseSpell) {
             Spell spellToCast = spellList[Random.Range(0, spellList.Count)];
+            if (spellToCast.spellType == SpellType.Heal) {
+                target = CombatManager.instance.enemyTeam[Random.Range(0, CombatManager.instance.enemyTeam.Count)];
+            }
             CastSpell(target, spellToCast);
         }
 

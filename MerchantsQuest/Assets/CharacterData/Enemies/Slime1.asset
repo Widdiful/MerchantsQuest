@@ -44,6 +44,6 @@ MonoBehaviour:
   isEnemy: 1
   spellList: []
   initialisedLevel: 0
-  chanceToUseSpell: 0
+  chanceToUseSpell: 1
   blockChance: 0
   spriteSize: {x: 1, y: 1}
