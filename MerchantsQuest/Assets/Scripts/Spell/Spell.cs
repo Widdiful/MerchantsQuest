@@ -14,6 +14,7 @@ public struct Spell
     public int primaryStatValue;
     public int manaCost;
     public bool lifesteal;
+    public bool attackAll;
 
     public Sprite icon;
     public Sprite activeIcon;

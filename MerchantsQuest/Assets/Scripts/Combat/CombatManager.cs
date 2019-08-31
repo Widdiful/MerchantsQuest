@@ -109,6 +109,10 @@ public class CombatManager : MonoBehaviour
     }
 
     public void Attack(StatsBase attacker, StatsBase target, int damage, bool ignoreDefence, bool lifesteal, bool showAnimation) {
+        Attack(attacker, target, damage, ignoreDefence, lifesteal, showAnimation, false);
+    }
+
+    public void Attack(StatsBase attacker, StatsBase target, int damage, bool ignoreDefence, bool lifesteal, bool showAnimation, bool dontAdvanceAfterAttack) {
         int damageTaken = target.TakeDamage(damage, ignoreDefence);
 
         if (damageTaken > 0) {
@@ -141,16 +145,24 @@ public class CombatManager : MonoBehaviour
             messageText.text += string.Format("\n{0} dies!", target.characterName);
         }
 
-        StartCoroutine(NextTurnWait());
+        if (!dontAdvanceAfterAttack) {
+            StartCoroutine(NextTurnWait());
+        }
     }
 
     public void Heal(StatsBase healer, StatsBase target, int amount) {
+        Heal(healer, target, amount, false);
+    }
+
+    public void Heal(StatsBase healer, StatsBase target, int amount, bool dontContinueAfterAttack) {
         target.Heal(amount);
 
         messageText.text += string.Format("{0} heals {1} health.", target.characterName, amount);
         AudioPlayer.Instance.HealSpell();
 
-        StartCoroutine(NextTurnWait());
+        if (!dontContinueAfterAttack) {
+            StartCoroutine(NextTurnWait());
+        }
     }
 
     public void StartAttack(StatsBase attacker, StatsBase target, int damage, bool ignoreDefence) {
@@ -170,15 +182,53 @@ public class CombatManager : MonoBehaviour
         StartCoroutine(SpellDelay(attacker, target, spell));
     }
 
+    public void SpellAttackAll(StatsBase attacker, Spell spell) {
+        DisableCommandCanvas();
+        StartCoroutine(SpellDelayAll(attacker, spell));
+    }
+
     IEnumerator SpellDelay(StatsBase attacker, StatsBase target, Spell spell) {
         messageText.text += string.Format("{0} casts {1}!\n", attacker.characterName, spell.name);
         AudioPlayer.Instance.CastSpell();
         yield return new WaitForSeconds(timeToWait);
         if (attacker.currentMP >= spell.manaCost) {
             attacker.currentMP -= spell.manaCost;
-            UseSpell(attacker, target, spell);
+            UseSpell(attacker, target, spell, false);
         }
         else {
+            messageText.text += "Not enough MP!";
+            StartCoroutine(NextTurnWait());
+        }
+    }
+
+    IEnumerator SpellDelayAll(StatsBase attacker, Spell spell) {
+        messageText.text += string.Format("{0} casts {1}!\n", attacker.characterName, spell.name);
+        AudioPlayer.Instance.CastSpell();
+        if (attacker.currentMP >= spell.manaCost) {
+            List<StatsBase> targets = new List<StatsBase>();
+            if ((!attacker.isEnemy && spell.spellType != SpellType.Heal)|| (attacker.isEnemy && spell.spellType == SpellType.Heal)) {
+                foreach(StatsBase stats in enemyTeam) {
+                    targets.Add(stats);
+                }
+            }
+            else {
+                foreach (StatsBase stats in playerTeam) {
+                    targets.Add(stats);
+                }
+            }
+            foreach(StatsBase target in targets) {
+                yield return new WaitForSeconds(timeToWait);
+                messageText.text = "";
+                attacker.currentMP -= spell.manaCost;
+                UseSpell(attacker, target, spell, true);
+                spriteManager.UpdateSprites(allEnemies);
+                UpdateAllStats();
+            }
+
+            StartCoroutine(NextTurnWait());
+        }
+        else {
+            yield return new WaitForSeconds(timeToWait);
             messageText.text += "Not enough MP!";
             StartCoroutine(NextTurnWait());
         }
@@ -220,14 +270,14 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    private void UseSpell(StatsBase attacker, StatsBase target, Spell spell) {
+    private void UseSpell(StatsBase attacker, StatsBase target, Spell spell, bool dontContinueAfterAttack) {
         switch (spell.spellType) {
             case SpellType.None:
                 messageText.text += "Nothing happens!";
                 StartCoroutine(NextTurnWait());
                 break;
             case SpellType.Damage:
-                Attack(attacker, target, spell.primaryStatValue + attacker.currentINT, false, spell.lifesteal, false);
+                Attack(attacker, target, spell.primaryStatValue + attacker.currentINT, false, spell.lifesteal, false, dontContinueAfterAttack);
 
                 AudioPlayer.Instance.DamageSpell();
 
@@ -239,11 +289,11 @@ public class CombatManager : MonoBehaviour
                 }
                 break;
             case SpellType.Physical:
-                Attack(attacker, target, spell.primaryStatValue + attacker.currentATK, false, spell.lifesteal, true);
+                Attack(attacker, target, spell.primaryStatValue + attacker.currentATK, false, spell.lifesteal, true, dontContinueAfterAttack);
                 break;
             case SpellType.Heal:
                 if (!target.isDead) {
-                    Heal(attacker, target, spell.primaryStatValue + attacker.currentINT);
+                    Heal(attacker, target, spell.primaryStatValue + attacker.currentINT, dontContinueAfterAttack);
                 }
                 else {
                     messageText.text += string.Format("But {0} is dead!", target.characterName);

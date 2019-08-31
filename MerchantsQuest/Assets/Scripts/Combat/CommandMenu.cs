@@ -36,11 +36,17 @@ public class CommandMenu : MonoBehaviour
     }
 
     private void SwitchToTargeting(bool targetAllies) {
-        commandCanvas.enabled = false;
-        targetingCanvas.enabled = true;
-        spellCanvas.enabled = false;
-        itemCanvas.enabled = false;
-        targetingMenu.InitialiseTargetList(targetAllies);
+        if (commandType == CommandType.Spell && currentSpell.attackAll) {
+            target = CombatManager.instance.enemyTeam[0];
+            ExecuteCommand();
+        }
+        else {
+            commandCanvas.enabled = false;
+            targetingCanvas.enabled = true;
+            spellCanvas.enabled = false;
+            itemCanvas.enabled = false;
+            targetingMenu.InitialiseTargetList(targetAllies);
+        }
     }
 
     private void SwitchToSpell() {

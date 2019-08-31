@@ -139,7 +139,16 @@ public class StatsBase : ScriptableObject
     }
 
     public void CastSpell(StatsBase target, Spell spell) {
-        CombatManager.instance.SpellAttack(this, target, spell);
+        if (!spell.attackAll) {
+            CombatManager.instance.SpellAttack(this, target, spell);
+        }
+        else {
+            CombatManager.instance.SpellAttackAll(this, spell);
+        }
+    }
+
+    public void CastSpellAll(Spell spell) {
+        CombatManager.instance.SpellAttackAll(this, spell);
     }
 
     public void UseItem(StatsBase target, Item item) {
