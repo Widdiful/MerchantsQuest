@@ -85,7 +85,7 @@ public class SpellInventory : MonoBehaviour
                 if(PartyManager.instance.partyMembers[i].spellList[j].id == slotToRemove.item.id)
                 {
                     slotToRemove.RemoveItem();
-                    PartyManager.instance.partyMembers[i].spellList[j] = slotToRemove.blankItem;
+                    PartyManager.instance.partyMembers[i].spellList.RemoveAt(j);
                 }
             }
         }
