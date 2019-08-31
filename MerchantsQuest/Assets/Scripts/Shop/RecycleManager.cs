@@ -14,11 +14,7 @@ public class RecycleManager : MonoBehaviour
     public GameObject confirm;
 
     bool recycleActive;
-
-    private void Awake()
-    {
-    }
-
+    
     public void ShowUI(bool active)
     {
         recycleActive = active;

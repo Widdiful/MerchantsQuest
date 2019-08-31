@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         playerTransform = GetComponent<Transform>();
         spriteController = GetComponent<SpriteRenderer>();
-        canMove = true;
+        
         maxTime = timeTllNextInput;
         stepSpeed = 5;
         timeTllNextInput = 0;
