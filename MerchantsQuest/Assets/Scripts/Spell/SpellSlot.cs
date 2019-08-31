@@ -11,6 +11,7 @@ public class SpellSlot : Slot<Spell>
         if (icon.sprite == null)
             icon.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
 
+        pos = GetComponent<RectTransform>();
         empty = true;
     }
 
@@ -23,8 +24,6 @@ public class SpellSlot : Slot<Spell>
 
     public override void DisplayStats()
     {
-        if (pos == null)
-            pos = GetComponent<RectTransform>();
         if(!empty)
             InventoryManager.Instance.DisplaySpellStats(item, pos);
     }

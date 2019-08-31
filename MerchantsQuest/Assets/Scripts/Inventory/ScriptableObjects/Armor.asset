@@ -13,28 +13,150 @@ MonoBehaviour:
   m_Name: Armor
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: -1128947775675819744, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
-  - {fileID: -5367567284864621945, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
-  - {fileID: -504574306490611350, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
-  - {fileID: 7973886625310189405, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
-  - {fileID: 3072967742494045084, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
-  - {fileID: -9053114588808880918, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
-  - {fileID: 2389193319765324094, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
-  - {fileID: 5085415284296604745, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
-  - {fileID: 1691966074973790518, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
-  - {fileID: -4135836072091612975, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
-  - {fileID: -7604838462600041511, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
-  - {fileID: -2326387718176073400, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
+  - {fileID: 4072639432745848354, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 4735763803521966877, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: -8782549466656123190, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 9164816868100998904, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 6746197434622434211, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: -2408431281440393970, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 3742789882564089294, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: -1374118560368492586, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 3569277128718558275, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
   fakeDescriptionsAsset: {fileID: 4900000, guid: f66c5fb48bf6ae4459b28b1769d948f1,
     type: 3}
   descriptions:
-  - "can block a mountain\r"
-  - "can't block a twig\r"
-  - "not worth your time\r"
-  - "able to deflect fire\r"
+  - "Can block a mountain\r"
+  - "Can't block a twig\r"
+  - "Not worth your time\r"
+  - "Able to deflect fire\r"
+  - "Nothing can pierce this\r"
+  - "Anything will bounce right off of you\r"
+  - "The ground will break before this does\r"
+  - "Flies back to you when thrown\r"
+  - "Super magnetic\r"
+  - "Made of jelly\r"
+  - "Can be eaten after making 5 kills for a health boost\r"
+  - "Save the amazon forest!\r"
+  - "Shines bright in dark areas\r"
+  - "Can find the square root of any number\r"
+  - "Was hung on King Arthurs wall\r"
+  - "Found in a pile of bodies \r"
+  - "Speaks to you in a time of need\r"
+  - "Tracks your kills\r"
+  - "Tracks your deaths\r"
+  - "Tracks how much damage you have taken\r"
+  - "Does your taxes\r"
+  - "Made from the older tree\r"
+  - "Heavier than an elephant\r"
+  - "Lighter than a feather\r"
+  - "Knows pi too 1000 decimal places\r"
+  - "Pretty good\r"
+  - "Pretty basic\r"
+  - "Can produce grapes on demand\r"
+  - "Restores 200 mana per kill\r"
+  - "Gives the player a gold star for every damage point blocked\r"
   - 
   nameAsset: {fileID: 4900000, guid: 7a25b3c2a23cf7244856e53baea48089, type: 3}
   names:
   - "Ivans Blocker\r"
-  - Giants Skull
+  - "Defense of Duels\r"
+  - "Giants Skull\r"
+  - "Conqueror of the Talon\r"
+  - "Champion of Defiance\r"
+  - "Defender of the Phoenix\r"
+  - "Gift of Undoing\r"
+  - "Pact of Oblivion\r"
+  - "Boon of the Steward\r"
+  - "Deflector of Anguish\r"
+  - "Protection of Respect\r"
+  - "Vindicator of Despair\r"
+  - "Oath of Solitude\r"
+  - "Ward of Black Magic\r"
+  - "Steward of the Whispers\r"
+  - "Emissary of the Mage\r"
+  - "Reach of Destruction\r"
+  - "Death of Justice\r"
+  - "Protector of Discipline\r"
+  - "Keeper of Trust\r"
+  - "Deflector of Hate\r"
+  - "Blessing of the North\r"
+  - "Oath of Bloodlust\r"
+  - "Destroyer of the Mountain\r"
+  - "Blessing of Nature\r"
+  - "Last Stand of the Mountain\r"
+  - "Legacy of Solitude\r"
+  - "Death of Suffering's End\r"
+  - "Ward of Hell\r"
+  - "Bond of Moonlight\r"
+  - "Fall of Frost Resist\r"
+  - "Blessing of Kings\r"
+  - "Deflector of the Depth\r"
+  - "Terror of the Flames\r"
+  - "Might of Deception\r"
+  - "Bond of Frost\r"
+  - "Guard of the World\r"
+  - "Defiler of Hellfire\r"
+  - "Last Hope of Guardians\r"
+  - "Vengeance of Stealth\r"
+  - "Ender of Denial\r"
+  - "Wit of Reckoning\r"
+  - "Burden of Strength\r"
+  - "Last Stand of Awareness\r"
+  - "Protector of the Amazon\r"
+  - "Saviour of the Amazon\r"
+  - "SAVE THE AMAZON\r"
+  - "Recycler of Plastic\r"
+  - "Final Favor\r"
+  - "Perfect Storm\r"
+  - "Dusk\r"
+  - "The Voice\r"
+  - "Warsong\r"
+  - "Last Rites\r"
+  - "Volcano\r"
+  - "Betrayal\r"
+  - "Overture\r"
+  - "Honor's Grasp\r"
+  - "Amnesia\r"
+  - "Vacancy\r"
+  - "The Boon\r"
+  - "Silverlight\r"
+  - "Loyalty\r"
+  - "Broken Promise\r"
+  - "Enigma\r"
+  - "Remorse\r"
+  - "Swan Song\r"
+  - "The Beast\r"
+  - "Honor's End\r"
+  - "Enigma\r"
+  - "Lost Paradise\r"
+  - "Face of Death\r"
+  - "Desolation\r"
+  - "Starlight\r"
+  - "Vigilant\r"
+  - "Deathgate\r"
+  - "The Mountain\r"
+  - "Lazarus\r"
+  - "Storm Breaker\r"
+  - "Glimmer\r"
+  - "Warsong\r"
+  - "Sierra\r"
+  - "Broken Promise\r"
+  - "The Titan\r"
+  - "The Void\r"
+  - "The Sentinel\r"
+  - "Voice of Insanity\r"
+  - "Amnesia\r"
+  - "Dawnbreaker\r"
+  - "Vanquisher\r"
+  - "Cerberus\r"
+  - "Path of Exile\r"
+  - "Despair\r"
+  - "Peacekeeper\r"
+  - "The Brute\r"
+  - "The Sentry\r"
+  - "The Abyss\r"
+  - "Swan Song\r"
+  - "Ruin\r"
+  - "Dragonscale\r"
+  - Shepherd
   activeIcon: []

@@ -19,20 +19,20 @@ MonoBehaviour:
   - {fileID: 946132551445127754, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
   - {fileID: -4924065256469680006, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
   - {fileID: -4107469028111699786, guid: 3ca08767852a3fc4f9c778d36722b89f, type: 3}
-  - {fileID: 4140501415075021580, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
-  - {fileID: 7903375484001049222, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
-  - {fileID: -9157540112730319010, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
-  - {fileID: -3622815893734832521, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
-  - {fileID: 557108090377411596, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
-  - {fileID: 4851104234591945120, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
-  - {fileID: -5357964448679271631, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
-  - {fileID: 7298951894589489281, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
-  - {fileID: 2881280454808951123, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
-  - {fileID: 5919033685032468481, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
-  - {fileID: -1830863327148040792, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
-  - {fileID: 264839745117645518, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
-  - {fileID: -1775341221778567658, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
-  - {fileID: 3488620022353859732, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 6395976635270405858, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: -4815890010724720654, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: -5797792017733983404, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: -3250447449094073755, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: -3201748600681458737, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 9060326147827164164, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 7771831162457812956, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 4289225341612252932, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 2478472630302934661, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 6182471121367539961, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 4092904406105125355, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 6516727252884507131, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: -1269143535396503819, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
+  - {fileID: 4080785197704740406, guid: e23592b35dbc2fc4987c04b96523691b, type: 3}
   fakeDescriptionsAsset: {fileID: 4900000, guid: 3185fa08628019540adebd356002024d,
     type: 3}
   descriptions:
@@ -44,6 +44,104 @@ MonoBehaviour:
   - its basically rust
   nameAsset: {fileID: 4900000, guid: 4f3199b52d565e4429a73956bb99c149, type: 3}
   names:
+  - "Fury, Token of Insanity\r"
+  - "Shriek, Executioner of Dismay\r"
+  - "Hornet's Sting\r"
+  - "Arcus, Bringer of Widows\r"
+  - "Shadow Strike, Protector of Thunder\r"
+  - "Viper\r"
+  - "Scorpion Sting\r"
+  - "Stormsong\r"
+  - "Heartpiercer\r"
+  - "Final Whisper\r"
+  - "Venomstrike\r"
+  - "Imminent Doom\r"
+  - "Graviton, Ferocity of Fury\r"
+  - "Despair\r"
+  - "Remorse\r"
+  - "Blazefury\r"
+  - "Wit's End\r"
+  - "Maneater\r"
+  - "Blight's Plight\r"
+  - "The Void, Whisper of the Champion\r"
+  - "Harbinger\r"
+  - "Chaos\r"
+  - "Rage, Token of Misery\r"
+  - "Reign\r"
+  - "Cataclysm\r"
+  - "Decimation\r"
+  - "Vanquisher\r"
+  - "Nightfall\r"
+  - "Enigma\r"
+  - "Reaper, Vengeance of Bloodlust\r"
+  - "Vacancy\r"
+  - "Pride's Skiver\r"
+  - "Frostbite\r"
+  - "Narcoleptic\r"
+  - "Anguish\r"
+  - "Lightbane, Call of Bloodlust\r"
+  - "Requiem\r"
+  - "Vengeance\r"
+  - "Winter's Bite, Might of the Corrupted\r"
+  - "Devine\r"
+  - "Hurricane\r"
+  - "Eternal Bloodlust\r"
+  - "King's Defender\r"
+  - "Storm\r"
+  - "Spinefall\r"
+  - "Jaeger\r"
+  - "The End\r"
+  - "Dawn, Deflector of the Caged Mind\r"
+  - "Sting, Foe of Lost Hope\r"
+  - "Frenzy\r"
+  - "Draughtbane\r"
+  - "Oathbreaker\r"
+  - "Treachery\r"
+  - "Reign of Misery\r"
+  - "Malice\r"
+  - "Echo\r"
+  - "Destiny's Song\r"
+  - "Frozen Defender\r"
+  - "Deathbringer\r"
+  - "Desolation\r"
+  - "The Facelifter\r"
+  - "Morbid Doom\r"
+  - "Oblivion\r"
+  - "Dirge\r"
   - "Doombringer\r"
-  - Ashbringer
+  - "Limbo\r"
+  - "Tranquility\r"
+  - "Blind Justice\r"
+  - "Echo\r"
+  - "Willbreaker\r"
+  - "Starshatterer\r"
+  - "Betrayer\r"
+  - "Mournblade\r"
+  - "Deathraze\r"
+  - "Decimation\r"
+  - "Apocalypse\r"
+  - "Bloodfury\r"
+  - "Fury's Gaze\r"
+  - "The Sundering\r"
+  - "Severance\r"
+  - "Reign\r"
+  - "Scourgeborne\r"
+  - "Rigormortis\r"
+  - "Righteous Might\r"
+  - "Endbringer\r"
+  - "Despair\r"
+  - "Rising Tide\r"
+  - "Persuasion\r"
+  - "Chaos\r"
+  - "Trauma\r"
+  - "Corruption\r"
+  - "Blessing\r"
+  - "Fury\r"
+  - "Monsoon\r"
+  - "Heartcrusher\r"
+  - "Dawn\r"
+  - "Gatecrasher\r"
+  - "Armageddon\r"
+  - "Nightglow\r"
+  - Magma
   activeIcon: []
