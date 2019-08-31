@@ -17,7 +17,6 @@ public class InventoryManager : MonoBehaviour
     InventorySlot itemToEquip;
     public EquipmentManager[] equipment;
 
-    public PlayerStatsShower pStatShower;
 
     private void Awake()
     {
@@ -42,13 +41,14 @@ public class InventoryManager : MonoBehaviour
 
         if (!inventoryEnabled) {
             inventory.SetActive(false);
+            HideStats();
             GameManager.instance.player.canMove = true;
         }
 
         if (inventoryEnabled) {
             inventory.SetActive(true);
             GameManager.instance.player.canMove = false;
-            pStatShower.UpdateStats();
+            
         }
     }
 

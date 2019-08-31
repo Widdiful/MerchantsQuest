@@ -20,11 +20,6 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
     }
-
-
-
-
     
 }

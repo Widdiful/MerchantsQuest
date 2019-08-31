@@ -26,17 +26,6 @@ public class chest : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnCollisionEnter2D(Collision2D other) 
-    {
-        
-    }
-
 // I know this isn't a great way to handle this but it functions
     private void OnTriggerEnter2D(Collider2D other) 
     {

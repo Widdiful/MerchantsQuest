@@ -6003,7 +6003,7 @@ MonoBehaviour:
   items: []
   charactersName: 
   player: 1
-  titleText: {fileID: 1625613739}
+  titleText: {fileID: 574204566}
 --- !u!1 &570273642
 GameObject:
   m_ObjectHideFlags: 0
@@ -15459,7 +15459,7 @@ MonoBehaviour:
   items: []
   charactersName: 
   player: 2
-  titleText: {fileID: 1625613739}
+  titleText: {fileID: 170680588}
 --- !u!224 &1577879846 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 468635337617903548, guid: a639113cdb15e9e46b5a0b2335a557aa,

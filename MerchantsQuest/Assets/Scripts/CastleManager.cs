@@ -34,14 +34,6 @@ public class CastleManager : MonoBehaviour
     }
 
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     public void spawnPileOfLoot()
     {
         for (int i = 0; i < lootPile.Count; i++)

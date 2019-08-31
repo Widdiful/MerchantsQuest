@@ -19,6 +19,7 @@ public class MapTransitions : MonoBehaviour
         if (fullyHealParty) {
             foreach(PlayerStats stats in PartyManager.instance.partyMembers) {
                 if (!stats.isDead) {
+                    stats.InitialiseCharacter();
                     stats.currentHP = stats.maxHP;
                     stats.currentMP = stats.maxMP;
                 }

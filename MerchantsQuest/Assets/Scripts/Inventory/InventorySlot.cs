@@ -37,6 +37,8 @@ public class InventorySlot : Slot<Item>
         if (item.type == ItemType.Spell)
         {
             Spell newSpell = new Spell();
+            newSpell.name = item.name;
+            newSpell.fakeDescription = item.fakeDescription;
             newSpell.id = item.id;
             newSpell.manaCost = item.manaCost;
             newSpell.spellType = item.spellType;
