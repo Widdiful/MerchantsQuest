@@ -44,10 +44,12 @@ public class MapTransitions : MonoBehaviour
             if (leadsToWorldMap)
             {
                 CameraManager.instance.SetPlayerCamActive();
+                AudioManager.Instance.TransitionToOverworldBGM();
             }
             else
             {
                 CameraManager.instance.SetTownCamActive();
+                AudioManager.Instance.TransitionToTownBGM();
             }
             nextMap.SetActive(true);
             player.position = entrancePoint.position;
