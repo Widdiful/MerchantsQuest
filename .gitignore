@@ -62,3 +62,10 @@ sysinfo.txt
 crashlytics-build.properties
 
 MerchantsQuest/Assets/Sprites/Player.meta
+MerchantsQuest/Build.zip
+MerchantsQuest/Build/Build/Build.data.unityweb
+MerchantsQuest/Build/Build/Build.json
+MerchantsQuest/Build/Build/Build.wasm.code.unityweb
+MerchantsQuest/Build/Build/Build.wasm.framework.unityweb
+MerchantsQuest/Build/Build/UnityLoader.js
+MerchantsQuest/Build/index.html
