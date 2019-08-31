@@ -4179,7 +4179,6 @@ MonoBehaviour:
   enemyTeam: []
   allEnemies: []
   turnOrder: []
-  allEnemiesStatsBase: []
   possibleEnemies:
   - {fileID: 11400000, guid: 8af0420faf1a16c47aa69ffc9b44508a, type: 2}
   - {fileID: 11400000, guid: 652fdea67f368bf43800687d22cc0ad5, type: 2}

@@ -76,4 +76,4 @@ MonoBehaviour:
   initialisedLevel: 0
   chanceToUseSpell: 0.2
   blockChance: 0
-  spriteSize: {x: 144, y: 96}
+  spriteSize: {x: 3, y: 2}

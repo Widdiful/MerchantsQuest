@@ -15,7 +15,7 @@ public class EnemySpriteManager : MonoBehaviour
                 sprites[i].gameObject.SetActive(true);
                 sprites[i].enabled = true;
                 sprites[i].sprite = list[i].sprite;
-                sprites[i].rectTransform.sizeDelta = new Vector2(list[i].spriteSize.x, list[i].spriteSize.y);
+                sprites[i].rectTransform.localScale = new Vector3(list[i].spriteSize.x, list[i].spriteSize.y, 1);
             }
             else {
                 sprites[i].gameObject.SetActive(false);
@@ -31,7 +31,7 @@ public class EnemySpriteManager : MonoBehaviour
                 if (i < list.Count && !list[i].isDead) {
                     sprites[i].enabled = true;
                     sprites[i].sprite = list[i].sprite;
-                    sprites[i].rectTransform.sizeDelta = new Vector2(list[i].spriteSize.x, list[i].spriteSize.y);
+                    sprites[i].rectTransform.localScale = new Vector3(list[i].spriteSize.x, list[i].spriteSize.y, 1);
                 }
                 else {
                     sprites[i].enabled = false;
