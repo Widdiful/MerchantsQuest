@@ -67,7 +67,7 @@ public class PlayerStats : StatsBase
         if (armour.appraised) {
             CalculateBonusStats(armour, result);
         }
-
+        
         return result;
     }
 

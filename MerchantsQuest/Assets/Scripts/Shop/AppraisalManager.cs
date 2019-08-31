@@ -48,6 +48,9 @@ public class AppraisalManager : MonoBehaviour
 
     public void AppraiseItem(AppraisalSlot slot)
     {
+        if (slot.empty)
+            return;
+
         if (PartyManager.instance.gold >= slot.apraisalCost)
         {
             //Play anim here?

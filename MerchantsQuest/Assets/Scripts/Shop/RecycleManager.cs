@@ -51,6 +51,9 @@ public class RecycleManager : MonoBehaviour
 
     public void SellItem(RecycleSlot slot)
     {
+        if (slot.empty)
+            return;
+
         slotThatIsSelling = slot;
         confirm.SetActive(true);
         Debug.Log("Selling item in " + slot.name);

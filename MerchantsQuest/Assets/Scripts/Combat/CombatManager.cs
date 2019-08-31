@@ -226,6 +226,8 @@ public class CombatManager : MonoBehaviour
                 }
                 break;
         }
+        if (!spell.appraised)
+            spell.appraised = true;
     }
 
     public void Defend(StatsBase defender) {

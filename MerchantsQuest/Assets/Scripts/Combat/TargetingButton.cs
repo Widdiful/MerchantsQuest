@@ -35,6 +35,7 @@ public class TargetingButton : MonoBehaviour
             if (PartyManager.instance.partyMembers[index].currentMP >= currentSpell.manaCost) {
                 PartyManager.instance.partyMembers[index].currentMP -= currentSpell.manaCost;
                 PartyManager.instance.partyMembers[index].Heal(currentSpell.primaryStatValue);
+                SpellInventory.Instance.AppraiseSpell(currentSpell.id);
                 MessageBox.instance.NewMessage(string.Format("{0} healed {1} HP.", PartyManager.instance.partyMembers[index].characterName, currentSpell.primaryStatValue));
             }
             else {

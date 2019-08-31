@@ -8,6 +8,7 @@ public class Slot<T> : MonoBehaviour
     public T item;
     public bool empty;
     public Image icon;
+    public T blankItem;
 
     protected RectTransform pos;
 
@@ -32,6 +33,7 @@ public class Slot<T> : MonoBehaviour
         icon.sprite = null;
         icon.color = new Color(.0f, .0f, .0f, .0f);
         empty = true;
+        item = blankItem;
         HideStats();
     }
 
