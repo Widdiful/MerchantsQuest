@@ -68,4 +68,12 @@ public class EquipmentManager : MonoBehaviour
             slot.RemoveItem();
         }
     }
+
+    public void RefreshItem(int id)
+    {
+        if(armorSlot.item.id == id)
+        {
+            armorSlot.item = ItemManager.Instance.GetItemFromID(id);
+        }
+    }
 }

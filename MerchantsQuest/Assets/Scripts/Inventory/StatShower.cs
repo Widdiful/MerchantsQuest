@@ -60,7 +60,7 @@ public class StatShower : MonoBehaviour
         {
             nameText.text = spell.name;
             descriptionText.text = "Mana: " + spell.manaCost.ToString();
-            typeText.text = "Damage: " + spell.primaryStatValue.ToString();
+            typeText.text = spell.spellType.ToString() + ": " + spell.primaryStatValue.ToString();
         }
     }
 

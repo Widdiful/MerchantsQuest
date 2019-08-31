@@ -130,6 +130,7 @@ public class InventoryManager : MonoBehaviour
             if(inventorySlots[i].item.id == id)
             {
                 inventorySlots[i].item.appraised = true;
+                ItemManager.Instance.UpdateItem(id, inventorySlots[i].item);
             }
         }
     }
@@ -139,10 +140,12 @@ public class InventoryManager : MonoBehaviour
         itemToEquip = item;
         equipPanel.SetActive(true);
     }
+
     public void CancelEquipPanel ()
     {
         equipPanel.SetActive(false);
     }
+
     public void EquipItem(EquipmentManager character)
     {
         if(!PartyManager.instance.partyMembers[character.player].isDead)

@@ -157,4 +157,16 @@ public class ItemManager : MonoBehaviour
     {
         return items[id];
     }
+
+    public void UpdateItem(int id, Item item)
+    {
+        for(int i = 0; i< items.Count; i++)
+        {
+            if(id == items[i].id)
+            {
+                items[i] = item;
+                return;
+            }
+        }
+    }
 }
