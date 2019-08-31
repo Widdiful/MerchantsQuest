@@ -197,7 +197,7 @@ public class CombatManager : MonoBehaviour
                 StartCoroutine(NextTurnWait());
                 break;
             case SpellType.Damage:
-                Attack(attacker, target, item.primaryStatValue, false, false, false);
+                Attack(attacker, target, item.primaryStatValue, true, false, false);
 
                 if (target.isEnemy) {
                     spriteManager.PlayMagicEffect(allEnemies.IndexOf((EnemyStats)target));
@@ -205,6 +205,9 @@ public class CombatManager : MonoBehaviour
                         spriteManager.FlickerSprite(allEnemies.IndexOf((EnemyStats)target));
                     }
                 }
+                break;
+            case SpellType.Physical:
+                Attack(attacker, target, item.primaryStatValue, true, false, true);
                 break;
             case SpellType.Heal:
                 Heal(attacker, target, item.primaryStatValue);
