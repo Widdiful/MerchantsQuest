@@ -208,14 +208,14 @@ public class CombatManager : MonoBehaviour
                 StartCoroutine(NextTurnWait());
                 break;
             case SpellType.Damage:
-                Attack(attacker, target, spell.primaryStatValue + attacker.currentINT, false, spell.lifesteal, true);
-                break;
-            case SpellType.Physical:
-                Attack(attacker, target, spell.primaryStatValue + attacker.currentATK, false, spell.lifesteal, false);
+                Attack(attacker, target, spell.primaryStatValue + attacker.currentINT, false, spell.lifesteal, false);
 
                 if (target.isEnemy) {
                     spriteManager.PlayMagicEffect(allEnemies.IndexOf((EnemyStats)target));
                 }
+                break;
+            case SpellType.Physical:
+                Attack(attacker, target, spell.primaryStatValue + attacker.currentATK, false, spell.lifesteal, true);
                 break;
             case SpellType.Heal:
                 if (!target.isDead) {
