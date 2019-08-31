@@ -35,7 +35,7 @@ public class SpellMenu : MonoBehaviour
                         button.thisCanvas = thisCanvas;
                         bool canAfford = PartyManager.instance.partyMembers[i].currentMP >= PartyManager.instance.partyMembers[i].spellList[j].manaCost;
                         button.Initialise(j, commandMenu, PartyManager.instance.partyMembers[i].spellList[j], canAfford);
-                        button.SetOverworldSpell(targetingMenu, targetingCanvas);
+                        button.SetOverworldSpell(targetingMenu, targetingCanvas, PartyManager.instance.partyMembers[i]);
                     }
                 }
             }

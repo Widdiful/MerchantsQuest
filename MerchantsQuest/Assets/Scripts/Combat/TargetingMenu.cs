@@ -9,6 +9,7 @@ public class TargetingMenu : MonoBehaviour
     public CommandMenu commandMenu;
     private bool overworldSpell;
     private Spell currentSpell;
+    private StatsBase spellCaster;
 
     public void InitialiseTargetList() {
         InitialiseTargetList(false);
@@ -36,14 +37,15 @@ public class TargetingMenu : MonoBehaviour
                 for (int i = 0; i < PartyManager.instance.partyMembers.Count; i++) {
                     TargetingButton button = Instantiate(buttonPrefab, listContainer).GetComponent<TargetingButton>();
                     button.Initialise(i, PartyManager.instance.partyMembers[i].characterName, commandMenu, targetTeam);
-                    button.SetSpell(currentSpell);
+                    button.SetSpell(currentSpell, spellCaster);
                 }
             }
         }
     }
 
-    public void SetSpell(Spell spell) {
+    public void SetSpell(Spell spell, StatsBase caster) {
         currentSpell = spell;
         overworldSpell = true;
+        spellCaster = caster;
     }
 }
