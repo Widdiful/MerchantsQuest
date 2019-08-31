@@ -16,7 +16,9 @@ public class TransitionBoi : MonoBehaviour
     public void BeginHide()
     {
         dissolveVal = 0.0f;
-        
+
+        if (GameManager.instance.pauseMenu.activeSelf)
+            GameManager.instance.TogglePause();
         StartCoroutine(HideTexture());
     }
 
@@ -36,6 +38,7 @@ public class TransitionBoi : MonoBehaviour
         }
 
         textureHidden = true;
+        GameManager.instance.player.canMove = true;
 
     }
 
@@ -51,6 +54,7 @@ public class TransitionBoi : MonoBehaviour
     [ContextMenu("Fade In")]
     public void BeginShow()
     {
+        GameManager.instance.player.canMove = false;
         textureHidden = false;
         textureShown = false;
         dissolveVal = 1.1f;
