@@ -31,7 +31,7 @@ public class chest : MonoBehaviour
 // I know this isn't a great way to handle this but it functions
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(isClosed)
+        if(isClosed && !GameManager.instance.inCombat)
         {
             if(other.gameObject.CompareTag("Player"))
             {
@@ -44,7 +44,7 @@ public class chest : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D other) 
     {
-        if(isClosed)
+        if(isClosed && !GameManager.instance.inCombat)
         {
             if(other.gameObject.CompareTag("Player"))
             {
