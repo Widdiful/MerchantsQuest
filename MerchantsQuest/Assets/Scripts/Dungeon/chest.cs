@@ -16,6 +16,8 @@ public class chest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        minimumGoldInside *= GameManager.instance.dungeon.getFloorNumber() + 1;
+        maximumGoldInside *= GameManager.instance.dungeon.getFloorNumber() + 1;
         wasBoobyTrapped = false;
         isClosed = true;
         goldInside = Random.Range(minimumGoldInside,maximumGoldInside);

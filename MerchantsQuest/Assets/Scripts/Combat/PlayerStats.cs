@@ -20,7 +20,7 @@ public class PlayerStats : StatsBase
 
     public override void Kill() {
         base.Kill();
-
+        AudioPlayer.Instance.Death();
         CombatManager.instance.playerTeam.Remove(this);
     }
 

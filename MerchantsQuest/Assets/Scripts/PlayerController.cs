@@ -78,6 +78,7 @@ public class PlayerController : MonoBehaviour
             if(hit.collider != null)
             {
                 takenInput = false;
+                AudioPlayer.Instance.WallCollision();
 
             }
         }

@@ -585,7 +585,9 @@ MonoBehaviour:
   sellItem: {fileID: 8300000, guid: 6d4baabb3825c1c4bbcdeef5b05a3bcf, type: 3}
   openShop: {fileID: 8300000, guid: d3da02ac205471c489742325c23532aa, type: 3}
   uiConfirm: {fileID: 8300000, guid: ff1ce80abb539b24da551f3c38cd6c9e, type: 3}
-  uiMoveCursor: {fileID: 0}
+  collision: {fileID: 8300000, guid: d517ec32e5f315c4c99858ee434a2869, type: 3}
+  gameOver: {fileID: 8300000, guid: 0b22d041627d93f488757a83341f7a5d, type: 3}
+  death: {fileID: 8300000, guid: de5de73022c587142a3f0064112ae096, type: 3}
   fadeSpeed: 1
   volSlider: {fileID: 0}
   audioIconHolder: {fileID: 0}
