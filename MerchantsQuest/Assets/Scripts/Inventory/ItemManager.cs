@@ -120,7 +120,7 @@ public class ItemManager : MonoBehaviour
                 currItem.primaryStatValue = Random.Range(1, 10) * currentDungeonBestFloor;
                 currItem.spellType = (SpellType)Random.Range(1, (int)SpellType.Size);
                 currItem.manaCost = Random.Range(1, 5) * currentDungeonBestFloor;
-                
+                currItem.attackAll = rand.Next(100) <= 2 ? true : false;
                 break;
             case ItemType.Weapon:
                 currItem.name = weaponRefs.names[rand.Next(weaponRefs.names.Length)];
@@ -130,6 +130,7 @@ public class ItemManager : MonoBehaviour
                 currItem.primaryStatValue = Random.Range(1, 10) * currentDungeonBestFloor;
                 currItem.secondaryStat = (StatType)Random.Range(0, (int)StatType.Size);
                 currItem.secondaryStatValue = Random.Range(0, 5) * currentDungeonBestFloor;
+                currItem.attackAll = false;
                 break;
             case ItemType.Armor:
                 currItem.name = armorRefs.names[rand.Next(armorRefs.names.Length)];
@@ -139,6 +140,7 @@ public class ItemManager : MonoBehaviour
                 currItem.primaryStatValue = Random.Range(1, 10) * currentDungeonBestFloor;
                 currItem.secondaryStat = (StatType)Random.Range(0, (int)StatType.Size);
                 currItem.secondaryStatValue = Random.Range(0, 5) * currentDungeonBestFloor;
+                currItem.attackAll = false;
                 break;
             case ItemType.Consumable:
                 currItem.name = consumeableRefs.names[rand.Next(consumeableRefs.names.Length)];
@@ -146,6 +148,7 @@ public class ItemManager : MonoBehaviour
                 currItem.icon = consumeableRefs.sprites[rand.Next(consumeableRefs.sprites.Length)];
                 currItem.primaryStatValue = Random.Range(1, 10) * currentDungeonBestFloor;
                 currItem.spellType = (SpellType)Random.Range(1, (int)SpellType.Size);
+                currItem.attackAll = false;
                 break;
         }
 

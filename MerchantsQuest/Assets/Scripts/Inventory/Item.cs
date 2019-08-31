@@ -25,6 +25,7 @@ public struct Item
 
     public SpellType spellType;
     public int manaCost;
+    public bool attackAll;
 
     public int price;
 }

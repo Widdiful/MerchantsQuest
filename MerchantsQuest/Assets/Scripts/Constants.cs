@@ -14,4 +14,5 @@ public class Constants
     public const float consumableTax = 0.5f;
 
     public const float appraisalCost = .2f;
+    public const float attackAllTax = 1.5f;
 }

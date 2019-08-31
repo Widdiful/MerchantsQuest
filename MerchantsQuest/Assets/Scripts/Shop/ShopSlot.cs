@@ -32,6 +32,10 @@ public class ShopSlot : Slot<Item>
             price = item.manaCost * Constants.secondaryStatPriceModifier 
                 + item.primaryStatValue * Constants.primaryStatPriceModifier;
             price += (int)(price * Constants.spellTax);
+            if(item.attackAll)
+            {
+                price = (int)(price * Constants.attackAllTax);
+            }
             price = (int)(price * Random.Range(0.5f, 1.5f));
         }
         else
