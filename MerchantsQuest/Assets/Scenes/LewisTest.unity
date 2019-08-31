@@ -2554,21 +2554,6 @@ PrefabInstance:
       propertyPath: audioIconHolder
       value: 
       objectReference: {fileID: 1604908115}
-    - target: {fileID: 6130074092517398672, guid: 671d52a7b3b5fde40be83ebbb99e9c91,
-        type: 3}
-      propertyPath: collision
-      value: 
-      objectReference: {fileID: 8300000, guid: d517ec32e5f315c4c99858ee434a2869, type: 3}
-    - target: {fileID: 6130074092517398672, guid: 671d52a7b3b5fde40be83ebbb99e9c91,
-        type: 3}
-      propertyPath: gameOver
-      value: 
-      objectReference: {fileID: 8300000, guid: 0b22d041627d93f488757a83341f7a5d, type: 3}
-    - target: {fileID: 6130074092517398672, guid: 671d52a7b3b5fde40be83ebbb99e9c91,
-        type: 3}
-      propertyPath: death
-      value: 
-      objectReference: {fileID: 8300000, guid: de5de73022c587142a3f0064112ae096, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 671d52a7b3b5fde40be83ebbb99e9c91, type: 3}
 --- !u!1001 &276949237
