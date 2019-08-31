@@ -20,6 +20,16 @@ public class AppraisalSlot : Slot<Item>
         CalcApraisal();
     }
 
+    public new void RemoveItem()
+    {
+        icon.sprite = null;
+        icon.color = new Color(.0f, .0f, .0f, .0f);
+        empty = true;
+        item = blankItem;
+        HideStats();
+        appraisedOverlay.SetActive(false);
+    }
+
     void CalcApraisal()
     {
         apraisalCost = Mathf.RoundToInt(item.price * Constants.appraisalCost);

@@ -51,7 +51,7 @@ public class AppraisalManager : MonoBehaviour
         if (slot.empty)
             return;
 
-        if (PartyManager.instance.gold >= slot.apraisalCost)
+        if (!slot.item.appraised && PartyManager.instance.gold >= slot.apraisalCost)
         {
             //Play anim here?
             PartyManager.instance.gold -= slot.apraisalCost;
