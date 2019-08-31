@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/LewisTest.unity
+    guid: 7c891d2f55c5aac4590efa5a4206f2ba
   m_configObjects: {}
