@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Warrior
   sprite: {fileID: 0}
-  level: 20
+  level: 1
   baseHP: 25
   baseMP: 2
   baseATK: 15

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Mage
   sprite: {fileID: 0}
-  level: 20
+  level: 1
   baseHP: 15
   baseMP: 10
   baseATK: 5

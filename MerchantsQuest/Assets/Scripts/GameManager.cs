@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     public SpellMenu spellMenu;
     public StatsMenu statsMenu;
     private int stepsUntilEncounter;
+    private bool gameOver;
 
     public TransitionBoi transition;
 
@@ -79,6 +81,10 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown("escape")) {
             TogglePause();
         }
+
+        if (gameOver && Input.anyKeyDown) {
+            SceneManager.LoadScene(0);
+        }
     }
 
 
@@ -117,11 +123,13 @@ public class GameManager : MonoBehaviour
     public void GameOver() {
         player.canMove = false;
         gameOverCanvas.enabled = true;
+        gameOver = true;
     }
 
     public void CompleteGame() {
         player.canMove = false;
         victoryCanvas.enabled = true;
+        gameOver = true;
     }
 
     public void OpenOverworldSpellMenu() {
