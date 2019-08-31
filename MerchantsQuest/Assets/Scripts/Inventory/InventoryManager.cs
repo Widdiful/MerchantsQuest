@@ -47,6 +47,10 @@ public class InventoryManager : MonoBehaviour
 
         if (inventoryEnabled) {
             inventory.SetActive(true);
+            for(int i = 0; i < equipment.Length;i++)
+            {
+                equipment[i].RefreshItems();
+            }
             GameManager.instance.player.canMove = false;
             
         }
@@ -153,5 +157,16 @@ public class InventoryManager : MonoBehaviour
         equipPanel.SetActive(false);
         itemToEquip.RemoveItem();
         itemToEquip = null;
+    }
+
+    void RefreshItems()
+    {
+        for(int i = 0; i < inventorySlots.Length; i++)
+        {
+            if(!inventorySlots[i].empty)
+            {
+                inventorySlots[i].SetSlot(ItemManager.Instance.GetItemFromID(inventorySlots[i].item.id));
+            }
+        }
     }
 }

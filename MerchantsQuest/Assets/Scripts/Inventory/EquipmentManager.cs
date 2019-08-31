@@ -69,11 +69,15 @@ public class EquipmentManager : MonoBehaviour
         }
     }
 
-    public void RefreshItem(int id)
+    public void RefreshItems()
     {
-        if(armorSlot.item.id == id)
+        if(armorSlot.item.id != 0)
         {
-            armorSlot.item = ItemManager.Instance.GetItemFromID(id);
+            armorSlot.SetSlot(ItemManager.Instance.GetItemFromID(armorSlot.item.id));
+        }
+        if(weaponSlot.item.id != 0 )
+        {
+            weaponSlot.SetSlot(ItemManager.Instance.GetItemFromID(weaponSlot.item.id));
         }
     }
 }

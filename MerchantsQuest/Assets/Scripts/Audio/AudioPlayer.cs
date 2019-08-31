@@ -89,4 +89,19 @@ public class AudioPlayer : MonoBehaviour
     public void TakeDamage() {
         AudioManager.Instance.PlayClip(AudioManager.Instance.damageTaken);
     }
+
+    public void WallCollision()
+    {
+        AudioManager.Instance.PlayClip(AudioManager.Instance.collision);
+    }
+
+    public void Death()
+    {
+        AudioManager.Instance.PlayClip(AudioManager.Instance.death);
+    }
+
+    public void GameOver()
+    {
+        AudioManager.Instance.PlayClip(AudioManager.Instance.gameOver);
+    }
 }

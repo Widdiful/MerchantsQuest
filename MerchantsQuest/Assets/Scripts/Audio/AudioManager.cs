@@ -13,7 +13,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip attackClips;
     public AudioClip damageTaken, castSpell, damageSpell, healSpell, flee, blockAtt, levelUp, combatFin;
     public AudioClip enterLoc, downStairs, buyItem, sellItem, openShop;
-    public AudioClip uiConfirm, uiMoveCursor;
+    public AudioClip uiConfirm, collision;
+    public AudioClip gameOver, death;
 
     public static AudioManager Instance;
 

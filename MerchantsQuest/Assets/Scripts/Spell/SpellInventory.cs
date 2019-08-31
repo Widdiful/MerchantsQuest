@@ -89,5 +89,7 @@ public class SpellInventory : MonoBehaviour
                 }
             }
         }
+
+        confirmPanel.SetActive(false);
     }
 }
