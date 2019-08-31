@@ -42,6 +42,7 @@ public class ShopSlot : Slot<Item>
             price = (int)(price * Random.Range(0.5f, 1.5f));
         }
 
+        ItemManager.Instance.UpdateItem(item.id, item);
         item.price = price;
     }
 

@@ -30,6 +30,7 @@ public class EquipmentManager : MonoBehaviour
                 if(!armorSlot.empty)
                 {
                     Item currItem = armorSlot.GetItem();
+                    items.Remove(armorSlot.GetItem());
                     InventoryManager.Instance.AddItem(currItem);
                     armorSlot.RemoveItem();
                 }
@@ -40,6 +41,7 @@ public class EquipmentManager : MonoBehaviour
                 if(!weaponSlot.empty)
                 {
                     Item currItem = weaponSlot.GetItem();
+                    items.Remove(weaponSlot.GetItem());
                     InventoryManager.Instance.AddItem(currItem);
                     weaponSlot.RemoveItem();
                 }

@@ -7,3 +7,15 @@ Its basically rust
 Breaks on impact
 Turns blood into water
 Arguably just a stick
+Has seen 400 battles
+Does your expenses
+Made from flowers
+Restores 500 health per kill
+Throwable up to 200 km
+Solid as a rock
+Gives the user 5 gold per assist
+Can calculate the distance between two points
+Made of ice
+Made of fire
+Made of steel
+Made of concrete
