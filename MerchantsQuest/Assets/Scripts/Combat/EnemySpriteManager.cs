@@ -20,6 +20,8 @@ public class EnemySpriteManager : MonoBehaviour
             else {
                 sprites[i].gameObject.SetActive(false);
             }
+
+            attackAnims[i].runtimeAnimatorController = null;
         }
     }
 
@@ -39,12 +41,14 @@ public class EnemySpriteManager : MonoBehaviour
     }
 
     public void PlayMeleeEffect(int id) {
+        attackAnims[id].runtimeAnimatorController = null;
         attackAnims[id].runtimeAnimatorController = meleeAnim;
         attackAnims[id].enabled = false;
         attackAnims[id].enabled = true;
     }
 
     public void PlayMagicEffect(int id) {
+        attackAnims[id].runtimeAnimatorController = null;
         attackAnims[id].runtimeAnimatorController = magicAnim;
         attackAnims[id].enabled = false;
         attackAnims[id].enabled = true;
