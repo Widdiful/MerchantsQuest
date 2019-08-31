@@ -35,7 +35,9 @@ public class GameManager : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
+    }
 
+    private void Start() {
         stepsUntilEncounter = Random.Range(minMaxEncounterRate.x, minMaxEncounterRate.y);
     }
 
