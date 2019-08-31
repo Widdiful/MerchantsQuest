@@ -16,6 +16,7 @@ public class SpellButton : MonoBehaviour
     private Canvas targetingCanvas;
     private bool overworldSpell;
     public Canvas thisCanvas;
+    private StatsBase spellCaster;
 
     public void Initialise(int newIndex, CommandMenu menu, Spell newSpell, bool canAfford) {
         index = newIndex;
@@ -26,10 +27,11 @@ public class SpellButton : MonoBehaviour
         button.interactable = canAfford;
     }
 
-    public void SetOverworldSpell(TargetingMenu menu, Canvas canvas) {
+    public void SetOverworldSpell(TargetingMenu menu, Canvas canvas, StatsBase caster) {
         targetingMenu = menu;
         targetingCanvas = canvas;
         overworldSpell = true;
+        spellCaster = caster;
     }
 
     public void Initialise(string name) {
@@ -42,7 +44,7 @@ public class SpellButton : MonoBehaviour
             commandMenu.SetSpell(spell);
         }
         else {
-            targetingMenu.SetSpell(spell);
+            targetingMenu.SetSpell(spell, spellCaster);
             targetingMenu.InitialiseTargetList(true);
             targetingCanvas.enabled = true;
             thisCanvas.enabled = false;

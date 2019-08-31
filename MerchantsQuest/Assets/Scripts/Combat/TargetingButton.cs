@@ -13,6 +13,7 @@ public class TargetingButton : MonoBehaviour
     private bool targetAllies;
     private bool overworldTarget;
     private Spell currentSpell;
+    private StatsBase spellCaster;
 
     public void Initialise(int newIndex, string newName, CommandMenu menu, bool newTargetAllies) {
         index = newIndex;
@@ -22,9 +23,10 @@ public class TargetingButton : MonoBehaviour
         targetAllies = newTargetAllies;
     }
 
-    public void SetSpell(Spell spell) {
+    public void SetSpell(Spell spell, StatsBase caster) {
         overworldTarget = true;
         currentSpell = spell;
+        spellCaster = caster;
     }
 
     public void Click() {
@@ -32,11 +34,16 @@ public class TargetingButton : MonoBehaviour
             commandMenu.SetTarget(index, targetAllies);
         }
         else {
-            if (PartyManager.instance.partyMembers[index].currentMP >= currentSpell.manaCost) {
-                PartyManager.instance.partyMembers[index].currentMP -= currentSpell.manaCost;
-                PartyManager.instance.partyMembers[index].Heal(currentSpell.primaryStatValue);
-                SpellInventory.Instance.AppraiseSpell(currentSpell.id);
-                MessageBox.instance.NewMessage(string.Format("{0} healed {1} HP.", PartyManager.instance.partyMembers[index].characterName, currentSpell.primaryStatValue));
+            if (spellCaster.currentMP >= currentSpell.manaCost) {
+                if (PartyManager.instance.partyMembers[index].currentHP < PartyManager.instance.partyMembers[index].maxHP) {
+                    spellCaster.currentMP -= currentSpell.manaCost;
+                    PartyManager.instance.partyMembers[index].Heal(currentSpell.primaryStatValue + PartyManager.instance.partyMembers[index].currentINT);
+                    SpellInventory.Instance.AppraiseSpell(currentSpell.id);
+                    MessageBox.instance.NewMessage(string.Format("{0} healed {1} HP.", PartyManager.instance.partyMembers[index].characterName, currentSpell.primaryStatValue));
+                }
+                else {
+                    MessageBox.instance.NewMessage(string.Format("HP already full."));
+                }
             }
             else {
                 MessageBox.instance.NewMessage(string.Format("Not enough MP."));
