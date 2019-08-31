@@ -569,22 +569,22 @@ MonoBehaviour:
   bossBGM: {fileID: 8769227676912386998}
   victoryBGM: {fileID: 0}
   sfxSource: {fileID: 2442044905956692200}
-  attackClips: []
-  damageTaken: {fileID: 0}
-  castSpell: {fileID: 0}
-  damageSpell: {fileID: 0}
-  healSpell: {fileID: 0}
-  flee: {fileID: 0}
-  blockAtt: {fileID: 0}
-  levelUp: {fileID: 0}
-  combatFin: {fileID: 0}
-  enterLoc: {fileID: 0}
-  downStairs: {fileID: 0}
-  buyItem: {fileID: 0}
-  sellItem: {fileID: 0}
+  attackClips: {fileID: 8300000, guid: 0c3f8807d018ad54a9015ab53c00b587, type: 3}
+  damageTaken: {fileID: 8300000, guid: df05d372e78b92246bdb922b06bef72c, type: 3}
+  castSpell: {fileID: 8300000, guid: d26642ed5048c6f42b83b4bbfd623b40, type: 3}
+  damageSpell: {fileID: 8300000, guid: bbd894ada66881947be9cf8b0cebd201, type: 3}
+  healSpell: {fileID: 8300000, guid: 8bd1641703dd8bb43acb856d8975ed76, type: 3}
+  flee: {fileID: 8300000, guid: e702a51990f31a644bbd08fed0f87b71, type: 3}
+  blockAtt: {fileID: 8300000, guid: 50bff0fd56176d44f94d05ebc7979ea7, type: 3}
+  levelUp: {fileID: 8300000, guid: 6897ae9b26758dc41a976753f1679bf7, type: 3}
+  combatFin: {fileID: 8300000, guid: ab538505473da7746a32300818bed1df, type: 3}
+  enterLoc: {fileID: 8300000, guid: 416d9b8190a182744814bbb0b5e11441, type: 3}
+  downStairs: {fileID: 8300000, guid: de47f2a21289347448df5dd0f0eb78d9, type: 3}
+  buyItem: {fileID: 8300000, guid: c5064dd3116f43e428e8287f8999e839, type: 3}
+  sellItem: {fileID: 8300000, guid: 6d4baabb3825c1c4bbcdeef5b05a3bcf, type: 3}
   openShop: {fileID: 0}
-  uiConfirm: {fileID: 0}
-  uiMoveCursor: {fileID: 0}
+  uiConfirm: {fileID: 8300000, guid: ff1ce80abb539b24da551f3c38cd6c9e, type: 3}
+  uiMoveCursor: {fileID: 8300000, guid: d3da02ac205471c489742325c23532aa, type: 3}
   fadeSpeed: 1
   volSlider: {fileID: 0}
   audioIconHolder: {fileID: 0}

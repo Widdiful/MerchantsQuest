@@ -10,8 +10,7 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource townBGM, combatBGM, dungeonBGM, overworldBGM, bossBGM, victoryBGM, sfxSource;
 
-    public AudioClip[] attackClips;
-
+    public AudioClip attackClips;
     public AudioClip damageTaken, castSpell, damageSpell, healSpell, flee, blockAtt, levelUp, combatFin;
     public AudioClip enterLoc, downStairs, buyItem, sellItem, openShop;
     public AudioClip uiConfirm, uiMoveCursor;
