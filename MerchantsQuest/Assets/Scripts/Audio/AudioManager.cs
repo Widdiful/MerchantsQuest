@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
 {
     public AudioMixer mixer;
 
-    public AudioSource townBGM, combatBGM, dungeonBGM, overworldBGM, bossBGM, sfxSource;
+    public AudioSource townBGM, combatBGM, dungeonBGM, overworldBGM, bossBGM, victoryBGM, sfxSource;
 
     public AudioClip[] attackClips;
 
@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
         Instance = this;
     }
 
-    void PlayClip(AudioClip clip, float vol)
+    public void PlayClip(AudioClip clip, float vol = 1)
     {
         sfxSource.PlayOneShot(clip, vol);
     }
@@ -172,6 +172,42 @@ public class AudioManager : MonoBehaviour
             sourceToStart.volume += Time.deltaTime * fadeSpeed;
             yield return null;
         }
+    }
+
+
+    public void SilenceAllBGM()
+    {
+        if(combatBGM.volume > 0.0f)
+            SilenceAudio(combatBGM);
+        if (townBGM.volume > 0.0f)
+            SilenceAudio(townBGM);
+        if (dungeonBGM.volume > 0.0f)
+            SilenceAudio(dungeonBGM);
+        if (bossBGM.volume > 0.0f)
+            SilenceAudio(bossBGM);
+        if (overworldBGM.volume > 0.0f)
+            SilenceAudio(overworldBGM);
+    }
+
+    IEnumerator SilenceAudio(AudioSource sourceToSilence)
+    {
+        while(sourceToSilence.volume > 0.0f)
+        {
+            sourceToSilence.volume -= Time.deltaTime * fadeSpeed;
+            yield return null;
+        }
+
+        sourceToSilence.Stop();
+
+
+    }
+    #endregion
+
+#region mixer Adjustments
+    
+    public void AdjustVolume(float newValue)
+    {
+        mixer.SetFloat("_Volume", Mathf.Log10(newValue) * 20);
     }
 #endregion
 }

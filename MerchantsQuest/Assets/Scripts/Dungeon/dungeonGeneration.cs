@@ -136,8 +136,8 @@ public class dungeonGeneration : MonoBehaviour
         isInDungeon = false;
 
         if (reachedNewHighestFloor) {
-            TownManager.instance.CompleteRefillStock();
             ItemManager.Instance.currentDungeonBestFloor = highestFloorAchieved + 1;
+            TownManager.instance.CompleteRefillStock();
         }
         else {
             TownManager.instance.RestockEmptySlots();

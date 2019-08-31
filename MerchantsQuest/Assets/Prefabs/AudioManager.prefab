@@ -567,6 +567,7 @@ MonoBehaviour:
   dungeonBGM: {fileID: 6831454738522546693}
   overworldBGM: {fileID: 6831454738522546693}
   bossBGM: {fileID: 8769227676912386998}
+  victoryBGM: {fileID: 0}
   sfxSource: {fileID: 2442044905956692200}
   attackClips: []
   damageTaken: {fileID: 0}
@@ -584,7 +585,7 @@ MonoBehaviour:
   openShop: {fileID: 0}
   uiConfirm: {fileID: 0}
   uiMoveCursor: {fileID: 0}
-  fadeSpeed: 3
+  fadeSpeed: 1
 --- !u!1 &7315337991449716330
 GameObject:
   m_ObjectHideFlags: 0
