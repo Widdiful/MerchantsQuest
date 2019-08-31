@@ -13,7 +13,8 @@ public class PlayerStats : StatsBase
     }
 
     public override int TakeDamage(int damage, bool ignoreDefence) {
-        armour.appraised = true;
+        if (!armour.appraised)
+            InventoryManager.Instance.AppraiseItem(armour.id);
         return base.TakeDamage(damage, ignoreDefence);
     }
 
@@ -25,7 +26,8 @@ public class PlayerStats : StatsBase
 
     public override void Attack(StatsBase target, int damage) {
         base.Attack(target, damage);
-        weapon.appraised = true;
+        if (!weapon.appraised)
+            InventoryManager.Instance.AppraiseItem(weapon.id);
     }
 
     public override void GetCommand() {

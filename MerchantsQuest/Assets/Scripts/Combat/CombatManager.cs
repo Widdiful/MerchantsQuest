@@ -227,7 +227,7 @@ public class CombatManager : MonoBehaviour
                 break;
         }
         if (!spell.appraised)
-            spell.appraised = true;
+            SpellInventory.Instance.AppraiseSpell(spell.id);
     }
 
     public void Defend(StatsBase defender) {
