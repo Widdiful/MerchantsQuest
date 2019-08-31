@@ -80,4 +80,13 @@ public class AudioPlayer : MonoBehaviour
     {
         AudioManager.Instance.PlayClip(AudioManager.Instance.enterLoc);
     }
+
+    public void VictoryFanfare()
+    {
+        AudioManager.Instance.PlayClip(AudioManager.Instance.combatFin);
+    }
+
+    public void TakeDamage() {
+        AudioManager.Instance.PlayClip(AudioManager.Instance.damageTaken);
+    }
 }

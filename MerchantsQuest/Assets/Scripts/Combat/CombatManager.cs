@@ -91,6 +91,7 @@ public class CombatManager : MonoBehaviour
             }
             else if (enemyTeam.Count <= 0) {
                 messageText.text += ("Victory!\n");
+                AudioPlayer.Instance.VictoryFanfare();
                 battleEnded = true;
                 StartCoroutine(NextTurnWait());
             }
@@ -113,10 +114,14 @@ public class CombatManager : MonoBehaviour
             if (ignoreDefence) messageText.text += "Critical hit!\n";
             if (!lifesteal) {
                 messageText.text += string.Format("{0} takes {1} damage.", target.characterName, damageTaken);
+                if (!showAnimation) {
+                    AudioPlayer.Instance.TakeDamage();
+                }
             }
             else {
                 attacker.Heal(damageTaken);
                 messageText.text += string.Format("Absorbs {0} HP from {1}!", damageTaken, target.characterName);
+                AudioPlayer.Instance.HealSpell();
             }
 
             if (target.isEnemy && showAnimation) {
@@ -124,7 +129,8 @@ public class CombatManager : MonoBehaviour
             }
         }
         else {
-            messageText.text += string.Format("{0} dodges the attack.", target.characterName);
+            messageText.text += string.Format("{0} blocks the attack.", target.characterName);
+            AudioPlayer.Instance.Block();
         }
 
         if (target.isDead) {
@@ -138,6 +144,7 @@ public class CombatManager : MonoBehaviour
         target.Heal(amount);
 
         messageText.text += string.Format("{0} heals {1} health.", target.characterName, amount);
+        AudioPlayer.Instance.HealSpell();
 
         StartCoroutine(NextTurnWait());
     }
@@ -149,6 +156,7 @@ public class CombatManager : MonoBehaviour
 
     IEnumerator AttackDelay(StatsBase attacker, StatsBase target, int damage, bool ignoreDefence) {
         messageText.text += string.Format("{0} attacks!\n", attacker.characterName);
+        AudioPlayer.Instance.Attack();
         yield return new WaitForSeconds(timeToWait);
         Attack(attacker, target, damage, ignoreDefence, false, true);
     }
@@ -160,6 +168,7 @@ public class CombatManager : MonoBehaviour
 
     IEnumerator SpellDelay(StatsBase attacker, StatsBase target, Spell spell) {
         messageText.text += string.Format("{0} casts {1}!\n", attacker.characterName, spell.name);
+        AudioPlayer.Instance.CastSpell();
         yield return new WaitForSeconds(timeToWait);
         if (attacker.currentMP >= spell.manaCost) {
             attacker.currentMP -= spell.manaCost;
@@ -210,6 +219,8 @@ public class CombatManager : MonoBehaviour
             case SpellType.Damage:
                 Attack(attacker, target, spell.primaryStatValue + attacker.currentINT, false, spell.lifesteal, false);
 
+                AudioPlayer.Instance.DamageSpell();
+
                 if (target.isEnemy) {
                     spriteManager.PlayMagicEffect(allEnemies.IndexOf((EnemyStats)target));
                 }
@@ -239,6 +250,7 @@ public class CombatManager : MonoBehaviour
     public void Flee() {
         DisableCommandCanvas();
         messageText.text = string.Format("{0} flees...\n", currentActor.characterName);
+        AudioPlayer.Instance.Flee();
         StartCoroutine(FleeDelay());
     }
 
@@ -423,6 +435,7 @@ public class CombatManager : MonoBehaviour
                         player.level++;
                         player.targetXP += (player.level * 50);
                         messageText.text = string.Format("{0}'s level has increased to {1}!", player.characterName, player.level);
+                        AudioPlayer.Instance.LevelUp();
                         yield return new WaitForSeconds(timeToWait * 2);
                         messageText.text = string.Format("{0}'s stats have increased.\n HP + {1}, MP + {2}, ATK + {3},\nDEF + {4}, AGI + {5}, INT + {6}.",
                             player.characterName, player.hpPerLevel, player.mpPerLevel, player.atkPerLevel, player.defPerLevel, player.agiPerLevel, player.intPerLevel);
