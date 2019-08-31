@@ -15,12 +15,12 @@ MonoBehaviour:
   characterName: Grubabble
   sprite: {fileID: -6916609094230553613, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
-  baseHP: 100
-  baseMP: 2
-  baseATK: 24
-  baseDEF: 6
-  baseAGI: 2
-  baseINT: 0
+  baseHP: 1500
+  baseMP: 250
+  baseATK: 100
+  baseDEF: 100
+  baseAGI: 0
+  baseINT: 50
   expValue: 10
   goldValue: 5
   totalXP: 0
@@ -41,9 +41,39 @@ MonoBehaviour:
   intPerLevel: 0
   critChance: 0.1
   isDead: 0
-  isEnemy: 0
-  spellList: []
+  isEnemy: 1
+  spellList:
+  - id: 1
+    appraised: 0
+    name: Night Club
+    fakeDescription: 
+    spellType: 3
+    primaryStatValue: 50
+    manaCost: 20
+    lifesteal: 0
+    icon: {fileID: 0}
+    activeIcon: {fileID: 0}
+  - id: 2
+    appraised: 0
+    name: Absorb Hope
+    fakeDescription: 
+    spellType: 2
+    primaryStatValue: 0
+    manaCost: 50
+    lifesteal: 1
+    icon: {fileID: 0}
+    activeIcon: {fileID: 0}
+  - id: 3
+    appraised: 0
+    name: Pick Nose
+    fakeDescription: 
+    spellType: 0
+    primaryStatValue: 0
+    manaCost: 0
+    lifesteal: 0
+    icon: {fileID: 0}
+    activeIcon: {fileID: 0}
   initialisedLevel: 0
-  chanceToUseSpell: 0
+  chanceToUseSpell: 0.2
   blockChance: 0
   spriteSize: {x: 144, y: 96}

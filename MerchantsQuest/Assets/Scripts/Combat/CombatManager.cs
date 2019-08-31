@@ -106,7 +106,7 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    public void Attack(StatsBase attacker, StatsBase target, int damage, bool ignoreDefence, bool lifesteal) {
+    public void Attack(StatsBase attacker, StatsBase target, int damage, bool ignoreDefence, bool lifesteal, bool showAnimation) {
         int damageTaken = target.TakeDamage(damage, ignoreDefence);
 
         if (damageTaken > 0) {
@@ -117,6 +117,10 @@ public class CombatManager : MonoBehaviour
             else {
                 attacker.Heal(damageTaken);
                 messageText.text += string.Format("Absorbs {0} HP from {1}!", damageTaken, target.characterName);
+            }
+
+            if (target.isEnemy && showAnimation) {
+                spriteManager.PlayMeleeEffect(allEnemies.IndexOf((EnemyStats)target));
             }
         }
         else {
@@ -146,7 +150,7 @@ public class CombatManager : MonoBehaviour
     IEnumerator AttackDelay(StatsBase attacker, StatsBase target, int damage, bool ignoreDefence) {
         messageText.text += string.Format("{0} attacks!\n", attacker.characterName);
         yield return new WaitForSeconds(timeToWait);
-        Attack(attacker, target, damage, ignoreDefence, false);
+        Attack(attacker, target, damage, ignoreDefence, false, true);
     }
 
     public void SpellAttack(StatsBase attacker, StatsBase target, Spell spell) {
@@ -181,7 +185,11 @@ public class CombatManager : MonoBehaviour
                 StartCoroutine(NextTurnWait());
                 break;
             case SpellType.Damage:
-                Attack(attacker, target, item.primaryStatValue, false, false);
+                Attack(attacker, target, item.primaryStatValue, false, false, false);
+
+                if (target.isEnemy) {
+                    spriteManager.PlayMagicEffect(allEnemies.IndexOf((EnemyStats)target));
+                }
                 break;
             case SpellType.Heal:
                 Heal(attacker, target, item.primaryStatValue);
@@ -200,10 +208,14 @@ public class CombatManager : MonoBehaviour
                 StartCoroutine(NextTurnWait());
                 break;
             case SpellType.Damage:
-                Attack(attacker, target, spell.primaryStatValue + attacker.currentINT, false, spell.lifesteal);
+                Attack(attacker, target, spell.primaryStatValue + attacker.currentINT, false, spell.lifesteal, true);
                 break;
             case SpellType.Physical:
-                Attack(attacker, target, spell.primaryStatValue + attacker.currentATK, false, spell.lifesteal);
+                Attack(attacker, target, spell.primaryStatValue + attacker.currentATK, false, spell.lifesteal, false);
+
+                if (target.isEnemy) {
+                    spriteManager.PlayMagicEffect(allEnemies.IndexOf((EnemyStats)target));
+                }
                 break;
             case SpellType.Heal:
                 if (!target.isDead) {

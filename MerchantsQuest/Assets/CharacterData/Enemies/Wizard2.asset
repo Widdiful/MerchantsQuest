@@ -41,10 +41,12 @@ MonoBehaviour:
   intPerLevel: 4
   critChance: 0.01
   isDead: 0
-  isEnemy: 0
+  isEnemy: 1
   spellList:
   - id: 0
+    appraised: 0
     name: Fireball
+    fakeDescription: 
     spellType: 2
     primaryStatValue: 10
     manaCost: 2

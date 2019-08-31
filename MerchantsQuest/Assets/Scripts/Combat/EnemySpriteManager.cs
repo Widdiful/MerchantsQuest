@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class EnemySpriteManager : MonoBehaviour
 {
     public List<Image> sprites = new List<Image>();
+    public List<Animator> attackAnims = new List<Animator>();
+    public RuntimeAnimatorController meleeAnim, magicAnim;
 
     public void SetSprites(List<EnemyStats> list) {
         for (int i = 0; i < sprites.Count; i++) {
@@ -34,5 +36,17 @@ public class EnemySpriteManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void PlayMeleeEffect(int id) {
+        attackAnims[id].runtimeAnimatorController = meleeAnim;
+        attackAnims[id].enabled = false;
+        attackAnims[id].enabled = true;
+    }
+
+    public void PlayMagicEffect(int id) {
+        attackAnims[id].runtimeAnimatorController = magicAnim;
+        attackAnims[id].enabled = false;
+        attackAnims[id].enabled = true;
     }
 }

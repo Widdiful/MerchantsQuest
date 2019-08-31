@@ -41,7 +41,7 @@ MonoBehaviour:
   intPerLevel: 0
   critChance: 0.2
   isDead: 0
-  isEnemy: 0
+  isEnemy: 1
   spellList: []
   initialisedLevel: 0
   chanceToUseSpell: 0
