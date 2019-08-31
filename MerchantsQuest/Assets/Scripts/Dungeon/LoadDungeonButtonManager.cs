@@ -22,6 +22,8 @@ public class LoadDungeonButtonManager : MonoBehaviour
         dungeonGeneration reference = FindObjectOfType<dungeonGeneration>();
         reference.setFloorNumber(0);
         reference.generateMap();
+
+        AudioManager.Instance.TransitionToDungeonBGM();
     }
 
     public void continueDungeon()
@@ -29,5 +31,7 @@ public class LoadDungeonButtonManager : MonoBehaviour
         dungeonGeneration reference = FindObjectOfType<dungeonGeneration>();
         //dungeonGeneration.setFloorNumber(0);
         reference.generateMap();
+
+        AudioManager.Instance.TransitionToDungeonBGM();
     }
 }

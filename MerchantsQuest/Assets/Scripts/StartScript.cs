@@ -31,5 +31,6 @@ public class StartScript : MonoBehaviour
 
         GameManager.instance.transition.BeginHide();
         GameManager.instance.player.canMove = true;
+        AudioManager.Instance.TransitionToOverworldBGM();
     }
 }
