@@ -56,7 +56,7 @@ public class RecycleManager : MonoBehaviour
 
         slotThatIsSelling = slot;
         confirm.SetActive(true);
-        Debug.Log("Selling item in " + slot.name);
+
     }
 
     public void ConfirmSell()

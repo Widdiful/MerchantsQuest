@@ -90,16 +90,12 @@ public class dungeonGeneration : MonoBehaviour
 
     }
 
+    [ContextMenu("Increase Floor")]
     public void incrementFloorCount()
     {
         // do floor number increase and start floor transition steps
         currentFloorNumber++;
         
-        if(currentFloorNumber > highestFloorAchieved)
-        {
-            highestFloorAchieved = currentFloorNumber;
-            reachedNewHighestFloor = true;
-        }
         foreach (Transform child in transform) {
              GameObject.Destroy(child.gameObject);
         }
@@ -170,7 +166,6 @@ public class dungeonGeneration : MonoBehaviour
         GameManager.instance.player.canMove = true;
 
         isInDungeon = true;
-        reachedNewHighestFloor = false;
         playerLocation.GetComponent<PlayerController>().lerping = false;
         buttonReference.SetActive(false);
         for (int x = 0; x < map.GetUpperBound(0) ; x++) //Loop through the width of the map
@@ -236,6 +231,16 @@ public class dungeonGeneration : MonoBehaviour
         setTileMap(map);
         if (floorText) {
             floorText.text = string.Format("Floor {0}", currentFloorNumber + 1);
+        }
+
+        if (currentFloorNumber > highestFloorAchieved)
+        {
+            highestFloorAchieved = currentFloorNumber;
+            reachedNewHighestFloor = true;
+        }
+        else
+        {
+            reachedNewHighestFloor = true;
         }
     }
 
