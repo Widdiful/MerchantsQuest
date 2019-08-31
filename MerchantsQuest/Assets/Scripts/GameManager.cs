@@ -48,7 +48,6 @@ public class GameManager : MonoBehaviour
     public void StartCombat(List<EnemyStats> enemies) {
         combatRoot.SetActive(true);
         overworldRoot.SetActive(false);
-        AudioManager.Instance.TransitionToCombatBGM();
         combatManager.StartCombat(enemies);
         inCombat = true;
     }
@@ -56,10 +55,7 @@ public class GameManager : MonoBehaviour
     public void StartCombat(List<EnemyStats> enemies, Transform escapePoint, bool bossEncounter) {
         combatRoot.SetActive(true);
         overworldRoot.SetActive(false);
-        if (bossEncounter)
-            AudioManager.Instance.TransitionToBossBGM();
-        else
-            AudioManager.Instance.TransitionToCombatBGM();
+        AudioManager.Instance.TransitionToBossBGM();
         combatManager.StartCombat(enemies, escapePoint, bossEncounter);
         inCombat = true;
     }
@@ -94,6 +90,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CombatTransition(PlayerController player) {
         player.canMove = false;
+        AudioManager.Instance.TransitionToCombatBGM();
         while (!transition.textureHidden) {
             yield return null;
         }

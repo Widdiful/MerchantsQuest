@@ -522,6 +522,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7693059172630005401}
   - component: {fileID: 6130074092517398672}
+  - component: {fileID: 126940229}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -584,7 +585,7 @@ MonoBehaviour:
   sellItem: {fileID: 8300000, guid: 6d4baabb3825c1c4bbcdeef5b05a3bcf, type: 3}
   openShop: {fileID: 8300000, guid: d3da02ac205471c489742325c23532aa, type: 3}
   uiConfirm: {fileID: 8300000, guid: ff1ce80abb539b24da551f3c38cd6c9e, type: 3}
-  uiMoveCursor: {fileID: 8300000, guid: d3da02ac205471c489742325c23532aa, type: 3}
+  uiMoveCursor: {fileID: 0}
   fadeSpeed: 1
   volSlider: {fileID: 0}
   audioIconHolder: {fileID: 0}
@@ -592,6 +593,18 @@ MonoBehaviour:
   lowVol: {fileID: 21300000, guid: d7a428958c81ec7428cebd61c68cfc5a, type: 3}
   midVol: {fileID: 21300000, guid: f2149681873dbd4479b35163c33d24c2, type: 3}
   maxVol: {fileID: 21300000, guid: 54cf05279d527fb49aa6760627145eb3, type: 3}
+--- !u!114 &126940229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6019719108836124706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea97afc7c9ef104fb86ac2be0ddbad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7315337991449716330
 GameObject:
   m_ObjectHideFlags: 0

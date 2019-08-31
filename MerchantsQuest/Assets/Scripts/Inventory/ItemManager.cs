@@ -160,11 +160,12 @@ public class ItemManager : MonoBehaviour
 
     public void UpdateItem(int id, Item item)
     {
+        Item tmpItem;
         for(int i = 0; i< items.Count; i++)
         {
-            if(id == items[i].id)
+            if(items.TryGetValue(id, out tmpItem))
             {
-                items[i] = item;
+                items[id] = item;
                 return;
             }
         }

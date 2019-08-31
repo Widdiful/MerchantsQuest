@@ -246,7 +246,7 @@ public class CombatManager : MonoBehaviour
                 }
                 break;
         }
-        if (!spell.appraised)
+        if (spell.id != 0 && !spell.appraised)
             SpellInventory.Instance.AppraiseSpell(spell.id);
     }
 

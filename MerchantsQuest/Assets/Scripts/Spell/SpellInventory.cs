@@ -6,7 +6,10 @@ public class SpellInventory : MonoBehaviour
 {
     public static SpellInventory Instance;
 
+    SpellSlot slotToRemove;
+
     public SpellSlot[] spellSlots;
+    public GameObject confirmPanel;
 
     private void Awake()
     {
@@ -54,6 +57,36 @@ public class SpellInventory : MonoBehaviour
             if(spellSlots[i].item.id == id)
             {
                 spellSlots[i].item.appraised = true;
+            }
+        }
+    }
+
+    public void TryToRemove(SpellSlot slot)
+    {
+        if (slot.empty)
+            return;
+        slotToRemove = slot;
+        confirmPanel.SetActive(true);
+
+    }
+
+    public void CancelRemoval()
+    {
+        slotToRemove = null;
+        confirmPanel.SetActive(false);
+    }
+
+    public void ConfirmRemove()
+    {
+        for(int i = 0; i < PartyManager.instance.partyMembers.Count; i++)
+        {
+            for(int j = 0; j < PartyManager.instance.partyMembers[i].spellList.Count; j++)
+            {
+                if(PartyManager.instance.partyMembers[i].spellList[j].id == slotToRemove.item.id)
+                {
+                    slotToRemove.RemoveItem();
+                    PartyManager.instance.partyMembers[i].spellList[j] = slotToRemove.blankItem;
+                }
             }
         }
     }

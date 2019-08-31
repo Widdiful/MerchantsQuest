@@ -27,6 +27,7 @@ public class stairs : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             source.incrementFloorCount();
+            AudioPlayer.Instance.EnterStairs();
         }
     }
 }

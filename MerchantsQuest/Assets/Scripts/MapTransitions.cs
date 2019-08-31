@@ -25,12 +25,12 @@ public class MapTransitions : MonoBehaviour
                 }
             }
         }
-
         if (leadsToDungeon) {
             CameraManager.instance.SetPlayerCamActive();
             dungeon.startDungeon();
         }
         else {
+            AudioPlayer.Instance.EnterLocation();
             while (!GameManager.instance.transition.textureHidden) {
                 yield return null;
             }

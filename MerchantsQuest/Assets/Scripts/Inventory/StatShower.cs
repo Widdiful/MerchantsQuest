@@ -59,8 +59,14 @@ public class StatShower : MonoBehaviour
         if (spell.appraised)
         {
             nameText.text = spell.name;
-            descriptionText.text = "Mana: " + spell.manaCost.ToString();
-            typeText.text = spell.spellType.ToString() + ": " + spell.primaryStatValue.ToString();
+            descriptionText.text = spell.spellType.ToString() + ": " + spell.primaryStatValue.ToString(); 
+            typeText.text = "Mana: " + spell.manaCost.ToString();
+        }
+        else
+        {
+            nameText.text = spell.name;
+            descriptionText.text = spell.fakeDescription;
+            typeText.text = "Mana: " + spell.manaCost.ToString();
         }
     }
 
