@@ -17,6 +17,7 @@ public class AppraisalTrigger : MonoBehaviour
                 appraiser.ShowUI(true);
                 shopKeeperSpeech.SetActive(false);
                 GameManager.instance.player.canMove = false;
+                AudioPlayer.Instance.OpenShop();
             }
 
             if (Input.GetKeyDown(KeyCode.Escape) && appraiser.Active())
@@ -24,6 +25,7 @@ public class AppraisalTrigger : MonoBehaviour
                 appraiser.ShowUI(false);
                 GameManager.instance.TogglePause();
                 GameManager.instance.player.canMove = true;
+                AudioPlayer.Instance.OpenShop();
             }
 
             if (!appraiser.Active() && !shopKeeperSpeech.activeSelf)

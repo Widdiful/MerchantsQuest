@@ -170,7 +170,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4017471253361310009, guid: 7485f554bc8feff40829aa126bd8fe41,
     type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9ad7e033049f0dd45992df945a6f6629, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1
@@ -582,7 +582,7 @@ MonoBehaviour:
   downStairs: {fileID: 8300000, guid: de47f2a21289347448df5dd0f0eb78d9, type: 3}
   buyItem: {fileID: 8300000, guid: c5064dd3116f43e428e8287f8999e839, type: 3}
   sellItem: {fileID: 8300000, guid: 6d4baabb3825c1c4bbcdeef5b05a3bcf, type: 3}
-  openShop: {fileID: 0}
+  openShop: {fileID: 8300000, guid: d3da02ac205471c489742325c23532aa, type: 3}
   uiConfirm: {fileID: 8300000, guid: ff1ce80abb539b24da551f3c38cd6c9e, type: 3}
   uiMoveCursor: {fileID: 8300000, guid: d3da02ac205471c489742325c23532aa, type: 3}
   fadeSpeed: 1

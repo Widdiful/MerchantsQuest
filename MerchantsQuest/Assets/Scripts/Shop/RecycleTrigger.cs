@@ -17,10 +17,12 @@ public class RecycleTrigger : MonoBehaviour
                 myRecycler.ShowUI(true);
                 shopKeeperSpeech.SetActive(false);
                 GameManager.instance.player.canMove = false;
+                AudioPlayer.Instance.OpenShop();
             }
 
             if (Input.GetKeyDown(KeyCode.Escape) && myRecycler.Active() )
             {
+                AudioPlayer.Instance.OpenShop();
                 myRecycler.ShowUI(false);
                 GameManager.instance.TogglePause();
                 GameManager.instance.player.canMove = true;

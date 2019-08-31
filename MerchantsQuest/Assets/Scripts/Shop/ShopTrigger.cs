@@ -14,6 +14,7 @@ public class ShopTrigger : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E) && !myShop.ShopActive())
             {
+                AudioPlayer.Instance.OpenShop();
                 myShop.ShowShop(true);
                 shopKeeperSpeech.SetActive(false);
                 GameManager.instance.player.canMove = false;
@@ -21,6 +22,7 @@ public class ShopTrigger : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Escape) && myShop.ShopActive())
             {
+                AudioPlayer.Instance.OpenShop();
                 myShop.ShowShop(false);
                 GameManager.instance.TogglePause();
                 GameManager.instance.player.canMove = true;
