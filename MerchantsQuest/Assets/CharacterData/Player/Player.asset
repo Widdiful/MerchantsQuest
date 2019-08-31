@@ -34,10 +34,10 @@ MonoBehaviour:
   currentAGI: 5
   currentINT: 0
   hpPerLevel: 4
-  mpPerLevel: 2
+  mpPerLevel: 3
   atkPerLevel: 4
   defPerLevel: 3
-  agiPerLevel: 2
+  agiPerLevel: 3
   intPerLevel: 2
   critChance: 0.2
   isDead: 0

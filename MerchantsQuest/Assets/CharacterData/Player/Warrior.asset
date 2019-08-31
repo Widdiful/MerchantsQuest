@@ -16,7 +16,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   level: 1
   baseHP: 25
-  baseMP: 2
+  baseMP: 4
   baseATK: 15
   baseDEF: 10
   baseAGI: 3
@@ -34,9 +34,9 @@ MonoBehaviour:
   currentAGI: 5
   currentINT: 0
   hpPerLevel: 5
-  mpPerLevel: 1
+  mpPerLevel: 2
   atkPerLevel: 5
-  defPerLevel: 3
+  defPerLevel: 4
   agiPerLevel: 1
   intPerLevel: 1
   critChance: 0.3

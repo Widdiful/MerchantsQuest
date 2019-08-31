@@ -414,7 +414,7 @@ public class CombatManager : MonoBehaviour
             yield return new WaitForSeconds(timeToWait);
 
             for (int i = 0; i < PartyManager.instance.partyMembers.Count; i++) {
-                StatsBase player = statsPanels.Keys.ElementAt<StatsBase>(i);
+                PlayerStats player = (PlayerStats)statsPanels.Keys.ElementAt<StatsBase>(i);
 
                 if (!player.isDead) {
                     player.totalXP += expEarned;
@@ -441,6 +441,8 @@ public class CombatManager : MonoBehaviour
                 PartyManager.instance.partyMembers[i].targetXP = player.targetXP;
                 PartyManager.instance.partyMembers[i].isDead = player.isDead;
                 PartyManager.instance.partyMembers[i].spellList = player.spellList;
+                PartyManager.instance.partyMembers[i].armour = player.armour;
+                PartyManager.instance.partyMembers[i].weapon = player.weapon;
                 InventoryManager.Instance.equipment[i].armorSlot.item = PartyManager.instance.partyMembers[i].armour;
                 InventoryManager.Instance.equipment[i].weaponSlot.item = PartyManager.instance.partyMembers[i].weapon;
             }
