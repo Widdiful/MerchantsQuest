@@ -33,7 +33,7 @@ MonoBehaviour:
   currentDEF: 0
   currentAGI: 0
   currentINT: 0
-  hpPerLevel: 3
+  hpPerLevel: 8
   mpPerLevel: 2
   atkPerLevel: 2
   defPerLevel: 1
@@ -51,6 +51,7 @@ MonoBehaviour:
     primaryStatValue: -5
     manaCost: 2
     lifesteal: 1
+    attackAll: 0
     icon: {fileID: 0}
     activeIcon: {fileID: 0}
   initialisedLevel: 0

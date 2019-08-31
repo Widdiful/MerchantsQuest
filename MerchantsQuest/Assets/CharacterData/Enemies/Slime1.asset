@@ -33,7 +33,7 @@ MonoBehaviour:
   currentDEF: 0
   currentAGI: 0
   currentINT: 0
-  hpPerLevel: 2
+  hpPerLevel: 7
   mpPerLevel: 0
   atkPerLevel: 2
   defPerLevel: 1

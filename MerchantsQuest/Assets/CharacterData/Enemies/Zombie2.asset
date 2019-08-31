@@ -21,8 +21,8 @@ MonoBehaviour:
   baseDEF: 4
   baseAGI: 2
   baseINT: 0
-  expValue: 10
-  goldValue: 5
+  expValue: 20
+  goldValue: 12
   totalXP: 0
   targetXP: 0
   maxHP: 32
@@ -33,7 +33,7 @@ MonoBehaviour:
   currentDEF: 0
   currentAGI: 0
   currentINT: 0
-  hpPerLevel: 5
+  hpPerLevel: 10
   mpPerLevel: 1
   atkPerLevel: 3
   defPerLevel: 1
@@ -42,8 +42,19 @@ MonoBehaviour:
   critChance: 0.01
   isDead: 0
   isEnemy: 1
-  spellList: []
+  spellList:
+  - id: 0
+    appraised: 0
+    name: Consume
+    fakeDescription: 
+    spellType: 3
+    primaryStatValue: 10
+    manaCost: 0
+    lifesteal: 0
+    attackAll: 0
+    icon: {fileID: 0}
+    activeIcon: {fileID: 0}
   initialisedLevel: 0
-  chanceToUseSpell: 0
+  chanceToUseSpell: 0.1
   blockChance: 0
   spriteSize: {x: 1, y: 1}

@@ -21,8 +21,8 @@ MonoBehaviour:
   baseDEF: 8
   baseAGI: 20
   baseINT: 0
-  expValue: 10
-  goldValue: 5
+  expValue: 15
+  goldValue: 6
   totalXP: 0
   targetXP: 0
   maxHP: 16
@@ -33,7 +33,7 @@ MonoBehaviour:
   currentDEF: 0
   currentAGI: 0
   currentINT: 0
-  hpPerLevel: 4
+  hpPerLevel: 9
   mpPerLevel: 2
   atkPerLevel: 3
   defPerLevel: 2
@@ -51,6 +51,7 @@ MonoBehaviour:
     primaryStatValue: -5
     manaCost: 2
     lifesteal: 1
+    attackAll: 0
     icon: {fileID: 0}
     activeIcon: {fileID: 0}
   initialisedLevel: 0

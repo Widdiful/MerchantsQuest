@@ -57,6 +57,7 @@ MonoBehaviour:
     icon: {fileID: 0}
     spellType: 0
     manaCost: 0
+    attackAll: 0
     price: 0
   armour:
     id: 0
@@ -71,4 +72,5 @@ MonoBehaviour:
     icon: {fileID: 0}
     spellType: 0
     manaCost: 0
+    attackAll: 0
     price: 0

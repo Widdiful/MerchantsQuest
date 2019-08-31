@@ -21,8 +21,8 @@ MonoBehaviour:
   baseDEF: 20
   baseAGI: 4
   baseINT: 0
-  expValue: 10
-  goldValue: 5
+  expValue: 20
+  goldValue: 12
   totalXP: 0
   targetXP: 0
   maxHP: 16
@@ -33,7 +33,7 @@ MonoBehaviour:
   currentDEF: 0
   currentAGI: 0
   currentINT: 0
-  hpPerLevel: 4
+  hpPerLevel: 9
   mpPerLevel: 3
   atkPerLevel: 3
   defPerLevel: 2

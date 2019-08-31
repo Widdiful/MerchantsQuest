@@ -20,9 +20,9 @@ MonoBehaviour:
   baseATK: 4
   baseDEF: 2
   baseAGI: 2
-  baseINT: 8
-  expValue: 10
-  goldValue: 5
+  baseINT: 12
+  expValue: 15
+  goldValue: 8
   totalXP: 0
   targetXP: 0
   maxHP: 6
@@ -33,12 +33,12 @@ MonoBehaviour:
   currentDEF: 0
   currentAGI: 0
   currentINT: 0
-  hpPerLevel: 2
+  hpPerLevel: 7
   mpPerLevel: 4
   atkPerLevel: 2
   defPerLevel: 1
   agiPerLevel: 1
-  intPerLevel: 3
+  intPerLevel: 4
   critChance: 0.01
   isDead: 0
   isEnemy: 1
@@ -51,6 +51,18 @@ MonoBehaviour:
     primaryStatValue: 10
     manaCost: 2
     lifesteal: 0
+    attackAll: 0
+    icon: {fileID: 0}
+    activeIcon: {fileID: 0}
+  - id: 0
+    appraised: 0
+    name: Heal
+    fakeDescription: 
+    spellType: 1
+    primaryStatValue: 10
+    manaCost: 5
+    lifesteal: 0
+    attackAll: 0
     icon: {fileID: 0}
     activeIcon: {fileID: 0}
   initialisedLevel: 0

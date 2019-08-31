@@ -51,6 +51,7 @@ MonoBehaviour:
     primaryStatValue: 50
     manaCost: 20
     lifesteal: 0
+    attackAll: 0
     icon: {fileID: 0}
     activeIcon: {fileID: 0}
   - id: 2
@@ -61,6 +62,7 @@ MonoBehaviour:
     primaryStatValue: 0
     manaCost: 50
     lifesteal: 1
+    attackAll: 0
     icon: {fileID: 0}
     activeIcon: {fileID: 0}
   - id: 3
@@ -71,6 +73,18 @@ MonoBehaviour:
     primaryStatValue: 0
     manaCost: 0
     lifesteal: 0
+    attackAll: 0
+    icon: {fileID: 0}
+    activeIcon: {fileID: 0}
+  - id: 4
+    appraised: 0
+    name: Dark Nova
+    fakeDescription: 
+    spellType: 2
+    primaryStatValue: 0
+    manaCost: 50
+    lifesteal: 0
+    attackAll: 1
     icon: {fileID: 0}
     activeIcon: {fileID: 0}
   initialisedLevel: 0

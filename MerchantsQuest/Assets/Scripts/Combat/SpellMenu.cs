@@ -29,8 +29,8 @@ public class SpellMenu : MonoBehaviour
                 SpellButton namePlate = Instantiate(buttonPrefab, listContainer).GetComponent<SpellButton>();
                 namePlate.Initialise(PartyManager.instance.partyMembers[i].characterName);
 
-                for (int j = 0; j < PartyManager.instance.partyMembers[i].spellList.Count; j++) {
-                    if (PartyManager.instance.partyMembers[i].spellList[j].spellType == SpellType.Heal) {
+                for (int j = 0; j < PartyManager.instance.partyMembers[i].spellList.Count; j++) {                    
+                    if (PartyManager.instance.partyMembers[i].spellList[j].spellType == SpellType.Heal && !PartyManager.instance.partyMembers[i].spellList[j].attackAll) {
                         SpellButton button = Instantiate(buttonPrefab, listContainer).GetComponent<SpellButton>();
                         button.thisCanvas = thisCanvas;
                         bool canAfford = PartyManager.instance.partyMembers[i].currentMP >= PartyManager.instance.partyMembers[i].spellList[j].manaCost;

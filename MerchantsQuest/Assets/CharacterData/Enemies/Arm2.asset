@@ -15,14 +15,14 @@ MonoBehaviour:
   characterName: Handyman
   sprite: {fileID: -7868115853684327939, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
-  baseHP: 10
+  baseHP: 40
   baseMP: 2
   baseATK: 24
   baseDEF: 4
   baseAGI: 4
   baseINT: 0
-  expValue: 10
-  goldValue: 5
+  expValue: 20
+  goldValue: 12
   totalXP: 0
   targetXP: 0
   maxHP: 10
@@ -33,7 +33,7 @@ MonoBehaviour:
   currentDEF: 0
   currentAGI: 0
   currentINT: 0
-  hpPerLevel: 2
+  hpPerLevel: 8
   mpPerLevel: 1
   atkPerLevel: 5
   defPerLevel: 1
@@ -51,6 +51,7 @@ MonoBehaviour:
     primaryStatValue: 20
     manaCost: 2
     lifesteal: 0
+    attackAll: 0
     icon: {fileID: 0}
     activeIcon: {fileID: 0}
   initialisedLevel: 0
