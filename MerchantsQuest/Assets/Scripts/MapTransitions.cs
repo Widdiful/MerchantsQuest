@@ -18,8 +18,10 @@ public class MapTransitions : MonoBehaviour
         GameManager.instance.encountersAllowed = encountersAllowed;
         if (fullyHealParty) {
             foreach(PlayerStats stats in PartyManager.instance.partyMembers) {
-                stats.currentHP = stats.maxHP;
-                stats.currentMP = stats.maxMP;
+                if (!stats.isDead) {
+                    stats.currentHP = stats.maxHP;
+                    stats.currentMP = stats.maxMP;
+                }
             }
         }
 

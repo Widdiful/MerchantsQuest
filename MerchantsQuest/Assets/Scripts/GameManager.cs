@@ -46,6 +46,13 @@ public class GameManager : MonoBehaviour
         inCombat = true;
     }
 
+    public void StartCombat(List<EnemyStats> enemies, Transform escapePoint, bool bossEncounter) {
+        combatRoot.SetActive(true);
+        overworldRoot.SetActive(false);
+        combatManager.StartCombat(enemies, escapePoint, bossEncounter);
+        inCombat = true;
+    }
+
     public void EndCombat() {
         combatRoot.SetActive(false);
         overworldRoot.SetActive(true);

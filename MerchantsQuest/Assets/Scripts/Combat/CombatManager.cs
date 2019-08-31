@@ -28,6 +28,8 @@ public class CombatManager : MonoBehaviour
     public AnimatedBackground background;
     public int expEarned, goldEarned;
     public dungeonGeneration dungeon;
+    public Transform escapePoint;
+    private bool isBossEncounter;
     private bool gameOver;
 
     private void Awake() {
@@ -45,11 +47,22 @@ public class CombatManager : MonoBehaviour
     public void StartCombat() {
         StartCoroutine(StartBattle(null));
         background.Randomise();
+        escapePoint = null;
+        isBossEncounter = false;
     }
 
     public void StartCombat(List<EnemyStats> enemies) {
         StartCoroutine(StartBattle(enemies));
         background.Randomise();
+        escapePoint = null;
+        isBossEncounter = false;
+    }
+
+    public void StartCombat(List<EnemyStats> enemies, Transform fleePoint, bool bossEncounter) {
+        StartCoroutine(StartBattle(enemies));
+        background.Randomise();
+        escapePoint = fleePoint;
+        isBossEncounter = bossEncounter;
     }
 
     public void NextTurn() {
@@ -183,7 +196,7 @@ public class CombatManager : MonoBehaviour
     private void UseSpell(StatsBase attacker, StatsBase target, Spell spell) {
         switch (spell.spellType) {
             case SpellType.None:
-                messageText.text += "The spell does nothing!";
+                messageText.text += "Nothing happens!";
                 StartCoroutine(NextTurnWait());
                 break;
             case SpellType.Damage:
@@ -428,11 +441,28 @@ public class CombatManager : MonoBehaviour
             GameManager.instance.transition.BeginHide();
             GameManager.instance.player.canMove = true;
 
+            if (escapePoint) {
+                GameManager.instance.player.transform.position = escapePoint.position;
+                GameManager.instance.player.lerping = false;
+            }
+
             GameManager.instance.EndCombat();
+
+            if (isBossEncounter && keepGold) {
+                GameManager.instance.CompleteGame();
+            }
 
         }
 
         else {
+            GameManager.instance.transition.BeginShow();
+            GameManager.instance.player.canMove = false;
+            while (!GameManager.instance.transition.textureShown) {
+                yield return null;
+            }
+            GameManager.instance.transition.BeginHide();
+            GameManager.instance.player.canMove = true;
+
             GameManager.instance.GameOver();
         }
     }
