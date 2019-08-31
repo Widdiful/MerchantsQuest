@@ -356,4 +356,10 @@ public class dungeonGeneration : MonoBehaviour
         currentFloorNumber = floorNumber;
     }
 
+
+    public void hideButtons()
+    {
+        buttonReference.SetActive(false);
+    }
+
 }
