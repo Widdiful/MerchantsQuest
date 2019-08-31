@@ -28305,6 +28305,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8502970409620561720, guid: 9e29b76c9612070448871ed333d86de2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8502970409620561720, guid: 9e29b76c9612070448871ed333d86de2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -30
+      objectReference: {fileID: 0}
     - target: {fileID: 1007250847792145355, guid: 9e29b76c9612070448871ed333d86de2,
         type: 3}
       propertyPath: floorSprites.Array.size
@@ -28641,16 +28651,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8502970409620561720, guid: 9e29b76c9612070448871ed333d86de2,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -30
-      objectReference: {fileID: 0}
-    - target: {fileID: 8502970409620561720, guid: 9e29b76c9612070448871ed333d86de2,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -30
-      objectReference: {fileID: 0}
     - target: {fileID: 1655905619, guid: 9e29b76c9612070448871ed333d86de2, type: 3}
       propertyPath: isBossEncounter
       value: 1
@@ -28699,6 +28699,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6188159908389301428, guid: 9e29b76c9612070448871ed333d86de2,
+        type: 3}
+      propertyPath: leadsToTown
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e29b76c9612070448871ed333d86de2, type: 3}

@@ -7,7 +7,7 @@ public class MapTransitions : MonoBehaviour
     public GameObject nextMap, thisMap;
     public Transform entrancePoint;
     public dungeonGeneration dungeon;
-    public bool encountersAllowed, leadsToDungeon, leadsToWorldMap, fullyHealParty;
+    public bool encountersAllowed, leadsToDungeon, leadsToWorldMap, leadsToTown, fullyHealParty;
 
     public void Transition(Transform player) {
         StartCoroutine(StartTransition(player));
@@ -46,10 +46,15 @@ public class MapTransitions : MonoBehaviour
                 CameraManager.instance.SetPlayerCamActive();
                 AudioManager.Instance.TransitionToOverworldBGM();
             }
-            else
+            else if(leadsToTown)
             {
                 CameraManager.instance.SetTownCamActive();
                 AudioManager.Instance.TransitionToTownBGM();
+            }
+            else
+            {
+                CameraManager.instance.SetTownCamActive();
+                AudioManager.Instance.TransitionToDungeonBGM();
             }
             nextMap.SetActive(true);
             player.position = entrancePoint.position;

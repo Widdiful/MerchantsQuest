@@ -43,10 +43,10 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -4017471253361310009, guid: 7485f554bc8feff40829aa126bd8fe41,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: eebe7f3da594cc24fb35f1289d924d68, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -171,10 +171,10 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -4017471253361310009, guid: 7485f554bc8feff40829aa126bd8fe41,
     type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -299,7 +299,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -2625137454548199243, guid: 7485f554bc8feff40829aa126bd8fe41,
     type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -426,11 +426,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4017471253361310009, guid: 7485f554bc8feff40829aa126bd8fe41,
     type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 77ef2d503dbb9434e8fe3cd7ec74e674, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -564,7 +564,7 @@ MonoBehaviour:
   mixer: {fileID: 24100000, guid: 7485f554bc8feff40829aa126bd8fe41, type: 2}
   townBGM: {fileID: 1066869334941240610}
   combatBGM: {fileID: 1789701131369249308}
-  dungeonBGM: {fileID: 6831454738522546693}
+  dungeonBGM: {fileID: 5530705140127689205}
   overworldBGM: {fileID: 6831454738522546693}
   bossBGM: {fileID: 8769227676912386998}
   victoryBGM: {fileID: 0}
@@ -628,11 +628,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4017471253361310009, guid: 7485f554bc8feff40829aa126bd8fe41,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 35da56ff07e22e041ba9e7438d603388, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 124ad00485f038f4ea6b2510176d302d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -760,7 +760,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
