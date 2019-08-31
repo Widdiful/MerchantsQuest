@@ -15,7 +15,7 @@ MonoBehaviour:
   characterName: Apprentice
   sprite: {fileID: 6695699477878366118, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
-  baseHP: 6
+  baseHP: 28
   baseMP: 12
   baseATK: 4
   baseDEF: 2

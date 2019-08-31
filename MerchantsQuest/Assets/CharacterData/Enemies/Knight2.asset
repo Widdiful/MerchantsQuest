@@ -18,7 +18,7 @@ MonoBehaviour:
   baseHP: 32
   baseMP: 16
   baseATK: 42
-  baseDEF: 12
+  baseDEF: 32
   baseAGI: 5
   baseINT: 0
   expValue: 10

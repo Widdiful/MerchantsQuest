@@ -15,7 +15,7 @@ MonoBehaviour:
   characterName: Ex-man
   sprite: {fileID: -8792400791106265446, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
-  baseHP: 32
+  baseHP: 48
   baseMP: 8
   baseATK: 16
   baseDEF: 4

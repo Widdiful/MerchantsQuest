@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         while (!transition.textureHidden) {
             yield return null;
         }
-        transition.BeginShow();
+        transition.CombatShowTexture();
         while (!transition.textureShown) {
             yield return null;
         }

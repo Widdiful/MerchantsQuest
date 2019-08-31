@@ -15,7 +15,7 @@ MonoBehaviour:
   characterName: Zomboss
   sprite: {fileID: 7893704401813933489, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
-  baseHP: 48
+  baseHP: 64
   baseMP: 16
   baseATK: 24
   baseDEF: 6

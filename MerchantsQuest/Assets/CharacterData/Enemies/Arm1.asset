@@ -15,7 +15,7 @@ MonoBehaviour:
   characterName: '''Armless'
   sprite: {fileID: -6237067392406506567, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
-  baseHP: 6
+  baseHP: 30
   baseMP: 2
   baseATK: 18
   baseDEF: 2

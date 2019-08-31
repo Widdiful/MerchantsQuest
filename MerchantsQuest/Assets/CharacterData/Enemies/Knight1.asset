@@ -17,8 +17,8 @@ MonoBehaviour:
   level: 1
   baseHP: 24
   baseMP: 8
-  baseATK: 32
-  baseDEF: 8
+  baseATK: 16
+  baseDEF: 24
   baseAGI: 5
   baseINT: 0
   expValue: 10
@@ -35,8 +35,8 @@ MonoBehaviour:
   currentINT: 0
   hpPerLevel: 4
   mpPerLevel: 2
-  atkPerLevel: 5
-  defPerLevel: 2
+  atkPerLevel: 3
+  defPerLevel: 5
   agiPerLevel: 1
   intPerLevel: 0
   critChance: 0.01

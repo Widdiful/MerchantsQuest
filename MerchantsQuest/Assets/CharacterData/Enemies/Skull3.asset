@@ -15,7 +15,7 @@ MonoBehaviour:
   characterName: Hothead
   sprite: {fileID: -9047860228205279276, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
-  baseHP: 32
+  baseHP: 48
   baseMP: 24
   baseATK: 32
   baseDEF: 12

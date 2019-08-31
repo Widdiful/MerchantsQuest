@@ -47,7 +47,7 @@ public class TransitionBoi : MonoBehaviour
         textureHidden = false;
         textureShown = false;
         dissolveVal = 1.1f;
-        image.material.SetTexture("_NoiseTex", combatTextures[Random.Range(0, dissolveTextures.Length)]);
+        image.material.SetTexture("_NoiseTex", combatTextures[Random.Range(0, combatTextures.Length)]);
         StartCoroutine(ShowTexture());
     }
 

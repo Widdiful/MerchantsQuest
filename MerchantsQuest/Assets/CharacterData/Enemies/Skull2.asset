@@ -15,7 +15,7 @@ MonoBehaviour:
   characterName: Gold Ahead
   sprite: {fileID: -8967045067936796506, guid: d3f34630c9b63ab479bf914fa217ae3e, type: 3}
   level: 1
-  baseHP: 16
+  baseHP: 36
   baseMP: 16
   baseATK: 12
   baseDEF: 20
