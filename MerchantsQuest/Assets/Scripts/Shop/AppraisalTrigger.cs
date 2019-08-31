@@ -19,7 +19,7 @@ public class AppraisalTrigger : MonoBehaviour
                 GameManager.instance.player.canMove = false;
             }
 
-            if (Input.GetKeyDown(KeyCode.E) && appraiser.Active())
+            if (Input.GetKeyDown(KeyCode.Escape) && appraiser.Active())
             {
                 appraiser.ShowUI(false);
                 GameManager.instance.TogglePause();

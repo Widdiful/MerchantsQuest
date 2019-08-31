@@ -19,7 +19,7 @@ public class RecycleTrigger : MonoBehaviour
                 GameManager.instance.player.canMove = false;
             }
 
-            if (Input.GetKeyDown(KeyCode.E) && myRecycler.Active() )
+            if (Input.GetKeyDown(KeyCode.Escape) && myRecycler.Active() )
             {
                 myRecycler.ShowUI(false);
                 GameManager.instance.TogglePause();
