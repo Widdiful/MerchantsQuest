@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
 
     public float fadeSpeed;
+
+    [Header("UI")]
+    public Slider volSlider;
+    public Image audioIconHolder;
+    public Sprite noVol, lowVol, midVol, maxVol;
 
     private void Awake()
     {
@@ -205,9 +211,26 @@ public class AudioManager : MonoBehaviour
 
 #region mixer Adjustments
     
-    public void AdjustVolume(float newValue)
+    public void AdjustVolume()
     {
-        mixer.SetFloat("_Volume", Mathf.Log10(newValue) * 20);
+        mixer.SetFloat("_Volume", Mathf.Log10(volSlider.value) * 20);
+
+        if(volSlider.value == 0)
+        {
+            audioIconHolder.sprite = noVol;
+        }
+        else if(volSlider.value < 0.33f)
+        {
+            audioIconHolder.sprite = lowVol;
+        }
+        else if(volSlider.value < 0.66f)
+        {
+            audioIconHolder.sprite = midVol;
+        }
+        else
+        {
+            audioIconHolder.sprite = maxVol;
+        }
     }
 #endregion
 }

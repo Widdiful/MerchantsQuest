@@ -586,6 +586,12 @@ MonoBehaviour:
   uiConfirm: {fileID: 0}
   uiMoveCursor: {fileID: 0}
   fadeSpeed: 1
+  volSlider: {fileID: 0}
+  audioIconHolder: {fileID: 0}
+  noVol: {fileID: 21300000, guid: d879f75572626914780458b0865fc232, type: 3}
+  lowVol: {fileID: 21300000, guid: d7a428958c81ec7428cebd61c68cfc5a, type: 3}
+  midVol: {fileID: 21300000, guid: f2149681873dbd4479b35163c33d24c2, type: 3}
+  maxVol: {fileID: 21300000, guid: 54cf05279d527fb49aa6760627145eb3, type: 3}
 --- !u!1 &7315337991449716330
 GameObject:
   m_ObjectHideFlags: 0
