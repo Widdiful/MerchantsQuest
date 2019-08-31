@@ -19774,7 +19774,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 141ff21cf9d533e4ebb8db6a5fb168da, type: 2}
   - {fileID: 11400000, guid: bca631b67ccf64e40b0741f1885d94cc, type: 2}
   partyMembers: []
-  gold: 1000
+  gold: 100
 --- !u!114 &1961483062
 MonoBehaviour:
   m_ObjectHideFlags: 0
