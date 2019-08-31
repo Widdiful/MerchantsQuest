@@ -124,13 +124,14 @@ public class GameManager : MonoBehaviour
 
     public void GameOver() {
         player.canMove = false;
-        gameOverCanvas.enabled = true;
+        gameOverCanvas.gameObject.SetActive(true);
         gameOver = true;
     }
 
     public void CompleteGame() {
         player.canMove = false;
-        victoryCanvas.enabled = true;
+        victoryCanvas.gameObject.SetActive(true);
+
         gameOver = true;
     }
 
