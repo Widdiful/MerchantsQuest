@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject evacButton;
     public Canvas victoryCanvas, gameOverCanvas, spellCanvas, targetingCanvas, statsCanvas;
+    public TMP_Text goldText;
     public SpellMenu spellMenu;
     public StatsMenu statsMenu;
     private int stepsUntilEncounter;
@@ -114,6 +116,7 @@ public class GameManager : MonoBehaviour
     public void TogglePause() {
         evacButton.SetActive(dungeon.isInDungeon);
         bool val = !pauseMenu.activeInHierarchy;
+        goldText.text = PartyManager.instance.gold.ToString();
         pauseMenu.SetActive(val);
         spellCanvas.enabled = false;
         targetingCanvas.enabled = false;

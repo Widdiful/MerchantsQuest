@@ -18,9 +18,11 @@ public class RecycleTrigger : MonoBehaviour
                 shopKeeperSpeech.SetActive(false);
                 GameManager.instance.player.canMove = false;
             }
-            else if (Input.GetKeyDown(KeyCode.E) )
+
+            if (Input.GetKeyDown(KeyCode.E) && myRecycler.Active() )
             {
                 myRecycler.ShowUI(false);
+                GameManager.instance.TogglePause();
                 GameManager.instance.player.canMove = true;
             }
 

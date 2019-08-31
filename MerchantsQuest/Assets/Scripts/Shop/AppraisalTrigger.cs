@@ -18,9 +18,11 @@ public class AppraisalTrigger : MonoBehaviour
                 shopKeeperSpeech.SetActive(false);
                 GameManager.instance.player.canMove = false;
             }
-            else if (Input.GetKeyDown(KeyCode.E))
+
+            if (Input.GetKeyDown(KeyCode.E) && appraiser.Active())
             {
                 appraiser.ShowUI(false);
+                GameManager.instance.TogglePause();
                 GameManager.instance.player.canMove = true;
             }
 
