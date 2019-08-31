@@ -507,6 +507,7 @@ public class CombatManager : MonoBehaviour
                         player.InitialiseCharacter();
                         player.currentHP = player.maxHP;
                         player.currentMP = player.maxMP;
+                        UpdateAllStats();
                     }
                 }
 
