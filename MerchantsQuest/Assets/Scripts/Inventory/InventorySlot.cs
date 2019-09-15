@@ -17,6 +17,7 @@ public class InventorySlot : Slot<Item>
         icon.sprite = null;
         icon.color = new Color(.0f, .0f, .0f, .0f);
         empty = true;
+        item = blankItem;
         HideStats();
     }
 

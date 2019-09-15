@@ -11,8 +11,8 @@ public class RandomText : MonoBehaviour
     string text;
     string textToShow = "";
     public float fSize;
-    public float textSpeed = 0.1f;
-    public float fadeSpeed = 0.5f;
+    public float textSpeed = 2.0f;
+    public float fadeSpeed = 40.0f;
 
     public Color32 startCol, endCol;
 

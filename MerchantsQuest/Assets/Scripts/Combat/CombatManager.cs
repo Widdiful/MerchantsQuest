@@ -91,6 +91,7 @@ public class CombatManager : MonoBehaviour
             }
             else if (enemyTeam.Count <= 0) {
                 messageText.text += ("Victory!\n");
+                AudioManager.Instance.SilenceAllBGM();
                 AudioPlayer.Instance.VictoryFanfare();
                 battleEnded = true;
                 StartCoroutine(NextTurnWait());
